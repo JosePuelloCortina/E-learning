@@ -9,11 +9,7 @@ module.exports = (sequelize) => {
     type: DataTypes.STRING,
     allowNull: false,
     },
-    idInstructor: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
-        primaryKey: true
-      },
+    
     id: {
       type: DataTypes.STRING(3),
       allowNull: false,
