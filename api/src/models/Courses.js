@@ -23,22 +23,24 @@ module.exports = (sequelize) => {
         
     },
 
-    progreso: {
+    progress: {
         type: DataTypes.STRING,
         allowNull: false,
             
     },
 
-    reseña: {
+    review: {
         type: DataTypes.STRING,
         allowNull: false,
                 },
                 
     
     id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      primaryKey: true
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV1,
+        unique: true,
+        primaryKey: true,
+        allowNull: false, 
     },
     
   });
