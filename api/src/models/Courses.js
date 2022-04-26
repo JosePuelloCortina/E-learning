@@ -4,7 +4,7 @@ const { DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo //anotar todas las caracteristicas que trae de la api 
   //y poner allowNull false a los campos obligatorios(validación)
-  sequelize.define('courses', {
+  sequelize.define('course', {
 
     id: {
         type: DataTypes.UUID,
