@@ -20,12 +20,12 @@ module.exports = (sequelize) => {
     },
 
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
 
     duration: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         
     },
@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
     },
 
     review: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     }              
     
