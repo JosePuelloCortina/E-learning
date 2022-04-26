@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     },
 
     duration: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         
     },
