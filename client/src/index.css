@@ -19,3 +19,13 @@ code {
   --color4: #272640;
   --color5: #4D194D;
 }
+
+/* FUENTES
+IBM Plex Mono
+Source Code Pro
+ */
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+
+
