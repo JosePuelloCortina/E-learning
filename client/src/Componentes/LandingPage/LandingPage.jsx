@@ -7,8 +7,8 @@ export default function LandingPage (){
         <div className={styles.container}>
 
             <div className={styles.text}>
-            <h1>NOMBRE</h1>
-            <h2>Encontrá todos tus cursos IT acá</h2>
+            <h1>ODEMY</h1>
+            <h2>Todos los cursos que necesitas, en un sólo lugar</h2>
             </div>
             <div>
                 <Link to="/home">

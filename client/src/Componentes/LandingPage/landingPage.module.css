@@ -1,7 +1,6 @@
-
 .button {
     display: flex;
-    font-size: 30px;
+    font-size: 25px;
     font-family: sans-serif;
     padding: 15px;
     letter-spacing: 2px;
@@ -9,11 +8,12 @@
     color: white;
     align-self: center;
     /* background-color: var(--color4); */
-    background-color: rgba(255, 187, 0, 0.992);
-    border-radius: 5px;
+    background-color: rgba(255, 157, 0, 0.992);
+    border-radius: 10px;
 }
 .button:hover {
-    background-color: var(--color3);
+    background-color: rgb(179, 7, 205);
+    cursor: pointer;
 }
 
 .container {
@@ -37,8 +37,8 @@
 h1 {
     font-family: 'Source Code Pro', monospace;
     color: beige;
-    letter-spacing: 5px;
-    font-size: 80px;
+    letter-spacing: 10px;
+    font-size: 100px;
 }
 
 h2 {
@@ -51,3 +51,4 @@ h2 {
 a {
     text-decoration: none;
 }
+
