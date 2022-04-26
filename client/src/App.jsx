@@ -1,7 +1,7 @@
 import React, { useMemo, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Home from './Componentes/Home/Home';
-import LandingPage from './Componentes/LandingPage';
+import LandingPage from './Componentes/LandingPage/LandingPage';
 
 
 function App() {
