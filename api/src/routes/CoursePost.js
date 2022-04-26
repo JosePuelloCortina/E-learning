@@ -3,7 +3,7 @@ const { userInfo } = require('os');
 const { Course,User } = require('../db');
 const router = Router();
 
-router.post("/activity", async (req, res) =>{
+router.post("/courses", async (req, res) =>{
     let {name, description, review,id, duration, progress} = req.body //recibe los datos por body mediante formulario
     try {
         if(User.role = "instructor"){
