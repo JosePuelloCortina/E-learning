@@ -9,6 +9,29 @@ module.exports = (sequelize) => {
     type: DataTypes.STRING,
     allowNull: false,
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        
+    },
+
+    duration: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        
+    },
+
+    progreso: {
+        type: DataTypes.STRING,
+        allowNull: false,
+            
+    },
+
+    reseña: {
+        type: DataTypes.STRING,
+        allowNull: false,
+                },
+                
     
     id: {
       type: DataTypes.STRING(3),
