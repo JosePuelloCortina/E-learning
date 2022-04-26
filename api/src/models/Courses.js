@@ -9,6 +9,8 @@ module.exports = (sequelize) => {
     type: DataTypes.STRING,
     allowNull: false,
     },
+
+
     description: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,7 +36,7 @@ module.exports = (sequelize) => {
                 
     
     id: {
-      type: DataTypes.STRING(3),
+      type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true
     },
