@@ -12,15 +12,13 @@ code {
     monospace;
 }
 
-
-
-
-
-
-
-
-
-
+:root{
+  --color1: #006466;
+  --color2: #0B525B;
+  --color3: #1B3A4B;
+  --color4: #272640;
+  --color5: #4D194D;
+}
 
 /* FUENTES
 IBM Plex Mono
@@ -28,3 +26,6 @@ Source Code Pro
  */
  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+
+
