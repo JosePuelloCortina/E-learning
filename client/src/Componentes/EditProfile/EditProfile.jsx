@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './editProfile.module.css'
 import {Link} from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 
 
+
 export default function editProfile() {
+
     
     return(
         <div>

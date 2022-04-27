@@ -14,8 +14,8 @@ function App() {
           <Routes>
             <Route exact path = '/' element={<LandingPage/>} />
             <Route path = '/home' element={<Home/>} />
-            <Route exact path = '/profile' element={<UserProfile/>} />
-            <Route path = '/profile/edit' element={<EditProfile/>} />
+            <Route path = '/profile/' element={<UserProfile/>} />
+            <Route path = '/profile/edit/:id' element={<EditProfile/>} />
           </Routes>
         </BrowserRouter>
     </div>
