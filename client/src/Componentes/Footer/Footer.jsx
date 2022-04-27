@@ -13,8 +13,6 @@ function Footer() {
             Contacto
           </a>
         </div>
-
-        {/* <p className={styles.footerCompanyName}>grupo 3 &copy; 2022</p> */}
       </div>
 
       <div className={styles.footerRight}>
