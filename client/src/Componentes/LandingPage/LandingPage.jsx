@@ -5,6 +5,7 @@ import styles from './landingPage.module.css'
 export default function LandingPage (){
     return (
         <div className={styles.container}>
+
             <div className={styles.text}>
             <h1>ODEMY</h1>
             <h2>Todos los cursos que necesitas, en un sólo lugar</h2>
