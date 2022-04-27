@@ -30,3 +30,18 @@ export function allCourses(){
     }
 }
 
+
+export function getUserById(id){
+    return async function(dispatch){
+        try{
+            const user = await axios.get(`http://localhost:3001/id/${id}`)
+            return dispatch({
+                type: 'GET_USER_BY_ID',
+                payload: user.data
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+}

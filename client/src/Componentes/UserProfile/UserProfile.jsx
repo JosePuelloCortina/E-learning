@@ -6,7 +6,7 @@ import MyCoursesAlumn from './../MyCoursesAlumn/MyCoursesAlumn';
 import MyCoursesInstructor from './../MyCoursesInstructor/MyCoursesInstructor';
 import ProfileLateralBar from '../ProfileLateralBar/ProfileLateralBar';
 
-export default function userProfile(){
+export default function UserProfile(){
     return (
         <div>
             <NavBar/>
