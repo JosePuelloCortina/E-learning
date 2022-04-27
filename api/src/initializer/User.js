@@ -1,6 +1,6 @@
-const { User, Role } = require('../db');
+const { User } = require('../db');
 
-let users = [
+let users = [ 
     {
         "name": "valentina",
         "password": "vale123",

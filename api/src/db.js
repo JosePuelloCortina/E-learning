@@ -47,8 +47,8 @@ const { User, Role, Compra, Course, Clase, Categoria  } = sequelize.models;
 // User.hasMany(Role);
 // Role.belongsTo(User);
 
-User.belongsToMany(Role, { through: 'userRole'});
-Role.belongsToMany(User, { through: 'userRole'});
+User.belongsToMany(Role, { through: 'userRole'}); 
+Role.belongsToMany(User, { through: 'userRole'}); 
 
 // Relacion de muchos a uno usuario -> compra
 User.hasMany(Compra);

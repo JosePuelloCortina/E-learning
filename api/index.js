@@ -28,7 +28,7 @@ const initializeUser = require('./src/initializer/User');
 
 conn.sync({ force: true }).then(async() => {
   try {   
-    await initializeRole();
+    await initializeRole(); 
     await initializeUser();
     console.log("Tablas cargadas!!")
     server.listen(3001, () => {
