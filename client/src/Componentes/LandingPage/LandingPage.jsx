@@ -12,7 +12,7 @@ export default function LandingPage (){
             </div>
             <div>
                 <Link to="/home">
-                <button className={styles.button}>Comenzar ahora!</button>
+                <button className={styles.landingButton}>Comenzar ahora!</button>
                 </Link>
             </div>
         
