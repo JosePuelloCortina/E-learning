@@ -4,7 +4,9 @@ const { User, Course, Role } = require('../../db');
 
 
 server.post("/create", async (req, res) =>{
-    let {name, description, review, duration, progress, user, categoria} = req.body //recibe los datos por body mediante formulario
+
+    let {name, description, review, duration, progress, img, user, categoria} = req.body //recibe los datos por body mediante formulario
+
     try {
 
         const usuario = await User.findOne({
@@ -24,7 +26,8 @@ server.post("/create", async (req, res) =>{
                 duration : duration,
                 description : description,
                 review: review,
-                progress: progress,               
+                progress: progress,
+                img: img               
             })
             .then(courseUser =>{
                 courseUser.addUser(user)

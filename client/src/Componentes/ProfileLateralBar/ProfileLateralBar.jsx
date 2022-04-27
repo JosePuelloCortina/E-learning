@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './profileLateralBar.module.css'
 import {Link} from 'react-router-dom'
-
+import img from '../../Images/avatar1.jpg'
 
 export default function profileLateralBar() {
     
@@ -10,8 +10,9 @@ export default function profileLateralBar() {
         
         <h3>Andrea Hubacek</h3>
 
-        <img src='.../Images.avatar1.jpg' alt='avatar' />
-        <Link to="/editProfile">
+        <img src={img} alt='avatar' />
+        <h4>hubacekk@gmail.com</h4>
+        <Link to="/profile/edit">
         <button className={styles.editButton}>Editar mis datos</button>
         </Link>
         </div>
