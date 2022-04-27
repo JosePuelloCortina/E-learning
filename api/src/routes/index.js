@@ -7,7 +7,7 @@ const Role = require('./Role');
 const CousesAll = require('./Courses/CourseAll');
 const CousesPost = require('./Courses/CoursePost');
 const CoursesDelete = require('./Courses/CourseDelete');
-const CourseDetails = require('./Courses/CourseId');
+const CourseId = require('./Courses/CourseId');
 const UserDelete = require('./User/UserDelete');
 
 
@@ -22,7 +22,7 @@ router.use('/role', Role);
 router.use('/courses', CousesAll);
 router.use('/courses', CousesPost);
 router.use('/courses', CoursesDelete);
-router.use('/courses', CourseDetails);
+router.use('/courses', CourseId);
 router.use('/user', UserDelete);
 
 
