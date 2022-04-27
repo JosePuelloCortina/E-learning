@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Categoria } = require('../../db');
+const { Category } = require('../../db');
 
 
 server.post("/create", async function(req, res, next){
@@ -8,7 +8,7 @@ server.post("/create", async function(req, res, next){
         if(!name ){
             return res.status(422).json({error: "No se enviaron todos los datos"}) 
         }
-        Categoria.create({
+        Category.create({
             name: name,
         })
         .then(async () =>{

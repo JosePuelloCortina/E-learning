@@ -1,22 +1,17 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) =>{
-    sequelize.define('compra', {
+module.exports = (sequelize) => {
+    sequelize.define('category', {
         id :{
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
-            unique: true,
-            primaryKey: true,
             allowNull: false, 
         },
 
-        descuento: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        
-        forma_de_pago: {
+        name: {
             type: DataTypes.STRING,
+            unique: true,
+            primaryKey: true,
             allowNull: false,
         }
 
