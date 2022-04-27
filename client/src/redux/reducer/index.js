@@ -1,7 +1,8 @@
 const initialState = {
 
     user: [],
-    courses: []
+    courses: [],
+  
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -18,7 +19,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 courses: action.payload
             }
-
+        case 'GET_USER_BY_ID':
+        return {
+            ...state,
+            user: action.payload
+        }
         default:
             return state;
     }
