@@ -10,11 +10,11 @@ export default function ProfileLateralBar(user) {
     return(
         <div className={styles.container}>
         
-        <h3>{user[0].name}</h3>
+        <h3>{user.name}</h3>
 
         <img src={img} alt='avatar' />
-        <h4>{user[0].email}</h4>
-        <Link to={"/profile/edit/"+ user[0].id}>
+        <h4>{user.email}</h4>
+        <Link to={"/profile/edit/"+ user.id}>
         <button className={styles.editButton}>Editar mis datos</button>
         </Link>
         </div>
