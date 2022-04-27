@@ -21,7 +21,7 @@ export default function CoursesContainer() {
   
     return (
     <div className={styles.container}>
-        {courses?.map((e) => <CourseCard name={e.name}/>)}
+        {courses?.map((e) => <CourseCard name={e.name} img={e.img}/>)}
     </div>
   );
 }
