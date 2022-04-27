@@ -15,7 +15,7 @@ export default function ProfileLateralBar(user) {
 
         <img src={img} alt='avatar' />
         <h4>{user.email}</h4>
-        <Link to="/profile/edit">
+        <Link to={"/profile/edit/"+ user.id}>
         <button className={styles.editButton}>Editar mis datos</button>
         </Link>
         </div>
