@@ -28,5 +28,7 @@ h2 {
 
 .cursesDetail{
     display: flex;
+    flex-direction: column;
     width: 45%;
+    
 }
