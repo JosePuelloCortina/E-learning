@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => {
-    sequelize.define('user', {
+module.exports = (sequelize) =>{
+    sequelize.define('buy', {
         id :{
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
@@ -10,20 +10,15 @@ module.exports = (sequelize) => {
             allowNull: false, 
         },
 
-        name: {
-            type: DataTypes.STRING,
+        descuento: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
- 
-        email: {
+        
+        forma_de_pago: {
             type: DataTypes.STRING,
-            allowNull: false,            
-        },
-
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,             
-        }, 
+            allowNull: false,
+        }
 
     })
 }

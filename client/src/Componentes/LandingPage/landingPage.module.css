@@ -1,4 +1,4 @@
-.button {
+.landingButton {
     display: flex;
     font-size: 25px;
     font-family: sans-serif;
@@ -7,11 +7,12 @@
     margin-top: 20px;
     color: white;
     align-self: center;
+    height: fit-content;
     /* background-color: var(--color4); */
     background-color: rgba(255, 157, 0, 0.992);
     border-radius: 10px;
 }
-.button:hover {
+.landingButton:hover {
     background-color: rgb(120, 3, 138);
     cursor: pointer;
 }

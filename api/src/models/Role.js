@@ -9,11 +9,11 @@ module.exports = (sequelize) => {
         },
 
         tipo: {
-            type: DataTypes.ENUM("admin", "alumno", "instructor"),
+            type: DataTypes.STRING,
             unique: true,
             primaryKey: true,
             allowNull: false,
         }
-
+ 
     })
 }
