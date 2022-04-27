@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const functions = require('../functions')
-const { Course } = require('../db');
+const { Course } = require('../../db');
 
 
 

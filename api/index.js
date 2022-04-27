@@ -20,12 +20,15 @@
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const initializeRole = require('./src/initializer/Role')
 
 
 // Syncing all the models at once.
 
 conn.sync({ force: true }).then(async() => {
   try {   
+    await initializeRole();
+    console.log("Roles cargados!!")
     server.listen(3001, () => {
       console.log('%s listening at 3001'); // eslint-disable-line no-console
     });
