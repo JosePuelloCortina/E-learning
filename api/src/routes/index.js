@@ -9,6 +9,7 @@ const CoursesPost = require('./Courses/CoursePost');
 const CoursesDelete = require('./Courses/CourseDelete');
 const UserDelete = require('./User/UserDelete');
 const CategoryPost = require('./Category/CategoryPost');
+const CategoryAll = require('./Category/CategoryAll');
 
 
 const router = Router();
@@ -24,6 +25,7 @@ router.use('/courses', CoursesPost);
 router.use('/courses', CoursesDelete);
 router.use('/user', UserDelete);
 router.use('/category', CategoryPost);
+router.use('/category', CategoryAll);
 
 
 module.exports = router;  
