@@ -2,30 +2,19 @@ import React, { useState } from "react";
 import styles from "./Pagination.module.css";
 import { useSelector } from "react-redux";
 
-function Pagination(
-  {
-    //   coursesPerPage,
-    //   allCourses,
-    //   currentPage,
-    //   lastCourseIndex,
-    //   setCurrentPage,
-  }
-) {
-  const courses = useSelector((state) => state.courses);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [coursesPerPage] = useState(8);
-  const lastCourseIndex = currentPage * coursesPerPage;
-  const firstCourseIndex = lastCourseIndex - coursesPerPage;
-  const currentCourses = courses.slice(firstCourseIndex, lastCourseIndex);
-
+function Pagination({
+  coursesPerPage,
+  allCourses,
+  currentPage,
+  lastCourseIndex,
+  setCurrentPage,
+}) {
   const pageNumbers = [];
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-  for (let i = 1; i <= Math.ceil(courses.length / coursesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(allCourses.length / coursesPerPage); i++) {
     pageNumbers.push(i);
   }
 
