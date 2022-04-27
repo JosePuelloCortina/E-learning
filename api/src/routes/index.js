@@ -7,6 +7,7 @@ const Role = require('./Role');
 const CousesAll = require('./Courses/CourseAll');
 const CousesPost = require('./Courses/CoursePost');
 const CoursesDelete = require('./Courses/CourseDelete');
+const CoursesPut = require('./Courses/CoursePut');
 const UserDelete = require('./User/UserDelete');
 
 
@@ -21,6 +22,7 @@ router.use('/role', Role);
 router.use('/courses', CousesAll);
 router.use('/courses', CousesPost);
 router.use('/courses', CoursesDelete);
+router.use('/courses', CoursesPut);
 router.use('/user', UserDelete);
 
 
