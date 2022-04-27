@@ -1,11 +1,15 @@
 import React from 'react'
 import styles from './editProfile.module.css'
 import {Link} from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
+import Footer from '../Footer/Footer'
 
 
-export default function profileLateralBar() {
+export default function editProfile() {
     
     return(
+        <div>
+        <NavBar/>
         <div className={styles.container}>
             <div className={styles.editPanel}>
             <div className={styles.left}>
@@ -33,6 +37,8 @@ export default function profileLateralBar() {
                 </div>
             </div>
     
+        </div>
+        <Footer/>
         </div>
     )
 }

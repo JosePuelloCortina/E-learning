@@ -12,7 +12,7 @@ export default function profileLateralBar() {
 
         <img src={img} alt='avatar' />
         <h4>hubacekk@gmail.com</h4>
-        <Link to="/editProfile">
+        <Link to="/profile/edit">
         <button className={styles.editButton}>Editar mis datos</button>
         </Link>
         </div>
