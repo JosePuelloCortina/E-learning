@@ -15,3 +15,18 @@ export function allUser(){
     }
 }
 
+
+export function allCourses(){
+    return async function(dispatch){
+        try{
+            const users = await axios.get(`http://localhost:3001/courses/all`)
+            return dispatch({
+                type: 'ALL_COURSES',
+                payload: users.data
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
