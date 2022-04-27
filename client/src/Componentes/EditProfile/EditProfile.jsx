@@ -11,6 +11,7 @@ export default function editProfile() {
         <div>
         <NavBar/>
         <div className={styles.container}>
+        <div><h2>Mis Datos</h2></div>
             <div className={styles.editPanel}>
             <div className={styles.left}>
                 <div>
@@ -30,7 +31,7 @@ export default function editProfile() {
                     <input type="password" />
                 </div>
                 <div>
-                    <label>Confirmar Nueva Contraseña</label>
+                    <label>Confirmar Contraseña</label>
                     <input type="password"/>
                 </div>
                 <button>Cambiar Contraseña</button>
