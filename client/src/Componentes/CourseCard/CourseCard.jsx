@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './CourseCard.module.css'
 
-export default function CourseCard() {
+export default function CourseCard({name}) {
 
     return (
         <div className={styles.card}>
@@ -10,7 +10,7 @@ export default function CourseCard() {
             </div>
             <div className={styles.info}>
                 <div >
-                    <p><strong>Nombre del curso</strong></p>
+                    <p><strong>{name}</strong></p>
                     <p>Categorias</p>
                 </div>
                 <div >
