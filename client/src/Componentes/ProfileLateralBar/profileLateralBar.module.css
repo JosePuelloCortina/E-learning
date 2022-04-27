@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    width: 300px;
+    height: 780px;
+    background-color: white;
+    margin: 30px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    border: solid var(--color4) 8px;
+}
