@@ -27,4 +27,4 @@ const initializeRole = async() =>{
         
     }
 }
-module.exports = initializeRole;
+module.exports = initializeRole; 

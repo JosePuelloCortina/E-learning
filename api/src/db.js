@@ -38,22 +38,30 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Role, Compra, Course, Clase  } = sequelize.models;
+const { User, Role, Compra, Course, Clase, Categoria  } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// Relacion de muchos a uno usuario -> role 
-User.hasMany(Role);
-Role.belongsTo(User);
+// Relacion de muchos a muchos usuario -> role 
+// User.hasMany(Role);
+// Role.belongsTo(User);
+
+User.belongsToMany(Role, { through: 'userRole'}); 
+Role.belongsToMany(User, { through: 'userRole'}); 
 
 // Relacion de muchos a uno usuario -> compra
 User.hasMany(Compra);
 Compra.belongsTo(User); 
 
 // Relacion muchos a muchos usuarios -> cursos 
-User.belongsToMany(Course, { through: 'userCompra'});
-Course.belongsToMany(User, { through: 'userCompra'});
+User.belongsToMany(Course, { through: 'userCourse'});
+Course.belongsToMany(User, { through: 'userCourse'});
+
+//Relacion muchos a muchos categoria -> cursos
+Course.belongsToMany(Categoria, { through: 'categoriaCourse'});
+Categoria.belongsToMany(Course, { through: 'categoriaCourse'});
+
 
 //Relacion de muchos a uno curso -> clase
 Course.hasMany(Clase);
