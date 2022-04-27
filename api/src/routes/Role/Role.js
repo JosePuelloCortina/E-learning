@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Role } = require('../db');
+const { Role } = require('../../db');
 
 server.get("/", async function(req, res, next){
     try {
@@ -10,6 +10,6 @@ server.get("/", async function(req, res, next){
         console.log(error);
     }
 })
- 
+
 
 module.exports = server;

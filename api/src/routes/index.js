@@ -3,11 +3,12 @@ const UserGet = require('./User/User');
 const UserPost = require('./User/UserPost');
 const UserId = require('./User/UserId');
 const UserPut = require('./User/UserPut');
-const Role = require('./Role');
+const Role = require('./Role/Role');
 const CousesAll = require('./Courses/CourseAll');
 const CousesPost = require('./Courses/CoursePost');
 const CoursesDelete = require('./Courses/CourseDelete');
 const UserDelete = require('./User/UserDelete');
+const CategoriaPost = require('./Categoria/CategoriaPost');
 
 
 const router = Router();
@@ -22,6 +23,7 @@ router.use('/courses', CousesAll);
 router.use('/courses', CousesPost);
 router.use('/courses', CoursesDelete);
 router.use('/user', UserDelete);
+router.use('/categoria', CategoriaPost);
 
 
 module.exports = router;  
