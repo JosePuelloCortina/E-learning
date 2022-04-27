@@ -1,16 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector} from "react-redux";
+import React from 'react'
+
 import styles from './profileLateralBar.module.css'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import img from '../../Images/avatar1.jpg'
-import { getUserById } from '../../redux/actions';
 
-export default function ProfileLateralBar() {
-    const dispatch = useDispatch();
-    const {id} = useParams()
 
-    useEffect( ()=> {getUserById(id)},[dispatch])
-    const user = useSelector(state => state.user)
+export default function ProfileLateralBar(user) {
+    
 
     return(
         <div className={styles.container}>
