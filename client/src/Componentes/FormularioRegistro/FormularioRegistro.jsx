@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import style from './FormularioRegistro.module.css'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../../redux/actions/index'
@@ -44,7 +44,8 @@ export function validation(form) {
 export default function FormularioRegistro() {
 
   const dispatch = useDispatch()
-  // const history = useHistory()
+  const navigate = useNavigate()
+ 
   const [errors, setErrors] = React.useState({})
 
   const [form, setForm] = React.useState({
@@ -80,18 +81,17 @@ export default function FormularioRegistro() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-
-    if (!form.name || !form.password || !form.email  || !form.image ) {
-
+    if (!form.name || !form.password || !form.email ) {
       alert('Debes rellenar todos los campos antes de registrarte')
     }
      else
-      // setTimeout(() => {
-      //   history.push('/home')
-      // }, 1000);
-   {
+     {
+   
       dispatch(createUser(form))
       alert('Usuario creado correctamente!')
+         setTimeout(() => {
+          navigate("/home")
+      }, 1000);
   }
 
   }
@@ -101,6 +101,7 @@ export default function FormularioRegistro() {
       role: e.target.value
     })
   }
+
   
 
 
