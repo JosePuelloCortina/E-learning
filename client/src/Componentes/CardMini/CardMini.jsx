@@ -4,8 +4,10 @@ import styles from './cardMini.module.css'
 export default function CardMini (){
     return(
         <div className={styles.container}>
-        <p>Nombre del curso</p>
-
+        <h4>Full Stack Web Developer</h4>
+      
+        <p>4⭐</p>
+     
         </div>
     )
 }
