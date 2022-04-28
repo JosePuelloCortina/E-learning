@@ -23,6 +23,7 @@ const { conn } = require('./src/db.js');
 const initializeRole = require('./src/initializer/Role');
 const initializeUser = require('./src/initializer/User');
 const initializeCategory = require('./src/initializer/Category')
+const initializeCourses = require('./src/initializer/Courses')
 
 
 // Syncing all the models at once.
@@ -32,6 +33,7 @@ conn.sync({ force: true }).then(async() => {
     await initializeRole(); 
     await initializeUser();
     await initializeCategory();
+    await initializeCourses();
 
     console.log("Tablas cargadas!!")
     server.listen(3001, () => {

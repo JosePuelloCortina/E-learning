@@ -13,7 +13,8 @@ const CourseId = require('./Courses/CourseId');
 const UserDelete = require('./User/UserDelete');
 const CategoryPost = require('./Category/CategoryPost');
 const CategoryAll = require('./Category/CategoryAll');
-
+const CategoryDelete = require('./Category/CategoryDelete');
+const CategoryId = require('./Category/CategoryId');
 
 const router = Router();
 //probando ok
@@ -32,6 +33,8 @@ router.use('/courses', CourseId);
 router.use('/user', UserDelete);
 router.use('/category', CategoryPost);
 router.use('/category', CategoryAll);
+router.use('/category', CategoryDelete);
+router.use('/category', CategoryId);
 
 
 module.exports = router;  
