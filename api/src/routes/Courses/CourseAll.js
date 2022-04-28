@@ -6,7 +6,11 @@ server.get("/all", async function(req, res, next){
     try {
         const courses = await Course.findAll({
             include: {
-                model: User, Category
+                model: User ,
+                attributes: ["name"],
+                through:{
+                    attributes: [],
+                }
                 
             }
         });
