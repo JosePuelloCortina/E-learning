@@ -6,8 +6,12 @@ server.get("/", async function(req, res, next){
     try {
         const users = await User.findAll({
             include: {
-                model: Role
-            } 
+                model: Role,
+                attributes: ["tipo"],
+                through:{
+                    attributes: [],
+                }    
+            }, attributes: { exclude: ['createdAt', 'updatedAt'] }
         });
         res.status(200).send(users)
         
