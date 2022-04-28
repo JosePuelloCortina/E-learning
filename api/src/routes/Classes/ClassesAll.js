@@ -1,11 +1,11 @@
 const server = require("express").Router();
-const { Classes, Courses } = require("../../db");
+const { Clase, Course } = require("../../db");
 
 server.get("/all", async function (req, res, next) {
   try {
-    const classes = await Classes.findAll({
+    const classes = await Clase.findAll({
       include: {
-        model: Courses
+        model: Course
       },
     });
     res.status(200).send(classes);
