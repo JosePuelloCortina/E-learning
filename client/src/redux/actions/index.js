@@ -15,3 +15,17 @@ export function allUser(){
     }
 }
 
+
+export function createUser(form){ 
+    return async function(dispatch){ 
+        await axios.post(`http://localhost:3001/user/create`,form) 
+        dispatch({type: "POST_USER"})
+    }
+} 
+ 
+export function validateUser(form){ 
+    return async function(dispatch){ 
+        await axios.post(`http://localhost:3001/user`,form) 
+        dispatch({type: "VALIDATE_USER"})
+    }
+} 

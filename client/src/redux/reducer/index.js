@@ -12,6 +12,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 user: action.payload
             }
+
+            case 'POST_USER':
+            return {
+                ...state,
+            }
             
         default: 
             return state;
