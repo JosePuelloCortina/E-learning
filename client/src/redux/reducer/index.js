@@ -17,6 +17,14 @@ export default function rootReducer(state = initialState, action) {
                 user: action.payload
             }
 
+
+            case 'POST_USER':
+            return {
+                ...state,
+            }
+            
+        default: 
+
         case 'ALL_COURSES':
             return {
                 ...state,
@@ -28,6 +36,7 @@ export default function rootReducer(state = initialState, action) {
             user: action.payload
         }
         default:
+
             return state;
     }
 }

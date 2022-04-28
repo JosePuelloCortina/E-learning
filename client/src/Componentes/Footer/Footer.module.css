@@ -1,5 +1,6 @@
 .container {
-  position: fixed;
+  /* position: fixed; */
+  /* position: absolute; */
   background-color: var(--color3);
   box-shadow: inset 0 15px 25px -15px #111;
   box-sizing: border-box;
