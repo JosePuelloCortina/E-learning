@@ -5,7 +5,7 @@ const { User, Course, Role, Category } = require('../../db');
 
 server.post("/create", async (req, res) =>{
 
-    let {name, description, review, duration, progress, image, user, category} = req.body //recibe los datos por body mediante formulario
+    let {name, description, review, duration, progress, image, user, category, price} = req.body //recibe los datos por body mediante formulario
 
     try {
 
@@ -27,7 +27,6 @@ server.post("/create", async (req, res) =>{
         });
 
         
-        console.log(categoria[0])
 
         if(role === "instructor"){
             Course.create({
@@ -36,7 +35,8 @@ server.post("/create", async (req, res) =>{
                 description : description,
                 review: review,
                 progress: progress, 
-                image: image,               
+                image: image,
+                price: price,               
             })
             .then(course =>{
                 course.addUser(user)
