@@ -23,7 +23,6 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
             }
             
-        default: 
 
         case 'ALL_COURSES':
             return {
