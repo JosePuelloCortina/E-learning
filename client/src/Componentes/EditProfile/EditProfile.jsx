@@ -34,9 +34,13 @@ export default function EditProfile() {
 }
 
 function handleSubmit(e){
+    if(window.confirm('¿Desea modificar sus datos?') === true){
     dispatch(updateUser(id, input))
     alert("Cambios guardados.")
     navigate(`/profile/${id}`);
+} else {
+    alert('Cancelado')
+}
     }
 
     return(
