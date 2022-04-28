@@ -18,6 +18,7 @@ const CategoryId = require('./Category/CategoryId');
 const ClassesPost = require('./Classes/ClassesPost');
 const ClassesGet = require('./Classes/ClassesAll');
 const BuyPost = require('./Buy/BuyPost');
+const BuyId = require('./Buy/BuyId');
 
 const router = Router();
 //probando ok
@@ -41,6 +42,8 @@ router.use('/category', CategoryId);
 router.use('/classes', ClassesPost);
 router.use("/classes", ClassesGet);
 router.use('/buy', BuyPost);
+router.use('/buy', BuyId);
+
 
 
 module.exports = router;  

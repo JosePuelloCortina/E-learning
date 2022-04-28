@@ -14,8 +14,6 @@ server.post("/:idCurso", async (req, res) => {
       const userRole = user.dataValues.roles[0].dataValues.tipo;
       const userPurchase = user.dataValues.buys.map(buy => buy.dataValues.courseId); //obtiene los cursos que ya compró el usuario
 
-      console.log(userPurchase)
-
       if(userPurchase.includes(idCurso)){
         return res.status(422).send("Ya compraste este curso");
       } //verifica si el usuario ya compró el curso
