@@ -3,8 +3,8 @@ const {Clase, Course, User, Role} = require("../../db");
 
 
 server.post("/create", async (req, res) => {
-    let { name, duration, description, url, course } = req.body; //recibe los datos por body mediante formulario
-    // const { id } = req.params;
+
+    let { name, duration, description, url, id } = req.body;
     try {
       const courseUser = await Course.findOne({
           where: {
