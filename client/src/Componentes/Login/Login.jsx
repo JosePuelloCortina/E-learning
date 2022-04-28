@@ -6,14 +6,45 @@ import { useDispatch } from 'react-redux'
 
 
 
+export function validation(validate) {
+  let errors = {}
+  console.log(errors)
+
+
+  // USUARIO-(EMAIL)
+
+  if (!validate.user) {
+    errors.user = 'se requiere e-mail'
+  } else if (!validate.user.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
+    errors.user = "solo se admiten e-mail"
+  }
+
+  
+
+  // PASSWORD (CONTRASEÑA ALFANUMERICO)
+
+  if (!validate.password) {
+  errors.password = 'se requiere password'
+} else if (!validate.password.match(/^[A-Za-z0-9]+$/)) {
+  errors.password = "se requiere clave alfanumerica"
+}
+ 
+
+
+  return errors
+}
+
+
 export default function Login() {
 
   const dispatch = useDispatch();
 
+  const [errors, setErrors] = React.useState({})
+
   const [validate, setValidate] = React.useState({
 
     user: '',
-    password: '',
+    password: ''
 
   })
 
@@ -26,6 +57,10 @@ export default function Login() {
       ...validate,
       [e.target.name]: e.target.value
     });
+    setErrors(validation({
+      ...validate,
+      [e.target.name]: e.target.value
+    }))
 
   }
 
@@ -47,7 +82,7 @@ export default function Login() {
     <div class={style.container}>
 
 
-      <form class={style.form}>
+      <form class={style.form} onSubmit={(e) => handleOnSubmit(e)} >
 
 
 
@@ -56,15 +91,16 @@ export default function Login() {
           <div class={style.SubcontainerInput}>
           <br></br>
             <label>Usuario</label> 
-            <input placeholder='Ingresa tu e-mail...' type='text' name='e-mail' autoComplete='off' onChange={handleInputChange} value={validate.user}  />
+            <input placeholder='Ingresa tu e-mail...' type='text' name='user' autoComplete='off' onChange={handleInputChange} value={validate.user}  />
           </div>
-
+          {errors.user && <p>{errors.user}</p>}
           
           <div class={style.SubcontainerInput}>
           <br></br>
             <label>Password</label> 
-            <input placeholder='Ingresa tu Password...' type='Password' name='Password' autoComplete='off' onChange={handleInputChange} value={validate.password}  />
+            <input placeholder='Ingresa tu Password...' type='password' name='password' autoComplete='off' onChange={handleInputChange} value={validate.password}  />
           </div>
+          {errors.password && <p>{errors.password}</p>}
 
         </div>
 
@@ -76,7 +112,8 @@ export default function Login() {
         </div>
 
         <div class={style.divButton1}>
-          <button class={style.buttonRegistro} type='submit' >REGISTRARME</button>
+        <Link to="/form"> <button class={style.buttonRegistro} type='submit' >REGISTRARME</button></Link>
+        
         </div>
 
 

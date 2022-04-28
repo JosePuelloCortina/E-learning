@@ -28,18 +28,18 @@
     
 }
 
-img{
+.container img{
     width: auto;
     height: 200px;
     border-radius: 50px;
 }
 
-h3 {
+.container h3 {
     font-size: 20px;
     color: black;
 }
 
-h4 {
+.container h4 {
     font-size: 15px;
     color: black
 }

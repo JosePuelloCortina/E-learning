@@ -4,13 +4,13 @@ const { DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo //anotar todas las caracteristicas que trae de la api 
   //y poner allowNull false a los campos obligatorios(validación)
-  sequelize.define('clase', {
+  sequelize.define("clase", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV1,
       unique: true,
       primaryKey: true,
-      allowNull: false, 
+      allowNull: false,
     },
 
     name: {
@@ -18,15 +18,19 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    duration:{
+    duration: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
-    url:{
+
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+
+    url: {
       type: DataTypes.STRING,
       allowNull: false,
-    },    
-    
+    },
   });
 };
