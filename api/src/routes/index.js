@@ -20,6 +20,11 @@ const ClassesGet = require('./Classes/ClassesAll');
 const ClassesDelete = require('./Classes/ClassesDelete');
 const ClassesPut = require('./Classes/ClassesPut');
 const ClassesId = require("./Classes/ClassesId");
+const BuyPost = require('./Buy/BuyPost');
+const BuyGet = require('./Buy/BuyGet');
+const BuyId = require('./Buy/BuyId');
+
+
 
 const router = Router();
 //probando ok
@@ -45,6 +50,10 @@ router.use("/classes", ClassesGet);
 router.use("/classes", ClassesDelete);
 router.use("/classes", ClassesPut);
 router.use("/classes", ClassesId);
+router.use('/buy', BuyPost);
+router.use('./buy', BuyGet);
+router.use('/buy', BuyId);
+
 
 
 

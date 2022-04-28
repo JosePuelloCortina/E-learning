@@ -94,7 +94,8 @@
     margin-top: 20px;
 }
 
-.container p {
+
+.editPanel p {
     display: flex;
     font-family:'Montserrat', sans-serif;
     font-size: 13px;
