@@ -1,21 +1,22 @@
 const server = require("express").Router();
-const { User, Role, Op } = require("../../db");
+const { Clase, Course, User } = require("../../db");
 
 server.get("/id/:id", async function (req, res, next) {
   try {
     const { id } = req.params;
-    let user;
-    if (isNaN(id)) {
-      user = await User.findOne({
-        where: {
-          id: id,
-        },
+    let clases;
+    if (id) {
+      clases = await Clase.findByPk(id, {
         include: {
-          model: Role,
+          model: Course,
+          include: {
+            model: User,
+            
+          },
         },
       });
     }
-    res.send(user ? user : "No hay usuario!!");
+    res.send(clases ? clases : "No hay clases con ese id!!");
   } catch (error) {
     console.log(error);
   }

@@ -17,6 +17,9 @@ const CategoryDelete = require('./Category/CategoryDelete');
 const CategoryId = require('./Category/CategoryId');
 const ClassesPost = require('./Classes/ClassesPost');
 const ClassesGet = require('./Classes/ClassesAll');
+const ClassesDelete = require('./Classes/ClassesDelete');
+const ClassesPut = require('./Classes/ClassesPut');
+const ClassesId = require("./Classes/ClassesId");
 
 const router = Router();
 //probando ok
@@ -39,6 +42,10 @@ router.use('/category', CategoryDelete);
 router.use('/category', CategoryId);
 router.use('/classes', ClassesPost);
 router.use("/classes", ClassesGet);
+router.use("/classes", ClassesDelete);
+router.use("/classes", ClassesPut);
+router.use("/classes", ClassesId);
+
 
 
 module.exports = router;  
