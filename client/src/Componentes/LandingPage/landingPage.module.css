@@ -35,21 +35,21 @@
     align-items: center;
 }
 
-h1 {
+.container h1 {
     font-family: 'Source Code Pro', monospace;
     color: beige;
     letter-spacing: 10px;
     font-size: 100px;
 }
 
-h2 {
+.container h2 {
     font-family: 'Source Code Pro', monospace;
     color: beige;
     letter-spacing: 5px;
     font-size: 25px;
 }
 
-a {
+.container a {
     text-decoration: none;
 }
 

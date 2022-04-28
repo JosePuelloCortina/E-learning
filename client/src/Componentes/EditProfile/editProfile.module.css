@@ -73,7 +73,7 @@
     padding: 10px;
     /* border-radius: 30px; */
 }
-input {
+.container input {
     border-radius: 10px;
     height: 35px;
     width: 350px;
@@ -82,7 +82,7 @@ input {
   
     font-family: 'Montserrat', sans-serif;
 }
-label {
+.container label {
     font-family: 'Montserrat', sans-serif;
     margin: 10px;
     color: black;
@@ -94,7 +94,7 @@ label {
     margin-top: 20px;
 }
 
-p {
+.container p {
     display: flex;
     font-family:'Montserrat', sans-serif;
     font-size: 13px;
