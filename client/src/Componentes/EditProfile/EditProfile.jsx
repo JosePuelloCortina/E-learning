@@ -15,6 +15,8 @@ export default function editProfile() {
         <div className={styles.container}>
         <div><h2>Mis Datos</h2></div>
             <div className={styles.editPanel}>
+
+            <div className={styles.cont2}>
             <div className={styles.left}>
                 <div>
                     <label>Nombre y Apellido</label>
@@ -24,7 +26,6 @@ export default function editProfile() {
                     <label>Correo electrónico</label>
                     <input type="text"/>
                 </div>
-                <button>Guardar Cambios</button>
             </div>
 
             <div className={styles.right}>
@@ -36,7 +37,11 @@ export default function editProfile() {
                     <label>Confirmar Contraseña</label>
                     <input type="password"/>
                 </div>
-                <button>Cambiar Contraseña</button>
+                
+                </div>
+                </div>
+                <div>
+                <button className={styles.save}>Guardar Cambios</button>
                 </div>
             </div>
     

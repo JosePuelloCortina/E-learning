@@ -46,3 +46,15 @@ export function getUserById(id){
         }
     }
 }
+
+export function updateUser(id, payload){
+    return async function(dispatch) {
+        try{
+            await axios.put(`http://localhost:3001/user/update/id/${id}`, payload)
+
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+}

@@ -11,9 +11,10 @@
 
 
 
-button {
+.save {
     width: fit-content;
-    height: 35px;
+    height: fit-content;
+
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
@@ -31,7 +32,7 @@ button {
 
 .editPanel {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 80%;
@@ -50,20 +51,20 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 20px;
-    border: solid var(--color3) 2px;
-    padding: 20px;
-    border-radius: 30px;
+    margin: 10px;
+    /* border: solid var(--color3) 2px; */
+    padding: 10px;
+    /* border-radius: 30px; */
 }
 
 .right{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 20px;
-    border: solid var(--color3) 2px;
-    padding: 20px;
-    border-radius: 30px;
+    margin: 10px;
+    /* border: solid var(--color3) 2px; */
+    padding: 10px;
+    /* border-radius: 30px; */
 }
 input {
     border-radius: 10px;
@@ -78,4 +79,8 @@ label {
     margin: 10px;
     color: black;
     font-size: 18px;
+}
+.cont2 {
+    display: flex;
+    flex-direction: row;
 }
