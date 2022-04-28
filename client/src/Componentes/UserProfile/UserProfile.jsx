@@ -6,16 +6,16 @@ import Footer from '../Footer/Footer'
 import MyCoursesAlumn from './../MyCoursesAlumn/MyCoursesAlumn';
 import MyCoursesInstructor from './../MyCoursesInstructor/MyCoursesInstructor';
 import ProfileLateralBar from '../ProfileLateralBar/ProfileLateralBar';
-import { getUserById } from '../../redux/actions';
+import { getUserById } from '../../redux/actions/index';
 import { useParams} from 'react-router-dom'
 
 export default function UserProfile(){
     const dispatch = useDispatch();
     const {id} = useParams()
 
-    useEffect( ()=> {getUserById(id)},[dispatch])
+    useEffect(()=> {dispatch(getUserById(id))},[dispatch, id])
     const user = useSelector(state => state.user)
-
+    console.log(user)
     return (
         <div>
             <NavBar/>
@@ -23,7 +23,7 @@ export default function UserProfile(){
             <div><h2>Mi Perfil</h2></div>
             <div className={styles.totalProfile}>
                 <div className={styles.profileDetail}>
-                    <ProfileLateralBar user={user}/>
+                    <ProfileLateralBar name={user.name} id={user.id} email={user.email}/>
                 </div>
                 <div className={styles.cursesDetail}>
                     <MyCoursesAlumn user={user} />
