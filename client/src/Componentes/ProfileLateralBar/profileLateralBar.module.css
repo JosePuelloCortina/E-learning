@@ -5,10 +5,10 @@
     width: 300px;
     height: 780px;
     background-color: white;
+    font-family: 'Montserrat', sans-serif;
     margin: 30px;
     color: black;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    
     border-radius: 30px;
     padding: 20px;
     border: solid var(--color4) 8px;
@@ -17,7 +17,7 @@
     width: 160px;
     height: 35px;
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 2px;
     text-align: center;
     border-radius: 10px;
@@ -32,4 +32,14 @@ img{
     width: auto;
     height: 200px;
     border-radius: 50px;
+}
+
+h3 {
+    font-size: 20px;
+    color: black;
+}
+
+h4 {
+    font-size: 15px;
+    color: black
 }

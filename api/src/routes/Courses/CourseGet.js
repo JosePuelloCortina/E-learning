@@ -1,5 +1,4 @@
-const router = require('express').Router();
-const functions = require('../functions')
+const server = require('express').Router();
 const { Course } = require('../../db');
 
 
@@ -7,15 +6,9 @@ const { Course } = require('../../db');
 async function courseDb(){ 
     try{ 
       
-
-       const AllCourse = await Course.findAll(); 
-
-
-    if (AllCourse.length) {
-        res.status(200).send(AllCourse);
-      } else {
-        res.status(404).send("This course is not found");
-      }
+      const AllCourse = await Course.findAll(); 
+      return AllCourse
+      
     } 
   catch (error) {
     console.log( error);
@@ -25,35 +18,22 @@ async function courseDb(){
 
 
 
-router.get('/', async (req, res) => {
+server.get('/getByName', async (req, res) => {
 
 
   try {
 
     const { name } = req.query
-
  
-    const allData = await functions.pokemonDb()
-  
-    let errorsResponse = {};
+    const allData = await courseDb()
 
     if (name) {
-
-
-      if (!name.match(/^[a-zA-Z]+$/)) {
-          errorsResponse.name = ' solo se admiten nombres simples'
-        }
-      
-        if (!(Object.entries(errorsResponse).length === 0)) {
-          return res.send(errorsResponse)
-        }
-
-      let nameMayuscula=  name[0].toLowerCase() + name.slice(1)
-      let dataName = allData.find(e => e.name === nameMayuscula)
-      if (!dataName) return res.json(null)
-      return res.json(dataName)
+      const coursesFind = allData.filter(course => course.name.toLowerCase().includes(name.toLowerCase()))
+      res.send(coursesFind)
     }
-    return res.json(allData)
+
+    else res.send('No hay cursos con ese nombre')
+
   } catch (err) {
     console.log(err)
   }
@@ -73,4 +53,4 @@ router.get('/', async (req, res) => {
 
 
 
-module.exports = router
+module.exports = server
