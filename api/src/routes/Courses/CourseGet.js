@@ -1,35 +1,35 @@
 const server = require('express').Router();
-const { Course } = require('../../db');
-
-
-
-async function courseDb(){ 
-    try{ 
-      
-      const AllCourse = await Course.findAll(); 
-      return AllCourse
-      
-    } 
-  catch (error) {
-    console.log( error);
-  }
-
-}
-
-
+const { User, Course, Category } = require('../../db');
 
 server.get('/getByName', async (req, res) => {
-
 
   try {
 
     const { name } = req.query
  
-    const allData = await courseDb()
+    const courses = await Course.findAll({
+      include: [{
+              model: User ,
+              attributes: ["name"],
+              through:{
+                  attributes: [],
+              }    
+          },
+          {
+              model: Category ,
+              attributes: ["name"],
+              through:{
+                  attributes: [],
+              }
+          }
+      ],
+      attributes: { exclude: ['createdAt', 'updatedAt'] }
+      
+    });
 
     if (name) {
-      const coursesFind = allData.filter(course => course.name.toLowerCase().includes(name.toLowerCase()))
-      res.send(coursesFind)
+      const coursesByName = courses.filter(course => course.name.toLowerCase().includes(name.toLowerCase()))
+      res.send(coursesByName)
     }
 
     else res.send('No hay cursos con ese nombre')
