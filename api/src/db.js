@@ -52,7 +52,11 @@ Role.belongsToMany(User, { through: 'userRole'});
 
 // Relacion de muchos a uno usuario -> compra
 User.hasMany(Buy);
-Buy.belongsTo(User); 
+Buy.belongsTo(User);
+
+// Relacion de muchos a uno Curso -> Compras
+Course.hasMany(Buy);
+Buy.belongsTo(Course); 
 
 // Relacion muchos a muchos usuarios -> cursos 
 User.belongsToMany(Course, { through: 'userCourse'});
