@@ -90,8 +90,12 @@ function handleSubmit(e){
                 
                 </div>
                 </div>
-                <div>
+                <div className={styles.buttons}>
+                <Link to={`/profile/${id}`}>
+                <button className={styles.save}>Volver atrás</button>
+                </Link>
                 <button type="submit" className={styles.save}>Guardar Cambios</button>
+               
                 </div>
                 </form>
             </div>
