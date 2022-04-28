@@ -13,7 +13,7 @@ export function validation(form) {
 
   if (!form.name) {
     errors.name = 'se requiere nombre'
-  } else if (!form.name.match(/^[a-zA-Z]+$/)) {
+  } else if (form.name.match(!/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/)) {
     errors.name = "solo se admiten un nombre"
   }
 
@@ -26,7 +26,6 @@ export function validation(form) {
     errors.email = "solo se admiten e-mail"
   }
 
-  
 
   // PASSWORD (CONTRASEÑA ALFANUMERICO)
 
@@ -53,7 +52,7 @@ export default function FormularioRegistro() {
     name: "",
     password: "",
     email: "",
-    img: "",
+    image: "",
     role: ""
 
   })
@@ -79,35 +78,30 @@ export default function FormularioRegistro() {
 
 
 
-
-
-
-
   const handleOnSubmit = (event) => {
     event.preventDefault();
 
-    if (form.name !== 0 || form.password !== 0 || form.email !== 0 || form.img !== 0) {
-      dispatch(createUser(form))
-      alert('Usuario creado correctamente!')
+    if (!form.name || !form.password || !form.email  || !form.image ) {
+
+      alert('Debes rellenar todos los campos antes de registrarte')
+    }
+     else
       // setTimeout(() => {
       //   history.push('/home')
       // }, 1000);
-    } else {
-      alert('Debes rellenar todos los campos antes de registrarte')
-    }
+   {
+      dispatch(createUser(form))
+      alert('Usuario creado correctamente!')
   }
 
-
+  }
   function handleSelect2(e) {
     setForm({
       ...form,
       role: e.target.value
     })
   }
-
-
-
-
+  
 
 
   return (
@@ -119,17 +113,16 @@ export default function FormularioRegistro() {
         <div class={style.containerInput}>
           <div class={style.SubcontainerInput}>
 
-            <br></br>
+         
 
             <label>User name</label>
             <input placeholder='Ingresa tu nombre...' type='text' name='name' autoComplete='off' onChange={handleInputChange} value={form.name} />
-          
           </div>
           {errors.name && <p>{errors.name}</p>}
 
 
           <div class={style.SubcontainerInput}>
-            <br></br>
+            
             <label>E-mail</label>
             <input placeholder='Ingresa tu e-mail...' type='text' name='email' autoComplete='off' onChange={handleInputChange} value={form.email} />
 
@@ -137,7 +130,7 @@ export default function FormularioRegistro() {
           {errors.email && <p>{errors.email}</p>}
 
           <div class={style.SubcontainerInput}>
-            <br></br>
+         
             <label>Password</label>
             <input placeholder='Ingresa tu contraseña...' type='Password' name='password' autoComplete='off' onChange={handleInputChange} value={form.password} />
 
@@ -152,7 +145,7 @@ export default function FormularioRegistro() {
 
 
           <div class={style.SubcontainerInput}>
-            <br></br>
+            
             <label>Role</label>
             <select onChange={(e) => handleSelect2(e)}>
               <option value="instructor">Instructor</option>
@@ -160,7 +153,6 @@ export default function FormularioRegistro() {
             </select>
           </div>
         </div>
-
 
           <button class={style.buttonRegistro} type='submit' >REGISTRATE </button>
         
