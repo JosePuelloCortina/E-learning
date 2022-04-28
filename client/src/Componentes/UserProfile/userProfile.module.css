@@ -8,7 +8,7 @@
     background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
 }
 
-h2 {
+.container h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 40px;
 }
