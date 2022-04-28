@@ -34,7 +34,8 @@ export function allCourses(){
 export function getUserById(id){
     return async function(dispatch){
         try{
-            const user = await axios.get(`http://localhost:3001/id/${id}`)
+            const user = await axios.get(`http://localhost:3001/user/id/${id}`)
+            console.log(user)
             return dispatch({
                 type: 'GET_USER_BY_ID',
                 payload: user.data
