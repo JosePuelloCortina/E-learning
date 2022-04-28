@@ -1,18 +1,52 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import style from './FormularioRegistro.module.css'
-import { useDispatch, useSelector } from 'react-redux'
 // import { useHistory } from 'react-router-dom'
+import style from './FormularioRegistro.module.css'
+import { useDispatch } from 'react-redux'
 import { createUser } from '../../redux/actions/index'
 
-// coment
 
+export function validation(form) {
+  let errors = {}
+  console.log(errors)
+
+    // USUARIO-(NAME)
+
+  if (!form.name) {
+    errors.name = 'se requiere nombre'
+  } else if (!form.name.match(/^[a-zA-Z]+$/)) {
+    errors.name = "solo se admiten un nombre"
+  }
+
+
+  // USUARIO-(EMAIL)
+
+  if (!form.email) {
+    errors.user = 'se requiere e-mail'
+  } else if (!form.email.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
+    errors.email = "solo se admiten e-mail"
+  }
+
+  
+
+  // PASSWORD (CONTRASEÑA ALFANUMERICO)
+
+  if (!form.password) {
+  errors.password = 'se requiere password'
+} else if (!form.password.match(/^[A-Za-z0-9]+$/)) {
+  errors.password = "se requiere clave alfanumerica"
+}
+ 
+
+
+  return errors
+}
 
 
 export default function FormularioRegistro() {
 
   const dispatch = useDispatch()
   // const history = useHistory()
+  const [errors, setErrors] = React.useState({})
 
   const [form, setForm] = React.useState({
 
@@ -21,9 +55,12 @@ export default function FormularioRegistro() {
     email: "",
     img: "",
     role: ""
+
   })
 
 
+
+   
 
 
   const handleInputChange = function (e) {
@@ -33,7 +70,11 @@ export default function FormularioRegistro() {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    })
+    });
+    setErrors(validation({
+      ...form,
+      [e.target.name]: e.target.value
+    }))
   }
 
 
@@ -82,8 +123,10 @@ export default function FormularioRegistro() {
 
             <label>User name</label>
             <input placeholder='Ingresa tu nombre...' type='text' name='name' autoComplete='off' onChange={handleInputChange} value={form.name} />
-
+          
           </div>
+          {errors.name && <p>{errors.name}</p>}
+
 
           <div class={style.SubcontainerInput}>
             <br></br>
@@ -91,18 +134,20 @@ export default function FormularioRegistro() {
             <input placeholder='Ingresa tu e-mail...' type='text' name='email' autoComplete='off' onChange={handleInputChange} value={form.email} />
 
           </div>
- 
+          {errors.email && <p>{errors.email}</p>}
+
           <div class={style.SubcontainerInput}>
             <br></br>
             <label>Password</label>
             <input placeholder='Ingresa tu contraseña...' type='Password' name='password' autoComplete='off' onChange={handleInputChange} value={form.password} />
 
           </div>
+          {errors.password && <p>{errors.password}</p>}
 
           <div class={style.SubcontainerInput} >
             <br></br>
             <label>Imagen</label>
-            <input placeholder='Ingresa tu imagen' type='img' name='img' autoComplete='off' onChange={handleInputChange} value={form.img} />
+            <input placeholder='Ingresa tu imagen' type='url' name='img' autoComplete='off' onChange={handleInputChange} value={form.img} />
           </div>
 
 
