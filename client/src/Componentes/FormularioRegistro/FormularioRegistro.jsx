@@ -91,7 +91,7 @@ export default function FormularioRegistro() {
             <input placeholder='Ingresa tu e-mail...' type='text' name='email' autoComplete='off' onChange={handleInputChange} value={form.email} />
 
           </div>
-
+ 
           <div class={style.SubcontainerInput}>
             <br></br>
             <label>Password</label>
