@@ -1,13 +1,18 @@
 const server = require('express').Router();
-const { User, Course} = require('../../db');
+const { User, Course, Category} = require('../../db');
 
 
 server.get("/all", async function(req, res, next){
     try {
         const courses = await Course.findAll({
             include: {
-                model: User
-            } 
+                model: User ,
+                attributes: ["name"],
+                through:{
+                    attributes: [],
+                }
+                
+            }
         });
         res.status(200).send(courses)
         
