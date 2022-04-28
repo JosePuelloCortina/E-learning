@@ -3,12 +3,12 @@ const {Clase, Course, User, Role} = require("../../db");
 
 
 server.post("/create", async (req, res) => {
-    let { name, duration, description, url, id } = req.body; //recibe los datos por body mediante formulario
+    let { name, duration, description, url, course } = req.body; //recibe los datos por body mediante formulario
     // const { id } = req.params;
     try {
-      const course = await Course.findOne({
+      const courseUser = await Course.findOne({
           where: {
-            id: id
+            id: course
           },
           include: {
             model: User, include: {
@@ -17,7 +17,7 @@ server.post("/create", async (req, res) => {
           }
       });
 
-      const userRole = course.dataValues.users[0].dataValues.roles[0].dataValues.tipo;
+      const userRole = courseUser.dataValues.users[0].dataValues.roles[0].dataValues.tipo;
 
       if ( userRole === "instructor"){
         Clase.create({
@@ -27,7 +27,7 @@ server.post("/create", async (req, res) => {
           url: url,
         })
         .then(claseCourse => {
-          claseCourse.setCourse(id)
+          claseCourse.setCourse(course)
         }).catch(error =>{
           console.log(error)
         })

@@ -1,7 +1,8 @@
-const { User, Course } = require('../db');
+const { Course } = require('../db');
 
 let courses = [ 
     {
+        "id": "760c7440-c70e-11ec-96f7-e913400288b4",
         "name": "Fullstack web developer",
         "duration": "12",
         "description": "Modalidad Full Time y Part Time. Apoyo personalizado. Invertimos en ti. 100% Online. Comunidad Henry",
@@ -13,6 +14,7 @@ let courses = [
         "price" : "120"
     },
     {
+        "id": "760c7440-c70e-11ec-96f7-e913400288b5",
         "name": "sotftware developer",
         "duration": "23",
         "description": " descripcion del curso sotftware developer ",
@@ -24,6 +26,7 @@ let courses = [
         "price" : "100"
     },
     {
+        "id": "760c7440-c70e-11ec-96f7-e913400288b6",
         "name": "data science data science",
         "duration": "23",
         "description": "descripcion de del curso data science",
@@ -41,6 +44,7 @@ const initializeCourses = async() =>{
         
         courses = courses.forEach(async c =>{
             const course = {
+                id: c.id,
                 name : c.name,
                 duration : c.duration,
                 description : c.description,
