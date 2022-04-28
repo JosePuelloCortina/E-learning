@@ -9,7 +9,8 @@ let courses = [
         "progress": "casito lo termino",
         "image": "url de imagen",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "frontend"
+        "category": "frontend",
+        "price" : "120"
     },
     {
         "name": "sotftware developer",
@@ -19,8 +20,8 @@ let courses = [
         "progress": "3/5",
         "image": "url de imagen",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773728",
-        "category": "backend"
-
+        "category": "backend",
+        "price" : "100"
     },
     {
         "name": "data science data science",
@@ -30,8 +31,8 @@ let courses = [
         "progress": "3/5",
         "image": "url de imagen",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "fullstack"
-    
+        "category": "fullstack",
+        "price" : "110"
     }
 ]
 
@@ -46,6 +47,7 @@ const initializeCourses = async() =>{
                 review: c.review,
                 progress: c.progress, 
                 image: c.image,
+                price: c.price
             }           
             const createCourse = await Course.create(course);
             await createCourse.addUser(c.user)
