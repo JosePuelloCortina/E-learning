@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    flex-direction: column;
     align-self: center;
     width: 800px;
     height: 350px;
@@ -11,4 +12,13 @@
     border-radius: 30px;
     padding: 20px;
     border: solid var(--color4) 8px;
+}
+.title h2 {
+    color: black;
+    font-size: 30px;
+}
+.curses{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
