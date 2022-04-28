@@ -94,7 +94,7 @@ label {
     margin-top: 20px;
 }
 
-p {
+.editPanel p {
     display: flex;
     font-family:'Montserrat', sans-serif;
     font-size: 13px;
