@@ -3,13 +3,12 @@
     font-size: 20px;
     font-family: 'Source Code Pro', monospace;
     padding: 15px;
-    letter-spacing: 2px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     color: white;
     align-self: center;
     background-color: rgba(255, 157, 0, 0.992);
     border-radius: 10px;
+   position: relative;
+   bottom: -10%;
 }
 .buttonRegistro:hover {
     background-color: rgb(179, 7, 205);
@@ -35,11 +34,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: fit-content;
-    min-height: fit-content;
+    height: 150px;
     width: 95%;
+    /* background-color: aqua; */
+    margin-top:10px;
+ 
     
 } 
+
+
 
 
 
@@ -79,7 +82,8 @@
 }
 
 .containerInput p {
-    
+
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: yellow;
@@ -90,17 +94,18 @@
 
 
 .form {
-
+   
     display: flex;  
     border-radius: 25px;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     border: rgb(255, 255, 255) solid 2px;
     box-shadow: 0 5px 15px white; 
     background-color: transparent;
-    height: 700px;
+    height: 750px;
     width: 400px;
+    
 }
 
 
