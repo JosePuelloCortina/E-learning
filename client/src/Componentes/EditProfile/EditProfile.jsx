@@ -23,6 +23,7 @@ export default function EditProfile() {
         confirmPassword: undefined,
         email:userInit.email
     })
+    const [errors, setErrors] = useState({})
 
     console.log(input)
     
@@ -31,17 +32,57 @@ export default function EditProfile() {
         ...input,
         [e.target.name]: e.target.value
     })
+    setErrors(validate({
+        ...input,
+        [e.target.name]: e.target.value
+    }))
 }
 
 function handleSubmit(e){
+    if (!input.name || !input.email || !input.password || !input.confirmPassword) {
+        alert('Por favor complete todos los campos.')
+    } else {
+
     if(window.confirm('¿Desea modificar sus datos?') === true){
     dispatch(updateUser(id, input))
     alert("Cambios guardados.")
     navigate(`/profile/${id}`);
 } else {
-    alert('Cancelado')
+    navigate(`/profile/${id}`);
 }
     }
+}
+
+    function validate(input) {
+        let emailExp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+        let passExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/
+        let errors = {};
+        if(!input.name) {
+            errors.name = "Por favor complete su nombre.";
+        }
+        if (!input.email) {
+            errors.email = "Por favor agregue un electrónico.";
+        }
+        if (!input.password) {
+            errors.password = "Agregue una nueva contraseña.";
+        }
+        if (!input.confirmPassword) {
+            errors.confirmPassword = "Confirme su nueva contraseña.";
+        }
+
+        if (input.confirmPassword && input.confirmPassword !== input.password) {
+            errors.confirmPassword = "Las contraseñas no coinciden.";
+        }
+        if(input.email && !emailExp.test(input.email)){
+            errors.email= "Ingrese una dirección de correo válida."
+        }
+        if(input.password && !passExp.test(input.password)){
+            errors.password= "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número y un caracter especial."
+        }
+        return errors;
+    
+    } 
+
 
     return(
         <div>
@@ -59,6 +100,9 @@ function handleSubmit(e){
                             onChange={handleInputChange}
                             name="name"
                             />
+                    {errors.name && (
+                        <p className="error">{errors.name}</p>
+                    )}
                 </div>
                 <div>
                     <label>Correo electrónico</label>
@@ -67,6 +111,9 @@ function handleSubmit(e){
                             onChange={handleInputChange} 
                             name="email"
                             />
+                    {errors.email && (
+                        <p className="error">{errors.email}</p>
+                    )}
                 </div>
             </div>
 
@@ -78,6 +125,10 @@ function handleSubmit(e){
                             onChange={handleInputChange}
                             name="password"
                     />
+
+                    {errors.password && (
+                        <p className="error">{errors.password}</p>
+                    )}  
                 </div>
                 <div>
                     <label>Confirmar Contraseña</label>
@@ -86,6 +137,9 @@ function handleSubmit(e){
                             onChange={handleInputChange}
                             name="confirmPassword"
                             />
+                            {errors.confirmPassword && (
+                        <p className="error">{errors.confirmPassword}</p>
+                    )}
                 </div>
                 
                 </div>
