@@ -79,6 +79,7 @@ input {
     width: 350px;
     font-size: 18px;
     margin: 10px;
+  
     font-family: 'Montserrat', sans-serif;
 }
 label {
@@ -98,7 +99,7 @@ p {
     font-family:'Montserrat', sans-serif;
     font-size: 13px;
     background-color: rgb(228, 223, 223);
-    width: fit-content;
+    width: 350px;
     padding: 5px;
     border-radius: 5px;
 }
