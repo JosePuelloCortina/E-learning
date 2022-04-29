@@ -1,0 +1,9 @@
+.container {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    height: 1200px;
+    width: auto;
+    background: rgb(11,82,91);
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+}
