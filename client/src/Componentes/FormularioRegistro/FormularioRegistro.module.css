@@ -1,17 +1,18 @@
-.buttonRegistro {
+.container button {
     display: flex;
-    font-size: 20px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: sans-serif;
     padding: 15px;
+    letter-spacing: 2px;
+    font-size: 25;
     color: white;
     align-self: center;
     background-color: rgba(255, 157, 0, 0.992);
     border-radius: 10px;
    position: relative;
-   bottom: -10%;
+   /* bottom: -10%; */
 }
-.buttonRegistro:hover {
-    background-color: rgb(179, 7, 205);
+.container button:hover {
+    background-color: rgb(120, 3, 138);
     cursor: pointer;
 }
 
