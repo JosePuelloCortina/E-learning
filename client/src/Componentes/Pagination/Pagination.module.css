@@ -72,6 +72,7 @@
   top: 0;
   width: 90px;
   height: 40px;
+  background-color: var(--color5);
 }
 
 .paginationUl li button.buttonNext {
@@ -85,6 +86,7 @@
   border-radius: 5px 25px 25px 5px;
   width: 90px;
   height: 40px;
+  background-color: var(--color5);
 }
 
 .paginationUl li.active {
@@ -97,12 +99,12 @@
 
 .paginationUl li.active,
 .paginationUl li.numb:hover,
-.paginationUl li button.buttonPrev:hover,
-.paginationUl li button.buttonNext:hover,
+/* .paginationUl li button.buttonPrev:hover,
+.paginationUl li button.buttonNext:hover, */
 .paginationUl li.first:hover,
 .paginationUl li.last:hover {
   color: #fff;
-  background: #20b2aa;
+  background: var(--color5);
 }
 
 @media (max-width: 724px) {

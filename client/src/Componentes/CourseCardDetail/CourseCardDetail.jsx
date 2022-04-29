@@ -7,8 +7,10 @@ import {
   removeCourseDetail,
 } from "../../redux/actions";
 import styles from "./CourseCardDetail.module.css";
+import { Link } from "react-router-dom";
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
@@ -33,15 +35,37 @@ function CourseCardDetail() {
     <div className={styles.container}>
     
       {detail ? (
-        <div>
-          <h3>{detail.name}</h3>
-          <h4>Instructor: {course[0].users[0].name}</h4>
-          <h4>{detail.description}</h4>
-          <h4>{detail.duration}</h4>
-          <h4>{detail.progress}</h4>
-          <h4>{detail.review}</h4>
-          <h4>{detail.image}</h4>
-          <h4>{detail.price}</h4>
+        <div className={styles.cardWrapper}>
+          <div className={styles.card}>
+            <div className={styles.image}>
+              <img src={detail.image} alt="" />
+            </div>
+            <div className={styles.courseInfo}>
+              <h3>{detail.name}</h3>
+              <h4>Instructor: {course[0].users[0].name}</h4>
+              <h4>{detail.description}</h4>
+              <h4>{detail.duration}</h4>
+              <h4>{detail.progress}</h4>
+              <h4>{detail.review}</h4>
+              <h4>{detail.price}</h4>
+            </div>
+
+            {detail.clases &&
+              detail.clases.map((e) => {
+                return (
+                  <div className={styles.containerClases}>
+                    <ul>
+                      <li>{e.name}</li>
+                      <li>{e.duration}</li>
+                      <li>{e.description}</li>
+                    </ul>
+                  </div>
+                );
+              })}
+            <Link to="/home">
+              <button>Go to home</button>
+            </Link>
+          </div>
         </div>
       ) : (
         <div>...Loading</div>
