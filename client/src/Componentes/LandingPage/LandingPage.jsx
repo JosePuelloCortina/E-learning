@@ -7,8 +7,8 @@ export default function LandingPage (){
         <div className={styles.container}>
 
             <div className={styles.text}>
-            <h1>ODEMY</h1>
-            <h2>Todos los cursos que necesitas, en un sólo lugar</h2>
+            <h1>AkademIT</h1>
+            <h2>Paso a paso construyendo tu futuro.</h2>
             </div>
             <div>
                 <Link to="/home">
