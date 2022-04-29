@@ -8,7 +8,6 @@ function FilterIndex() {
     <div>
       <div>{<FilterPrice />}</div>
       <div>{<FiltersCategory />}</div>
-
       <div>{<FilterReview />}</div>
     </div>
   );
