@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
     },
 
     review: {
-        type: DataTypes.TEXT,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     
