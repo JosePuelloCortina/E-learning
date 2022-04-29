@@ -105,7 +105,7 @@ export default function FormularioRegistro() {
     console.log(user);
     dispatch(createUser(user));
     dispatch(allUser());
-    navigate("/user");
+    navigate(`/registerok`);
   };
 
   const handleFailure = () => {};
