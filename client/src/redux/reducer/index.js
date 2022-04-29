@@ -17,6 +17,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
 
+      case "VALIDATE_USER":
+      return {
+        ...state,
+      };
+
     case "ALL_COURSES":
       return {
         ...state,

@@ -144,6 +144,10 @@
     font-size: 20px;
 }
 
+.divButton1 a {
+    text-decoration: none;
+}
+
 .divButton1 button {
    
     border-radius: 10px;
