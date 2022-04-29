@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { allCourses } from "../../redux/actions";
+import { allCategories, allCourses } from "../../redux/actions";
 import CoursesContainer from "../CoursesContainer/CoursesContainer";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
@@ -15,11 +15,16 @@ export default function Home() {
     await dispatch(allCourses());
   }
 
+  async function getCategories() {
+    await dispatch(allCategories());
+  }
+
   useEffect(() => {
     getCourses();
+    getCategories();
   }, []);
 
-  const courses = useSelector((state) => state.courses);
+  const courses = useSelector((state) => state.coursesBackUp);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [coursesPerPage] = useState(8);
@@ -30,7 +35,12 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
+
+      <h1>Home </h1>
+      <FilterIndex />
+
       <FilterIndex/>
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

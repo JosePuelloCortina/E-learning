@@ -3,7 +3,7 @@ const initialState = {
   courses: [],
   coursesBackUp: [],
   courseDetail: [],
-  filtersCourses: [],
+  categories: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -19,7 +19,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
 
-      case "VALIDATE_USER":
+    case "VALIDATE_USER":
       return {
         ...state,
       };
@@ -29,6 +29,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: action.payload,
         coursesBackUp: action.payload,
+      };
+    case "ALL_CATEGORIES":
+      return {
+        ...state,
+        categories: action.payload.data,
       };
     case "GET_USER_BY_ID":
       return {
@@ -46,30 +51,45 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: [],
       };
     case "GET_SEARCH_COURSE":
-      return{
+      return {
         ...state,
-        courses:action.payload,
-      }
+        courses: action.payload,
+      };
     case "GET_FILTER_FREE":
-      const Coursesfiltered = action.payload
-      if (Coursesfiltered === 'free') {
+      const Coursesfiltered = action.payload;
+      if (Coursesfiltered === "free") {
         return {
           ...state,
-          courses: state.coursesBackUp.filter(
-            (course) => course.price === 0
-          ),
+          courses: state.coursesBackUp.filter((course) => course.price === 0),
         };
-      }  else if (Coursesfiltered === 'paid') {
+      } else if (Coursesfiltered === "paid") {
         return {
           ...state,
-          courses: state.coursesBackUp.filter(
-            (course) => course.price > 0
-          ),
-        }; 
+          courses: state.coursesBackUp.filter((course) => course.price > 0),
+        };
       }
-      return{
+      return {
         ...state,
         courses: state.coursesBackUp,
+
+      };
+    case "FILTER_CATEGORY": {
+      let filteredCategories =
+        action.payload === "all"
+          ? state.courses
+          : state.courses.filter((c) => {
+              for (let i = 0; i < c.categories.length; i++) {
+                if (Object.values(c.categories[i]).includes(action.payload)) {
+                  return true;
+                }
+              }
+            });
+      return {
+        ...state,
+        coursesBackUp: filteredCategories,
+      };
+    }
+
       }
     case "FILTER_BY_REVIEW":
       const reviews = state.coursesBackUp;
@@ -78,6 +98,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: reviewFiltered
       }
+
     default:
       return state;
   }

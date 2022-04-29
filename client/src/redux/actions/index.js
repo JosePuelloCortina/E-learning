@@ -14,6 +14,20 @@ export function allUser() {
   };
 }
 
+export function allCategories() {
+  return async function (dispatch) {
+    try {
+      const users = await axios.get(`http://localhost:3001/category`);
+      return dispatch({
+        type: "ALL_CATEGORIES",
+        payload: users.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function createUser(form) {
   return async function (dispatch) {
     await axios.post(`http://localhost:3001/user/create`, form);
@@ -78,25 +92,32 @@ export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
 
-export const courseSearch =(name)=>{
-return async (dispatch) =>{
-  try {
-    const course = await axios.get("http://localhost:3001/courses/search?name="+name)
-   dispatch({ type: "GET_SEARCH_COURSE", payload: course.data
-
-  })
-  } 
-  catch (error) {
-    console.log(error) 
-    alert("El curso que busca no existe")
-  }
-}
-}
+export const courseSearch = (name) => {
+  return async (dispatch) => {
+    try {
+      const course = await axios.get(
+        "http://localhost:3001/courses/search?name=" + name
+      );
+      dispatch({ type: "GET_SEARCH_COURSE", payload: course.data });
+    } catch (error) {
+      console.log(error);
+      alert("El curso que busca no existe");
+    }
+  };
+};
 
 export const filterCourseFree = (payload) => {
   return {
     type: "GET_FILTER_FREE",
     payload: payload,
+  };
+};
+
+
+export const filterCategory = (payload) => {
+  return {
+    type: "FILTER_CATEGORY",
+    payload,
   };
 };
 
@@ -106,3 +127,4 @@ export const filterCourseReview = (payload) => {
     payload: payload,
   }
 }
+
