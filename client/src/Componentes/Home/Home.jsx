@@ -38,9 +38,6 @@ export default function Home() {
 
       <h1>Home </h1>
       <FilterIndex />
-
-      <FilterIndex/>
-
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

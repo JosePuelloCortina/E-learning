@@ -60,17 +60,17 @@ export default function rootReducer(state = initialState, action) {
       if (Coursesfiltered === "free") {
         return {
           ...state,
-          courses: state.coursesBackUp.filter((course) => course.price === 0),
+          coursesBackUp: state.courses.filter((course) => course.price === 0),
         };
       } else if (Coursesfiltered === "paid") {
         return {
           ...state,
-          courses: state.coursesBackUp.filter((course) => course.price > 0),
+          coursesBackUp: state.courses.filter((course) => course.price > 0),
         };
       }
       return {
         ...state,
-        courses: state.coursesBackUp,
+        coursesBackUp: state.courses,
       };
     case "FILTER_CATEGORY": {
       let filteredCategories =
@@ -89,7 +89,7 @@ export default function rootReducer(state = initialState, action) {
       };
     }
     case "FILTER_BY_REVIEW":
-      const reviews = state.coursesBackUp;
+      const reviews = state.courses;
       const reviewFiltered =
         action.payload === "All"
           ? reviews
@@ -98,7 +98,7 @@ export default function rootReducer(state = initialState, action) {
             );
       return {
         ...state,
-        courses: reviewFiltered,
+        coursesBackUp: reviewFiltered,
       };
 
     default:
