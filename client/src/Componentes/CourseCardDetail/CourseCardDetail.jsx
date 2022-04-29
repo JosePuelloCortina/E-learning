@@ -6,6 +6,7 @@ import {
   getCoursesById,
   removeCourseDetail,
 } from "../../redux/actions";
+import styles from "./CourseCardDetail.module.css";
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function CourseCardDetail() {
           <h4>{detail.progress}</h4>
           <h4>{detail.review}</h4>
           <h4>{detail.image}</h4>
+          <h4>{detail.price}</h4>
         </div>
       ) : (
         <div>...Loading</div>
