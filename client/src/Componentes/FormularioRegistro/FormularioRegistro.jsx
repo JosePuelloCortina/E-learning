@@ -45,7 +45,6 @@ export default function FormularioRegistro() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
- 
   const [errors, setErrors] = React.useState({})
 
   const [form, setForm] = React.useState({
@@ -89,9 +88,7 @@ export default function FormularioRegistro() {
    
       dispatch(createUser(form))
       alert('Usuario creado correctamente!')
-         setTimeout(() => {
-          navigate("/home")
-      }, 1000);
+      navigate(`/user`);
   }
 
   }

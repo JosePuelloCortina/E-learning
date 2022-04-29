@@ -28,8 +28,8 @@ export function validation(validate) {
 
   if (!validate.password) {
     errors.password = "se requiere password";
-  } else if (!validate.password.match(/^[A-Za-z0-9]+$/)) {
-    errors.password = "se requiere clave alfanumerica";
+  } else if (!validate.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/)) {
+    // errors.password = "se requiere clave alfanumerica";
   }
 
   return errors;
@@ -71,9 +71,14 @@ export default function Login() {
   const handleOnSubmit = (event) => {
     event.preventDefault();
 
-    if (validate.user !== 0 || validate.password !== 0) {
-      dispatch(validateUser(validate));
-      alert("Usuario creado correctamente!");
+    if (validate.user !== "" && validate.password !== "") {
+      // dispatch(validateUser(validate));
+      const usuario = users.find((user) => user.email === validate.user);
+      if(validate.password === usuario.password){  
+        navigate(`/profile/${usuario.id}`);
+      }else {
+        alert("Usuario o contraseña incorrectos");
+      }
     } else {
       alert("Debes rellenar todos los campos antes de registrarte");
     }
@@ -102,6 +107,14 @@ export default function Login() {
   };
 
   const handleFailure = () => {};
+
+  // const handleValidateButton = () => {
+  //   if (validate.user !== '' || validate.password !== '' || ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // };
 
   return (
     <div class={style.container}>
