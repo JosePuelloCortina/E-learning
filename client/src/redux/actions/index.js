@@ -99,3 +99,10 @@ export const filterCourseFree = (payload) => {
     payload: payload,
   };
 };
+
+export const filterCourseReview = (payload) => {
+  return {
+    type: "FILTER_BY_REVIEW",
+    payload: payload,
+  }
+}

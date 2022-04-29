@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./CourseCard.module.css";
 import { Link } from "react-router-dom";
 
-export default function CourseCard({ name, img, id }) {
+export default function CourseCard({ name, image, id, review }) {
   return (
     <Link className={styles.linkDetail} to={`/courses/id/${id}`}>
       <div className={styles.card}>
         <div className={styles.image}>
-          <img src={img} alt="" />
+          <img src={image} alt="" />
         </div>
         <div className={styles.info}>
           <div>
@@ -17,7 +17,15 @@ export default function CourseCard({ name, img, id }) {
             <p>Categorias</p>
           </div>
           <div>
-            <p>4⭐</p>
+            {
+              review === 0 ? <p>Este curso no tiene calificacion</p> :
+                review === 1 ? <p>⭐</p> :
+                  review === 2 ? <p>⭐⭐</p>:
+                    review === 3 ? <p>⭐⭐⭐</p>:
+                      review === 4 ? <p>⭐⭐⭐⭐</p>:
+                        <p>⭐⭐⭐⭐⭐</p>
+
+            }
             <p>
               <strong>$20</strong>
             </p>

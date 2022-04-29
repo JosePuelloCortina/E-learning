@@ -71,6 +71,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: state.coursesBackUp,
       }
+    case "FILTER_BY_REVIEW":
+      const reviews = state.coursesBackUp;
+      const reviewFiltered = action.payload === 'All' ? reviews : reviews.filter(r => r.review <= action.payload && r.review > (action.payload - 1));
+      return{
+        ...state,
+        courses: reviewFiltered
+      }
     default:
       return state;
   }

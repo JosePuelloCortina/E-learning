@@ -8,7 +8,7 @@ export default function CoursesContainer({ currentCourses }) {
   return (
     <div className={styles.container}>
       {currentCourses.length === 0 ? <h1>El curso que busca no existe</h1> : currentCourses?.map((e) => (
-        <CourseCard key={e.id} name={e.name} img={e.img} id={e.id} />
+        <CourseCard key={e.id} name={e.name} image={e.image} id={e.id}  review={e.review}/>
       ))}
     </div>
   );
