@@ -1,6 +1,7 @@
 const initialState = {
   user: [],
   courses: [],
+  coursesBackUp: [],
   courseDetail: [],
   filtersCourses: [],
 };
@@ -27,6 +28,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         courses: action.payload,
+        coursesBackUp: action.payload,
       };
     case "GET_USER_BY_ID":
       return {
@@ -47,6 +49,27 @@ export default function rootReducer(state = initialState, action) {
       return{
         ...state,
         courses:action.payload,
+      }
+    case "GET_FILTER_FREE":
+      const Coursesfiltered = action.payload
+      if (Coursesfiltered === 'free') {
+        return {
+          ...state,
+          courses: state.coursesBackUp.filter(
+            (course) => course.price === 0
+          ),
+        };
+      }  else if (Coursesfiltered === 'paid') {
+        return {
+          ...state,
+          courses: state.coursesBackUp.filter(
+            (course) => course.price > 0
+          ),
+        }; 
+      }
+      return{
+        ...state,
+        courses: state.coursesBackUp,
       }
     default:
       return state;

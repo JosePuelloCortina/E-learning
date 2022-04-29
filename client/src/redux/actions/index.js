@@ -92,3 +92,10 @@ return async (dispatch) =>{
   }
 }
 }
+
+export const filterCourseFree = (payload) => {
+  return {
+    type: "GET_FILTER_FREE",
+    payload: payload,
+  };
+};
