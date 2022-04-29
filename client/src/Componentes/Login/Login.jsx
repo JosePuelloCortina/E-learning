@@ -28,7 +28,11 @@ export function validation(validate) {
 
   if (!validate.password) {
     errors.password = "se requiere password";
-  } else if (!validate.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/)) {
+  } else if (
+    !validate.password.match(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/
+    )
+  ) {
     // errors.password = "se requiere clave alfanumerica";
   }
 
@@ -74,9 +78,9 @@ export default function Login() {
     if (validate.user !== "" && validate.password !== "") {
       // dispatch(validateUser(validate));
       const usuario = users.find((user) => user.email === validate.user);
-      if(validate.password === usuario.password){  
+      if (validate.password === usuario.password) {
         navigate(`/profile/${usuario.id}`);
-      }else {
+      } else {
         alert("Usuario o contraseña incorrectos");
       }
     } else {
@@ -84,26 +88,12 @@ export default function Login() {
     }
   };
 
-  const user = {
-    name: "",
-    password: "1234",
-    email: "",
-    image: "",
-    role: "alumno",
-  };
-
   const handleSucces = (response) => {
-    user.name = response.profileObj.name;
-    user.email = response.profileObj.email;
-    user.image = response.profileObj.imageUrl;
-    console.log(user);
-    dispatch(createUser(user));
-    dispatch(allUser());
-    const userGoogle = users.filter((element) => element.name === user.name);
-    console.log(userGoogle);
-    setTimeout(() => {
-      navigate(`/profile/${userGoogle[0].id}`);
-    }, 1000);
+    const userGoogle = users.find(
+      (element) => element.name === response.profileObj.name
+    );
+    console.log("userGoogle es: ", userGoogle);
+    navigate(`/profile/${userGoogle.id}`);
   };
 
   const handleFailure = () => {};
@@ -166,7 +156,7 @@ export default function Login() {
             cookiePolicy={"single_host_origin"}
           />
         </div>
-
+        <p>¿No estas registrado?</p>
         <div class={style.divButton1}>
           <Link className={style.linkButtonRegistro} to="/form">
             <button class={style.buttonRegistro} type="submit">
