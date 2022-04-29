@@ -25,6 +25,7 @@
     height: 700px;
     width: auto;
     background: rgb(11,82,91);
+    box-shadow: inset 0 25px 35px -25px #111;
     background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
 }
 
