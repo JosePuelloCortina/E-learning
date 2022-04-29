@@ -2,7 +2,7 @@ const server = require('express').Router();
 const { User, Role, Op} = require('../../db');
 
 
-server.get("/user", async function(req, res, next){
+server.get("/", async function(req, res, next){
     try {
         const users = await User.findAll({
             include: {
