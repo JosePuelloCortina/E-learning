@@ -35,8 +35,12 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
+
       <h1>Home </h1>
       <FilterIndex />
+
+      <FilterIndex/>
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

@@ -113,9 +113,18 @@ export const filterCourseFree = (payload) => {
   };
 };
 
+
 export const filterCategory = (payload) => {
   return {
     type: "FILTER_CATEGORY",
     payload,
   };
 };
+
+export const filterCourseReview = (payload) => {
+  return {
+    type: "FILTER_BY_REVIEW",
+    payload: payload,
+  }
+}
+
