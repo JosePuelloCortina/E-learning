@@ -25,6 +25,7 @@ const initializeUser = require('./src/initializer/User');
 const initializeCategory = require('./src/initializer/Category')
 const initializeCourses = require('./src/initializer/Courses')
 const initializeClases = require('./src/initializer/Classes')
+const initializeBuys = require('./src/initializer/Buy');
 
 
 // Syncing all the models at once.
@@ -36,6 +37,7 @@ conn.sync({ force: true }).then(async() => {
     await initializeCategory();
     await initializeCourses();
     await initializeClases();
+    await initializeBuys();
 
     console.log("Tablas cargadas!!")
     server.listen(3001, () => {
