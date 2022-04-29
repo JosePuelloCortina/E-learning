@@ -77,3 +77,18 @@ export const getCoursesById = (id) => {
 export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
+
+export const courseSearch =(name)=>{
+return async (dispatch) =>{
+  try {
+    const course = await axios.get("http://localhost:3001/courses/search?name="+name)
+   dispatch({ type: "GET_SEARCH_COURSE", payload: course.data
+
+  })
+  } 
+  catch (error) {
+    console.log(error) 
+    alert("El curso que busca no existe")
+  }
+}
+}
