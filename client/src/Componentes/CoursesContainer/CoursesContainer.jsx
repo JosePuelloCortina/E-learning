@@ -7,7 +7,7 @@ import styles from "./CoursesContainer.module.css";
 export default function CoursesContainer({ currentCourses }) {
   return (
     <div className={styles.container}>
-      {currentCourses?.map((e) => (
+      {currentCourses.length === 0 ? <h1>El curso que busca no existe</h1> : currentCourses?.map((e) => (
         <CourseCard key={e.id} name={e.name} img={e.img} id={e.id} />
       ))}
     </div>
