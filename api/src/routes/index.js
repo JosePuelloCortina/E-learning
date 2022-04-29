@@ -24,6 +24,7 @@ const ClassesId = require("./Classes/ClassesId");
 const BuyPost = require('./Buy/BuyPost');
 const BuyGet = require('./Buy/BuyGet');
 const BuyId = require('./Buy/BuyId');
+const CourseSearch = require('./Courses/CourseSearch');
 
 
 
@@ -43,6 +44,7 @@ router.use('/courses', CoursesDelete);
 router.use('/courses', CoursesGet)
 router.use('/courses', CoursesPut);
 router.use('/courses', CourseId);
+router.use('/courses', CourseSearch)
 router.use('/user', UserDelete);
 router.use('/category', CategoryPost);
 router.use('/category', CategoryAll);
