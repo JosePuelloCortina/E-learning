@@ -7,6 +7,8 @@ import {
   removeCourseDetail,
 } from "../../redux/actions";
 import styles from "./CourseCardDetail.module.css";
+import NavBar from '../NavBar/NavBar'
+import Footer from '../Footer/Footer'
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
@@ -27,6 +29,9 @@ function CourseCardDetail() {
 
   return (
     <div>
+    <NavBar/>
+    <div className={styles.container}>
+    
       {detail ? (
         <div>
           <h3>{detail.name}</h3>
@@ -41,6 +46,9 @@ function CourseCardDetail() {
       ) : (
         <div>...Loading</div>
       )}
+      
+    </div>
+    <Footer/>
     </div>
   );
 }
