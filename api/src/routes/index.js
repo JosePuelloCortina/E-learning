@@ -51,7 +51,7 @@ router.use("/classes", ClassesDelete);
 router.use("/classes", ClassesPut);
 router.use("/classes", ClassesId);
 router.use('/buy', BuyPost);
-router.use('./buy', BuyGet);
+router.use('/buy', BuyGet);
 router.use('/buy', BuyId);
 
 
