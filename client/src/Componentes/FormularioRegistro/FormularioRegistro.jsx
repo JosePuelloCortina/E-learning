@@ -182,6 +182,7 @@ export default function FormularioRegistro() {
           clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
           render={(renderProps) => (
             <button
+            class={style.buttonRegistro}
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >
