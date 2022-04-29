@@ -2,6 +2,7 @@ const initialState = {
   user: [],
   courses: [],
   courseDetail: [],
+  filtersCourses: [],
 };
 
 export default function rootReducer(state = initialState, action) {
