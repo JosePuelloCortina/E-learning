@@ -94,9 +94,10 @@ export default function Login() {
     console.log(user);
     dispatch(createUser(user));
     dispatch(allUser());
-    const userGoogle = users.find((element) => element.name === user.name);
+    const userGoogle = users.filter((element) => element.name === user.name);
+    console.log(userGoogle);
     setTimeout(() => {
-      navigate(`/profile/${userGoogle.id}`);
+      navigate(`/profile/${userGoogle[0].id}`);
     }, 1000);
   };
 
