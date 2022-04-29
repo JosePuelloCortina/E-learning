@@ -7,6 +7,7 @@ import FormularioRegistro from "./Componentes/FormularioRegistro/FormularioRegis
 import Login from "./Componentes/Login/Login";
 import EditProfile from "./Componentes/EditProfile/EditProfile";
 import CourseCardDetail from "./Componentes/CourseCardDetail/CourseCardDetail";
+import ConfirmRegister from "./Componentes/ConfirmRegister/ConfirmRegister";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/profile/edit/:id" element={<EditProfile />} />
           <Route exact path="/courses/id/:id" element={<CourseCardDetail />} />
+          <Route path="/registerok" element={<ConfirmRegister />} />
         </Routes>
       </BrowserRouter>
     </div>

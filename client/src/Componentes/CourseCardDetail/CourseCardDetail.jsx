@@ -8,6 +8,9 @@ import {
 } from "../../redux/actions";
 import styles from "./CourseCardDetail.module.css";
 import { Link } from "react-router-dom";
+import NavBar from '../NavBar/NavBar'
+import Footer from '../Footer/Footer'
+
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
@@ -28,6 +31,9 @@ function CourseCardDetail() {
 
   return (
     <div>
+    <NavBar/>
+    <div className={styles.container}>
+    
       {detail ? (
         <div className={styles.cardWrapper}>
           <div className={styles.card}>
@@ -64,6 +70,9 @@ function CourseCardDetail() {
       ) : (
         <div>...Loading</div>
       )}
+      
+    </div>
+    <Footer/>
     </div>
   );
 }

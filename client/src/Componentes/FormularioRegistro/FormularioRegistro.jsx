@@ -79,8 +79,8 @@ export default function FormularioRegistro() {
       alert("Debes rellenar todos los campos antes de registrarte");
     } else {
       dispatch(createUser(form));
-      alert("Usuario creado correctamente!");
-      navigate(`/user`);
+      
+      navigate(`/registerok`);
     }
   };
   function handleSelect2(e) {
@@ -105,7 +105,7 @@ export default function FormularioRegistro() {
     console.log(user);
     dispatch(createUser(user));
     dispatch(allUser());
-    navigate("/user");
+    navigate(`/registerok`);
   };
 
   const handleFailure = () => {};
@@ -182,6 +182,7 @@ export default function FormularioRegistro() {
           clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
           render={(renderProps) => (
             <button
+            class={style.buttonRegistro}
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >

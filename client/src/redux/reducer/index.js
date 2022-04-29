@@ -2,6 +2,7 @@ const initialState = {
   user: [],
   courses: [],
   courseDetail: [],
+  filtersCourses: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -42,6 +43,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courseDetail: [],
       };
+    case "GET_SEARCH_COURSE":
+      return{
+        ...state,
+        courses:action.payload,
+      }
     default:
       return state;
   }
