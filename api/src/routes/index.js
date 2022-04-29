@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const UserGet = require('./User/User');
+const UserGetValidate = require('./User/UserValidate');
 const UserPost = require('./User/UserPost');
 const UserId = require('./User/UserId');
 const UserPut = require('./User/UserPut');
@@ -29,7 +30,9 @@ const BuyId = require('./Buy/BuyId');
 const router = Router();
 //probando ok
 
+
 router.use('/user', UserGet);
+router.use('/user', UserGetValidate);
 router.use('/user', UserPost);
 router.use('/user', UserId);
 router.use('/user', UserPut)

@@ -23,7 +23,7 @@ export function createUser(form) {
 
 export function validateUser(form) {
   return async function (dispatch) {
-    await axios.post(`http://localhost:3001/user`, form);
+    await axios.get(`http://localhost:3001/user`, form);
     dispatch({ type: "VALIDATE_USER" });
   };
 }

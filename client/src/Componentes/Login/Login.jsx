@@ -25,7 +25,7 @@ export function validation(validate) {
 
   if (!validate.password) {
   errors.password = 'se requiere password'
-} else if (!validate.password.match( /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^\da-zA-Z])\S{5,15}/)) {
+} else if (!validate.password.match(/^[A-Za-z0-9]+$/)) {
   errors.password = "se requiere clave alfanumerica"
 }
  
