@@ -79,8 +79,8 @@ export default function FormularioRegistro() {
       alert("Debes rellenar todos los campos antes de registrarte");
     } else {
       dispatch(createUser(form));
-      alert("Usuario creado correctamente!");
-      navigate(`/user`);
+      
+      navigate(`/registerok`);
     }
   };
   function handleSelect2(e) {
