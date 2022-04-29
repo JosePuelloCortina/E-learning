@@ -35,19 +35,28 @@ function CourseCardDetail() {
     <div className={styles.container}>
     
       {detail ? (
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <div className={styles.image}>
-              <img src={detail.image} alt="" />
-            </div>
-            <div className={styles.courseInfo}>
-              <h3>{detail.name}</h3>
-              <h4>Instructor: {course[0].users[0].name}</h4>
+        <div className={styles.cardDetail}>
+        <div className={styles.title}><h3>{detail.name}</h3></div>
+        <div className={styles.detail}>
+            <div className={styles.left}>
+              <div className={styles.image}>
+                <img src={detail.image} alt="" />
+              </div>
               <h4>{detail.description}</h4>
-              <h4>{detail.duration}</h4>
-              <h4>{detail.progress}</h4>
+              <h4>Instructor: {course[0].users[0].name}</h4>
+              <h4>Duracion: {detail.duration} Horas</h4>
+            </div>
+          <div className={styles.right}>
+            <h4>Valor: ${detail.price}</h4>
+            <button>Comprar</button>
+          </div>
+        </div>
+          
+            
+            <div className={styles.courseInfo}>
+              <h4>Comentarios:</h4>
               <h4>{detail.review}</h4>
-              <h4>{detail.price}</h4>
+              
             </div>
 
             {detail.clases &&
@@ -63,9 +72,9 @@ function CourseCardDetail() {
                 );
               })}
             <Link to="/home">
-              <button>Go to home</button>
+              <button>Volver</button>
             </Link>
-          </div>
+          
         </div>
       ) : (
         <div>...Loading</div>
