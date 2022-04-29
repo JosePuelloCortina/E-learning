@@ -12,27 +12,27 @@ export function validation(form) {
     // USUARIO-(NAME)
 
   if (!form.name) {
-    errors.name = 'se requiere nombre'
+    errors.name = 'Ingrese su nombre'
   } else if (form.name.match(!/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/)) {
-    errors.name = "solo se admiten un nombre"
+    errors.name = "No se admiten caracteres especiales."
   }
 
 
   // USUARIO-(EMAIL)
 
   if (!form.email) {
-    errors.user = 'se requiere e-mail'
+    errors.user = 'Se requiere un correo electrónico'
   } else if (!form.email.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
-    errors.email = "solo se admiten e-mail"
+    errors.email = "Por favor ingrese un correo electrónico válido."
   }
 
 
   // PASSWORD (CONTRASEÑA ALFANUMERICO)
 
   if (!form.password) {
-  errors.password = 'se requiere password'
-} else if (!form.password.match(/^[A-Za-z0-9]+$/)) {
-  errors.password = "se requiere clave alfanumerica"
+  errors.password = 'Por favor ingrese una contraseña.'
+} else if (!form.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/)) {
+  errors.password = "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial."
 }
  
 

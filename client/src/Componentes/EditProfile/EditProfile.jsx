@@ -77,7 +77,7 @@ function handleSubmit(e){
             errors.email= "Ingrese una dirección de correo válida."
         }
         if(input.password && !passExp.test(input.password)){
-            errors.password= "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número y un caracter especial."
+            errors.password= "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial."
         }
         return errors;
     
