@@ -1,0 +1,40 @@
+.containerFilters {
+
+  display: flex;
+  flex-direction: row;
+}
+
+.containerSelect {
+
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  background-color: transparent;
+  border: rgb(145, 255, 0) solid 1px;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-left: 2rem;
+  height: 15px;
+
+
+}
+
+.select {
+
+  background-color: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 40px;
+  flex-grow: 1;
+}
+
+.select option {
+  color: black;
+}
+
+.FlechitaAbajo {
+  height: 15px;
+  margin-left: 7px;
+}
