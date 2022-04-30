@@ -11,20 +11,20 @@ import FilterIndex from "../Filters/FilterIndex";
 export default function Home() {
   const dispatch = useDispatch();
 
-  async function getCourses() {
-    await dispatch(allCourses());
-  }
+  // async function getCourses() {
+  //   await dispatch(allCourses());
+  // }
 
-  async function getCategories() {
-    await dispatch(allCategories());
-  }
+  // async function getCategories() {
+  //   await dispatch(allCategories());
+  // }
 
   useEffect(() => {
-    getCourses();
-    getCategories();
-  }, []);
+    dispatch(allCourses());
+    dispatch(allCategories());
+  }, [dispatch]);
 
-  const courses = useSelector((state) => state.coursesBackUp);
+  const courses = useSelector((state) => state.courses);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [coursesPerPage] = useState(8);
