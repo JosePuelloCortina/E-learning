@@ -5,14 +5,14 @@ import FilterIndex from "../Filters/FilterIndex";
 import SearchCourse from "../Search/SearchCourse";
 
 
-export default function NavBarCopy({setOrderReview}) {
+export default function NavBarCopy({setOrderReview, setCurrentPage}) {
   
 
         return (
     <div className={styles.navBar}>
       
       <SearchCourse />
-      <FilterIndex setOrderReview={setOrderReview}  />
+      <FilterIndex setOrderReview={setOrderReview} setCurrentPage={setCurrentPage} />
       
       </div>
   

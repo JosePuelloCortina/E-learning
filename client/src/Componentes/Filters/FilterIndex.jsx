@@ -4,12 +4,12 @@ import FiltersCategory from "./FiltersCategory";
 import FilterReview from "./FilterReview";
 import styles from "./FiltersIndex.module.css";
 
-function FilterIndex({ setOrderReview }) {
+function FilterIndex({ setOrderReview, setCurrentPage }) {
   return (
     <div className={styles.containerFilters}>
       <div>{<FilterPrice />}</div>
-      <div>{<FiltersCategory />}</div>
-      <div>{<FilterReview setOrderReview={setOrderReview} />}</div>
+      <div>{<FiltersCategory setCurrentPage={setCurrentPage} />}</div>
+      <div>{<FilterReview setOrderReview={setOrderReview}  />}</div>
     </div>
   );
 }

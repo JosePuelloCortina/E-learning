@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {
-  allCourses,
   getCoursesById,
   removeCourseDetail,
 } from "../../redux/actions";
@@ -19,15 +18,12 @@ function CourseCardDetail() {
 
   useEffect(() => {
     dispatch(getCoursesById(id));
-    dispatch(allCourses());
     return () => {
       dispatch(removeCourseDetail());
     };
   }, []);
 
   const detail = useSelector((state) => state.courseDetail);
-  const courses = useSelector((state) => state.courses);
-  const course = courses.filter((element) => element.id === id);
 
   return (
     <div>
@@ -43,7 +39,12 @@ function CourseCardDetail() {
                 <img src={detail.image} alt="" />
               </div>
               <h4>{detail.description}</h4>
-              <h4>Instructor: {course[0].users[0].name}</h4>
+              {detail.users && detail.users.map((user, index) => {
+                return(
+                  <div key={index}>
+                      <h4>Instructor: {user.name}</h4>
+                  </div>
+              )})}
               <h4>Duracion: {detail.duration} Horas</h4>
             </div>
           <div className={styles.right}>
@@ -70,9 +71,9 @@ function CourseCardDetail() {
             </div>
 
             {detail.clases &&
-              detail.clases.map((e) => {
+              detail.clases.map((e, index) => {
                 return (
-                  <div className={styles.containerClases}>
+                  <div key={index} className={styles.containerClases}>
                     <ul>
                       <li>{e.name}</li>
                       <li>{e.duration}</li>
