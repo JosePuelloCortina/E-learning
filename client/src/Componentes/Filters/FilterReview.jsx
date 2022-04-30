@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterCourseReview } from "../../redux/actions";
 
-function FilterReview() {
-    const dispatch = useDispatch(); 
+function FilterReview({ setOrderReview }) {
+  const dispatch = useDispatch();
 
-    function handleFilteredReview(e){
-        e.preventDefault();
-        dispatch(filterCourseReview(e.target.value));
-    }
-    return (
-        <div>
-            <label>Calificacion</label>
-            <select onChange={e => handleFilteredReview(e)}>
-                <option value='All'>Todos</option>
-                <option value={1}>⭐</option>
-                <option value={2}>⭐⭐</option>
-                <option value={3}>⭐⭐⭐</option>
-                <option value={4}>⭐⭐⭐⭐</option>
-                <option value={5}>⭐⭐⭐⭐⭐</option>
-            </select>
-            
-        </div>
-    );
+  function handleOnChange(e) {
+    let value = e.target.value;
+    let direction = value.endsWith("asc") ? "asc" : "desc";
+    dispatch(filterCourseReview(direction));
+    setOrderReview(direction);
+  }
+
+  return (
+    <div>
+      <label>Calificacion</label>
+      <select onChange={(e) => handleOnChange(e)}>
+        <option value="All">Todos</option>
+        <option value="review_asc">ascendente</option>
+        <option value="review_desc">descendente</option>
+      </select>
+    </div>
+  );
 }
 
 export default FilterReview;
-
