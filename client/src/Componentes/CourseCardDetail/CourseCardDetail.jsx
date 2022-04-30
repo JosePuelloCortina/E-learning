@@ -54,8 +54,18 @@ function CourseCardDetail() {
           
             
             <div className={styles.courseInfo}>
-              <h4>Comentarios:</h4>
-              <h4>{detail.review}</h4>
+              <h4>Puntuación: </h4>
+              <div>
+                {
+                detail.review === 0 ? <p>Este curso no tiene calificacion</p> :
+                  detail.review === 1 ? <p>⭐</p> :
+                    detail.review === 2 ? <p>⭐⭐</p>:
+                      detail.review === 3 ? <p>⭐⭐⭐</p>:
+                        detail.review === 4 ? <p>⭐⭐⭐⭐</p>:
+                          <p>⭐⭐⭐⭐⭐</p>
+                }
+              </div>
+              
               
             </div>
 
