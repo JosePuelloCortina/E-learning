@@ -1,6 +1,5 @@
 import React from 'react';
 // import styles from "../NavBar/NavBar.module.css";
-import { Link } from "react-router-dom";
 import {useState} from "react";
 import { useDispatch } from "react-redux";
 import {courseSearch} from "../../redux/actions/index"

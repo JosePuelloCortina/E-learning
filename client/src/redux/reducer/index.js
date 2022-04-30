@@ -4,7 +4,28 @@ const initialState = {
   coursesBackUp: [],
   courseDetail: [],
   categories: [],
+  coursesfiltered: [],
 };
+
+function sortAsc(arr, field) {
+  return arr.sort(function (a, b) {
+    if (a[field] > b[field]) return 1;
+
+    if (b[field] > a[field]) return -1;
+
+    return 0;
+  });
+}
+
+function sortDesc(arr, field) {
+  return arr.sort(function (a, b) {
+    if (a[field] > b[field]) return -1;
+
+    if (b[field] > a[field]) return 1;
+
+    return 0;
+  });
+}
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -29,6 +50,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: action.payload,
         coursesBackUp: action.payload,
+        coursesfiltered: action.payload,
       };
     case "ALL_CATEGORIES":
       return {
@@ -60,23 +82,29 @@ export default function rootReducer(state = initialState, action) {
       if (Coursesfiltered === "free") {
         return {
           ...state,
-          coursesBackUp: state.courses.filter((course) => course.price === 0),
+          courses: state.coursesBackUp.filter((course) => course.price === 0),
+          coursesfiltered: state.coursesBackUp.filter(
+            (course) => course.price === 0
+          ),
         };
       } else if (Coursesfiltered === "paid") {
         return {
           ...state,
-          coursesBackUp: state.courses.filter((course) => course.price > 0),
+          courses: state.coursesBackUp.filter((course) => course.price > 0),
+          coursesfiltered: state.coursesBackUp.filter(
+            (course) => course.price > 0
+          ),
         };
       }
       return {
         ...state,
-        coursesBackUp: state.courses,
+        courses: state.coursesBackUp,
       };
     case "FILTER_CATEGORY": {
       let filteredCategories =
         action.payload === "all"
-          ? state.courses
-          : state.courses.filter((c) => {
+          ? state.coursesBackUp
+          : state.coursesBackUp.filter((c) => {
               for (let i = 0; i < c.categories.length; i++) {
                 if (Object.values(c.categories[i]).includes(action.payload)) {
                   return true;
@@ -85,20 +113,18 @@ export default function rootReducer(state = initialState, action) {
             });
       return {
         ...state,
-        coursesBackUp: filteredCategories,
+        courses: filteredCategories,
+        coursesfiltered: filteredCategories,
       };
     }
     case "FILTER_BY_REVIEW":
-      const reviews = state.courses;
-      const reviewFiltered =
-        action.payload === "All"
-          ? reviews
-          : reviews.filter(
-              (r) => r.review <= action.payload && r.review > action.payload - 1
-            );
+      let sortedReviewArr =
+        action.payload === "asc"
+          ? sortAsc(state.courses, "review")
+          : sortDesc(state.courses, "review");
       return {
         ...state,
-        coursesBackUp: reviewFiltered,
+        courses: sortedReviewArr,
       };
 
     default:
