@@ -24,6 +24,8 @@ export default function Home() {
     dispatch(allCategories());
   }, [dispatch]);
 
+  const [orderReview, setOrderReview] = useState("");
+
   const courses = useSelector((state) => state.courses);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,9 +37,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
-
-      <h1>Home </h1>
-      <FilterIndex />
+      <FilterIndex setOrderReview={setOrderReview} />
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

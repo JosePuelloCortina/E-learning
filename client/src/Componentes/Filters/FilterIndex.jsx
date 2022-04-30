@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterPrice from "./FilterPrice";
 import FiltersCategory from "./FiltersCategory";
 import FilterReview from "./FilterReview";
 
-function FilterIndex() {
+function FilterIndex({ setOrderReview }) {
   return (
     <div>
       <div>{<FilterPrice />}</div>
       <div>{<FiltersCategory />}</div>
-      <div>{<FilterReview />}</div>
+      <div>{<FilterReview setOrderReview={setOrderReview} />}</div>
     </div>
   );
 }
