@@ -4,7 +4,7 @@ import style from "./Login.module.css";
 import { validateUser } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import GoogleLogin from "react-google-login";
-import { createUser } from "../../redux/actions/index";
+import { addLoggedUser } from "../../redux/actions/index";
 import { useNavigate } from "react-router";
 import { allUser } from "../../redux/actions/index";
 
@@ -42,6 +42,8 @@ export function validation(validate) {
 export default function Login() {
   const users = useSelector((state) => state.user);
 
+  // const loggedUsers = useSelector((state) => state.loggedUsers);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -76,9 +78,9 @@ export default function Login() {
     event.preventDefault();
 
     if (validate.user !== "" && validate.password !== "") {
-      // dispatch(validateUser(validate));
       const usuario = users.find((user) => user.email === validate.user);
       if (validate.password === usuario.password) {
+        dispatch(addLoggedUser(usuario.id));
         navigate(`/profile/${usuario.id}`);
       } else {
         alert("Usuario o contraseña incorrectos");
@@ -93,18 +95,16 @@ export default function Login() {
       (element) => element.name === response.profileObj.name
     );
     console.log("userGoogle es: ", userGoogle);
-    navigate(`/profile/${userGoogle.id}`);
+    if (userGoogle !== undefined) {
+      dispatch(addLoggedUser(userGoogle.id));
+      navigate(`/profile/${userGoogle.id}`);
+    } else {
+      alert("No estas registrado, ahora seras redireccionado para registrarte");
+      navigate(`/form`);
+    }
   };
 
   const handleFailure = () => {};
-
-  // const handleValidateButton = () => {
-  //   if (validate.user !== '' || validate.password !== '' || ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
 
   return (
     <div class={style.container}>
@@ -165,6 +165,9 @@ export default function Login() {
           </Link>
         </div>
       </form>
+      <Link to="/home">
+        <button class={style.buttonReturnHome}>VOLVER A HOME</button>
+      </Link>
     </div>
   );
 }
