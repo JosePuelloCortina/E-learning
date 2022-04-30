@@ -8,8 +8,8 @@ function FilterIndex({ setOrderReview, setCurrentPage }) {
   return (
     <div className={styles.containerFilters}>
       <div>{<FilterPrice />}</div>
-      <div>{<FiltersCategory setCurrentPage={setCurrentPage} />}</div>
       <div>{<FilterReview setOrderReview={setOrderReview}  />}</div>
+      <div>{<FiltersCategory setCurrentPage={setCurrentPage} />}</div>
     </div>
   );
 }
