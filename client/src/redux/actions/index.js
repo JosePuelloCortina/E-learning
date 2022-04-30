@@ -113,7 +113,6 @@ export const filterCourseFree = (payload) => {
   };
 };
 
-
 export const filterCategory = (payload) => {
   return {
     type: "FILTER_CATEGORY",
@@ -125,6 +124,19 @@ export const filterCourseReview = (payload) => {
   return {
     type: "FILTER_BY_REVIEW",
     payload: payload,
-  }
-}
+  };
+};
 
+export const addLoggedUser = (payload) => {
+  return {
+    type: "ADD_LOGGED_USER",
+    payload: payload,
+  };
+};
+
+export const removeLoggedUser = (payload) => {
+  return {
+    type: "REMOVE_LOGGED_USER",
+    payload: payload,
+  };
+};

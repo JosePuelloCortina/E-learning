@@ -5,6 +5,7 @@ const initialState = {
   courseDetail: [],
   categories: [],
   coursesfiltered: [],
+  loggedUsers: [],
 };
 
 function sortAsc(arr, field) {
@@ -100,24 +101,26 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: state.coursesBackUp,
       };
-    case "FILTER_CATEGORY": 
-      if(action.payload.length !== 0){
+    case "FILTER_CATEGORY":
+      if (action.payload.length !== 0) {
         const selectedCategories = action.payload;
         const filterCategories = state.coursesBackUp.filter((course) => {
-          return selectedCategories.every(i => course.categories.map(category => category.name).includes(i));
-        })
+          return selectedCategories.every((i) =>
+            course.categories.map((category) => category.name).includes(i)
+          );
+        });
         return {
           ...state,
           courses: filterCategories,
           coursesfiltered: filterCategories,
         };
-    } else {
-      return {
-        ...state,
-        courses: state.coursesBackUp,
-        coursesfiltered: state.coursesBackUp,
-      };
-    }
+      } else {
+        return {
+          ...state,
+          courses: state.coursesBackUp,
+          coursesfiltered: state.coursesBackUp,
+        };
+      }
 
     case "FILTER_BY_REVIEW":
       let sortedReviewArr =
@@ -128,7 +131,16 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: sortedReviewArr,
       };
-
+    case "ADD_LOGGED_USER":
+      return {
+        ...state,
+        loggedUsers: action.payload,
+      };
+    case "REMOVE_LOGGED_USER":
+      return {
+        ...state,
+        loggedUsers: [],
+      };
     default:
       return state;
   }

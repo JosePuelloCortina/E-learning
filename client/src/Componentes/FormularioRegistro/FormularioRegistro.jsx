@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./FormularioRegistro.module.css";
 import { useDispatch } from "react-redux";
 import { createUser, allUser } from "../../redux/actions/index";
@@ -79,7 +79,7 @@ export default function FormularioRegistro() {
       alert("Debes rellenar todos los campos antes de registrarte");
     } else {
       dispatch(createUser(form));
-      
+
       navigate(`/registerok`);
     }
   };
@@ -182,7 +182,7 @@ export default function FormularioRegistro() {
           clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
           render={(renderProps) => (
             <button
-            class={style.buttonRegistro}
+              class={style.buttonRegistro}
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >
@@ -194,6 +194,9 @@ export default function FormularioRegistro() {
           cookiePolicy={"single_host_origin"}
         />
       </form>
+      <Link to="/home">
+        <button class={style.buttonReturnHome}>VOLVER A HOME</button>
+      </Link>
     </div>
   );
 }
