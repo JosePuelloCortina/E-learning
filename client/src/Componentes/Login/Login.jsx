@@ -55,7 +55,7 @@ export default function Login() {
 
   useEffect(() => {
     dispatch(allUser());
-  }, [users]);
+  }, [dispatch]);
 
   const handleInputChange = function (e) {
     console.log(e);
