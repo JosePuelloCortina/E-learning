@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../NavBar/NavBar";
+import NavBarCopy from "../NavBar copy/NavBarcopy";
 import Footer from "../Footer/Footer";
 import { allCategories, allCourses } from "../../redux/actions";
 import CoursesContainer from "../CoursesContainer/CoursesContainer";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import FilterIndex from "../Filters/FilterIndex";
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,9 +36,10 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
+      <NavBarCopy />
 
-      <h1>Home </h1>
-      <FilterIndex />
+    
+      
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}
