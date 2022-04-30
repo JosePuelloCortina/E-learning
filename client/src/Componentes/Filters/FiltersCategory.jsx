@@ -1,43 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { filterCategory } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
-function Filters() {
+function FiltersCategory({setCurrentPage}) {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+  const [category, setCategory] = useState([]);
 
-  function handleOnfilter(e) {
-    e.preventDefault();
-    dispatch(filterCategory(e.target.value));
+  useEffect(() => {
+    dispatch(filterCategory(category));
+  }, [dispatch, category]);
+
+  function handleAddCategory(e) {
+    if(e.target.value !== "Seleccionar" && !category.includes(e.target.value)){
+      setCategory([...category, e.target.value]);
+      setCurrentPage(1);
+    }
   }
 
-  const filteredCategories = [];
-
-  const categoriesNames = categories.map((a) => a.name);
-
-  for (let i = 0; i < categoriesNames.length; i++) {
-    if (filteredCategories.indexOf(categoriesNames[i]) === -1) {
-      filteredCategories.push(categoriesNames[i]);
-    }
+  function handleRemoveCategory(e) {
+      setCategory(category.filter(cat => cat !== e.target.value));
   }
 
   return (
     <div>
       <div>
         <label>Categoria</label>
-        <select onChange={(e) => handleOnfilter(e)}>
+        <select onChange={(e) => handleAddCategory(e)}>
           <option>Seleccionar</option>
-          <option value="all">All</option>
-          {filteredCategories.map((e) => {
+          {categories.map((category) => {
             return (
-              <option key={e} value={e}>
-                {e}
+              <option key={category.name} value={category.name}>
+                {category.name}
               </option>
             );
           })}
         </select>
       </div>
+      <div>
+         {category.map((cat) => {
+          return (
+            <div key={cat}>
+              <label>{cat}</label>
+              <button onClick={(e) => handleRemoveCategory(e)} value={cat}>X</button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
-export default Filters;
+export default FiltersCategory;

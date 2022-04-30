@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
-      <NavBarCopy setOrderReview={setOrderReview}  />
+      <NavBarCopy setOrderReview={setOrderReview} setCurrentPage={setCurrentPage}  />
 
     
       

@@ -100,23 +100,25 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courses: state.coursesBackUp,
       };
-    case "FILTER_CATEGORY": {
-      let filteredCategories =
-        action.payload === "all"
-          ? state.coursesBackUp
-          : state.coursesBackUp.filter((c) => {
-              for (let i = 0; i < c.categories.length; i++) {
-                if (Object.values(c.categories[i]).includes(action.payload)) {
-                  return true;
-                }
-              }
-            });
+    case "FILTER_CATEGORY": 
+      if(action.payload.length !== 0){
+        const selectedCategories = action.payload;
+        const filterCategories = state.coursesBackUp.filter((course) => {
+          return selectedCategories.every(i => course.categories.map(category => category.name).includes(i));
+        })
+        return {
+          ...state,
+          courses: filterCategories,
+          coursesfiltered: filterCategories,
+        };
+    } else {
       return {
         ...state,
-        courses: filteredCategories,
-        coursesfiltered: filteredCategories,
+        courses: state.coursesBackUp,
+        coursesfiltered: state.coursesBackUp,
       };
     }
+
     case "FILTER_BY_REVIEW":
       let sortedReviewArr =
         action.payload === "asc"

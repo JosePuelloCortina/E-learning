@@ -3,12 +3,12 @@ import FilterPrice from "./FilterPrice";
 import FiltersCategory from "./FiltersCategory";
 import FilterReview from "./FilterReview";
 
-function FilterIndex({ setOrderReview }) {
+function FilterIndex({ setOrderReview, setCurrentPage }) {
   return (
     <div>
       <div>{<FilterPrice />}</div>
-      <div>{<FiltersCategory />}</div>
-      <div>{<FilterReview setOrderReview={setOrderReview} />}</div>
+      <div>{<FiltersCategory setCurrentPage={setCurrentPage} />}</div>
+      <div>{<FilterReview setOrderReview={setOrderReview}  />}</div>
     </div>
   );
 }
