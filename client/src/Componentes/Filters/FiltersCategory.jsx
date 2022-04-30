@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { filterCategory } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./FiltersIndex.module.css";
 
 function FiltersCategory({setCurrentPage}) {
   const dispatch = useDispatch();
@@ -24,10 +25,11 @@ function FiltersCategory({setCurrentPage}) {
 
   return (
     <div>
-      <div>
-        <label>Categoria</label>
-        <select onChange={(e) => handleAddCategory(e)}>
-          <option>Seleccionar</option>
+      <div className={styles.containerSelect}>
+        {/* <label>Categoria</label> */}
+        <div className={styles.select}>
+        <select className={styles.select} onChange={(e) => handleAddCategory(e)}>
+          <option>Categoria</option>
           {categories.map((category) => {
             return (
               <option key={category.name} value={category.name}>
@@ -36,12 +38,13 @@ function FiltersCategory({setCurrentPage}) {
             );
           })}
         </select>
+        </div>
       </div>
-      <div>
+      <div className={styles.map}>
          {category.map((cat) => {
           return (
-            <div key={cat}>
-              <label>{cat}</label>
+            <div className={styles.containerSelectMap} key={cat}>
+              <label className={styles.select}  >{cat}</label>
               <button onClick={(e) => handleRemoveCategory(e)} value={cat}>X</button>
             </div>
           );
