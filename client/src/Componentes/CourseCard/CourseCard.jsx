@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CourseCard.module.css";
 import { Link } from "react-router-dom";
 
-export default function CourseCard({ name, image, id, review, categories }) {
+export default function CourseCard({ name, image, id, review, categories, price }) {
   return (
     <Link className={styles.linkDetail} to={`/courses/id/${id}`}>
       <div className={styles.card}>
@@ -34,7 +34,7 @@ export default function CourseCard({ name, image, id, review, categories }) {
               <p>⭐⭐⭐⭐⭐</p>
             )}
             <p>
-              <strong>$20</strong>
+              <strong>${price}</strong>
             </p>
           </div>
         </div>
