@@ -11,7 +11,7 @@
   align-items: center;
   padding: 7px 20px;
   background-color: transparent;
-  border: #006466 solid 2px;
+  border: rgba(255, 157, 0, 0.992) solid 2px;
   border-radius: 10px;
   margin-right: 15px;
   margin-left: 2rem;
@@ -25,8 +25,9 @@
   border: none;
   color: rgb(255, 255, 255);
   font-size: 14px;
-  font-family: "Poppins";
-  font-weight: 40px;
+  font-family: 'Montserrat',
+  sans-serif;
+  font-weight: 600;
   /* flex-grow: 1; */
 
 }
@@ -79,3 +80,4 @@
   background: #1B3A4B ;
  border-radius: 5px;
 }
+
