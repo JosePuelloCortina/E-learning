@@ -22,13 +22,13 @@ export function validation(validate) {
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     )
   ) {
-    errors.user = "solo se admiten e-mail";
+    errors.user = "Ingrese un correo válido";
   }
 
   // PASSWORD (CONTRASEÑA ALFANUMERICO)
 
   if (!validate.password) {
-    errors.password = "se requiere password";
+    errors.password = "Se requiere contraseña";
   } else if (
     !validate.password.match(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/
@@ -120,7 +120,7 @@ export default function Login() {
         <div class={style.containerInput}>
           <div class={style.SubcontainerInput}>
             <br></br>
-            <label>Usuario</label>
+            <label>Correo electrónico</label>
             <input
               placeholder="Ingresa tu e-mail..."
               type="text"
@@ -164,7 +164,7 @@ export default function Login() {
             cookiePolicy={"single_host_origin"}
           />
         </div>
-        <p>¿No estas registrado?</p>
+        <h4>¿No estas registrado?</h4>
         <div class={style.divButton1}>
           <Link to="/form">
             <button class={style.buttonRegistro} type="submit">

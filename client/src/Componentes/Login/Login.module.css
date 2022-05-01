@@ -47,9 +47,7 @@
   border-radius: 12px;
 }
 
-.containerInput p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+.container p {
   color: yellow;
 }
 
@@ -67,7 +65,6 @@
   width: 95%;
   border-radius: 12px;
   height: 30px;
-  margin: 5px;
   padding-left: 10px;
 }
 
@@ -120,6 +117,7 @@
   padding: 10px;
   font-family:'Montserrat', sans-serif;
   font-weight: 800;
+  margin-top:25px;
 }
 
 .divButton2 .ingresar:hover {
@@ -198,13 +196,13 @@
   font-size: 30px;
   align-self: center;
 }
-
-.container p{
+.container h4{
   font-family:'Montserrat', sans-serif;
   color: white;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
+  align-self: center;
 }
+
 
 .container img{
   height: 25px;
@@ -225,4 +223,5 @@
   padding: 10px;
   font-family:'Montserrat', sans-serif;
   font-weight: 800;
+  margin-top:25px;
 }
