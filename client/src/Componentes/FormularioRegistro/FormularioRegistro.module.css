@@ -1,3 +1,4 @@
+
 .container button {
     display: flex;
     font-family: sans-serif;
@@ -8,7 +9,8 @@
     align-self: center;
     background-color: rgba(255, 157, 0, 0.992);
     border-radius: 10px;
-   position: relative;
+    position: relative;
+    /* margin-top: 50px; */
    /* bottom: -10%; */
 }
 .container button:hover {
@@ -25,7 +27,7 @@
     min-height: 100vh;
     width: auto;
     background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
-   
+    
 }
 
 
@@ -39,9 +41,17 @@
     width: 95%;
     /* background-color: aqua; */
     margin-top:10px;
- 
     
 } 
+
+.select{
+    background-color: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-family: "Poppins";
+    font-weight: 40px;
+}
 
 
 
@@ -145,5 +155,28 @@
     margin: 5px;
 }
 
+.text{
+    text-decoration: none;
+}
+
+.change{
+    display: flex;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: center;
+    margin-left: center;
+    height: 45px;
+    font-size: 14px;
+    font-weight: 40px;
+    /* margin-bottom: 50px; */
+}
+
+
+/* 
+.buttonReturnHome{
+    padding-bottom: 25px;
+} */
 
 

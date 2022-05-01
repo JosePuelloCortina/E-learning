@@ -11,12 +11,11 @@
   align-items: center;
   padding: 7px 20px;
   background-color: transparent;
-  border: rgb(145, 255, 0) solid 1px;
+  border: #006466 solid 2px;
   border-radius: 10px;
   margin-right: 15px;
   margin-left: 2rem;
   height: 15px;
-
 
 }
 
@@ -56,7 +55,7 @@
   border-radius: 2px;
   color: rgb(255, 255, 255) ;
   background-color: transparent;
-  border: rgb(145, 255, 0) solid 1px;
+  border: #4D194D solid 1px;
   margin: 10px 5px;
 }
 
@@ -77,6 +76,6 @@
   
   display: flex;
   flex-direction: column;
-  background: rgba(11,82,91,1) ;
+  background: #1B3A4B ;
  border-radius: 5px;
 }
