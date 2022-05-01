@@ -112,10 +112,17 @@ export default function FormularioRegistro() {
 
   return (
     <div className={style.container}>
+      <div className={style.logo}>
+    <Link to="/home" >
+      <h1>AkademIT</h1>
+      </Link>
+    </div>
+    <div className={style.title}>
+      <h2>Formulario de Registro</h2>
       <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
         <div class={style.containerInput}>
           <div class={style.SubcontainerInput}>
-            <label>User name</label>
+            <label>Nombre</label>
             <input
               placeholder="Ingresa tu nombre..."
               type="text"
@@ -141,7 +148,7 @@ export default function FormularioRegistro() {
           {errors.email && <p>{errors.email}</p>}
 
           <div class={style.SubcontainerInput}>
-            <label>Password</label>
+            <label>Contraseña</label>
             <input
               placeholder="Ingresa tu contraseña..."
               type="Password"
@@ -155,7 +162,7 @@ export default function FormularioRegistro() {
 
           <div class={style.SubcontainerInput}>
             <br></br>
-            <label>Imagen</label>
+            <label>Imagen URL (opcional)</label>
             <input
               placeholder="Ingresa tu imagen"
               type="url"
@@ -198,6 +205,7 @@ export default function FormularioRegistro() {
         <button class={style.buttonReturnHome}>VOLVER</button>
       </Link>
       </form>
+      </div>
     </div>
   );
 }
