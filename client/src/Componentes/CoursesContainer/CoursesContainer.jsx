@@ -18,6 +18,7 @@ export default function CoursesContainer({ currentCourses }) {
             id={e.id}
             review={e.review}
             categories={e.categories}
+            price={e.price}
           />
         ))
       )}
