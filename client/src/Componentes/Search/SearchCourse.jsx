@@ -18,12 +18,22 @@ setName(e.target.value)
         dispatch(courseSearch(name))
         setName("")
     } 
+
+    function handleKeyPress(e){
+        var key = e.key;
+        if(key === 'Enter'){
+            e.preventDefault()
+            dispatch(courseSearch(name))
+            setName("")
+        }
+    }
     return (
         <div>
             <input type = "text" 
             placeholder="Buscar ..." 
             value = {name} 
             onChange={(e) =>handleInputChange(e)}
+            onKeyDown={(e) => handleKeyPress(e)}
             />
             <button type="submit" onClick={handleSubmitCourse}>Search </button>
       
