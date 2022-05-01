@@ -1,0 +1,105 @@
+.container {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: auto;
+    /* background: rgb(11,82,91); */
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+    align-self: center;
+    margin: 20px;
+    color: black;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 20px;
+    font-weight: center;
+}
+
+.container button {
+    color: white;
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    width: 150px;
+    background-color: #ff9b00;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.cardDetail {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 60px;
+    padding: 20px;
+    border: solid var(--color4) 6px;
+
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.detail{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+}
+
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 60%;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+.right button{
+    
+    align-self: center;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    width: 150px;
+    background-color: #ff9b00;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.right h4{
+    display: flex;
+    align-self: center;
+}
+
+
+.image img{
+    width: 80%;
+    align-self: center;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+}
+
+.courseInfo{
+    display: flex;
+}

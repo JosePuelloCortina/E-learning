@@ -1,0 +1,83 @@
+.containerFilters {
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.containerSelect {
+
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  background-color: transparent;
+  border: rgba(255, 157, 0, 0.992) solid 2px;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-left: 2rem;
+  height: 15px;
+
+}
+
+.select {
+
+  background-color: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-family: 'Montserrat',
+  sans-serif;
+  font-weight: 600;
+  /* flex-grow: 1; */
+
+}
+
+
+.containerSelectMap {
+
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-left: 2rem;
+  height: 15px;
+
+
+
+}
+
+
+.containerSelectMap button {
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  color: rgb(255, 255, 255) ;
+  background-color: transparent;
+  border: #4D194D solid 1px;
+  margin: 10px 5px;
+}
+
+
+.select option {
+  color: black;
+}
+
+.FlechitaAbajo {
+  height: 15px;
+  margin-left: 7px;
+}
+
+.map {
+
+  margin: 10px;
+  position: absolute;
+  
+  display: flex;
+  flex-direction: column;
+  background: #1B3A4B ;
+ border-radius: 5px;
+}
+

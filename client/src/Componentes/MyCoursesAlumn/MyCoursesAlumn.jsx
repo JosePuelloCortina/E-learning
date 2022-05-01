@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './myCoursesAlumn.module.css'
 import CardMini from '../CardMini/CardMini'
+
 import { useSelector} from "react-redux";
 
 
 export default function MyCoursesAlumn() {
     
     const user = useSelector(state => state.user)
+
     return(
         <div className={styles.container}>
         <div className={styles.title}>
@@ -19,6 +21,7 @@ export default function MyCoursesAlumn() {
             )
         })}
         
+
         </div>
         </div>
     )

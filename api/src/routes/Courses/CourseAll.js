@@ -2,6 +2,7 @@ const server = require('express').Router();
 const { User, Course, Category, Buy} = require('../../db');
 
 
+
 server.get("/all", async function(req, res, next){
     try {
         const courses = await Course.findAll({
@@ -20,6 +21,7 @@ server.get("/all", async function(req, res, next){
                     }
                 },
                 Buy
+
             ],
             attributes: { exclude: ['createdAt', 'updatedAt'] }
             

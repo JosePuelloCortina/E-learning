@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 780px;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px;
+    color: black;
+    
+    border-radius: 30px;
+    padding: 20px;
+    border: solid var(--color4) 8px;
+}
+.editButton {
+    width: 160px;
+    height: 35px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff9b00;
+    color: white;
+    border: solid black 0.5px;
+    
+}
+
+.container img{
+    width: auto;
+    height: 200px;
+    border-radius: 50px;
+}
+
+.container h3 {
+    font-size: 20px;
+    color: black;
+}
+
+.container h4 {
+    font-size: 15px;
+    color: black
+}

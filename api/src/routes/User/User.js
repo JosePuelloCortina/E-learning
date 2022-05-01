@@ -29,6 +29,7 @@ server.get("/", async function(req, res, next){
         // });
         // const userData = users.concat(userPurchase)
         res.status(200).send(user)
+
         
     } catch (error) {
         console.log(error);

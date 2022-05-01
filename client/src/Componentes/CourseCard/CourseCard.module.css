@@ -1,0 +1,54 @@
+.linkDetail {
+  text-decoration: none;
+  color: #000;
+}
+
+.card {
+  background-color: white;
+  height: 220px;
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  padding: 10px;
+  border: solid var(--color4) 8px;
+  border-radius: 20px;
+}
+
+.image {
+  color: white;
+  height: 65%;
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+}
+
+.info {
+  height: 35%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card p{
+    margin: 0;
+}
+
+.info div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card:hover {
+  opacity: 0.5;
+}
+

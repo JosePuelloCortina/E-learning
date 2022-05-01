@@ -5,7 +5,6 @@ export default function CardMini ({name}){
     return(
         <div className={styles.container}>
         <h4>{name}</h4>
-      
         <p>4⭐</p>
      
         </div>

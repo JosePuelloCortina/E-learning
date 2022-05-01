@@ -36,6 +36,7 @@ const initializeBuys = async() =>{
                 discount : b.discount,
                 pay_method : b.pay_method,
                 total_price: b.total_price,
+
             }           
             const createBuy = await Buy.create(buy);
             await createBuy.setUser(b.userId)

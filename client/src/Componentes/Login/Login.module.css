@@ -1,0 +1,227 @@
+.buttonRegistro {
+  display: flex;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+  align-self: center;
+  background-color: rgba(255, 157, 0, 0.992);
+  border-radius: 10px;
+}
+.buttonRegistro:hover {
+  background-color: rgb(179, 7, 205);
+  cursor: pointer;
+}
+
+.linkButtonRegistro {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: auto;
+  background: linear-gradient(
+    260deg,
+    rgba(11, 82, 91, 1) 0%,
+    rgba(27, 58, 75, 1) 30%,
+    rgba(77, 25, 77, 1) 100%
+  );
+}
+
+.SubcontainerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: fit-content;
+  min-height: fit-content;
+  width: 95%;
+  padding-left: 10px;
+  border-radius: 12px;
+}
+
+.container p {
+  color: yellow;
+}
+
+.containerInput {
+  display: flex;
+  margin: 20px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  width: 95%;
+}
+
+.SubcontainerInput input {
+  width: 95%;
+  border-radius: 12px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.SubcontainerInput label {
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  margin: 5px 0px;
+}
+
+.form {
+  display: flex;
+  border-radius: 25px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: rgb(255, 255, 255) solid 2px;
+  box-shadow: 0 5px 15px white;
+  background-color: transparent;
+  height: 500px;
+  width: 400px;
+  padding: 30px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divButton2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 95%;
+}
+
+.divButton2 .ingresar {
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #ff9b00;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
+  margin-top:25px;
+}
+
+.divButton2 .ingresar:hover {
+  background-color: rgb(179, 7, 205);
+  cursor: pointer;
+  color: white;
+}
+
+.divButton1 {
+  color: beige;
+  letter-spacing: 10px;
+  font-size: 20px;
+}
+
+.divButton1 a {
+    text-decoration: none;
+}
+
+.divButton1 button {
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #ff9b00;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
+}
+.divButton1 button:hover {
+    background-color: rgb(120, 3, 138);
+      cursor: pointer;
+}
+
+.buttonReturnHome{
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #ff9b00;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.container .buttonReturnHome:hover {
+  background-color: rgb(120, 3, 138);
+    cursor: pointer;
+}
+.logo{
+  display: flex;
+  width: 100%;
+  justify-content: left;
+}
+.logo h1{
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 40px;
+  margin-left: 30px;
+}
+
+.logo a{
+  text-decoration: none;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container h2{
+  font-family:'Montserrat', sans-serif;
+  color: white;
+  font-size: 30px;
+  align-self: center;
+}
+.container h4{
+  font-family:'Montserrat', sans-serif;
+  color: white;
+  font-size: 18px;
+  align-self: center;
+}
+
+
+.container img{
+  height: 25px;
+  vertical-align: center;
+  margin-right: 5px;
+}
+
+.container .google {
+  display: flex;
+  justify-content: center;
+  color: black;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
+  margin-top:25px;
+}

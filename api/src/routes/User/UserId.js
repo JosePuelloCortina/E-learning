@@ -2,6 +2,7 @@ const server = require('express').Router();
 const { User, Role, Buy, Op} = require('../../db');
 
 
+
 server.get("/id/:id", async function(req, res, next){
     try {
         const { id } = req.params;
@@ -11,6 +12,7 @@ server.get("/id/:id", async function(req, res, next){
                 where:{
                     id:id
                 }, include: [Role, Buy]
+
             })
         }
         res.send(user ? user : "No hay usuario!!")

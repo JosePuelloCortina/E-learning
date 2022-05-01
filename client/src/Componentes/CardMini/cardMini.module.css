@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 45%;
+    height: 50px;
+    cursor: pointer;
+    border: solid var(--color3) 2px;
+    border-radius: 15px;
+    /* background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/javascript.jpg?itok=gnWgoCTM'); */
+   /* background-size: cover; */
+   background-color: white;
+    margin: 10px;
+}
+
+
+.container h4{
+    display: flex;
+    align-self: center;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    background-color: transparent;
+    padding: 5px;
+    font-style: bold;
+    width: 80%;
+}
+
+.container p{
+    align-self: center;
+}
