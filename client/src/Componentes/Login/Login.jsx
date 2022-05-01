@@ -134,9 +134,9 @@ export default function Login() {
 
           <div class={style.SubcontainerInput}>
             <br></br>
-            <label>Password</label>
+            <label>Contraseña</label>
             <input
-              placeholder="Ingresa tu Password..."
+              placeholder="Ingresa tu Contraseña..."
               type="password"
               name="password"
               autoComplete="off"
@@ -156,7 +156,7 @@ export default function Login() {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
-              <img src={googleIcon} alt='avatar' /> Ingresar con Google
+              <img src={googleIcon} alt='' /> Ingresar con Google
               </button>
             )}
             onSuccess={handleSucces}
