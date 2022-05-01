@@ -26,18 +26,21 @@ function CourseCardDetail() {
 
   const detail = useSelector((state) => state.courseDetail);
   const loggedUser = useSelector( state => state.loggedUsers);
-  console.log(loggedUser)
+  console.log(loggedUser, "este es el usuario" )
  
  
-  const idCourse = detail.id
-   console.log(idCourse, "ESTO ES IDcourse")
+  // const idCourse = detail.id
+   console.log(id, "ESTO ES IDcourse")
 
-  function handlePurchase (e){
-    e.preventDefault(e);
-    purchase(idCourse,id);
-    navigate("/purchaseok")
+  function handlePurchase(){
+    if(loggedUser.length === 0){
+      alert("Para comprar el curso debes iniciar sesión")
+      navigate('/user')
+    }else{
+      dispatch(purchase({idUsuario: loggedUser, idCurso: id}))
+      navigate('/purchaseok')
   }
-
+  }
   return (
     <div>
     <NavBar/>
@@ -62,7 +65,7 @@ function CourseCardDetail() {
             </div>
           <div className={styles.right}>
             <h4>Valor: ${detail.price}</h4>
-            <button onClick={handlePurchase}>Comprar</button>
+            <button onClick={() => handlePurchase()}>Comprar</button>
           </div>
         </div>
           

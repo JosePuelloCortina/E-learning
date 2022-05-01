@@ -2,9 +2,9 @@ const server = require("express").Router();
 const {Buy, Course, User, Role} = require("../../db");
 
 
-server.post("/:idCurso", async (req, res) => {
-    let { idUsuario, discount, pay_method } = req.body; //recibe los datos por body mediante formulario
-    let {idCurso} = req.params; // recibe los datos por parametro mediante url
+server.post("/", async (req, res) => {
+    let {idUsuario, idCurso, discount, pay_method } = req.body; //recibe los datos por body mediante formulario
+
     try {
       const course = await Course.findByPk(idCurso);
     
@@ -19,8 +19,9 @@ server.post("/:idCurso", async (req, res) => {
       } //verifica si el usuario ya compró el curso
       if ( userRole === "alumno") {
         Buy.create({
-          discount: discount,
-          pay_method: pay_method,
+          discount: discount || 0,
+          pay_method: pay_method || "efectivo",
+          total_price: course.dataValues.price - discount || course.dataValues.price,
         }) //crea la compra
         .then(buyCourse => {
           buyCourse.setCourse(idCurso)

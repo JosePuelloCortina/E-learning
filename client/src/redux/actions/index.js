@@ -141,10 +141,10 @@ export const removeLoggedUser = (payload) => {
   };
 };
 
-export function purchase(id, payload) {
+export function purchase(payload) {
   return async function() {
     try {
-      await axios.post(`http://localhost:3001/buy/${id}`, payload);
+      await axios.post(`http://localhost:3001/buy/`, payload);
     } catch (error) {
       console.log(error);
     }
