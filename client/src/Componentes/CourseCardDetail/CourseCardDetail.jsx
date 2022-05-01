@@ -4,16 +4,17 @@ import { useParams } from "react-router";
 import {
   getCoursesById,
   removeCourseDetail,
+  purchase
 } from "../../redux/actions";
 import styles from "./CourseCardDetail.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,6 +25,18 @@ function CourseCardDetail() {
   }, []);
 
   const detail = useSelector((state) => state.courseDetail);
+  const loggedUser = useSelector( state => state.loggedUsers);
+  console.log(loggedUser)
+ 
+ 
+  const idCourse = detail.id
+   console.log(idCourse, "ESTO ES IDcourse")
+
+  function handlePurchase (e){
+    e.preventDefault(e);
+    purchase(idCourse,id);
+    navigate("/purchaseok")
+  }
 
   return (
     <div>
@@ -49,7 +62,7 @@ function CourseCardDetail() {
             </div>
           <div className={styles.right}>
             <h4>Valor: ${detail.price}</h4>
-            <button>Comprar</button>
+            <button onClick={handlePurchase}>Comprar</button>
           </div>
         </div>
           
