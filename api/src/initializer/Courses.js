@@ -10,7 +10,7 @@ let courses = [
         "progress": "4/5",
         "image": "https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "frontend",
+        "category": "Front-End",
         "price" : "120"
     },
     {
@@ -22,7 +22,7 @@ let courses = [
         "progress": "3/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773728",
-        "category": "backend",
+        "category": "Back-End",
         "price" : "100"
     },
     {
@@ -34,7 +34,7 @@ let courses = [
         "progress": "3/5",
         "image": "https://cdn.pixabay.com/photo/2019/08/06/22/48/artificial-intelligence-4389372_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "fullstack",
+        "category": "Full-Stack",
         "price" : "110"
     },
     {
@@ -46,7 +46,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "fullstack",
+        "category": "Full-Stack",
         "price" : "150"
     },
     {
@@ -58,7 +58,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "frontend",
+        "category": "Front-End",
         "price" : "100"
     },
     {
@@ -70,7 +70,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "backend",
+        "category": "Back-End",
         "price" : "180"
     },
     {
@@ -82,7 +82,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "backend",
+        "category": "Back-End",
         "price" : "180"
     },
     {
@@ -94,7 +94,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "backend",
+        "category": "Back-End",
         "price" : "200"
     },
     {
@@ -106,7 +106,7 @@ let courses = [
         "progress": "casito lo termino",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "frontend",
+        "category": "Front-End",
         "price" : "120"
     },
     {
@@ -118,7 +118,7 @@ let courses = [
         "progress": "3/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773728",
-        "category": "backend",
+        "category": "Back-End",
         "price" : "100"
     },
     {
@@ -130,7 +130,7 @@ let courses = [
         "progress": "3/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "fullstack",
+        "category": "Full-Stack",
         "price" : "110"
     },
     {
@@ -142,7 +142,7 @@ let courses = [
         "progress": "5/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773727",
-        "category": "fullstack",
+        "category": "Full-Stack",
         "price" : "150"
     },
 

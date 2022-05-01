@@ -2,13 +2,13 @@ const { Category } = require('../db');
 
 let categorias = [
     {
-        "name": "frontend"
+        "name": "Front-End"
     },
     {
-        "name": "backend"
+        "name": "Back-End"
     },
     {
-        "name": "fullstack"
+        "name": "Full-Stack"
     }
 ]
 
