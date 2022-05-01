@@ -5,14 +5,17 @@
 
 .card {
   background-color: white;
-  height: 200px;
-  width: 300px;
-  border-radius: 10px;
+  height: 220px;
+  width: 320px;
+
   display: flex;
   flex-direction: column;
   margin: 20px;
   cursor: pointer;
   transition: 0.5s;
+  padding: 10px;
+  border: solid var(--color4) 8px;
+  border-radius: 20px;
 }
 
 .image {
