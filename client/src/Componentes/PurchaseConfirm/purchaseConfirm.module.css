@@ -1,0 +1,37 @@
+.container {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: auto;
+    background: rgb(11,82,91);
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+}
+
+.container h1 {
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 100px;
+}
+
+.container h2 {
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 35px;
+}
+
+.container h3 {
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 0px;
+    font-size: 20px;
+}
+.container p{
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 0px;
+    font-size: 12px;
+}

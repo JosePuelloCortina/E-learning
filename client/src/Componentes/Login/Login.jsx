@@ -108,6 +108,13 @@ export default function Login() {
 
   return (
     <div class={style.container}>
+    <div className={style.logo}>
+    <Link to="/home" >
+      <h1>AkademIT</h1>
+      </Link>
+    </div>
+    <div className={style.title}>
+      <h2>Iniciar Sesión</h2>
       <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
         <div class={style.containerInput}>
           <div class={style.SubcontainerInput}>
@@ -168,6 +175,7 @@ export default function Login() {
         <button class={style.buttonReturnHome}>VOLVER</button>
       </Link>
       </form>
+      </div>
     </div>
   );
 }

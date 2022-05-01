@@ -1,27 +1,27 @@
 import React from 'react'
-import styles from './confirmRegister.module.css'
+import styles from './purchaseConfirm.module.css'
 import {Link, useNavigate} from 'react-router-dom'
 import { useEffect } from 'react'
 
-export default function ConfirmRegister(){
+export default function PurchaseConfirm(){
     const navigate= useNavigate()
     useEffect(()=>{redirect() })
 
     function redirect(){
-        setTimeout(() => { navigate('/user')
+        setTimeout(() => { navigate('/home')
         }, 6000);
         
     }
     return(
         <div className={styles.container}>
-            <h2>Fuiste registrado correctamente!</h2>
-            <h3>En unos segundos serás redirigido para iniciar sesión...</h3>
+            <h2>Compra realizada exitosamente!</h2>
+            <h3>En unos segundos serás redirigido...</h3>
             <br/>
             <br/>
             <h1>AkademIT</h1>
             <br/>
             <br/>
-            <Link to='/user'>
+            <Link to='/home'>
             <p>Si no fuiste redirigido clickea aqui.</p>
             </Link>
         </div>
