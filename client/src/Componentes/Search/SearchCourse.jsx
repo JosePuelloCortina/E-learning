@@ -20,12 +20,7 @@ setName(e.target.value)
     } 
 
     function handleKeyPress(e){
-        var key = e.key;
-        if(key === 'Enter'){
-            e.preventDefault()
-            dispatch(courseSearch(name))
-            setName("")
-        }
+        dispatch(courseSearch(name))
     }
     return (
         <div>
