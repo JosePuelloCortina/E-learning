@@ -105,7 +105,6 @@
 
 
 .form {
-   
     display: flex;  
     border-radius: 25px;
     flex-direction: column;
@@ -116,6 +115,7 @@
     background-color: transparent;
     height: 750px;
     width: 400px;
+    padding: 30px;
     
 }
 
@@ -162,22 +162,16 @@
 .change{
     display: flex;
     align-items: center;
-    padding: 15px 40px;
     background-color: white;
     border-radius: 10px;
     margin-right: center;
     margin-left: center;
-    height: 45px;
+    height: 35px;
     font-size: 14px;
     font-weight: 40px;
-    /* margin-bottom: 50px; */
+    margin: 20px;
 }
 
-
-/* 
-.buttonReturnHome{
-    padding-bottom: 25px;
-} */
 
 .logo{
     display: flex;
