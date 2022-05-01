@@ -9,6 +9,7 @@ import EditProfile from "./Componentes/EditProfile/EditProfile";
 import CourseCardDetail from "./Componentes/CourseCardDetail/CourseCardDetail";
 import ConfirmRegister from "./Componentes/ConfirmRegister/ConfirmRegister";
 import PurchaseConfirm from './Componentes/PurchaseConfirm/PurchaseConfirm';
+import Error404 from "./Componentes/Error404/Error404";
 
 function App() {
   return (
@@ -16,15 +17,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/form" element={<FormularioRegistro />} />
           <Route path="/user" element={<Login />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/profile/edit/:id" element={<EditProfile />} />
           <Route exact path="/courses/id/:id" element={<CourseCardDetail />} />
-          <Route path="/registerok" element={<ConfirmRegister />} />
-          <Route path="/purchaseok" element={<PurchaseConfirm />} />
+          <Route exact path="/registerok" element={<ConfirmRegister />} />
+          <Route exact path="/purchaseok" element={<PurchaseConfirm />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </div>

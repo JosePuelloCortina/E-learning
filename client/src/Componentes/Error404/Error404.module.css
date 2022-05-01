@@ -8,7 +8,16 @@
  flex-direction: column;
 
 }
+.container img{
+  width: 500px;
+}
 
+.container h2 {
+  font-family: 'Monserrat', monospace;
+  letter-spacing: 1px;
+  color:  #ff9b00;
+  font-size: 20px;
+}
 .container .buttonYellow {
   color: white;
   border-radius: 10px;

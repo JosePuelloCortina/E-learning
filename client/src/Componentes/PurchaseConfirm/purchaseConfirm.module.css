@@ -10,10 +10,11 @@
 }
 
 .container h1 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Gugi', cursive;
+    letter-spacing: 4px;
     color: white;
-    letter-spacing: 2px;
-    font-size: 100px;
+    font-size: 120px;
+    text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
 }
 
 .container h2 {
