@@ -4,21 +4,32 @@ const { User, Role, Buy} = require('../../db');
 
 server.get("/", async function(req, res, next){
     try {
-        const users = await User.findAll({
-            include: [{
-                model: Role,
-                attributes: ["tipo"],
-                through:{
-                    attributes: [],
-                },
-                //model: Buy,
-                // attributes: ["discount", "pay_method"],
-                // through:{
-                //     attributes: [],
-                // },    
-            }], attributes: { exclude: ['createdAt', 'updatedAt'] }
-        });
-        res.status(200).send(users)
+        const user = await User.findAll({
+            include: [
+                Role,
+                Buy
+            ], 
+            attributes: { exclude: ['createdAt', 'updatedAt'] }
+        })
+        // const userPurchase = user.dataValues.buys;
+        // console.log(user.dataValues)
+        // const users = await User.findAll({
+        //     include: [{
+        //         model: Role,
+        //         attributes: ["tipo"],
+        //         through:{
+        //             attributes: [],
+        //         },
+        //         // model: Buy,
+        //         // attributes: ["discount", "pay_method"],
+        //         // through:{
+        //         //     attributes: [],
+        //         // },    
+        //     }], attributes: { exclude: ['createdAt', 'updatedAt'] }
+        // });
+        // const userData = users.concat(userPurchase)
+        res.status(200).send(user)
+
         
     } catch (error) {
         console.log(error);

@@ -1,5 +1,6 @@
 const server = require('express').Router();
-const { User, Role, Op} = require('../../db');
+const { User, Role, Buy, Op} = require('../../db');
+
 
 
 server.get("/id/:id", async function(req, res, next){
@@ -10,9 +11,8 @@ server.get("/id/:id", async function(req, res, next){
             user = await User.findOne({
                 where:{
                     id:id
-                }, include: {
-                    model: Role
-                }
+                }, include: [Role, Buy]
+
             })
         }
         res.send(user ? user : "No hay usuario!!")
