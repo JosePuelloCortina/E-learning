@@ -21,22 +21,28 @@ export default function Home() {
 
   return (
     <div className={styles.navBar}>
+
+
       {loggedUser.length > 0 && (
         <Link to={`/profile/${loggedUser}`}>
-          <button>Mi perfil</button>
+          <button className={styles.buttonPerfil}  >Mi perfil</button>
         </Link>
       )}
-      <Link className={styles.linkHome} to="/home">
-        <h1>AkademIT</h1>
-      </Link>
 
       {loggedUser.length === 0 ? (
         <Link to="/user">
-          <button>Ingresar</button>
+          <button >Ingresar</button>
         </Link>
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
       )}
+
+
+      <Link className={styles.linkHome} to="/home">
+        <h1>AkademIT</h1>
+      </Link>
+
+
     </div>
   );
 }
