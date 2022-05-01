@@ -30,7 +30,7 @@ export default function Home() {
   const courses = useSelector((state) => state.courses);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [coursesPerPage] = useState(8);
+  const [coursesPerPage] = useState(6);
   const lastCourseIndex = currentPage * coursesPerPage;
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
   const currentCourses = courses.slice(firstCourseIndex, lastCourseIndex);

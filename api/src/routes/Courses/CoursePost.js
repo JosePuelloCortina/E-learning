@@ -20,11 +20,12 @@ server.post("/create", async (req, res) =>{
         
         const role = usuario.dataValues.roles[0].dataValues.tipo; 
 
-        const categoria = await Category.findOne({
+        const categoria = await Category.findAll({
             where: {
                 name: category
             }
         });
+        // console.log(categoria);
 
         
 
@@ -40,7 +41,7 @@ server.post("/create", async (req, res) =>{
             })
             .then(course =>{
                 course.addUser(user)
-                course.addCategory(category)
+                course.addCategory(categoria)
                 .then(async () =>{
                     course.user = await course.getUsers()  
                     course.category = await course.getCategories()                 

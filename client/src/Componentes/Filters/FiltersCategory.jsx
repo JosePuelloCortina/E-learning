@@ -13,7 +13,7 @@ function FiltersCategory({setCurrentPage}) {
   }, [dispatch, category]);
 
   function handleAddCategory(e) {
-    if(e.target.value !== "Seleccionar" && !category.includes(e.target.value)){
+    if(e.target.value !== "Categoria" && !category.includes(e.target.value)){
       setCategory([...category, e.target.value]);
       setCurrentPage(1);
     }
