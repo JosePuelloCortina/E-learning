@@ -159,3 +159,29 @@
   background-color: rgb(120, 3, 138);
   cursor: pointer;
 }
+.logo{
+  display: flex;
+  width: 100%;
+  justify-content: left;
+}
+.logo h1{
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 40px;
+  margin-left: 30px;
+}
+
+.logo a{
+  text-decoration: none;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container h2{
+  font-family:'Montserrat', sans-serif;
+  color: white;
+  font-size: 30px;
+  align-self: center;
+}
