@@ -164,10 +164,10 @@ export default function Login() {
             </button>
           </Link>
         </div>
-      </form>
-      <Link to="/home">
-        <button class={style.buttonReturnHome}>VOLVER A HOME</button>
+      <Link className={style.linkButtonRegistro} to="/home">
+        <button class={style.buttonReturnHome}>VOLVER</button>
       </Link>
+      </form>
     </div>
   );
 }

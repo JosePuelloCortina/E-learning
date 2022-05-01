@@ -166,9 +166,10 @@ export default function FormularioRegistro() {
             />
           </div>
 
-          <div class={style.SubcontainerInput}>
-            <label>Role</label>
-            <select onChange={(e) => handleSelect2(e)}>
+          <div class={style.SubcontainerInputRole}>
+            {/* <label class={style.role}>Role</label> */}
+            <select class={style.change} onChange={(e) => handleSelect2(e)}>
+              <option value="Role">Role</option>
               <option value="instructor">Instructor</option>
               <option value="alumno">Alumno</option>
             </select>
@@ -193,10 +194,10 @@ export default function FormularioRegistro() {
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
-      </form>
-      <Link to="/home">
-        <button class={style.buttonReturnHome}>VOLVER A HOME</button>
+      <Link className={style.text}to="/home">
+        <button class={style.buttonReturnHome}>VOLVER</button>
       </Link>
+      </form>
     </div>
   );
 }

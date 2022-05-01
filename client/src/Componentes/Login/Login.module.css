@@ -136,3 +136,26 @@
   font-family: "Source Code Pro", monospace;
   margin: 5px;
 }
+
+.buttonReturnHome{
+  display: flex;
+  font-size: 15px;
+  font-family: Arial,
+  Helvetica,
+  sans-serif;
+  padding: 15px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+  align-self: center;
+  background-color: rgba(255, 157, 0, 0.992);
+  border-radius: 10px;
+
+  
+}
+
+.buttonReturnHome:hover{
+  background-color: rgb(120, 3, 138);
+  cursor: pointer;
+}
