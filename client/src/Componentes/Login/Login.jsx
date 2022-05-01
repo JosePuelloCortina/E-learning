@@ -7,6 +7,7 @@ import GoogleLogin from "react-google-login";
 import { addLoggedUser } from "../../redux/actions/index";
 import { useNavigate } from "react-router";
 import { allUser } from "../../redux/actions/index";
+import googleIcon from '../../Images/googleIcon.png'
 
 export function validation(validate) {
   let errors = {};
@@ -147,15 +148,15 @@ export default function Login() {
         </div>
 
         <div class={style.divButton2}>
-          <button type="submit">INGRESAR</button>
+          <button className={style.ingresar}type="submit">Ingresar</button>
           <GoogleLogin
             clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
             render={(renderProps) => (
-              <button
+              <button className={style.google}
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
-                INGRESAR CON GOOGLE
+              <img src={googleIcon} alt='avatar' /> Ingresar con Google
               </button>
             )}
             onSuccess={handleSucces}
@@ -165,14 +166,14 @@ export default function Login() {
         </div>
         <p>¿No estas registrado?</p>
         <div class={style.divButton1}>
-          <Link className={style.linkButtonRegistro} to="/form">
+          <Link to="/form">
             <button class={style.buttonRegistro} type="submit">
-              REGISTRARME
+              Registrarme
             </button>
           </Link>
         </div>
-      <Link className={style.linkButtonRegistro} to="/home">
-        <button class={style.buttonReturnHome}>VOLVER</button>
+      <Link  to="/home">
+        <button class={style.buttonReturnHome}>Volver</button>
       </Link>
       </form>
       </div>

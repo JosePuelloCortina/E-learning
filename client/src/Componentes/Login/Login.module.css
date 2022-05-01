@@ -109,20 +109,20 @@
   width: 95%;
 }
 
-.divButton2 button {
+.divButton2 .ingresar {
   color: white;
   border-radius: 10px;
   height: fit-content;
   width: fit-content;
   background-color: #ff9b00;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   padding: 10px;
   font-family:'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 800;
 }
 
-.container button:hover {
+.divButton2 .ingresar:hover {
   background-color: rgb(179, 7, 205);
   cursor: pointer;
   color: white;
@@ -144,11 +144,11 @@
   height: fit-content;
   width: fit-content;
   background-color: #ff9b00;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   padding: 10px;
   font-family:'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 800;
 }
 .divButton1 button:hover {
     background-color: rgb(120, 3, 138);
@@ -161,14 +161,14 @@
   height: fit-content;
   width: fit-content;
   background-color: #ff9b00;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   padding: 10px;
   font-family:'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 800;
 }
 
-.container .buttonReturnHomebutton:hover {
+.container .buttonReturnHome:hover {
   background-color: rgb(120, 3, 138);
     cursor: pointer;
 }
@@ -204,4 +204,25 @@
   color: white;
   font-size: 20px;
   font-weight: 500;
+}
+
+.container img{
+  height: 25px;
+  vertical-align: center;
+  margin-right: 5px;
+}
+
+.container .google {
+  display: flex;
+  justify-content: center;
+  color: black;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
 }
