@@ -31,6 +31,11 @@
   font-size: 60px;
   text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
 }
+
+.navBar h1:hover{
+  text-shadow: 5px 5px 5px rgba(248, 186, 16, 0.67);
+  
+}
  
 
 .navBar input {
@@ -55,6 +60,7 @@
   padding: 10px;
   font-family:'Montserrat', sans-serif;
   font-weight: 800;
+  margin: 20px;
 }
 
 .navBar button:hover {
