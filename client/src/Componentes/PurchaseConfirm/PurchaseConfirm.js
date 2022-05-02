@@ -9,7 +9,7 @@ export default function PurchaseConfirm(){
 
     function redirect(){
         setTimeout(() => { navigate('/home')
-        }, 6000);
+        }, 5000);
         
     }
     return(
