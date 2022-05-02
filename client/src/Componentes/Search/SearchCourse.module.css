@@ -6,14 +6,22 @@
   font-size: 14px;
   font-weight: 1500;
   border-radius: 9999px;
+ 
+ 
 }
 
 .container .resetButton:hover {
   background-color: rgba(218, 218, 218, 0.855);
 }
 
+
+.container {
+
+  display:flex ;
+
 .container{
   display: flex;
+
   flex-direction: row;
   align-items: center;
 }

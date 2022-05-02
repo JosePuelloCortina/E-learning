@@ -43,6 +43,13 @@ export function validation(form) {
       "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial.";
   }
 
+ // CONFIRMACION-PASSWORD 
+
+ if (form.password !== form.confirmacionPassword ) {
+  errors.confirmacionPassword = "Las contraseñas ingresadas no coinciden"
+}   
+
+
   return errors;
 }
 
@@ -57,6 +64,7 @@ export default function FormularioRegistro() {
     email: "",
     image: "",
     role: "",
+    confirmacionPassword: "",
   });
 
   const handleInputChange = function (e) {
@@ -151,7 +159,7 @@ export default function FormularioRegistro() {
           <div class={style.SubcontainerInput}>
             <label>Contraseña</label>
             <input
-              placeholder="Ingresa tu contraseña..."
+              placeholder="Ingresa tu contraseña ..."
               type="Password"
               name="password"
               autoComplete="off"
@@ -160,6 +168,23 @@ export default function FormularioRegistro() {
             />
           </div>
           {errors.password && <p>{errors.password}</p>}
+
+          <div class={style.SubcontainerInput}>
+            <label>Confirma tu contraseña</label>
+            <input
+              placeholder="Ingresa tu contraseña ..."
+              type="Password"
+              name="confirmacionPassword"
+              onChange={handleInputChange}
+              autoComplete="off"
+              value={form.confirmacionPassword}
+            />
+          </div>
+          {errors.confirmacionPassword && <p>{errors.confirmacionPassword}</p>}
+
+
+
+
 
           <div class={style.SubcontainerInput}>
             <br></br>
