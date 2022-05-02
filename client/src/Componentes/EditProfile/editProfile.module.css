@@ -8,6 +8,11 @@
     background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
 }
 
+.title h2{
+    font-size: 45px;
+    color: white;
+}
+
 
 
 .save {
@@ -24,10 +29,16 @@
     cursor: pointer;
     background-color: #ff9b00;
     color: white;
-    border: solid black 0.5px;
+    /* border: solid black 0.5px; */
     /* text-align: center; */
     align-self: center;
     margin-top: 30px;
+    
+}
+
+.save:hover{
+    background-color: rgb(179, 7, 205);
+    cursor: pointer;
 }
 
 .buttons{
@@ -36,6 +47,7 @@
     margin-bottom: 20px;
 
 }
+
 
 .editPanel {
     display: flex;

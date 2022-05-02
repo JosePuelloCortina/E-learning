@@ -88,7 +88,7 @@ function handleSubmit(e){
         <div>
         <NavBar/>
         <div className={styles.container}>
-        <div><h2>Mis Datos</h2></div>
+        <div className={styles.title}><h2>Mis Datos</h2></div>
             <div className={styles.editPanel}>
             <form onSubmit={handleSubmit}>
             <div className={styles.cont2}>

@@ -28,6 +28,11 @@
     
 }
 
+.editButton:hover{
+    background-color: rgb(179, 7, 205);
+    cursor: pointer;
+}
+
 .container img{
     width: auto;
     height: 200px;

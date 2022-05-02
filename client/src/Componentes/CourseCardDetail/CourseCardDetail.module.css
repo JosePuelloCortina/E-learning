@@ -18,13 +18,20 @@
 .container button {
     color: white;
     border-radius: 10px;
-    border: none;
-    height: 40px;
-    width: 150px;
+    height: fit-content;
+    width: fit-content;
     background-color: #ff9b00;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-    align-items: center;
+    padding: 10px;
+    font-family:'Montserrat',
+    sans-serif;
+    font-weight: 800;
+}
+
+.container button:hover{
+    background-color: rgb(179, 7, 205);
+    cursor: pointer;   
 }
 
 .cardDetail {
@@ -73,16 +80,27 @@
 
 .right button{
     
+    display: flex;
+    justify-content: center;
     align-self: center;
     color: white;
     border-radius: 10px;
-    border: none;
     height: 40px;
     width: 150px;
     background-color: #ff9b00;
     font-size: 20px;
     cursor: pointer;
     align-items: center;
+    color: white;
+    padding: 10px;
+    font-family:'Montserrat',
+    sans-serif;
+    font-weight: 800;
+}
+
+.right button:hover{
+    background-color: rgb(179, 7, 205);
+    cursor: pointer;
 }
 
 .right h4{
