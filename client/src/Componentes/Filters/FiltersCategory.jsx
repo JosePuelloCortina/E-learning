@@ -28,7 +28,7 @@ function FiltersCategory({setCurrentPage}) {
       <div className={styles.containerSelect}>
         {/* <label>Categoria</label> */}
         <div className={styles.select}>
-        <select className={styles.select} onChange={(e) => handleAddCategory(e)}>
+        <select className={styles.selecttodo} onChange={(e) => handleAddCategory(e)}>
           <option>Categoria</option>
           {categories.map((category) => {
             return (

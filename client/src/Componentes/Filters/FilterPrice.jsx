@@ -19,7 +19,7 @@ function FilterPrice() {
     return(
         <div className={styles.containerSelect}>
             <div className={styles.select}>
-                <select className={styles.select} onChange={e => handleChange(e)}>
+                <select className={styles.selecttodo} onChange={e => handleChange(e)}>
                     <option>Precio</option>
                     <option value={'paid'}>De pago</option>
                     <option value={'free'}>Gratis</option>

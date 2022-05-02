@@ -17,11 +17,12 @@ function FilterReview({ setOrderReview }) {
   return (
     <div className={styles.containerSelect}>
       <div className={styles.select}>
-        <select className={styles.select} onChange={(e) => handleOnChange(e)}>
+        <select className={styles.selecttodo} onChange={(e) => handleOnChange(e)}>
           <option value="All">Calificaciones</option>
           <option value="review_desc">Mayor a menor</option>
           <option value="review_asc">Menor a mayor</option>
         </select>
+       
       </div>
     </div>
   );
