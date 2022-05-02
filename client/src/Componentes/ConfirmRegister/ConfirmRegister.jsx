@@ -9,7 +9,7 @@ export default function ConfirmRegister(){
 
     function redirect(){
         setTimeout(() => { navigate('/user')
-        }, 6000);
+        }, 5000);
         
     }
     return(
