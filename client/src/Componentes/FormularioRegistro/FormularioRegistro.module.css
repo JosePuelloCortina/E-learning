@@ -98,11 +98,20 @@
     width: 100%;
     justify-content: left;
   }
-  .logo h1{
+  .logo h1 {
+    margin: 20px;
+    width: 150px;
+    text-decoration: none;
     color: white;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 40px;
-    margin-left: 30px;
+    font-family: 'Gugi', cursive;
+    letter-spacing: 4px;
+    font-size: 60px;
+    text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
+  }
+  
+  .logo h1:hover{
+    text-shadow: 5px 5px 5px rgba(248, 186, 16, 0.67);
+    
   }
   
   .logo a{
