@@ -1,6 +1,7 @@
 .navBar {
   background: linear-gradient(to left, var(--color4), var(--color5));
   display: flex;
+
   height: 60px;
   align-items: center;
   justify-content: flex-end;
@@ -12,6 +13,9 @@
 }
 
 .linkHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   text-decoration: none;
   position: absolute;
   left: calc(20px); 
@@ -84,12 +88,14 @@
 
 
 .buttonPerfil {
-
   margin-right: 20px;
-  
- 
 }
 
-
+.navBar img{
+  display: flex;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+}
 
 
