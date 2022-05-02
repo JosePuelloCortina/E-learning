@@ -7,6 +7,7 @@ server.post("/", async (req, res) => {
 
     try {
       const course = await Course.findByPk(idCurso);
+      console.log(course.dataValues.name);
     
       const user = await User.findByPk(idUsuario, {
           include: [Role, Buy]
@@ -19,6 +20,7 @@ server.post("/", async (req, res) => {
       } //verifica si el usuario ya compró el curso
       if ( userRole === "alumno") {
         Buy.create({
+          courseName: course.dataValues.name,
           discount: discount || 0,
           pay_method: pay_method || "efectivo",
           total_price: course.dataValues.price - discount || course.dataValues.price,
