@@ -1,0 +1,13 @@
+.container .resetButton {
+  background-color: rgba(218, 218, 218, 0.465);
+  color: black;
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 1500;
+  border-radius: 9999px;
+}
+
+.container .resetButton:hover {
+  background-color: rgba(218, 218, 218, 0.855);
+}
