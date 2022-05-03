@@ -3,7 +3,7 @@ import styles from "./Carousel.module.css";
 import { useSelector } from "react-redux";
 
 export default function Carousel() {
-  const courses = useSelector((state) => state.coursesfiltered);
+  const courses = useSelector((state) => state.coursesBackUp);
 
   const coursesFeatured = courses.filter(
     (e) => e.review === 5 || e.review === 4
