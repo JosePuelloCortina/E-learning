@@ -1,25 +1,26 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: 700px;
-    height: 400px;
-    background-color: white;
-    margin: 20px;
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    border-radius: 30px;
-    padding: 20px;
-    border: solid var(--color4) 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 700px;
+  background-color: white;
+  margin: 20px;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  border-radius: 30px;
+  padding: 20px;
+  border: solid var(--color4) 8px;
 }
 
 .title h2 {
-    color: black;
-    font-size: 30px;
+  color: black;
+  font-size: 30px;
 }
-.cursesInstructor{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.cursesInstructor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
