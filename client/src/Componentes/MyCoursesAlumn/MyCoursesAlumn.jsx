@@ -9,7 +9,9 @@ export default function MyCoursesAlumn() {
     
     const user = useSelector(state => state.user)
     const courses = useSelector(state => state.courses)
-    console.log(user, "user")
+    let myBuys = user.buys && user.buys.map(buy => buy.courseId)
+    let myCourses = courses.filter(course => myBuys.includes(course.id))
+    console.log(myCourses, "myCourses")
 
     return(
         <div className={styles.container}>
@@ -17,29 +19,13 @@ export default function MyCoursesAlumn() {
         <h2>Mis Cursos | Alumno |</h2>
         </div>
         <div className={styles.curses}>
-        {user.buys && user.buys.map(e => {
+        {myCourses && myCourses.map(e => {
             return(
                 <Link to={`/courselessons/${e.courseId}`}>
-                <CardMini name={e.courseName} />
+                <CardMini key={e.id} name={e.name} />
                 </Link>
             )
         })}
-
-
-
-
-        {/* {user.buys && user.buys.map((b) =>{
-            console.log(b, "esto es b")
-            let filterCompras  = courses.filter((c) => c.id === b.courseId)
-            console.log(filterCompras, "esto es filterCompras")
-            filterCompras.map((c) => {
-                console.log(c.name, "esto es c")
-                return(
-                    <CardMini name={c.name}/>
-                )
-            })
-        })} */}
-        
 
         </div>
         </div>
