@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import style from './courseLessons.module.css'
@@ -16,6 +16,10 @@ export default function CourseLessons (){
     console.log(totalClasses, 'esto es total clases')
     const courseClasses = totalClasses.filter( c => c.courseId === course.id)
     console.log(courseClasses, 'esto es course clases')
+
+    const [currentLesson, setCurrentLesson] = useState({})
+
+    
     useEffect(() => {
         dispatch(getCoursesById(id));
         return () => {
@@ -36,7 +40,7 @@ export default function CourseLessons (){
                         video
                     </div>
                     <div className={style.right}>
-                        <LessonsList/>
+                        <LessonsList lessons={courseClasses}/>
                     </div>
                 </div>
             </div>
