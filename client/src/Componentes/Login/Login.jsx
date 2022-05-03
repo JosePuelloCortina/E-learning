@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Login.module.css";
-import { validateUser } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import GoogleLogin from "react-google-login";
 import { addLoggedUser } from "../../redux/actions/index";
 import { useNavigate } from "react-router";
 import { allUser } from "../../redux/actions/index";
-import googleIcon from '../../Images/googleIcon.png'
+import googleIcon from "../../Images/googleIcon.png";
+import axios from "axios";
 
 export function validation(validate) {
   let errors = {};
@@ -15,14 +15,14 @@ export function validation(validate) {
 
   // USUARIO-(EMAIL)
 
-  if (!validate.user) {
-    errors.user = "se requiere e-mail";
+  if (!validate.email) {
+    errors.email = "se requiere e-mail";
   } else if (
-    !validate.user.match(
+    !validate.email.match(
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     )
   ) {
-    errors.user = "Ingrese un correo válido";
+    errors.email = "Ingrese un correo válido";
   }
 
   // PASSWORD (CONTRASEÑA ALFANUMERICO)
@@ -43,8 +43,6 @@ export function validation(validate) {
 export default function Login() {
   const users = useSelector((state) => state.user);
 
-  // const loggedUsers = useSelector((state) => state.loggedUsers);
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -52,7 +50,7 @@ export default function Login() {
   const [errors, setErrors] = React.useState({});
 
   const [validate, setValidate] = React.useState({
-    user: "",
+    email: "",
     password: "",
   });
 
@@ -61,8 +59,6 @@ export default function Login() {
   }, [dispatch]);
 
   const handleInputChange = function (e) {
-    console.log(e);
-
     setValidate({
       ...validate,
       [e.target.name]: e.target.value,
@@ -75,16 +71,33 @@ export default function Login() {
     );
   };
 
-  const handleOnSubmit = (event) => {
+  const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    if (validate.user !== "" && validate.password !== "") {
-      const usuario = users.find((user) => user.email === validate.user);
-      if (validate.password === usuario.password) {
+    if (validate.email !== "" && validate.password !== "") {
+      // const usuario = users.find((user) => user.email === validate.user);
+      // if (validate.password === usuario.password) {
+      //   dispatch(addLoggedUser(usuario.id));
+      //   navigate(`/profile/${usuario.id}`);
+      // } else {
+      //   alert("Usuario o contraseña incorrectos");
+      // }
+
+      // dispatch(validateUser(validate));
+
+      const token = await axios.post(
+        `http://localhost:3001/user/login`,
+        validate
+      );
+
+      if (token.data.user) {
+        alert("USUARIO CORRECTO");
+        const usuario = users.find((user) => user.email === validate.email);
+        console.log("usuario es: ", usuario);
         dispatch(addLoggedUser(usuario.id));
         navigate(`/profile/${usuario.id}`);
       } else {
-        alert("Usuario o contraseña incorrectos");
+        alert("USUARIO INCORRECTO");
       }
     } else {
       alert("Debes rellenar todos los campos antes de registrarte");
@@ -93,9 +106,8 @@ export default function Login() {
 
   const handleSucces = (response) => {
     const userGoogle = users.find(
-      (element) => element.name === response.profileObj.name
+      (element) => element.email === response.profileObj.email
     );
-    console.log("userGoogle es: ", userGoogle);
     if (userGoogle !== undefined) {
       dispatch(addLoggedUser(userGoogle.id));
       navigate(`/profile/${userGoogle.id}`);
@@ -109,73 +121,76 @@ export default function Login() {
 
   return (
     <div class={style.container}>
-    <div className={style.logo}>
-    <Link to="/home" >
-      <h1>AkademIT</h1>
-      </Link>
-    </div>
-    <div className={style.title}>
-      <h2>Iniciar Sesión</h2>
-      <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
-        <div class={style.containerInput}>
-          <div class={style.SubcontainerInput}>
-            <br></br>
-            <label>Correo electrónico</label>
-            <input
-              placeholder="Ingresa tu e-mail..."
-              type="text"
-              name="user"
-              autoComplete="off"
-              onChange={handleInputChange}
-              value={validate.user}
-            />
-          </div>
-          {errors.user && <p>{errors.user}</p>}
+      <div className={style.logo}>
+        <Link to="/home">
+          <h1>AkademIT</h1>
+        </Link>
+      </div>
+      <div className={style.title}>
+        <h2>Iniciar Sesión</h2>
+        <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
+          <div class={style.containerInput}>
+            <div class={style.SubcontainerInput}>
+              <br></br>
+              <label>Correo electrónico</label>
+              <input
+                placeholder="Ingresa tu e-mail..."
+                type="text"
+                name="email"
+                autoComplete="off"
+                onChange={handleInputChange}
+                value={validate.email}
+              />
+            </div>
+            {errors.email && <p>{errors.email}</p>}
 
-          <div class={style.SubcontainerInput}>
-            <br></br>
-            <label>Contraseña</label>
-            <input
-              placeholder="Ingresa tu Contraseña..."
-              type="password"
-              name="password"
-              autoComplete="off"
-              onChange={handleInputChange}
-              value={validate.password}
-            />
+            <div class={style.SubcontainerInput}>
+              <br></br>
+              <label>Contraseña</label>
+              <input
+                placeholder="Ingresa tu Contraseña..."
+                type="password"
+                name="password"
+                autoComplete="off"
+                onChange={handleInputChange}
+                value={validate.password}
+              />
+            </div>
+            {errors.password && <p>{errors.password}</p>}
           </div>
-          {errors.password && <p>{errors.password}</p>}
-        </div>
 
-        <div class={style.divButton2}>
-          <button className={style.ingresar}type="submit">Ingresar</button>
-          <GoogleLogin
-            clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <button className={style.google}
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-              >
-              <img src={googleIcon} alt='' /> Ingresar con Google
-              </button>
-            )}
-            onSuccess={handleSucces}
-            onFailure={handleFailure}
-            cookiePolicy={"single_host_origin"}
-          />
-        </div>
-        <h4>¿No estas registrado?</h4>
-        <div class={style.divButton1}>
-          <Link to="/form">
-            <button class={style.buttonRegistro} type="submit">
-              Registrarme
+          <div class={style.divButton2}>
+            <button className={style.ingresar} type="submit">
+              Ingresar
             </button>
+            <GoogleLogin
+              clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  className={style.google}
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  <img src={googleIcon} alt="" /> Ingresar con Google
+                </button>
+              )}
+              onSuccess={handleSucces}
+              onFailure={handleFailure}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
+          <h4>¿No estas registrado?</h4>
+          <div class={style.divButton1}>
+            <Link to="/form">
+              <button class={style.buttonRegistro} type="submit">
+                Registrarme
+              </button>
+            </Link>
+          </div>
+          <Link to="/home">
+            <button class={style.buttonReturnHome}>Volver</button>
           </Link>
-        </div>
-      <Link  to="/home">
-        <button class={style.buttonReturnHome}>Volver</button>
-      </Link>
-      </form>
+        </form>
       </div>
     </div>
   );

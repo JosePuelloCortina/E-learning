@@ -37,8 +37,21 @@ export function createUser(form) {
 
 export function validateUser(form) {
   return async function (dispatch) {
-    await axios.get(`http://localhost:3001/user`, form);
-    dispatch({ type: "VALIDATE_USER" });
+    const token = await axios.post(`http://localhost:3001/user/login`, form);
+    console.log(token.data);
+    dispatch({ type: "VALIDATE_USER", payload: token.data });
+  };
+}
+
+export function removeToken() {
+  return function (dispatch) {
+    dispatch({ type: "REMOVE_TOKEN" });
+  };
+}
+
+export function removeUserDetail() {
+  return function (dispatch) {
+    dispatch({ type: "REMOVE_USER_DETAIL" });
   };
 }
 
@@ -60,7 +73,6 @@ export function getUserById(id) {
   return async function (dispatch) {
     try {
       const user = await axios.get(`http://localhost:3001/user/id/${id}`);
-      console.log(user);
       return dispatch({
         type: "GET_USER_BY_ID",
         payload: user.data,
@@ -142,7 +154,7 @@ export const removeLoggedUser = (payload) => {
 };
 
 export function purchase(payload) {
-  return async function() {
+  return async function () {
     try {
       await axios.post(`http://localhost:3001/buy/`, payload);
     } catch (error) {

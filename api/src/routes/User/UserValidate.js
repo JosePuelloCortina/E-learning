@@ -1,49 +1,37 @@
-const router = require('express').Router();
-const { User } = require('../../db');
+const router = require("express").Router();
+const { User } = require("../../db");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
+router.post("/login", async (req, res) => {
+  const user = await User.findOne({
+    where: { email: req.body.email },
+  });
 
+  if (!user) {
+    return { status: "error", error: "Invalid login" };
+  }
 
+  const isPasswordValid = await bcrypt.compare(
+    req.body.password,
+    user.password
+  );
 
-const getUsersDb = async () => {
-
-    const info = User.findAll({
-        raw: true
-    })
-    return info
-}
-
-router.get('/user', async (req, res) => {
-
-    const users = await getUsersDb()
-
-    try {
-
-        const { email, password } = req.query
-
-        const user = await users.find((ele) => ele.email === email)
-        console.log(user)
-        if (user) {
-
-            console.log(user.password)
-            if (user.password === password) {
-
-                return res.json(user)
-            }
-            else {
-
-                return res.send("password erroneo")
-            }
-        }
-        else {
-            return res.send("el usuario nmo existe")
-        }
-    }
-    catch (err) {
-        console.log(err)
-    }
-
+  if (isPasswordValid) {
+    const token = jwt.sign(
+      {
+        name: user.name,
+        email: user.email,
+      },
+      "secret123"
+    );
+    return res.json({ status: "ok", user: token });
+  } else if (req.body.password === user.password) {
+    const newPassword = await bcrypt.hash(req.body.password, 10);
+    return res.json({ status: "ok", user: newPassword });
+  } else {
+    return res.json({ status: "error", user: false });
+  }
 });
 
-
-
-module.exports = router
+module.exports = router;
