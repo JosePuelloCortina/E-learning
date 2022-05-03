@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(260deg, rgba(11, 82, 91, 1) 0%, rgba(27, 58, 75, 1) 30%, rgba(77, 25, 77, 1) 100%);
-
+  
 
 }
 
@@ -21,9 +21,12 @@ code {
   --color3: #1B3A4B;
   --color4: #272640;
   --color5: #4D194D;
+
+  /* --color5: #4D194D; */
   /* --color5: #4D194D; */
 }
 
+/* https://coolors.co/palette/3d5a80-98c1d9-e0fbfc-ee6c4d-293241 */
 /* FUENTES
 IBM Plex Mono
 Source Code Pro

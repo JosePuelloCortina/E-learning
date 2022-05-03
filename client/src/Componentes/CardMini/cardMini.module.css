@@ -1,16 +1,16 @@
 .container {
     display: flex;
-    flex-direction: row;
     justify-content: left;
-    width: 315px;
-    height: 40px;
+    width: 345px;
+    height: 60px;
     cursor: pointer;
-    border: solid var(--color3) 3px;
+    border: solid var(--color3) 2px;
     border-radius: 15px;
     /* background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/javascript.jpg?itok=gnWgoCTM'); */
    /* background-size: cover; */
    background-color: white;
-    margin: 5px;
+    margin: 10px;
+    padding: 10px;
 }
 
 
@@ -19,15 +19,14 @@
     align-self: center;
     color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     background-color: transparent;
-    padding: 5px;
-    font-style: bold;
     width: 80%;
-    margin-left: 4px;
+    margin-left: 2px;
+    text-align:left;
 }
 
-.container p{
-    align-self: center;
+.container a{
+    text-decoration: none;
 }
