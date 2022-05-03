@@ -6,7 +6,7 @@ let clases = [
         "name": "Javascript",
 	    "duration": "duration",
 	    "description": "description",
-        "url": "https://www.youtube.com/watch?v=RqQ1d1qEWlE",
+        "url": "https://www.youtube.com/embed/RqQ1d1qEWlE",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
         
     },
@@ -15,7 +15,7 @@ let clases = [
         "name": "React.js",
 	    "duration": "duration",
 	    "description": "description",
-        "url": "https://www.youtube.com/watch?v=lWQ69WX7-hA",
+        "url": "https://www.youtube.com/embed/RqQ1d1qEWlE",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
     },
     {
@@ -23,7 +23,7 @@ let clases = [
         "name": "Node.js",
         "duration": "duration",
         "description": "description",
-        "url": "https://www.youtube.com/watch?v=mG4U9t5nWG8",
+        "url": "https://www.youtube.com/embed/RqQ1d1qEWlE",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
     }
 ]

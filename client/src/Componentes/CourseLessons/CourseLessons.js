@@ -6,6 +6,7 @@ import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import { getCoursesById, removeCourseDetail, getAllClasses} from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
+import LessonsVideo from './../LessonsVideo/LessonsVideo';
 
 export default function CourseLessons (){
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export default function CourseLessons (){
                 </div>
                 <div className={style.body}>
                     <div className={style.left}>
-                        video
+                        <LessonsVideo lessons={courseClasses}/>
                     </div>
                     <div className={style.right}>
                         <LessonsList lessons={courseClasses}/>
