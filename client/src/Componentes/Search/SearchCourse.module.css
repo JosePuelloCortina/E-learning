@@ -6,8 +6,6 @@
   font-size: 14px;
   font-weight: 1500;
   border-radius: 9999px;
- 
- 
 }
 
 .container .resetButton:hover {
@@ -15,9 +13,8 @@
 }
 
 
-
-.container{
+.container {
   display: flex;
-  flex-direction :row;
+  flex-direction: row;
   align-items: center;
 }
