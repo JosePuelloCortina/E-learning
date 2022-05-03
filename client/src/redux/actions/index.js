@@ -162,3 +162,19 @@ export function purchase(payload) {
     }
   };
 }
+
+
+export function getAllClasses() {
+  return async function (dispatch) {
+    try {
+      const classes = await axios.get(`http://localhost:3001/classes/all`);
+      return dispatch({
+        type: "GET_ALL_CLASSES",
+        payload: classes.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+

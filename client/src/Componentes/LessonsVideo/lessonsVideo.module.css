@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border-radius: 30px;
+    padding: 30px;
+    margin: 5px;
+    border: solid var(--color4) 6px;
+}
+
+.container .up video{
+    align-self: center;
+    width: 90%;
+    height: auto;
+    margin: 10px;
+}
+.container .up{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+}
+
+.container .down{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}
+
+.container h2{
+    display: flex;
+    justify-content: center;
+    
+}

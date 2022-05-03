@@ -1,0 +1,47 @@
+
+.contenedor {
+  width: max-content;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color:none;
+  padding: 2px;
+}
+
+.input1 {
+  background-color: transparent;
+  color: white;
+  font-family: "Popins";
+  font-style: normal;
+  font-size: 22px;
+  padding: 0;
+  width: 150px;
+  justify-content: center;
+  border: none;
+  outline: none;
+  }
+
+.input2 {
+height: 19px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(153, 255, 0);
+  padding: 7px 20px;
+  border-radius: 45px;
+  margin-left:10px;
+  background-color: transparent;
+  width: max-content;
+  height: 25px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  flex-grow: 1;
+  margin-right: 2rem;
+}

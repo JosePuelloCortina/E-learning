@@ -1,18 +1,14 @@
 .navBar {
-  background: linear-gradient(to right, var(--color4), var(--color5));
-  background-color: none;
+  background: linear-gradient(to left, var(--color4), var(--color5));
   display: flex;
-  height: 40px;
+  height: 20px;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
   color: white;
+  border-radius: 0px 0px 10px 10px;
   box-shadow: 0px 10px 5px rgb(0, 0, 0, 0.3);
-  box-shadow: inset 0 15px 25px -15px #111;
-
-
-  top: 100px;
-  
+  margin-bottom: 50px;
 
 }
 
@@ -21,21 +17,16 @@
 }
 
 .navBar h1 {
-  margin: 20px;
+  margin: 0;
   width: 150px;
   text-decoration: none;
   color: white;
-  font-family: 'Gugi', cursive;
-  letter-spacing: 4px;
-  font-size: 60px;
-  text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
-}
-
-.navBar h1:hover{
-  text-shadow: 5px 5px 5px rgba(248, 186, 16, 0.67);
-  
-}
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 0px;
+  font-size: 40px;
+  display:flex
  
+}
 
 .navBar input {
   border: none;
@@ -59,7 +50,6 @@
   padding: 10px;
   font-family:'Montserrat', sans-serif;
   font-weight: 800;
-  margin: 20px;
 }
 
 .navBar button:hover {

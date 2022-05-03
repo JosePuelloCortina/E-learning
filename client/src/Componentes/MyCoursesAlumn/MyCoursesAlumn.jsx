@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './myCoursesAlumn.module.css'
 import CardMini from '../CardMini/CardMini'
-
+import {Link} from 'react-router-dom'
 import { useSelector} from "react-redux";
 
 
@@ -19,7 +19,9 @@ export default function MyCoursesAlumn() {
         <div className={styles.curses}>
         {user.buys && user.buys.map(e => {
             return(
+                <Link to={`/courselessons/${e.courseId}`}>
                 <CardMini name={e.courseName} />
+                </Link>
             )
         })}
 
