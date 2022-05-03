@@ -3,27 +3,27 @@ const { Clase } = require('../db');
 let clases = [ 
     {
         "id": "88994b60-c70e-11ec-96f7-e913400288b6",
-        "name": "name",
+        "name": "Javascript",
 	    "duration": "duration",
 	    "description": "description",
-        "url": "url",
+        "url": "https://www.youtube.com/watch?v=RqQ1d1qEWlE",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
         
     },
     {
         "id": "88994b60-c70e-11ec-96f7-e913400288b7",
-        "name": "name",
+        "name": "React.js",
 	    "duration": "duration",
 	    "description": "description",
-        "url": "url",
+        "url": "https://www.youtube.com/watch?v=lWQ69WX7-hA",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
     },
     {
         "id": "88994b60-c70e-11ec-96f7-e913400288b8",
-        "name": "name",
+        "name": "Node.js",
         "duration": "duration",
         "description": "description",
-        "url": "url",
+        "url": "https://www.youtube.com/watch?v=mG4U9t5nWG8",
         "course": "760c7440-c70e-11ec-96f7-e913400288b4"
     }
 ]
