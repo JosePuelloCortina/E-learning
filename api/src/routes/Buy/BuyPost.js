@@ -3,19 +3,19 @@ const {Buy, Course, User, Role} = require("../../db");
 
 
 server.post("/", async (req, res) => {
-    let {idUsuario, idCurso, discount, pay_method } = req.body; //recibe los datos por body mediante formulario
+    let {userId, courseId, discount, pay_method } = req.body; //recibe los datos por body mediante formulario
 
     try {
-      const course = await Course.findByPk(idCurso);
+      const course = await Course.findByPk(courseId);
       console.log(course.dataValues.name);
     
-      const user = await User.findByPk(idUsuario, {
+      const user = await User.findByPk(userId, {
           include: [Role, Buy]
       })
       const userRole = user.dataValues.roles[0].dataValues.tipo;
       const userPurchase = user.dataValues.buys.map(buy => buy.dataValues.courseId); //obtiene los cursos que ya compró el usuario
 
-      if(userPurchase.includes(idCurso)){
+      if(userPurchase.includes(courseId)){
         return res.status(422).send("Ya compraste este curso");
       } //verifica si el usuario ya compró el curso
       if ( userRole === "alumno") {
@@ -26,8 +26,8 @@ server.post("/", async (req, res) => {
           total_price: course.dataValues.price - discount || course.dataValues.price,
         }) //crea la compra
         .then(buyCourse => {
-          buyCourse.setCourse(idCurso)
-          buyCourse.setUser(idUsuario)    
+          buyCourse.setCourse(courseId)
+          buyCourse.setUser(userId)    
         }) //relaciona la compra con el curso y el usuario
         .catch(error =>{
           console.log(error)

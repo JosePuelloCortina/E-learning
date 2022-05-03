@@ -10,6 +10,14 @@ let users = [
         "role": "alumno"
     },
     {
+        "id": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "name": "Jose",
+        "password": "jose123",
+        "email": "jose@jose.com",
+        "image": "url de imagen",
+        "role": "alumno"
+    },
+    {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773727",
         "name": "albano",
         "password": "albano123",
