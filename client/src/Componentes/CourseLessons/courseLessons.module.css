@@ -5,17 +5,33 @@
     height: auto;
     width: auto;
     background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    height: 80px;
+    color: white;
+}
+
+.title h1 {
     color: white;
     font-family: 'Montserrat',sans-serif;
-    font-size: 20px;
+    font-size: 40px;
 }
 .body{
     display: flex;
     flex-direction: row;
+    width: 90%;
+    height: auto;
 }
 .left{
-
+width: 75%;
+height: 800px;
 }
 .right{
-
+width: 25%;
+height: 800px;
 }

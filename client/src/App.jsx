@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/registerok" element={<ConfirmRegister />} />
           <Route exact path="/purchaseok" element={<PurchaseConfirm />} />
           <Route path="*" element={<Error404 />} />
-          <Route path="/courselessons" element={<CourseLessons />} />
+          <Route path="/courselessons/:id" element={<CourseLessons />} />
         </Routes>
       </BrowserRouter>
     </div>

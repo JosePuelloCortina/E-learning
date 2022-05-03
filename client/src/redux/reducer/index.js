@@ -6,6 +6,7 @@ const initialState = {
   categories: [],
   coursesfiltered: [],
   loggedUsers: [],
+  classes:[],
 };
 
 function sortAsc(arr, field) {
@@ -140,6 +141,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         loggedUsers: [],
+      };
+      case "GET_ALL_CLASSES":
+      return {
+        ...state,
+        classes: action.payload,
       };
     default:
       return state;
