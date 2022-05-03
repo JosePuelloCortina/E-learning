@@ -16,11 +16,11 @@ export default function MyCoursesAlumn() {
       <div className={styles.title}>
         <h2>Mis Cursos | Alumno |</h2>
       </div>
-      <div className={styles.curses}>
+      <div className={styles.courses}>
         {myCourses &&
           myCourses.map((e) => {
             return (
-              <Link to={`/courselessons/${e.courseId}`}>
+              <Link to={`/courselessons/${e.id}`}>
                 <CardMini key={e.id} name={e.name} />
               </Link>
             );

@@ -1,6 +1,6 @@
 .navBar {
   background: linear-gradient(to right, var(--color4), var(--color5));
-  background-color: none;
+
   display: flex;
   height: 75px;
   align-items: center;
