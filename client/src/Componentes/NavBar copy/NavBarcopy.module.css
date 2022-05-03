@@ -2,7 +2,7 @@
   background: linear-gradient(to right, var(--color4), var(--color5));
   background-color: none;
   display: flex;
-  height: 40px;
+  height: 75px;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
