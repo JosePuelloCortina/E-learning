@@ -6,6 +6,7 @@ const initialState = {
   categories: [],
   coursesfiltered: [],
   loggedUsers: [],
+  token: {},
   classes:[],
 };
 
@@ -45,8 +46,13 @@ export default function rootReducer(state = initialState, action) {
     case "VALIDATE_USER":
       return {
         ...state,
+        token: action.payload,
       };
-
+    case "REMOVE_TOKEN":
+      return {
+        ...state,
+        token: {},
+      };
     case "ALL_COURSES":
       return {
         ...state,

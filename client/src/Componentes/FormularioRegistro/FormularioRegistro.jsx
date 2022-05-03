@@ -4,7 +4,7 @@ import style from "./FormularioRegistro.module.css";
 import { useDispatch } from "react-redux";
 import { createUser, allUser } from "../../redux/actions/index";
 import GoogleLogin from "react-google-login";
-import googleIcon from '../../Images/googleIcon.png'
+import googleIcon from "../../Images/googleIcon.png";
 
 export function validation(form) {
   let errors = {};
@@ -43,12 +43,11 @@ export function validation(form) {
       "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial.";
   }
 
- // CONFIRMACION-PASSWORD 
+  // CONFIRMACION-PASSWORD
 
- if (form.password !== form.confirmacionPassword ) {
-  errors.confirmacionPassword = "Las contraseñas ingresadas no coinciden"
-}   
-
+  if (form.password !== form.confirmacionPassword) {
+    errors.confirmacionPassword = "Las contraseñas ingresadas no coinciden";
+  }
 
   return errors;
 }
@@ -122,14 +121,14 @@ export default function FormularioRegistro() {
   return (
     <div className={style.container}>
       <div className={style.logo}>
-    <Link to="/home" >
-      <h1>AkademIT</h1>
-      </Link>
-    </div>
-    <div className={style.title}>
-      <h2>Formulario de Registro</h2>
-      <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
-        {/* <div class={style.containerInput}> */}
+        <Link to="/home">
+          <h1>AkademIT</h1>
+        </Link>
+      </div>
+      <div className={style.title}>
+        <h2>Formulario de Registro</h2>
+        <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
+          {/* <div class={style.containerInput}> */}
           <div class={style.SubcontainerInput}>
             <label>Nombre</label>
             <input
@@ -182,10 +181,6 @@ export default function FormularioRegistro() {
           </div>
           {errors.confirmacionPassword && <p>{errors.confirmacionPassword}</p>}
 
-
-
-
-
           <div class={style.SubcontainerInput}>
             <br></br>
             <label>Imagen URL (opcional)</label>
@@ -202,36 +197,37 @@ export default function FormularioRegistro() {
           <div class={style.SubcontainerInputRole}>
             {/* <label class={style.role}>Role</label> */}
             <select class={style.role} onChange={(e) => handleSelect2(e)}>
-              <option  value="Role">Quiero ser</option>
-              <option  value="instructor">Instructor</option>
-              <option  value="alumno">Alumno</option>
+              <option value="Role">Quiero ser</option>
+              <option value="instructor">Instructor</option>
+              <option value="alumno">Alumno</option>
             </select>
           </div>
-        {/* </div> */}
+          {/* </div> */}
 
-        <button class={style.buttonYellow} type="submit">
-          Registrarme{" "}
-        </button>
-        <GoogleLogin
-          clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
-          render={(renderProps) => (
-            <button className={style.google}
-              class={style.buttonRegistro}
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
-            >
-            <img src={googleIcon} alt='' />
-              Registro con Google
-            </button>
-          )}
-          onSuccess={handleSucces}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        />
-      <Link to="/home">
-        <button class={style.buttonYellow}>Volver</button>
-      </Link>
-      </form>
+          <button class={style.buttonYellow} type="submit">
+            Registrarme{" "}
+          </button>
+          <GoogleLogin
+            clientId="182193606082-foogb22mq9p98ci7l3qc9he32nu60cd3.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                className={style.google}
+                class={style.buttonRegistro}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <img src={googleIcon} alt="" />
+                Registro con Google
+              </button>
+            )}
+            onSuccess={handleSucces}
+            onFailure={handleFailure}
+            cookiePolicy={"single_host_origin"}
+          />
+          <Link to="/home">
+            <button class={style.buttonYellow}>Volver</button>
+          </Link>
+        </form>
       </div>
     </div>
   );
