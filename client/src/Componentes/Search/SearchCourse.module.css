@@ -15,13 +15,9 @@
 }
 
 
-.container {
-
-  display:flex ;
 
 .container{
   display: flex;
-
-  flex-direction: row;
+  flex-direction :row;
   align-items: center;
 }
