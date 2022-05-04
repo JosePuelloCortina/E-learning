@@ -10,6 +10,7 @@ let roles = [
     {
         "tipo": "admin"
     }
+    
 ]
 
 const initializeRole = async() =>{
