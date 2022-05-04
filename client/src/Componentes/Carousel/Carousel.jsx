@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React  from "react";
 import styles from "./Carousel.module.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Carousel() {
   const courses = useSelector((state) => state.coursesBackUp);
@@ -20,99 +21,69 @@ export default function Carousel() {
   });
 
   return (
-    <div>
-      <div
-        id="carouselExampleCaptions"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner" id={styles.altura}>
-          <div class="carousel-item active">
-            <img src={coursesOrder[0].image} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block" id={styles.fondo}>
-              <h5>{coursesOrder[0].name}</h5>
+    <div className={styles.container}>
+      <div className={styles.containerAll}>
+        <div className={styles.slide}>
+          <div className={styles.itemslide}>
+            <img src={coursesOrder[0].image} />
 
-              {coursesOrder[0].review === 3 ? (
-                <p>⭐⭐⭐</p>
-              ) : coursesOrder[0].review === 4 ? (
-                <p>⭐⭐⭐⭐</p>
-              ) : (
-                <p>⭐⭐⭐⭐⭐</p>
-              )}
-              <p>{coursesOrder[0].description}</p>
-            </div>
+            <Link to={`/courses/id/${coursesOrder[0].id}`}>
+              <div className={styles.contDescription}>
+                <h2 className={styles.name}>{coursesOrder[0].name}</h2>
+                <p className={styles.description}>
+                  {coursesOrder[0].description}
+                </p>
+                {coursesOrder[0].review === 3 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
+                ) : coursesOrder[0].review === 4 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
+                ) : (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
+                )}
+              </div>
+            </Link>
           </div>
-          <div class="carousel-item">
-            <img src={coursesOrder[1].image} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block" id={styles.fondo}>
-              <h5>{coursesOrder[1].name}</h5>
 
-              {coursesOrder[1].review === 3 ? (
-                <p>⭐⭐⭐</p>
-              ) : coursesOrder[1].review === 4 ? (
-                <p>⭐⭐⭐⭐</p>
-              ) : (
-                <p>⭐⭐⭐⭐⭐</p>
-              )}
-              <p>{coursesOrder[0].description}</p>
-            </div>
+          <div className={styles.itemslide}>
+            <img src={coursesOrder[1].image} />
+
+            <Link to={`/courses/id/${coursesOrder[1].id}`}>
+              <div className={styles.contDescription}>
+                <h2 className={styles.name}>{coursesOrder[1].name}</h2>
+                <p className={styles.description}>
+                  {coursesOrder[1].description}
+                </p>
+                {coursesOrder[1].review === 3 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
+                ) : coursesOrder[1].review === 4 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
+                ) : (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
+                )}
+              </div>
+            </Link>
           </div>
-          <div class="carousel-item">
-            <img src={coursesOrder[2].image} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block" id={styles.fondo}>
-              <h5>{coursesOrder[2].name}</h5>
 
-              {coursesOrder[2].review === 3 ? (
-                <p>⭐⭐⭐</p>
-              ) : coursesOrder[2].review === 4 ? (
-                <p>⭐⭐⭐⭐</p>
-              ) : (
-                <p>⭐⭐⭐⭐⭐</p>
-              )}
-              <p>{coursesOrder[2].description}</p>
-            </div>
+          <div className={styles.itemslide}>
+            <img src={coursesOrder[2].image} />
+
+            <Link to={`/courses/id/${coursesOrder[0].id}`}>
+              <div className={styles.contDescription}>
+                <h2 className={styles.name}>{coursesOrder[2].name}</h2>
+                <p className={styles.description}>
+                  {coursesOrder[2].description}
+                </p>
+                {coursesOrder[2].review === 3 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
+                ) : coursesOrder[2].review === 4 ? (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
+                ) : (
+                  <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
+                )}
+              </div>
+            </Link>
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   );
