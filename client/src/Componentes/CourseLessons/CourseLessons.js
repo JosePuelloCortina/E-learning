@@ -38,7 +38,7 @@ export default function CourseLessons (){
     return(
         <div>
             <NavBar/>
-            <div className={style.container}>
+            <div className={review===false?style.container: style.hiddenContainer}>
                 <div className={style.title}>
                     <h1>{course.name}</h1>
                 </div>
@@ -52,7 +52,12 @@ export default function CourseLessons (){
                             setReview={setReview}
                         />
                     </div>
-                    <main className={review? style.visible:style.hidden }>
+                   
+                </div>
+            </div>
+           
+            <Footer/>
+            <main className={review? style.visible:style.hidden }>
                         <button className={style.close} onClick={handleClose}>Cerrar</button>
                         <h4>Calificar el curso de {course.name}</h4>
                         
@@ -86,9 +91,6 @@ export default function CourseLessons (){
                         <button className={style.send}>Enviar</button>
                         
                     </main>
-                </div>
-            </div>
-            <Footer/>
         </div>
     )
 }
