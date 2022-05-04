@@ -79,16 +79,8 @@ export default function Login() {
         `http://localhost:3001/user/login`,
         validate
       );
-      console.log(token.data);
+
       const usuario = users.find((user) => user.email === validate.email);
-      // if (token.data.user && usuario.validated === "true") {
-      //   dispatch(addLoggedUser(usuario.id));
-      //   navigate(`/profile/${usuario.id}`);
-      // } else if (!token.data.user && usuario.validated !== "true") {
-      //   alert("Cuenta no verificada. Revise su correo");
-      // } else if (token.data.error) {
-      //   alert("Email o password incorrecto");
-      // }
       if (token.data.user) {
         dispatch(addLoggedUser(usuario.id));
         navigate(`/profile/${usuario.id}`);
@@ -100,13 +92,23 @@ export default function Login() {
     }
   };
 
-  const handleSucces = (response) => {
+  const handleSucces = async (response) => {
     const userGoogle = users.find(
       (element) => element.email === response.profileObj.email
     );
+
     if (userGoogle !== undefined) {
-      dispatch(addLoggedUser(userGoogle.id));
-      navigate(`/profile/${userGoogle.id}`);
+      const token = await axios.post(`http://localhost:3001/user/login`, {
+        email: userGoogle.email,
+        password: userGoogle.password,
+      });
+
+      if (token.data.user) {
+        dispatch(addLoggedUser(userGoogle.id));
+        navigate(`/profile/${userGoogle.id}`);
+      } else {
+        alert("Email/password incorrecto o cuenta no verificada");
+      }
     } else {
       alert("No estas registrado, ahora seras redireccionado para registrarte");
       navigate(`/form`);

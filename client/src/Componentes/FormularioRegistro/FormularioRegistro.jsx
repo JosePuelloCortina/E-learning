@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { createUser, allUser } from "../../redux/actions/index";
 import GoogleLogin from "react-google-login";
 import googleIcon from "../../Images/googleIcon.png";
+import generator from "generate-password";
 
 export function validation(form) {
   let errors = {};
@@ -98,9 +99,14 @@ export default function FormularioRegistro() {
     });
   }
 
+  const passwordGenerate = generator.generate({
+    length: 10,
+    numbers: true,
+  });
+
   const user = {
     name: "",
-    password: "1234",
+    password: passwordGenerate,
     email: "",
     image: "",
     role: "alumno",
