@@ -13,7 +13,7 @@ export default function EditProfile() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
-  const userInit = useSelector((state) => state.userDetail);
+  const userInit = useSelector((state) => state.userDetail );
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
