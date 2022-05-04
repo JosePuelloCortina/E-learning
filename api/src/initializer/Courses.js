@@ -118,7 +118,7 @@ let courses = [
         "progress": "3/5",
         "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_960_720.jpg",
         "user": "b65232b0-c6a0-11ec-b926-ff69e9773728",
-        "category": "Back-End",
+        "category": ["Back-End", "Front-End"],
         "price" : "100"
     },
     {
