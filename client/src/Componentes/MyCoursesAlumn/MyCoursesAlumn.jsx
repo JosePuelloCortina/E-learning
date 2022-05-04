@@ -5,7 +5,7 @@ import CardMini from "../CardMini/CardMini";
 import { useSelector } from "react-redux";
 
 export default function MyCoursesAlumn() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userDetail);
   const courses = useSelector((state) => state.coursesBackUp);
   let myBuys = user.buys ? user.buys.map((buy) => buy.courseId) : [];
   let myCourses = courses.filter((course) => myBuys.includes(course.id));

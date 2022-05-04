@@ -22,12 +22,12 @@ function CourseCardDetail() {
   const [datos, setDatos] = useState("")
   useEffect(()=>{
     axios
-    .get(`http://localhost:3001/mercadopago`)
+    .get(`/mercadopago`)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
     }).catch(err => console.error(err)) 
-  },[])
+  },[])  
 
   useEffect(() => {
     dispatch(getCoursesById(id));
