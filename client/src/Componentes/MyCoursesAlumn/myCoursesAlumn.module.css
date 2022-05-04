@@ -23,3 +23,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.linkDetail {
+    text-decoration: none;
+    color: #000;
+  }
