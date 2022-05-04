@@ -19,9 +19,10 @@ export default function UserProfile() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
-  const user = useSelector((state) => state.user);
+
   const loggedUser = useSelector((state) => state.loggedUsers);
-  console.log(user);
+  const userDetail = useSelector((state) => state.userDetail);
+
   return (
     <div>
       {loggedUser.length > 0 ? (
@@ -34,15 +35,17 @@ export default function UserProfile() {
             <div className={styles.totalProfile}>
               <div className={styles.profileDetail}>
                 <ProfileLateralBar
-                  name={user.name}
-                  id={user.id}
-                  email={user.email}
+
+                  name={userDetail.name}
+                  id={userDetail.id}
+                  email={userDetail.email}
+
                  
                 />
               </div>
               <div className={styles.cursesDetail}>
-                <MyCoursesAlumn user={user} />
-                <MyCoursesInstructor user={user} />
+                <MyCoursesAlumn user={userDetail} />
+                <MyCoursesInstructor user={userDetail} />
               </div>
             </div>
           </div>

@@ -8,9 +8,10 @@ import Login from "./Componentes/Login/Login";
 import EditProfile from "./Componentes/EditProfile/EditProfile";
 import CourseCardDetail from "./Componentes/CourseCardDetail/CourseCardDetail";
 import ConfirmRegister from "./Componentes/ConfirmRegister/ConfirmRegister";
-import PurchaseConfirm from './Componentes/PurchaseConfirm/PurchaseConfirm';
+import PurchaseConfirm from "./Componentes/PurchaseConfirm/PurchaseConfirm";
 import Error404 from "./Componentes/Error404/Error404";
 import CourseLessons from "./Componentes/CourseLessons/CourseLessons";
+import UserVerification from "./Componentes/UserVerification/UserVerification";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/form" element={<FormularioRegistro />} />
           <Route path="/user" element={<Login />} />
+          <Route path="/user/verification" element={<UserVerification />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/profile/edit/:id" element={<EditProfile />} />
           <Route exact path="/courses/id/:id" element={<CourseCardDetail />} />

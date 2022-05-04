@@ -1,10 +1,47 @@
 const server = require("express").Router();
 const { User } = require("../../db");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const { uuid } = require("uuidv4");
+
+const mail = {
+  user: "albano.rc99@gmail.com",
+  pass: "ghvgnxfpfdtsxxmm",
+};
+
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: mail.user,
+    pass: mail.pass,
+  },
+});
+
+const sendEmail = async (email, subject, tokenRegister) => {
+  try {
+    await transporter.sendMail({
+      from: `AkademIT <${mail.user}>`,
+      to: email,
+      subject,
+      text: "Hola amigos",
+      html: `<b>Click en el siguiente link para verificar su cuenta</b>
+              <a href="http://localhost:3001/user/validated/${tokenRegister}">Verificar usuario</a>`, // html body
+    });
+  } catch (error) {
+    console.log("Algo no va bien con el email", error);
+  }
+};
 
 server.post("/create", async function (req, res, next) {
   try {
     const { name, password, email, role } = req.body;
+    const code = uuid();
     const newPassword = await bcrypt.hash(password, 10);
     if (!name || !password || !email) {
       return res.status(422).json({ error: "No se enviaron todos los datos" });
@@ -12,17 +49,29 @@ server.post("/create", async function (req, res, next) {
     const user = await User.findOne({
       where: { email: req.body.email },
     });
+
     if (!user) {
       User.create({
         name: name,
         password: newPassword,
         email: email,
+        code: code,
       }).then((user) => {
         user.addRole(role).then(async () => {
           user.role = await user.getRoles();
-          res.json({ status: "ok create" });
         });
       });
+
+      const tokenRegister = jwt.sign(
+        {
+          data: { email, code },
+        },
+        "secret123"
+      );
+
+      await sendEmail(email, "Verificacion de usuario", tokenRegister);
+
+      res.json({ status: "ok create", email: email });
     } else {
       res.status(400).json({ status: "error", error: "Duplicate email" });
     }
