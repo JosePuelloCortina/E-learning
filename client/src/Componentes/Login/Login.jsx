@@ -81,13 +81,19 @@ export default function Login() {
       );
       console.log(token.data);
       const usuario = users.find((user) => user.email === validate.email);
-      if (token.data.user && usuario.validated === "true") {
+      // if (token.data.user && usuario.validated === "true") {
+      //   dispatch(addLoggedUser(usuario.id));
+      //   navigate(`/profile/${usuario.id}`);
+      // } else if (!token.data.user && usuario.validated !== "true") {
+      //   alert("Cuenta no verificada. Revise su correo");
+      // } else if (token.data.error) {
+      //   alert("Email o password incorrecto");
+      // }
+      if (token.data.user) {
         dispatch(addLoggedUser(usuario.id));
         navigate(`/profile/${usuario.id}`);
-      } else if (!token.data.user && usuario.validated !== "true") {
-        alert("Cuenta no verificada. Revise su correo");
       } else {
-        alert("Email o password incorrecto");
+        alert("Email/password incorrecto o cuenta no verificada");
       }
     } else {
       alert("Debes rellenar todos los campos antes de registrarte");
