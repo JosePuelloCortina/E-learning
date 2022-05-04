@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import img from '../../Images/avatar1.jpg'
 
 
-export default function ProfileLateralBar({name, email, id}) {
+export default function ProfileLateralBar({name, email, id, categories}) {
     
     return(
         <div className={styles.container}>
@@ -17,6 +17,15 @@ export default function ProfileLateralBar({name, email, id}) {
         <Link to={"/profile/edit/"+ id}>
         <button className={styles.editButton}>Editar mis datos</button>
         </Link>
+
+        <h3>Intereses</h3>
+        {categories && categories.map((category) => {
+            return(
+                <div key={category.name} className={styles.categories}>
+                    <h5>{category.name}</h5>
+                </div>
+            )
+        })}
         </div>
     )
 }

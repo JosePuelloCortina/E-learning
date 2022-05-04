@@ -39,6 +39,7 @@ export default function UserProfile() {
                   name={userDetail.name}
                   id={userDetail.id}
                   email={userDetail.email}
+                  categories={userDetail.categories}
 
                  
                 />
