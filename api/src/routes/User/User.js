@@ -8,7 +8,13 @@ server.get("/", async function(req, res, next){
             include: [
                 Role,
                 Buy,
-                Category
+                {
+                    model: Category ,
+                    attributes: ["name"],
+                    through:{
+                        attributes: [],
+                    }
+                },
             ], 
             attributes: { exclude: ['createdAt', 'updatedAt'] }
         })

@@ -8,7 +8,7 @@ let users = [
         "email": "vale@vale.com",
         "image": "url de imagen",
         "role": "alumno",
-        "category": ["Full-Stack", "Front-End"]
+        "category": ["Front-End", "React", "Full-Stack", "Mobile", "Redux"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773727",
@@ -17,7 +17,7 @@ let users = [
         "email": "albano@albano.com",
         "image": "url de imagen",
         "role": "instructor",
-        // "category": ["Front-End", "React", "Redux"]
+        "category": ["Front-End", "React", "Redux", "Git", "Bootstrap"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773728",
@@ -26,7 +26,7 @@ let users = [
         "email": "andrea@andrea.com",
         "image": "url de imagen",
         "role": "instructor",
-        // "category": ["Front-End", "Back-End", "JavaScript"]
+        "category": ["Front-End", "JavaScript", "CSS", "HTML", "SASS"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773729",
@@ -35,7 +35,7 @@ let users = [
         "email": "gustavo@gustavo.com",
         "image": "url de imagen",
         "role": "instructor",
-        // "category": ["Front-End", "Back-End", "JavaScript"]
+        "category": ["Front-End", "JavaScript", "Bootstrap", "Vue", "Angular"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773720",
@@ -44,7 +44,7 @@ let users = [
         "email": "tomas@tomas.com",
         "image": "url de imagen",
         "role": "admin",
-        // "category": ["Front-End", "Back-End", "JavaScript"]
+        "category": ["Back-End", "Python", "Java", "Ruby", "Kotlin"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773723",
@@ -53,7 +53,7 @@ let users = [
         "email": "agus@agus.com",
         "image": "",
         "role": "alumno",
-        // "category": ["Front-End", "Back-End", "JavaScript"]
+        "category": []
     }
 ]
 

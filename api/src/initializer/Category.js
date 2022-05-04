@@ -124,6 +124,9 @@ let categorias = [
     {
         "name": "GitFlow"
     },
+    {
+        "name": "Redux"
+    },
 
 ]
 
