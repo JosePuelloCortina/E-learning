@@ -75,29 +75,19 @@ export default function Login() {
     event.preventDefault();
 
     if (validate.email !== "" && validate.password !== "") {
-      // const usuario = users.find((user) => user.email === validate.user);
-      // if (validate.password === usuario.password) {
-      //   dispatch(addLoggedUser(usuario.id));
-      //   navigate(`/profile/${usuario.id}`);
-      // } else {
-      //   alert("Usuario o contraseña incorrectos");
-      // }
-
-      // dispatch(validateUser(validate));
-
       const token = await axios.post(
         `http://localhost:3001/user/login`,
         validate
       );
-
-      if (token.data.user) {
-        alert("USUARIO CORRECTO");
-        const usuario = users.find((user) => user.email === validate.email);
-        console.log("usuario es: ", usuario);
+      console.log(token.data);
+      const usuario = users.find((user) => user.email === validate.email);
+      if (token.data.user && usuario.validated === "true") {
         dispatch(addLoggedUser(usuario.id));
         navigate(`/profile/${usuario.id}`);
+      } else if (!token.data.user && usuario.validated !== "true") {
+        alert("Cuenta no verificada. Revise su correo");
       } else {
-        alert("USUARIO INCORRECTO");
+        alert("Email o password incorrecto");
       }
     } else {
       alert("Debes rellenar todos los campos antes de registrarte");

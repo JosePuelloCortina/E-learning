@@ -1,5 +1,6 @@
 const initialState = {
   user: [],
+  userDetail: {},
   courses: [],
   coursesBackUp: [],
   courseDetail: [],
@@ -7,7 +8,7 @@ const initialState = {
   coursesfiltered: [],
   loggedUsers: [],
   token: {},
-  classes:[],
+  classes: [],
 };
 
 function sortAsc(arr, field) {
@@ -68,7 +69,7 @@ export default function rootReducer(state = initialState, action) {
     case "GET_USER_BY_ID":
       return {
         ...state,
-        user: action.payload,
+        userDetail: action.payload,
       };
     case "GET_COURSES_BY_ID":
       return {
@@ -148,7 +149,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         loggedUsers: [],
       };
-      case "GET_ALL_CLASSES":
+    case "GET_ALL_CLASSES":
       return {
         ...state,
         classes: action.payload,
