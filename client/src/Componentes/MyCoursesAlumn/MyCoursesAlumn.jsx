@@ -21,7 +21,7 @@ export default function MyCoursesAlumn() {
           myCourses.map((e) => {
             return (
               <Link to={`/courselessons/${e.id}`}>
-                <CardMini key={e.id} name={e.name} />
+                <CardMini key={e.id} name={e.name} img={e.image} />
               </Link>
             );
           })}
