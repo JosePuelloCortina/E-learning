@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User, Role, Buy, Op} = require('../../db');
+const { User, Role, Buy, Op, Category} = require('../../db');
 
 
 
@@ -11,7 +11,17 @@ server.get("/id/:id", async function(req, res, next){
             user = await User.findOne({
                 where:{
                     id:id
-                }, include: [Role, Buy]
+                }, include: [
+                    Role,
+                    Buy,
+                    {
+                        model: Category ,
+                        attributes: ["name"],
+                        through:{
+                            attributes: [],
+                        }
+                    },
+                ]
 
             })
         }
