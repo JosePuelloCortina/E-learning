@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./myCoursesAlumn.module.css";
 import CardMini from "../CardMini/CardMini";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 export default function MyCoursesAlumn() {
@@ -20,9 +20,9 @@ export default function MyCoursesAlumn() {
         {myCourses &&
           myCourses.map((e) => {
             return (
-              <Link to={`/courselessons/${e.id}`}>
-                <CardMini key={e.id} name={e.name} />
-              </Link>
+              
+                <CardMini key={e.id} name={e.name} img={e.image} id={e.id}/>
+              
             );
           })}
       </div>
