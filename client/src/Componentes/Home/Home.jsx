@@ -7,7 +7,6 @@ import CoursesContainer from "../CoursesContainer/CoursesContainer";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "../Carousel/Carousel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -38,12 +37,11 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
-      <Carousel />
       <NavBarCopy
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
-     
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}
