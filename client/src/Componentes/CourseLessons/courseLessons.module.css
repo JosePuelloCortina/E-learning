@@ -55,13 +55,15 @@
     flex-direction: column;
     position: absolute;
     align-self: flex-start;
-    width: 600px;
-    height: 500px;
-    background-color: white;
+    width: 900px;
+    height: 600px;
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
     border: solid var(--color4) 6px;
     border-radius: 30px;
     padding: 30px;
-    mask: black;
+    color: white;
+    
+
 }
 
 .visible button{
@@ -71,6 +73,80 @@
 .hidden{
     display: none
 }
+
+.calif{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.star{
+
+}
+textarea{
+    align-self: center;
+    width: 800px;
+    height: 250px;
+    border-radius: 30px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.send {
+    display: flex;
+        width: fit-content;
+        height: fit-content;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #ff9b00;
+        color: white;
+        border: solid black 0.5px;
+        margin: 20px;
+       vertical-align: middle;
+       font-weight: 500;
+       align-self: center;
+    }
+    .send:hover{
+        background-color: rgb(120, 3, 138);
+        cursor: pointer;
+    }
+    .close{
+        display: flex;
+        align-self: flex-end;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        width: fit-content;
+        height: fit-content;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        border: solid black 0.5px;
+        font-weight: 500;
+    }
+
+    .close:hover{
+        background-color: white;
+        color: black
+    }
+.container label{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 15px;
+
+}
+.container h4{
+    align-self: center;
+    margin:20px;
+}
+
 
 /* .hiddenContainer{
     filter: blur(4px);

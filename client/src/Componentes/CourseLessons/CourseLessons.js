@@ -53,12 +53,37 @@ export default function CourseLessons (){
                         />
                     </div>
                     <main className={review? style.visible:style.hidden }>
-                        <button onClick={handleClose}> X </button>
-                        <h4>Calificar este curso</h4>
-                        <label>Puntuación</label>
+                        <button className={style.close} onClick={handleClose}>Cerrar</button>
+                        <h4>Calificar el curso de {course.name}</h4>
                         
+                        <label>¿Qué puntaje le das?</label>
+                        <div className={style.calif}>
+                        <div className={style.star}>
+                        <p>⭐</p>
+                        <input type='radio'/>
+                        </div>
+                        <div className={style.star}>
+                        <p>⭐⭐</p>
+                        <input type='radio'/>
+                        </div>
+                        <div className={style.star}>
+                        <p>⭐⭐⭐</p>
+                        <input type='radio'/>
+                        </div>
+                        <div className={style.star}>
+                        <p>⭐⭐⭐⭐</p>
+                        <input type='radio'/>
+                        </div>
+                        <div className={style.star}>
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <input type='radio'/>
+                        </div>
+                        <br/>
+                        <br/>
+                        </div>
+                        <label>Contanos tu experiencia</label>
                         <textarea placeholder="Escribe tu comentario.."/>
-                        <button>Enviar</button>
+                        <button className={style.send}>Enviar</button>
                         
                     </main>
                 </div>
