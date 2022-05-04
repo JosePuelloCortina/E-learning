@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {
@@ -10,12 +11,23 @@ import styles from "./CourseCardDetail.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+import Comprar from '../MercadoPago/Comprar'
 
 
 function CourseCardDetail() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const [datos, setDatos] = useState("")
+  useEffect(()=>{
+    axios
+    .get(`http://localhost:3001/mercadopago`)
+    .then((data)=>{
+      setDatos(data.data)
+      console.info('Contenido de data:', data)
+    }).catch(err => console.error(err)) 
+  },[])
 
   useEffect(() => {
     dispatch(getCoursesById(id));
@@ -66,6 +78,7 @@ function CourseCardDetail() {
           <div className={styles.right}>
             <h4>Valor: ${detail.price}</h4>
             <button onClick={() => handlePurchase()}>Comprar</button>
+            <Comprar data={datos}/>
           </div>
         </div>
           
