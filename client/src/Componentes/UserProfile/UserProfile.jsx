@@ -14,6 +14,8 @@ export default function UserProfile() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+
+
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
@@ -35,6 +37,7 @@ export default function UserProfile() {
                   name={user.name}
                   id={user.id}
                   email={user.email}
+                 
                 />
               </div>
               <div className={styles.cursesDetail}>

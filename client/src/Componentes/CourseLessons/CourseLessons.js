@@ -19,6 +19,7 @@ export default function CourseLessons (){
     console.log(courseClasses, 'esto es course clases')
 
     const [currentLesson, setCurrentLesson] = useState({})
+    const [review, setReview] = useState(false)
 
     
     useEffect(() => {
@@ -29,6 +30,11 @@ export default function CourseLessons (){
     }, []);
     
     useEffect(()=> dispatch(getAllClasses()), [])
+
+    function handleClose(e){
+        e.preventDefault(e);
+        setReview(false);
+    }
     return(
         <div>
             <NavBar/>
@@ -41,8 +47,20 @@ export default function CourseLessons (){
                         <LessonsVideo lessons={courseClasses}/>
                     </div>
                     <div className={style.right}>
-                        <LessonsList lessons={courseClasses}/>
+                        <LessonsList lessons={courseClasses}
+                             review={review}
+                            setReview={setReview}
+                        />
                     </div>
+                    <main className={review? style.visible:style.hidden }>
+                        <button onClick={handleClose}> X </button>
+                        <h4>Calificar este curso</h4>
+                        <label>Puntuación</label>
+                        
+                        <textarea placeholder="Escribe tu comentario.."/>
+                        <button>Enviar</button>
+                        
+                    </main>
                 </div>
             </div>
             <Footer/>
