@@ -8,7 +8,8 @@ let buys = [
         "total_price": 120,
         "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b4",
-        "courseName": "Fullstack Web Developer"
+        "courseName": "Fullstack Web Developer",
+        "quantity" : 1
     },
     {
         "id": "394606a0-c77e-11ec-8c73-834ec4650dd4",
@@ -17,7 +18,8 @@ let buys = [
         "total_price": 100,
         "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b5",
-        "courseName": "Software Developer"
+        "courseName": "Software Developer",
+        "quantity" : 1
     },
     {
         "id": "394606a0-c77e-11ec-8c73-834ec4650dd5",
@@ -26,7 +28,8 @@ let buys = [
         "total_price": 110,
         "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b6",
-        "courseName": "Data Science"
+        "courseName": "Data Science",
+        "quantity" : 1
     }
 ]
 
@@ -40,6 +43,7 @@ const initializeBuys = async() =>{
                 pay_method : b.pay_method,
                 total_price: b.total_price,
                 courseName: b.courseName,
+                quantity: b.quantity
 
             }           
             const createBuy = await Buy.create(buy);
