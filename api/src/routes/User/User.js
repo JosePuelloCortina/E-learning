@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User, Role, Buy} = require('../../db');
+const { User, Role, Buy, Category} = require('../../db');
 
 
 server.get("/", async function(req, res, next){
@@ -7,7 +7,8 @@ server.get("/", async function(req, res, next){
         const user = await User.findAll({
             include: [
                 Role,
-                Buy
+                Buy,
+                Category
             ], 
             attributes: { exclude: ['createdAt', 'updatedAt'] }
         })

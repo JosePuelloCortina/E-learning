@@ -1,4 +1,4 @@
-const { User } = require('../db');
+const { User} = require('../db');
 
 let users = [ 
     {
@@ -7,7 +7,8 @@ let users = [
         "password": "vale123",
         "email": "vale@vale.com",
         "image": "url de imagen",
-        "role": "alumno"
+        "role": "alumno",
+        "category": ["Full-Stack", "Front-End"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773727",
@@ -15,7 +16,8 @@ let users = [
         "password": "albano123",
         "email": "albano@albano.com",
         "image": "url de imagen",
-        "role": "instructor"
+        "role": "instructor",
+        // "category": ["Front-End", "React", "Redux"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773728",
@@ -23,7 +25,8 @@ let users = [
         "password": "an123",
         "email": "andrea@andrea.com",
         "image": "url de imagen",
-        "role": "instructor"
+        "role": "instructor",
+        // "category": ["Front-End", "Back-End", "JavaScript"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773729",
@@ -31,7 +34,8 @@ let users = [
         "password": "g123",
         "email": "gustavo@gustavo.com",
         "image": "url de imagen",
-        "role": "instructor"
+        "role": "instructor",
+        // "category": ["Front-End", "Back-End", "JavaScript"]
     },
     {
         "id": "b65232b0-c6a0-11ec-b926-ff69e9773720",
@@ -39,7 +43,17 @@ let users = [
         "password": "t123",
         "email": "tomas@tomas.com",
         "image": "url de imagen",
-        "role": "admin"
+        "role": "admin",
+        // "category": ["Front-End", "Back-End", "JavaScript"]
+    },
+    {
+        "id": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "name": "agustin",
+        "password": "agus123",
+        "email": "agus@agus.com",
+        "image": "",
+        "role": "alumno",
+        // "category": ["Front-End", "Back-End", "JavaScript"]
     }
 ]
 
@@ -56,6 +70,7 @@ const initializeUser = async() =>{
             }           
             const createUser = await User.create(user);
             await createUser.addRoles(u.role)
+            await createUser.addCategory(u.category)
         })
         
     } catch (error) {
