@@ -61,14 +61,10 @@
     border: solid var(--color4) 6px;
     border-radius: 30px;
     padding: 30px;
-    color: white;
-    
+    color: white; 
 
 }
 
-.visible button{
-    width: fit-content;
-}
 
 .hidden{
     display: none
@@ -142,9 +138,12 @@ textarea{
     margin: 15px;
 
 }
-.container h4{
+.visible h4{
     align-self: center;
-    margin:20px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 
