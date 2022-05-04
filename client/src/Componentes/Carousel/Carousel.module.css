@@ -1,28 +1,15 @@
 
-
-
-
-
 #fondo {
-
- 
-  background-color: rgba(0, 0, 0, 0.877);
+  background-color: rgba(0, 0, 0, 0.591);
   width:100%;
   left:0%
 
-
 }
 
-.altura {
-    
-    height: 100px;
-}
-
-img {
-   
+#altura img {
     margin-right: auto;
     margin-left: auto;
-    height: 400px;
+    height: 200px;
     object-fit: cover;
 
 }

@@ -5,9 +5,8 @@
 
 .card {
   background-color: white;
-  height: 350px;
-  width: 320px;
-
+  height: 320px;
+  width: 360px;
   display: flex;
   flex-direction: column;
   margin: 20px;

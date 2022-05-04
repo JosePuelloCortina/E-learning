@@ -41,6 +41,7 @@ export default function Home() {
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

@@ -1,9 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   align-self: center;
-  width: 700px;
+  width: 800px;
   background-color: white;
   margin: 20px;
   color: black;
@@ -17,6 +16,7 @@
 .title h2 {
   color: black;
   font-size: 30px;
+
 }
 .cursesInstructor {
   display: flex;
