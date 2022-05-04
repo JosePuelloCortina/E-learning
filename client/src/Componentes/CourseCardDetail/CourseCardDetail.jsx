@@ -37,7 +37,7 @@ function CourseCardDetail() {
       alert("Para comprar el curso debes iniciar sesión")
       navigate('/user')
     }else{
-      dispatch(purchase({idUsuario: loggedUser, idCurso: id}))
+      dispatch(purchase({userId: loggedUser, courseId: id}))
       navigate('/purchaseok')
   }
   }

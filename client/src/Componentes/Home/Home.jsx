@@ -38,12 +38,11 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
-      <Carousel />
       <NavBarCopy
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
-     
+  <Carousel />
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

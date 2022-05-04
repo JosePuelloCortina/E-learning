@@ -4,11 +4,11 @@
     flex-wrap: wrap;
     justify-content: center;
     /* grid-template-columns: repeat(3, 2fr);
-    grid-auto-rows: auto;
-    grid-gap: 1rem; */
+    grid-auto-rows: auto; */
+
     justify-items: center;
     width: 100%;
-    height: 900px;
+    height: 650px;
     box-shadow: inset 0 15px 25px -15px #111;
 }
 

@@ -66,6 +66,10 @@ Course.belongsToMany(User, { through: 'userCourse'});
 Course.belongsToMany(Category, { through: 'categoriaCourse'});
 Category.belongsToMany(Course, { through: 'categoriaCourse'});
 
+//Relacion muchos a muchos categoria -> User
+User.belongsToMany(Category, { through: 'categoriaUser'});
+Category.belongsToMany(User, { through: 'categoriaUser'});
+
 
 //Relacion de muchos a uno curso -> clase
 Course.hasMany(Clase);

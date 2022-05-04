@@ -44,3 +44,11 @@
     font-weight: 600;
     margin-bottom: 15px;
 }
+.container h5{
+    font-size: 16px;
+}
+.container h4{
+    font-size: 18px;
+    color: rgb(22, 66, 135);
+    cursor: pointer;
+}
