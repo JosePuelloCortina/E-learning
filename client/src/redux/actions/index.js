@@ -185,3 +185,17 @@ export function createReview(payload) {
   };
 }
 
+export function getAllReviews() {
+  return async function (dispatch) {
+    try {
+      const classes = await axios.get(`http://localhost:3001/review/all`);
+      return dispatch({
+        type: "GET_ALL_REVIEWS",
+        payload: classes.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
