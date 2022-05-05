@@ -40,6 +40,7 @@ export default function UserProfile() {
                   id={userDetail.id}
                   email={userDetail.email}
                   categories={userDetail.categories}
+                  image={userDetail.image}
 
                  
                 />

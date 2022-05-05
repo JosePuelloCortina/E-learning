@@ -2,17 +2,18 @@ import React from 'react'
 
 import styles from './profileLateralBar.module.css'
 import {Link} from 'react-router-dom'
-import img from '../../Images/avatar1.jpg'
+import img from '../../Images/avatar4.jpg'
 
 
-export default function ProfileLateralBar({name, email, id, categories}) {
+export default function ProfileLateralBar({name, email, id, categories, image}) {
     
     return(
         <div className={styles.container}>
         
         <h3>{name}</h3>
-
-        <img src={img} alt='avatar' />
+        
+        <img src={image? image:img} alt='avatar' />
+        
         <h4>{email}</h4>
         <Link to={"/profile/edit/"+ id}>
         <button className={styles.editButton}>Editar mis datos</button>

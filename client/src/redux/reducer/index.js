@@ -9,8 +9,7 @@ const initialState = {
   loggedUsers: [],
   token: {},
   classes: [],
-
-  // avatares:[],
+  avatares:[],
 
   reviews: [],
 
@@ -165,11 +164,11 @@ export default function rootReducer(state = initialState, action) {
         classes: action.payload,
       };
 
-    // case "GET_AVATARES":
-    //   return {
-    //     ...state,
-    //     avatares: action.payload,
-    //   };
+    case "GET_AVATARES":
+      return {
+        ...state,
+        avatares: action.payload,
+      };
 
       case "POST_REVIEW":
       return {
