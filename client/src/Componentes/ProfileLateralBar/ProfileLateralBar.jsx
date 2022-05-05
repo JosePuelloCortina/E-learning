@@ -12,7 +12,7 @@ export default function ProfileLateralBar({name, email, id, categories, image}) 
         
         <h3>{name}</h3>
         
-        <img src={image? image:img} alt='avatar' />
+        <img src={image.length? image:img} alt='avatar' />
         
         <h4>{email}</h4>
         <Link to={"/profile/edit/"+ id}>
