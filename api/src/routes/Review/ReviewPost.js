@@ -6,7 +6,7 @@ server.post("/create", async (req, res) => {
         try {   
             const course = await Course.findOne({
             where: {
-              id: id
+              id: idCourse
             }});
             Review.create({
                 idCourse:idCourse,
