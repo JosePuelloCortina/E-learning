@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./CarouselSuggestions.module.css";
 
 function CarouselSuggestions( {loggedUser} ) {
@@ -103,6 +104,9 @@ function CarouselSuggestions( {loggedUser} ) {
                                         )}</div>
                                         <div className={styles.carouselSlideContentDescription}>{course.description}</div>
                                         <div className={styles.carouselSlideContentPrice}>${course.price}</div>
+                                        <Link to={`/courses/id/${course.id}`}>
+                                            <button className={styles.carouselSlideContentButton}>Ver curso</button>
+                                        </Link>
                                     </div>
                                 </div>
                             )}
@@ -152,6 +156,9 @@ function CarouselSuggestions( {loggedUser} ) {
                                             )}</div>
                                             <div className={styles.carouselSlideContentDescription}>{course.description}</div>
                                             <div className={styles.carouselSlideContentPrice}>${course.price}</div>
+                                            <Link to={`/courses/id/${course.id}`}>
+                                            <button className={styles.carouselSlideContentButton}>Ver curso</button>
+                                        </Link>
                                         </div>
                                     </div>
                                 )}
