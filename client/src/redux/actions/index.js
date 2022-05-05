@@ -185,6 +185,17 @@ export function getAllClasses() {
   };
 }
 
+
+// export function getAvatares() {
+//   return async function (dispatch) {
+//     var json = await axios.get("http://localhost:3001/avatar");
+//     return dispatch({
+//       type: "GET_AVATARES",
+//       payload: json.data,
+//     });
+//   };
+// }
+
 export function createReview(payload) {
   return async function (dispatch) {
     await axios.post(`http://localhost:3001/review/create`, payload);
