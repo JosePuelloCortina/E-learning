@@ -42,7 +42,7 @@ export default function Home() {
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
-  {/* <Carousel /> */}
+  <Carousel />
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}
