@@ -1,0 +1,223 @@
+
+.container .buttonYellow {
+    color: white;
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    background-color: #ff9b00;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: 800;
+    margin: 10px;
+}
+.container .buttonYellow:hover {
+    background-color: rgb(120, 3, 138);
+    cursor: pointer;
+}
+
+.container {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: auto;
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+}
+
+.SubcontainerInput {
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top:15px;
+    width: 400px; 
+} 
+
+.SubcontainerInput2 {
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top:10px;
+  width: 300px; 
+} 
+
+.SubcontainerInput2 label {
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  width: 300px;
+  margin-bottom: 10px;
+ 
+}
+
+.SubcontainerInput input {
+    width: 95%;
+    border-radius: 12px;
+    height: 20px;
+    margin:5px;
+    padding-left: 10px;
+    
+}
+
+ #description {
+  width: 100%;
+  border-radius: 12px;
+  height:300px;
+
+ 
+  
+}
+
+.SubcontainerInput  label {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    width: 300px;
+    margin-bottom: 10px;
+   
+}
+
+.form {
+    display: flex;  
+    border-radius: 25px;
+    flex-direction: row;
+    align-items: center;
+    border: rgb(255, 255, 255) solid 2px;
+    box-shadow: 0 5px 15px white; 
+    background-color: transparent;
+    height: 450px;
+    width: 1000px;
+    padding: 30px;
+    
+}
+
+
+
+
+
+.logo{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+  }
+  .logo h1 {
+    margin: 20px;
+    width: 150px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Gugi', cursive;
+    letter-spacing: 4px;
+    font-size: 60px;
+    text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
+  }
+  
+  .logo h1:hover{
+    text-shadow: 5px 5px 5px rgba(248, 186, 16, 0.67);
+    
+  }
+  
+  .logo a{
+    text-decoration: none;
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .container h2{
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    font-size: 30px;
+    align-self: center;
+  }
+
+
+  .container img{
+    height: 25px;
+    vertical-align: center;
+    margin-right: 5px;
+  }
+  
+  .container .google {
+    display: flex;
+    justify-content: center;
+    color: black;
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: 800;
+  }
+  .container p{
+    color:yellow;
+
+  }
+
+
+
+
+  .container1 {
+
+     display: flex;
+     width: 500px;
+     height: 90%;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     /* background-color: #ff9b00; */
+  }
+
+  .container2 {
+
+    display: flex;
+    width: 500px;
+    height: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #003f64; */
+ }
+
+ .containerbutton {
+
+  display: flex;
+  width: 100%;
+  height: 90%;
+  flex-direction: rows;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #291124; */
+  margin: 10px ;
+}
+
+.SubcontainerDescription input {
+
+  width: 95%;
+  border-radius: 12px;
+  height:60px;
+  margin:5px;
+  padding-left: 10px;
+  
+}
+
+.category{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+ margin: 10px;
+  height: 35px;
+  font-size: 14px;
+  font-weight: 40px;
+  padding: 5px;
+}
