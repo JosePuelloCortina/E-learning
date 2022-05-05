@@ -25,9 +25,9 @@ const id_buy = "394606a0-c77e-11ec-8c73-834ec4650dd3"
 //     {title: "Producto 3", quantity: 6, price: 200}
 //   ]
 const buy = await Buy.findAll()
-console.log(buy + "aquí está la compra")
+// console.log(buy + "aquí está la compra")
   // Agrega credenciales
-mercadopago.configure({
+mercadopago.configure({ 
     access_token: ACCESS_TOKEN
   });
   
@@ -43,9 +43,9 @@ mercadopago.configure({
     items: items_ml,
     external_reference : `${id_buy}`, //`${new Date().valueOf()}`,
     back_urls: {
-      success: `${DB_HOST}/mercadopago/pagos`,
-      failure: `${DB_HOST}/mercadopago/pagos`,
-      pending: `${DB_HOST}/mercadopago/pagos`,
+      success: `${DB_HOST}:3001/mercadopago/pagos`,
+      failure: `${DB_HOST}:3001/mercadopago/pagos`,
+      pending: `${DB_HOST}:3001/mercadopago/pagos`,
     }
   };
   console.info('preference:', preference)
@@ -79,7 +79,7 @@ server.get("/pagos/:id", (req, res)=>{
       error: err
     })
   })
-
+ 
 })
 
 server.get("/pagos", (req, res)=>{

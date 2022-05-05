@@ -38,7 +38,7 @@ conn.sync({ force: true }).then(async() => {
     await initializeCategory();
     await initializeCourses();
     await initializeClases();
-    await initializeBuys();
+    //await initializeBuys();
     await initializeAvatar();
 
     console.log("Tablas cargadas!!")
