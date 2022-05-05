@@ -83,12 +83,15 @@ Order.hasMany(Buy)
 Course.hasMany(Buy)
 Buy.belongsTo(Course)
 
-Avatar.hasMany(User);
-User.belongsTo(Avatar);
 
 //Relación de muchos a uno curso -> reviews
 Course.hasMany(Review);
 Review.belongsTo(Course);
+
+
+
+Avatar.hasMany(User);
+User.belongsTo(Avatar);
 
 
 module.exports = {

@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const mercadopago = require("mercadopago");
 
 server.post('/', (req, res, next) => {
-    const { userId, orderlines, status } = req.body
+    const { userId, status } = req.body
 
     Order.create({
         userId: userId,
@@ -12,7 +12,7 @@ server.post('/', (req, res, next) => {
     })
     .then(response => {
         Promise.all(
-        orderlines.map(elem => {
+        orderlines.map(elem => {   //cambiar el ORDERLINES QUE NO TENEMOS
             Course.findByPk( elem.id)
               .then(curso =>{
                 const orderId = response.dataValues.id //nos da el id de order
