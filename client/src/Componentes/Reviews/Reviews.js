@@ -11,8 +11,8 @@ export default function Reviews({id}){
     const dispatch = useDispatch();
     const courseId = useParams();
     const allReviews = useSelector( state => state.reviews)
-    const courseReviews = allReviews.filter( e => e.idCourse === courseId)
-    console.log(allReviews)
+    const courseReviews = allReviews.filter( e => e.idCourse === courseId.id)
+    console.log(courseId, "reviewsssss")
 
 useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
     return(
