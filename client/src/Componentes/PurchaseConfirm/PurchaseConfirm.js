@@ -1,15 +1,33 @@
 import React from 'react'
 import styles from './purchaseConfirm.module.css'
 import {Link, useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react'
+import { useParams } from "react-router";
+import {
+    getCoursesById,
+    removeCourseDetail
+  } from "../../redux/actions";
+
 
 export default function PurchaseConfirm(){
     const navigate= useNavigate()
+    const dispatch = useDispatch();
+    let { id } = useParams();
+    const user = useSelector((state) => state.userDetail)
+    id = user.id
+    useEffect(() => {
+        dispatch(getCoursesById(id));
+        return () => {
+          dispatch(removeCourseDetail());
+        };
+      }, []);
+
     useEffect(()=>{redirect() })
 
     function redirect(){
-        setTimeout(() => { navigate('/home')
-        }, 5000);
+        setTimeout(() => { navigate(`/checkout/id/:${id}`)
+        }, 1000);
         
     }
     return(
