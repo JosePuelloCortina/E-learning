@@ -159,6 +159,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classes: action.payload,
       };
+      case "POST_REVIEW":
+      return {
+        ...state,
+      };
     default:
       return state;
   }

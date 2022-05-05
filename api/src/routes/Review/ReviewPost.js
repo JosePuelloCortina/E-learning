@@ -2,17 +2,17 @@ const server = require("express").Router();
 const {Course, Review} = require("../../db");
 
 server.post("/create", async (req, res) => {
-    let {id, score, coment, name } = req.body;
+    let {idCourse, score, coment, userName } = req.body;
         try {   
             const course = await Course.findOne({
             where: {
-              id: id
+              id: idCourse
             }});
             Review.create({
-                idCourse:id,
+                idCourse:idCourse,
                 score:score,
                 coment:coment,
-                userName:name,
+                userName:userName,
               })
               .then(reviewCourse => {
                 reviewCourse.setCourse(course)

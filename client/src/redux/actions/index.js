@@ -185,3 +185,10 @@ export function getAllClasses() {
   };
 }
 
+export function createReview(payload) {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/review/create`, payload);
+    dispatch({ type: "POST_REVIEW" });
+  };
+}
+

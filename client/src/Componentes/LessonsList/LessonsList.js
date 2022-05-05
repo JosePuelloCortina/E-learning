@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './lessonsList.module.css'
 import {Link} from 'react-router-dom'
 
-export default function LessonsList({lessons, review, setReview}){
+export default function LessonsList({lessons, form, setForm}){
     console.log(lessons, 'esto es lessons')
 
     function handleReview(e){
         e.preventDefault(e);
-        setReview(true)
+        setForm(true)
         
     }
 
