@@ -2,6 +2,7 @@ const { Buy , Order} = require("../../db");
 
 const {
   DB_HOST,
+  BASE_URL,
     ACCESS_TOKEN,
   } = process.env;
 
