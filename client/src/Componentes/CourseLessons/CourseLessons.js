@@ -15,7 +15,6 @@ export default function CourseLessons (){
     const loggedUserId = useSelector( state => state.loggedUsers);
     const allUsers= useSelector( state => state.user)
     const user = allUsers.find(e => e.id === loggedUserId)
-    console.log(allUsers, 'esto es all users')
     const totalClasses = useSelector( state => state.classes)
    
     const courseClasses = totalClasses.filter( c => c.courseId === course.id)
@@ -30,7 +29,7 @@ export default function CourseLessons (){
         userName:user.name ,
     })
 
-    console.log(review)
+
     
     useEffect(() => {
         dispatch(getCoursesById(id));
@@ -65,23 +64,28 @@ export default function CourseLessons (){
     } else {
         alert('Por favor seleccione un puntaje y deje su comentario.')
     }
-        
+
+}
+    function resetCurrentLesson() {
+        setCurrentLesson({});
     }
+
     return(
         <div>
             <NavBar/>
             <div className={form===false?style.container: style.hiddenContainer}>
                 <div className={style.title}>
-                    <h1>{course.name}</h1>
+                    <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
                 </div>
                 <div className={style.body}>
                     <div className={style.left}>
-                        <LessonsVideo lessons={courseClasses}/>
+                        <LessonsVideo lessons={courseClasses} currentLesson={currentLesson} course={course}/>
                     </div>
                     <div className={style.right}>
                         <LessonsList lessons={courseClasses}
                              form={form}
                             setForm={setForm}
+                            setCurrentLesson={setCurrentLesson}
                         />
                     </div>
                    
