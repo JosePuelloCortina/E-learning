@@ -20,12 +20,12 @@ export default function MyCoursesAlumn() {
         <h2>Mis Cursos | Alumno |</h2>
       </div>
       <div className={styles.courses}>
-        {userDetail.buys &&
-          userDetail.buys.map((e) => {
+        {myCourses &&
+          myCourses.map((e) => {
             return (
               <CardMini
                 key={e.id}
-                name={e.courseName}
+                name={e.name}
                 img={e.image}
                 id={e.id}
               />
