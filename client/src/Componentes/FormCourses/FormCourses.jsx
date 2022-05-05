@@ -11,7 +11,7 @@ export function validation(form) {
   // USUARIO-(NAME)
 
   if (!form.name) {
-    errors.name = "Ingrese su nombre";
+    errors.name = "Ingrese nombre del curso";
   }
 
   // PRECIO

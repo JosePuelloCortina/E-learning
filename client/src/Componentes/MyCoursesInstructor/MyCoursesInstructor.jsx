@@ -7,14 +7,16 @@ import { allCourses } from "../../redux/actions";
 
 export default function MyCoursesInstructor() {
   const user = useSelector((state) => state.userDetail);
+  
+  
   const courses = useSelector((state) => state.coursesBackUp);
-
+ 
   const dispatch = useDispatch();
 
   let myCourses = courses.filter(
     (course) => course.users[0].name === user.name
   );
-
+ 
   useEffect(() => {
     dispatch(allCourses());
   }, [dispatch]);
@@ -30,7 +32,7 @@ export default function MyCoursesInstructor() {
       <div className={style.cursesInstructor}>
         {myCourses &&
           myCourses.map((e) => {
-            return <CardMini key={e.id} name={e.name} id={e.id} />;
+            return <CardMini key={e.id} name={e.name} id={e.id} img={e.image} />;
           })}
       </div>
     </div>
