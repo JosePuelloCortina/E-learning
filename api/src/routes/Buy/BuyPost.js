@@ -3,7 +3,7 @@ const {Buy, Course, User, Role} = require("../../db");
 
 
 server.post("/", async (req, res) => {
-    let {userId, courseId, discount, pay_method } = req.body; //recibe los datos por body mediante formulario
+    let {userId, courseId, discount, pay_method, quantity } = req.body; //recibe los datos por body mediante formulario
 
     try {
       try {
@@ -39,6 +39,7 @@ server.post("/", async (req, res) => {
           discount: discount || 0,
           pay_method: pay_method || "efectivo",
           total_price: course.dataValues.price - discount || course.dataValues.price,
+          quantity: quantity
         }) //crea la compra
         .then(buyCourse => {
           buyCourse.setCourse(courseId)

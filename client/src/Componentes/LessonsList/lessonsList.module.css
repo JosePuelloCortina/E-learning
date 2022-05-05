@@ -46,9 +46,10 @@
 }
 .container h5{
     font-size: 16px;
+    margin:5px;
 }
 .container h4{
     font-size: 18px;
-    color: rgb(22, 66, 135);
+    color: rgb(15, 53, 114);
     cursor: pointer;
 }

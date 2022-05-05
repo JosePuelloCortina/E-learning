@@ -18,7 +18,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserById(id));
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   const loggedUser = useSelector((state) => state.loggedUsers);
   const userDetail = useSelector((state) => state.userDetail);
@@ -39,6 +39,7 @@ export default function UserProfile() {
                   name={userDetail.name}
                   id={userDetail.id}
                   email={userDetail.email}
+                  categories={userDetail.categories}
 
                  
                 />

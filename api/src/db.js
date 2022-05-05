@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Sequelize, Op } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+// const Review = require("./models/Review");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -38,7 +39,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Role, Buy, Course, Clase, Category, Order, Avatar } = sequelize.models;
+const { User, Role, Buy, Course, Clase, Category, Order, Avatar, Review} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -84,6 +85,10 @@ Buy.belongsTo(Course)
 
 Avatar.hasMany(User);
 User.belongsTo(Avatar);
+
+//Relación de muchos a uno curso -> reviews
+Course.hasMany(Review);
+Review.belongsTo(Course);
 
 
 module.exports = {

@@ -8,6 +8,7 @@ import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "../Carousel/Carousel";
+import CarouselSuggestions from "../CarouselSuggestions/CarouselSuggestions";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -28,6 +29,8 @@ export default function Home() {
   const [orderReview, setOrderReview] = useState("");
 
   const courses = useSelector((state) => state.courses);
+  const loggedUser = useSelector((state) => state.loggedUsers);
+  console.log(loggedUser, "loggedUser");
   const [currentPage, setCurrentPage] = useState(1);
 
   const [coursesPerPage] = useState(6);
@@ -42,7 +45,12 @@ export default function Home() {
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
+          
   <Carousel />
+          
+  {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
+
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

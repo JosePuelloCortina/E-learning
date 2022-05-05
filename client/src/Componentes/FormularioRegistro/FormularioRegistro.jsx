@@ -9,7 +9,7 @@ import generator from "generate-password";
 
 export function validation(form) {
   let errors = {};
-  console.log(errors);
+  // console.log(errors);
 
   // USUARIO-(NAME)
 

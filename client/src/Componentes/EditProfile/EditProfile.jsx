@@ -13,10 +13,17 @@ export default function EditProfile() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
+
   useEffect(() => {
     dispatch(getAvatares());
   }, [dispatch]);
   const userInit = useSelector((state) => state.user);
+
+  const userInit = useSelector((state) => state.userDetail );
+  const stateCategories = useSelector((state) => state.categories);
+  console.log(userInit, "userInit");
+  const userCategory = userInit.categories && userInit.categories.map((category) => category.name);
+
   const navigate = useNavigate();
   const avatars = useSelector((state) => state.avatares);
 
@@ -26,7 +33,9 @@ export default function EditProfile() {
     password: userInit.password,
     confirmPassword: undefined,
     email: userInit.email,
+    categories: userCategory,
   });
+  console.log(input, "input");
   const [errors, setErrors] = useState({});
 
   // console.log(input)
@@ -45,6 +54,25 @@ export default function EditProfile() {
       })
     );
   }
+
+  function handleAddCategory(e){
+    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value)){
+      setInput({
+        ...input,
+        categories: [...input.categories, e.target.value]
+      });
+    }
+  };
+
+  function handleRemoveCategory(e){
+    e.preventDefault()
+    setInput({
+      ...input,
+      categories: input.categories.filter(category => category !== e.target.value)
+    });
+  };
+
+
 
   function handleSubmit(e) {
     if (
@@ -155,6 +183,31 @@ export default function EditProfile() {
                   {errors.confirmPassword && (
                     <p className="error">{errors.confirmPassword}</p>
                   )}
+                </div>
+              </div>
+              <div>
+                <div className={styles.containerSelect}>
+                  {/* <label>Categoria</label> */}
+                  <div>
+                  <select  onChange={(e) => handleAddCategory(e)}>
+                    <option>Categoria</option>
+                    {stateCategories && stateCategories.map((category) => {
+                      return (
+                        <option key={category.name} value={category.name}>
+                          {category.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  </div>
+          </div>
+                <div>
+                  {input.categories && input.categories.map((category) => (
+                    <div key={category}>
+                      <p>{category}</p>
+                      <button onClick={(e) => handleRemoveCategory(e)} value={category}>X</button>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

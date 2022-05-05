@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import style from './courseLessons.module.css'
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
-import { getCoursesById, removeCourseDetail, getAllClasses} from "../../redux/actions";
+import { getCoursesById, removeCourseDetail, getAllClasses, allUser, createReview} from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from './../LessonsVideo/LessonsVideo';
 
@@ -12,15 +12,25 @@ export default function CourseLessons (){
     const dispatch = useDispatch();
     const { id } = useParams();
     const course = useSelector((state) => state.courseDetail);
-    const loggedUser = useSelector( state => state.loggedUsers);
+    const loggedUserId = useSelector( state => state.loggedUsers);
+    const allUsers= useSelector( state => state.user)
+    const user = allUsers.find(e => e.id === loggedUserId)
+    console.log(allUsers, 'esto es all users')
     const totalClasses = useSelector( state => state.classes)
-    console.log(totalClasses, 'esto es total clases')
+   
     const courseClasses = totalClasses.filter( c => c.courseId === course.id)
-    console.log(courseClasses, 'esto es course clases')
+    console.log(user, 'esto es user')
 
-    const [currentLesson, setCurrentLesson] = useState({})
-    const [review, setReview] = useState(false)
+    const [currentLesson, setCurrentLesson] = useState({});
+    const [form, setForm] = useState(false);
+    const [review, setReview] = useState({
+        idCourse: id,
+        score: '',
+        coment: '',
+        userName:user.name ,
+    })
 
+    console.log(review)
     
     useEffect(() => {
         dispatch(getCoursesById(id));
@@ -30,15 +40,37 @@ export default function CourseLessons (){
     }, []);
     
     useEffect(()=> dispatch(getAllClasses()), [])
+    useEffect(()=> dispatch(allUser()), [])
 
     function handleClose(e){
         e.preventDefault(e);
-        setReview(false);
+        setForm(false);
+    }
+
+    function handleChange(e){
+        e.preventDefault(e);
+        setReview({
+            ...review,
+            [e.target.name] : e.target.value,
+        })
+    }
+
+    function handleSubmit(e){
+        e.preventDefault(e);
+        if(review.score && review.coment) {
+        dispatch(createReview(review));
+        alert('Calificación enviada.');
+        setForm(false);
+
+    } else {
+        alert('Por favor seleccione un puntaje y deje su comentario.')
+    }
+        
     }
     return(
         <div>
             <NavBar/>
-            <div className={review===false?style.container: style.hiddenContainer}>
+            <div className={form===false?style.container: style.hiddenContainer}>
                 <div className={style.title}>
                     <h1>{course.name}</h1>
                 </div>
@@ -48,8 +80,8 @@ export default function CourseLessons (){
                     </div>
                     <div className={style.right}>
                         <LessonsList lessons={courseClasses}
-                             review={review}
-                            setReview={setReview}
+                             form={form}
+                            setForm={setForm}
                         />
                     </div>
                    
@@ -57,7 +89,7 @@ export default function CourseLessons (){
             </div>
            
             <Footer/>
-            <main className={review? style.visible:style.hidden }>
+            <main className={form? style.visible:style.hidden }>
                         <button className={style.close} onClick={handleClose}>Cerrar</button>
                         <h4>Calificar el curso de {course.name}</h4>
                         
@@ -65,30 +97,34 @@ export default function CourseLessons (){
                         <div className={style.calif}>
                         <div className={style.star}>
                         <p>⭐</p>
-                        <input type='radio'/>
+                        <input type='radio' name='score' value='1' onChange={handleChange}/>
                         </div>
                         <div className={style.star}>
                         <p>⭐⭐</p>
-                        <input type='radio'/>
+                        <input type='radio' name='score' value='2' onChange={handleChange} />
                         </div>
                         <div className={style.star}>
                         <p>⭐⭐⭐</p>
-                        <input type='radio'/>
+                        <input type='radio' name='score' value='3' onChange={handleChange}/>
                         </div>
                         <div className={style.star}>
                         <p>⭐⭐⭐⭐</p>
-                        <input type='radio'/>
+                        <input type='radio' name='score' value='4' onChange={handleChange}/>
                         </div>
                         <div className={style.star}>
                         <p>⭐⭐⭐⭐⭐</p>
-                        <input type='radio'/>
+                        <input type='radio' name='score' value='5' onChange={handleChange}/>
                         </div>
                         <br/>
                         <br/>
                         </div>
                         <label>Contanos tu experiencia</label>
-                        <textarea placeholder="Escribe tu comentario.."/>
-                        <button className={style.send}>Enviar</button>
+                        <textarea placeholder="Escribe tu comentario.."
+                            name='coment'
+                            value={review.coment}
+                            onChange={handleChange}
+                        />
+                        <button className={style.send} onClick={handleSubmit}>Enviar</button>
                         
                     </main>
         </div>

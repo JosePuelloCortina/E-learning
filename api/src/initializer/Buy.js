@@ -9,7 +9,7 @@ let buys = [
         "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b4",
         "courseName": "Fullstack Web Developer",
-        "quantity" : 1
+        "quantity" : 1 
     }
 ]
 
