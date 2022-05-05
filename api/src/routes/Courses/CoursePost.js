@@ -19,6 +19,7 @@ server.post("/create", async (req, res) =>{
         });
         
         const role = usuario.dataValues.roles[0].dataValues.tipo; 
+       
 
         const categoria = await Category.findAll({
             where: {

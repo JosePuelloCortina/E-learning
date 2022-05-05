@@ -9,6 +9,7 @@ const initialState = {
   loggedUsers: [],
   token: {},
   classes: [],
+  reviews: [],
 };
 
 function sortAsc(arr, field) {
@@ -43,6 +44,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
+      case "POST_COURSE":
+        return {
+          ...state,
+        };
 
     case "VALIDATE_USER":
       return {
@@ -154,6 +160,15 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classes: action.payload,
       };
+      case "POST_REVIEW":
+      return {
+        ...state,
+      };
+      case "GET_ALL_REVIEWS":
+        return {
+          ...state,
+          reviews: action.payload,
+        };
     default:
       return state;
   }
