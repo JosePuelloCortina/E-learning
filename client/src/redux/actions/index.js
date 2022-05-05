@@ -35,6 +35,13 @@ export function createUser(form) {
   };
 }
 
+export function createCourse(form) {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/courses/create`, form);
+    dispatch({ type: "POST_COURSE" });
+  };
+}
+
 export function validateUser(form) {
   return async function (dispatch) {
     const token = await axios.post(`http://localhost:3001/user/login`, form);
@@ -170,6 +177,27 @@ export function getAllClasses() {
       const classes = await axios.get(`http://localhost:3001/classes/all`);
       return dispatch({
         type: "GET_ALL_CLASSES",
+        payload: classes.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function createReview(payload) {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/review/create`, payload);
+    dispatch({ type: "POST_REVIEW" });
+  };
+}
+
+export function getAllReviews() {
+  return async function (dispatch) {
+    try {
+      const classes = await axios.get(`http://localhost:3001/review/all`);
+      return dispatch({
+        type: "GET_ALL_REVIEWS",
         payload: classes.data,
       });
     } catch (error) {

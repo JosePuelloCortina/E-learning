@@ -11,7 +11,6 @@ import axios from "axios";
 
 export function validation(validate) {
   let errors = {};
-  console.log(errors);
 
   // USUARIO-(EMAIL)
 

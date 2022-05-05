@@ -24,7 +24,7 @@
 .container .up{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: 50%;
 }
 
@@ -38,4 +38,8 @@
     display: flex;
     justify-content: center;
     
+}
+
+.video{
+    align-self: center;
 }

@@ -13,7 +13,7 @@
     flex-direction: row;
     justify-content: center;
     width: 90%;
-    height: 85px;
+    height: 65px;
     background-color: white;
     color: black;
     font-family: 'Montserrat', sans-serif;
@@ -53,7 +53,7 @@
 .visible{
     display:flex;
     flex-direction: column;
-    position: absolute; top: 150px; left:20%;
+    position: absolute; top: 150px; left:15%;
     align-self: flex-start;
     width: 900px;
     height: 600px;

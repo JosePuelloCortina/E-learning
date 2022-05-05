@@ -26,18 +26,18 @@ module.exports = (sequelize) => {
 
     duration: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: true,
         
     },
 
     progress: {
         type: DataTypes.STRING,
-        allowNull: false,       
+        // allowNull: true,       
     },
 
     review: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: true,
     },
     
     image: {
