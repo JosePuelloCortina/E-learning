@@ -4,7 +4,7 @@ import styles from "./editProfile.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { getUserById, updateUser, getAvatares } from "../../redux/actions/index";
+import { getUserById, updateUser} from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
 export default function EditProfile() {
@@ -14,11 +14,9 @@ export default function EditProfile() {
     dispatch(getUserById(id));
   }, [dispatch, id]);
 
-  useEffect(() => {
-    dispatch(getAvatares());
-  }, [dispatch]);
-  const userInit = useSelector((state) => state.user);
-
+  // useEffect(() => {
+  //   dispatch(getAvatares());
+  // }, [dispatch]);
   const userInit = useSelector((state) => state.userDetail );
   const stateCategories = useSelector((state) => state.categories);
   console.log(userInit, "userInit");
