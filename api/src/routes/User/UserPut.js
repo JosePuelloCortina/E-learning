@@ -3,7 +3,7 @@ const { User, Category } = require('../../db');
 
 server.put('/update/id/:id', (req, res)=>{
     const { id } = req.params;
-    const { name, password, email, categories } = req.body;
+    const { name, password, email, categories, image } = req.body;
     if(!name || !password || !email ){
         return res.status(422).json({error: "No se enviaron todos los datos"}) 
     }
@@ -13,6 +13,7 @@ server.put('/update/id/:id', (req, res)=>{
         name: name,
         password: password,
         email: email,
+        image: image,
     })
     .then((userUpdate) =>{
         userUpdate.setCategories(categories)
