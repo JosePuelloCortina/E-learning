@@ -12,6 +12,7 @@ import PurchaseConfirm from "./Componentes/PurchaseConfirm/PurchaseConfirm";
 import Error404 from "./Componentes/Error404/Error404";
 import CourseLessons from "./Componentes/CourseLessons/CourseLessons";
 import UserVerification from "./Componentes/UserVerification/UserVerification";
+import Checkout from "./Componentes/Checkout/Checkout"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/purchaseok" element={<PurchaseConfirm />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/courselessons/:id" element={<CourseLessons />} />
+          <Route path="/checkout/id/:id" element={<Checkout/>} />
         </Routes>
       </BrowserRouter>
     </div>

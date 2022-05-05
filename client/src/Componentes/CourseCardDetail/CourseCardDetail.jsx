@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {
@@ -11,7 +10,7 @@ import styles from "./CourseCardDetail.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
-import Comprar from '../MercadoPago/Comprar'
+
 
 
 function CourseCardDetail() {
@@ -19,15 +18,6 @@ function CourseCardDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [datos, setDatos] = useState("")
-  useEffect(()=>{
-    axios
-    .get(`/mercadopago`)
-    .then((data)=>{
-      setDatos(data.data)
-      console.info('Contenido de data:', data)
-    }).catch(err => console.error(err)) 
-  },[])  
 
   useEffect(() => {
     dispatch(getCoursesById(id));
@@ -35,7 +25,7 @@ function CourseCardDetail() {
       dispatch(removeCourseDetail());
     };
   }, []);
-
+  const cantidad = 1;
   const detail = useSelector((state) => state.courseDetail);
   const loggedUser = useSelector( state => state.loggedUsers);
   console.log(loggedUser, "este es el usuario" )
@@ -49,7 +39,7 @@ function CourseCardDetail() {
       alert("Para comprar el curso debes iniciar sesión")
       navigate('/user')
     }else{
-      dispatch(purchase({userId: loggedUser, courseId: id}))
+      dispatch(purchase({userId: loggedUser, courseId: id, quantity: cantidad  }))
       navigate('/purchaseok')
   }
   }
@@ -74,11 +64,11 @@ function CourseCardDetail() {
                   </div>
               )})}
               <h4>Duracion: {detail.duration} Horas</h4>
+              <h4>Cantidad: {cantidad}</h4>
             </div>
           <div className={styles.right}>
             <h4>Valor: ${detail.price}</h4>
             <button onClick={() => handlePurchase()}>Comprar</button>
-            <Comprar data={datos}/>
           </div>
         </div>
           
