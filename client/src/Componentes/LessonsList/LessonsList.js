@@ -26,7 +26,8 @@ export default function LessonsList({lessons, review, setReview}){
         <br/>
         <h5>Tus comentarios nos ayudan a mejorar y ayudan a otros usuarios a elegir mejor.</h5> 
         <h5>Deja tu reseña sobre este curso.</h5>
-        <h4 onClick={handleReview}>Click aquí para calificar.</h4>
+        <h4 onClick={handleReview}>⭐Click aquí para calificar⭐</h4>
+ 
         </div>
     )
 }
