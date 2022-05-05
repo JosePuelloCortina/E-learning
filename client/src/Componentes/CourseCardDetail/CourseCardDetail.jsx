@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import Comprar from '../MercadoPago/Comprar'
+import Reviews from "../Reviews/Reviews";
 
 
 function CourseCardDetail() {
@@ -111,6 +112,7 @@ function CourseCardDetail() {
                   </div>
                 );
               })}
+              <Reviews id={id}/>
             <Link to="/home">
               <button>Volver</button>
             </Link>
