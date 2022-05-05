@@ -13,12 +13,12 @@ export default function EditProfile() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
-  // useEffect(() => {
-  //   dispatch(getAvatares());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getAvatares());
+  }, [dispatch]);
   const userInit = useSelector((state) => state.user);
   const navigate = useNavigate();
-  // const avatars = useSelector((state) => state.avatares);
+  const avatars = useSelector((state) => state.avatares);
 
   const [input, setInput] = useState({
     id: id,
