@@ -6,7 +6,7 @@ let users = [
         "name": "valentina",
         "password": "vale123",
         "email": "vale@vale.com",
-        "image": "url de imagen",
+        "image": "",
         "role": "alumno",
         "category": ["Front-End", "React", "Full-Stack", "Mobile", "Redux"]
     },
@@ -15,7 +15,7 @@ let users = [
         "name": "albano",
         "password": "albano123",
         "email": "albano@albano.com",
-        "image": "url de imagen",
+        "image": "",
         "role": "instructor",
         "category": ["Front-End", "React", "Redux", "Git", "Bootstrap"]
     },
@@ -24,7 +24,7 @@ let users = [
         "name": "andrea",
         "password": "an123",
         "email": "andrea@andrea.com",
-        "image": "url de imagen",
+        "image": "",
         "role": "instructor",
         "category": ["Front-End", "JavaScript", "CSS", "HTML", "SASS"]
     },
@@ -33,7 +33,7 @@ let users = [
         "name": "gustavo",
         "password": "g123",
         "email": "gustavo@gustavo.com",
-        "image": "url de imagen",
+        "image": "",
         "role": "instructor",
         "category": ["Front-End", "JavaScript", "Bootstrap", "Vue", "Angular"]
     },
@@ -42,7 +42,7 @@ let users = [
         "name": "tomas",
         "password": "t123",
         "email": "tomas@tomas.com",
-        "image": "url de imagen",
+        "image": "",
         "role": "admin",
         "category": ["Back-End", "Python", "Java", "Ruby", "Kotlin"]
     },
