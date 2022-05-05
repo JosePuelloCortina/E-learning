@@ -18,7 +18,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserById(id));
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   const loggedUser = useSelector((state) => state.loggedUsers);
   const userDetail = useSelector((state) => state.userDetail);
