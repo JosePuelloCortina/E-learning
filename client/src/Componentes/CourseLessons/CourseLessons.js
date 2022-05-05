@@ -15,7 +15,7 @@ export default function CourseLessons (){
     const loggedUserId = useSelector( state => state.loggedUsers);
     const allUsers= useSelector( state => state.user)
     const user = allUsers.find(e => e.id === loggedUserId)
-
+    console.log(allUsers, 'esto es all users')
     const totalClasses = useSelector( state => state.classes)
    
     const courseClasses = totalClasses.filter( c => c.courseId === course.id)

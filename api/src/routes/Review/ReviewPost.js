@@ -7,7 +7,9 @@ server.post("/create", async (req, res) => {
             const course = await Course.findOne({
             where: {
               id: idCourse
+              
             }});
+            console.log(course, 'esto es course')
             Review.create({
                 idCourse:idCourse,
                 score:score,

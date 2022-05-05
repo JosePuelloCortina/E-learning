@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './reviews/reviews.module.css'
+import styles from './reviews.module.css'
 import { useEffect } from 'react';
 import { getAllReviews } from './../../redux/actions/index';
 
@@ -7,13 +7,14 @@ import { useDispatch, useSelector} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 
-export default function Reviews(){
+export default function Reviews({id}){
     const dispatch = useDispatch();
     const courseId = useParams();
     const allReviews = useSelector( state => state.reviews)
-    const courseReviews = allReviews.filter( e => e.courseId === courseId)
+    const courseReviews = allReviews.filter( e => e.idCourse === courseId)
+    console.log(allReviews)
 
-useEffect(()=>{dispatch(getAllReviews)})
+useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
     return(
         <div className={styles.container}>
             <h3>Reseñas sobre este curso</h3>
