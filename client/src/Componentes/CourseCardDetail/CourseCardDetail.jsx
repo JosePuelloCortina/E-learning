@@ -35,15 +35,25 @@ function CourseCardDetail() {
   // const idCourse = detail.id
    console.log(id, "ESTO ES IDcourse")
 
-  function handlePurchase(){
+   function handleMercadoPago(){
     if(loggedUser.length === 0){
       alert("Para comprar el curso debes iniciar sesión")
       navigate('/user')
     }else{
-      dispatch(purchase({userId: loggedUser, courseId: id, quantity: cantidad  }))
-      navigate('/purchaseok')
+      navigate(`/checkout/id/${id}`)
   }
   }
+
+
+  // function handlePurchase(){
+  //   if(loggedUser.length === 0){
+  //     alert("Para comprar el curso debes iniciar sesión")
+  //     navigate('/user')
+  //   }else{
+  //     dispatch(purchase({userId: loggedUser, courseId: id, quantity: cantidad  }))
+  //     navigate('/purchaseok')
+  // }
+  // }
   return (
     <div>
     <NavBar/>
@@ -71,7 +81,8 @@ function CourseCardDetail() {
               <br/>
               <h3 className={styles.price}> ${detail.price}</h3>
               <br/>
-              <button onClick={() => handlePurchase()}>Comprar</button>
+              <button onClick={() => handleMercadoPago()}>Comprar MercadoPago</button>
+              {/* <button onClick={() => handlePurchase()}>Comprar</button> */}
               <br/>
               <div className={styles.courseInfo}>
               <br/>

@@ -77,8 +77,6 @@ let clases = [
     "url": "https://www.youtube.com/watch?v=iPw-5EOqh5Y&list=PLyBd7TyyK5mqBGx31fC5tvqOi6UbY2rMU&index=9",
     "course": "760c7440-c70e-11ec-96f7-e913400288b9"
     },
-
-   
     // Curso: Software Development 
     { "id": "68994b60-c70e-11ec-96f7-e913400288b1",
         "name": "What is Software Development",
@@ -136,6 +134,249 @@ let clases = [
     "url": "https://www.youtube.com/watch?v=iE3OyEO2f8g&list=PLA6LhKSShduvWZWkByb2m-kwba0XAFlmc&index=4",
     "course": "760c7440-c70e-11ec-96f7-e913400288b6"
     },
+    , //Curso Machine Learning
+    { "id": "48994b60-c70e-11ec-96f7-e913400288b1",
+    "name": "INTRODUCCIÓN AL CURSO: MACHINE LEARNING CON PYTHON",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/4c7oFu36d6k",
+    "course": "760c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "48994b60-c70e-11ec-96f7-e913400288b2",
+    "name": "INTRODUCCIÓN AL IDE SPYDER",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/eAaGRRuyg1w",
+    "course": "760c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "48994b60-c70e-11ec-96f7-e913400288b3",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA NUMPY DE PYTHON - PARTE 1",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/WxJr143Os-A",
+    "course": "760c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "48994b60-c70e-11ec-96f7-e913400288b4",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA NUMPY DE PYTHON - PARTE 2 ",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/aqIMhiialq0",
+    "course": "760c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "48994b60-c70e-11ec-96f7-e913400288b5",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA PANDAS DE PYTHON ",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/gimfTyCNfGw",
+    "course": "760c7440-c70e-11ec-96f7-e913400288b7"
+    }, //Curso Data Science Beginner
+    { "id": "38994b60-c70e-11ec-96f7-e913400288b1",
+    "name": "CIENCIA DE DATOS en 7 Minutos ⚡️",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=dH5v_mcvlXM",
+    "course": "360c7440-c70e-11ec-96f7-e913400288b6"
+    },
+    { "id": "38994b60-c70e-11ec-96f7-e913400288b2",
+    "name": "Qué es DATA SCIENCE y para qué SIRVE",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=K0vyX9r-088",
+    "course": "360c7440-c70e-11ec-96f7-e913400288b6"
+    },
+    { "id": "38994b60-c70e-11ec-96f7-e913400288b3",
+    "name": "Cómo Empezar en DataScience",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=HDVZKT7eKiU&list=PLA6LhKSShduvWZWkByb2m-kwba0XAFlmc&index=2",
+    "course": "360c7440-c70e-11ec-96f7-e913400288b6"
+    },
+    { "id": "38994b60-c70e-11ec-96f7-e913400288b4",
+    "name": "Qué debe SABER un DATA SCIENTIST ",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=iE3OyEO2f8g&list=PLA6LhKSShduvWZWkByb2m-kwba0XAFlmc&index=4",
+    "course": "360c7440-c70e-11ec-96f7-e913400288b6"
+    }, //Machine learning Advanced
+    { "id": "28994b60-c70e-11ec-96f7-e913400288b1",
+    "name": "INTRODUCCIÓN AL CURSO: MACHINE LEARNING CON PYTHON",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/4c7oFu36d6k",
+    "course": "460c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "28994b60-c70e-11ec-96f7-e913400288b2",
+    "name": "INTRODUCCIÓN AL IDE SPYDER",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/eAaGRRuyg1w",
+    "course": "460c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "28994b60-c70e-11ec-96f7-e913400288b3",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA NUMPY DE PYTHON - PARTE 1",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/WxJr143Os-A",
+    "course": "460c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "28994b60-c70e-11ec-96f7-e913400288b4",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA NUMPY DE PYTHON - PARTE 2 ",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/aqIMhiialq0",
+    "course": "460c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    { "id": "28994b60-c70e-11ec-96f7-e913400288b5",
+    "name": "INTRODUCCIÓN A LA LIBRERÍA PANDAS DE PYTHON ",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://youtu.be/gimfTyCNfGw",
+    "course": "460c7440-c70e-11ec-96f7-e913400288b7"
+    },
+    // Curso: Sotftware Developer for advanced students
+    { "id": "18994b60-c70e-11ec-96f7-e913400288b1",
+        "name": "What is Software Development",
+        "duration": "duration",
+        "description": "description",
+        "url": "https://www.youtube.com/watch?v=pquPUX1EihM",
+        "course": "260c7440-c70e-11ec-96f7-e913400288b5"
+    },
+    { "id": "18994b60-c70e-11ec-96f7-e913400288b2",
+    "name": "Guide To Becoming A Self-Taught Software Developer",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=J6rVaFzOEP8",
+    "course": "260c7440-c70e-11ec-96f7-e913400288b5"
+    },
+    { "id": "18994b60-c70e-11ec-96f7-e913400288b3",
+    "name": "Software Development Lifecycle in 9 minutes!",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=i-QyW8D3ei0",
+    "course": "260c7440-c70e-11ec-96f7-e913400288b5"
+    },
+    { "id": "18994b60-c70e-11ec-96f7-e913400288b4",
+    "name": "The Systems Development Environment",
+    "duration": "duration",
+    "description": "description",
+    "url": "https://www.youtube.com/watch?v=zhUbpqydHS0",
+    "course": "260c7440-c70e-11ec-96f7-e913400288b5"
+    },
+ // Curso: MySQL
+ { "id": "08994b60-c70e-11ec-96f7-e913400288b1",
+ "name": "Presentación del curso",
+ "duration": "duration",
+ "description": "description",
+ "url": "https://youtu.be/iOiyJgnN71c",
+ "course": "760c7440-c70e-11ec-96f7-e913400288b3"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288b2",
+"name": "Introducción al curso SQL",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/Bk3rY_ICgPo",
+"course": "760c7440-c70e-11ec-96f7-e913400288b3"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288b3",
+"name": "Claúsulas y operadores",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/np6PH_vs-GI",
+"course": "760c7440-c70e-11ec-96f7-e913400288b3"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288b4",
+"name": "Cláusula Order By. Ordenando registros.",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/yZk9NdxFUrk",
+"course": "760c7440-c70e-11ec-96f7-e913400288b3"
+}, 
+ // Curso: React
+ { "id": "08994b60-c70e-11ec-96f7-e913400288c1",
+ "name": "Introducción a React",
+ "duration": "duration",
+ "description": "description",
+ "url": "https://youtu.be/MPLN1ahXgcs",
+ "course": "760c7440-c70e-11ec-96f7-e913400288b2"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288c2",
+"name": "Create React App",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/6rqT8OP-yn0",
+"course": "760c7440-c70e-11ec-96f7-e913400288b2"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288c3",
+"name": "Sintaxis JSX ",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/EH4L-EYt63Y",
+"course": "760c7440-c70e-11ec-96f7-e913400288b2"
+},
+{ "id": "08994b60-c70e-11ec-96f7-e913400288c4",
+"name": "Componentes",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/SQbZ9dThB80",
+"course":"760c7440-c70e-11ec-96f7-e913400288b2" 
+},
+// Curso:"Fullstack Web Developer Expertise"
+{ "id": "18994b60-c70e-11ec-96f7-e913400288d1",
+"name": "What is Software Development",
+"duration": "duration",
+"description": "description",
+"url": "https://www.youtube.com/watch?v=pquPUX1EihM",
+"course": "160c7440-c70e-11ec-96f7-e913400288b4"
+},
+{ "id": "18994b60-c70e-11ec-96f7-e913400288d2",
+"name": "Guide To Becoming A Self-Taught Software Developer",
+"duration": "duration",
+"description": "description",
+"url": "https://www.youtube.com/watch?v=J6rVaFzOEP8",
+"course": "160c7440-c70e-11ec-96f7-e913400288b4"
+}, 
+{ "id": "18994b60-c70e-11ec-96f7-e913400288d3",
+"name": "Software Development Lifecycle in 9 minutes!",
+"duration": "duration",
+"description": "description",
+"url": "https://www.youtube.com/watch?v=i-QyW8D3ei0",
+"course": "160c7440-c70e-11ec-96f7-e913400288b4"
+},
+{ "id": "18994b60-c70e-11ec-96f7-e913400288d4",
+"name": "The Systems Development Environment",
+"duration": "duration",
+"description": "description",
+"url": "https://www.youtube.com/watch?v=zhUbpqydHS0",
+"course": "160c7440-c70e-11ec-96f7-e913400288b4"
+},// Curso:"HTML FOR BABIES"
+{ "id": "18994b60-c70e-11ec-96f7-e913400288e1",
+"name": "Inroducción a HTML 5",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/QC9_8nRNNHA",
+"course": "760c7440-c70e-11ec-96f7-e913400288b8"
+},
+{ "id": "18994b60-c70e-11ec-96f7-e913400288e2",
+"name": "Conceptos básicos",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/CdfMG_Qy00E",
+"course": "760c7440-c70e-11ec-96f7-e913400288b8"
+}, 
+{ "id": "18994b60-c70e-11ec-96f7-e913400288e3",
+"name": "Nuevos elementos de estructura en HTML5",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/F-cDjBkSRT4",
+"course": "760c7440-c70e-11ec-96f7-e913400288b8"
+},
+{ "id": "18994b60-c70e-11ec-96f7-e913400288e4",
+"name": "Estructura del cuerpo y nuevos elementos",
+"duration": "duration",
+"description": "description",
+"url": "https://youtu.be/Wjgv2GJUe2I",
+"course": "760c7440-c70e-11ec-96f7-e913400288b8"
+},
 
 
 ]
