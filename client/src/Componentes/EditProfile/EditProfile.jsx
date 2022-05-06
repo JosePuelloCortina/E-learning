@@ -231,7 +231,7 @@ export default function EditProfile() {
                   <label>Selecciona tus temas de preferencia:</label>  
                     <select onChange={(e) => handleAddCategory(e)}>
                       <option>Seleccionar</option>
-                      <div className={styles.titulo}>
+                      
                       {stateCategories &&
                         stateCategories.map((category) => {
                           return (
@@ -240,7 +240,7 @@ export default function EditProfile() {
                             </option>
                           );
                         })}
-                      </div>
+                    
                     </select>
                   </div>
                 </div>

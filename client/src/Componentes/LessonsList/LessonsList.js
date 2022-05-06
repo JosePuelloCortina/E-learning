@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './lessonsList.module.css'
 import {Link} from 'react-router-dom'
 
-export default function LessonsList({lessons, form, setForm, setCurrentLesson}){
+export default function LessonsList({lessons, form, setForm, setCurrentLesson, user}){
     console.log(lessons, 'esto es lessons')
 
     function handleReview(e){
@@ -18,9 +18,9 @@ export default function LessonsList({lessons, form, setForm, setCurrentLesson}){
             return (
                 <div className={styles.classes}>
                   
-                            <p value={e} onClick={() => setCurrentLesson(e)}>{e.name}</p>
+                    <p value={e} onClick={() => setCurrentLesson(e)}>{e.name}</p>
                     
-                    <input type='checkbox'/>
+                    {user.roles[0].tipo=== 'alumn'? <input type='checkbox'/>: null}
                     </div>
                 
             )
