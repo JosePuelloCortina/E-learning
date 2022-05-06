@@ -227,11 +227,11 @@ export default function EditProfile() {
             </div>
             <div className={styles.containerSelect}>
                   {/* <label>Categoria</label> */}
-                  <div>
-                  <label>Selecciona tus temas de preferencia:</label>  
-                    <select onChange={(e) => handleAddCategory(e)}>
+                  <div >
+                  <label>Selecciona tus temas favoritos:  </label>
+                    <select className={styles.decorando} onChange={(e) => handleAddCategory(e)}>
                       <option>Seleccionar</option>
-                      
+                     
                       {stateCategories &&
                         stateCategories.map((category) => {
                           return (
@@ -242,19 +242,23 @@ export default function EditProfile() {
                         })}
                     
                     </select>
+                    
                   </div>
                 </div>
-                <div>
+                <div className={styles.decorando}>
                   {input.categories &&
                     input.categories.map((category) => (
-                      <div key={category}>
-                        <p>{category}</p>
+                      <div className={styles.decorando} key={category}>
+                        <p className={styles.p}>{category}
                         <button
                           onClick={(e) => handleRemoveCategory(e)}
                           value={category}
+                          className={styles.botonx}
                         >
                           X
                         </button>
+                        </p>
+
                       </div>
                     ))}
                 </div>
