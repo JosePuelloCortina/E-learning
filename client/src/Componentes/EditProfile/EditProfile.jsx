@@ -73,6 +73,7 @@ export default function EditProfile() {
       });
     }
   }
+  console.log(id, "id")
 
   function handleRemoveCategory(e) {
     e.preventDefault();
@@ -92,6 +93,7 @@ export default function EditProfile() {
   }
 
   function handleSubmit(e) {
+    e.preventDefault(e)
     if (
       !input.name ||
       !input.email ||
@@ -102,6 +104,7 @@ export default function EditProfile() {
     } else {
       if (window.confirm("¿Desea modificar sus datos?") === true) {
         dispatch(updateUser(id, input));
+        console.log(input, "input FINAL ")
         alert("Cambios guardados.");
         navigate(`/profile/${id}`);
       } else {
