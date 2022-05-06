@@ -17,10 +17,13 @@ export default function Reviews({id}){
 useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
     return(
         <div className={styles.container}>
+        <div className={styles.title}>
             <h3>Reseñas sobre este curso</h3>
+            </div>
+            <div className={styles.cards}>
             { courseReviews && courseReviews.map( e => {
                 return (
-                    <div>
+                    <div className={styles.reviewCard}>
                         <div>
                             <h4>{e.userName}</h4>
                             <div>
@@ -39,6 +42,7 @@ useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }

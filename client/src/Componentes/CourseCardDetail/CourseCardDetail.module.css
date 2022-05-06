@@ -10,8 +10,7 @@
     margin: 20px;
     color: black;
     font-family: 'Montserrat',sans-serif;
-    font-size: 20px;
-    font-weight: center;
+    font-size: 18px;
     
 }
 
@@ -45,7 +44,7 @@
     cursor: pointer;
     transition: 0.5s;
     border-radius: 60px;
-    padding: 20px;
+    padding: 30px;
     border: solid var(--color4) 6px;
 
 }
@@ -53,7 +52,10 @@
 .title{
     display: flex;
     justify-content: center;
-    font-size: 40px;
+    font-size: 35px;
+}
+.title h3{
+    margin: 15px;
 }
 
 .detail{
@@ -68,16 +70,21 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    width: 60%;
+    width: 50%;
+   
 }
 
 .right{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 40%;
+    align-items: flex-start;
+    justify-content:flex-start;
+    width: 50%;
 }
-
+.right img{
+    align-self: flex-start;
+    margin-top: 50px;
+}
 .right button{
     
     display: flex;
@@ -96,6 +103,7 @@
     font-family:'Montserrat',
     sans-serif;
     font-weight: 800;
+    margin: 20px
 }
 
 .right button:hover{
@@ -110,7 +118,7 @@
 
 
 .image img{
-    width: 80%;
+    width: 90%;
     align-self: center;
 }
 
@@ -121,4 +129,27 @@
 
 .courseInfo{
     display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 80%;
+}
+.courseInfo p{
+    margin: 2px;
+}
+
+.containerClases p{
+    margin: 8px;
+}
+
+.detail h4{
+    font-size: 16px;
+    margin: 5px;
+}
+.detail .price{
+    font-size: 22px;
+    margin: 5px;
+    letter-spacing: 2px;
+    padding: 10px;
+    border: solid var(--color4) 1.8px;
+   width: fit-content;
 }

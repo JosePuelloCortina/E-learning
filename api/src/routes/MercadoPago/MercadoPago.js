@@ -2,6 +2,7 @@ const { Buy , Order} = require("../../db");
 
 const {
   DB_HOST,
+  BASE_URL,
     ACCESS_TOKEN,
   } = process.env;
 
@@ -54,7 +55,7 @@ mercadopago.configure({
   .then(function(response){
     console.info('respondio')
   // Este valor reemplazará el string"<%= global.id %>" en tu HTML
-    global.id = response.body.init_point;
+    global.id = response.body.id;
     console.log(response.body)
     res.json({id: global.id, init_point: response.body.init_point});
   }).catch(function(error){

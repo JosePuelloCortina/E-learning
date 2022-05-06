@@ -9,7 +9,10 @@ const initialState = {
   loggedUsers: [],
   token: {},
   classes: [],
+  avatares:[],
+
   reviews: [],
+
 };
 
 function sortAsc(arr, field) {
@@ -165,6 +168,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classes: action.payload,
       };
+
+    case "GET_AVATARES":
+      return {
+        ...state,
+        avatares: action.payload,
+      };
+
       case "POST_REVIEW":
       return {
         ...state,
@@ -174,6 +184,7 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           reviews: action.payload,
         };
+
     default:
       return state;
   }

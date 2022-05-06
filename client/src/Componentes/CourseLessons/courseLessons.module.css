@@ -31,6 +31,12 @@
     font-size: 40px;
     align-self: center;
 }
+
+.title h1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .body{
     display: flex;
     flex-direction: row;
