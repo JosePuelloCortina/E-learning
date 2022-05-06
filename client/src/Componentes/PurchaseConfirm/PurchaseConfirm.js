@@ -26,7 +26,7 @@ export default function PurchaseConfirm(){
     useEffect(()=>{redirect() })
 
     function redirect(){
-        setTimeout(() => { navigate(`/checkout/id/:${id}`)
+        setTimeout(() => { navigate(`/home`)
         }, 1000);
         
     }

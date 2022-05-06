@@ -99,7 +99,7 @@ let courses = [
     },
     {
         "id": "160c7440-c70e-11ec-96f7-e913400288b4",
-        "name": "Fullstack Web Developer",
+        "name": "Fullstack Web Developer Expertise",
         "duration": "12",
         "description": "Modalidad Full Time y Part Time. Apoyo personalizado. Invertimos en ti. 100% Online. Comunidad Henry",
         "review": "5",
@@ -111,7 +111,7 @@ let courses = [
     },
     {
         "id": "260c7440-c70e-11ec-96f7-e913400288b5",
-        "name": "Sotftware Developer",
+        "name": "Sotftware Developer for advanced students",
         "duration": "23",
         "description": "Descripcion del curso sotftware developer. ",
         "review": "2 ",
@@ -123,7 +123,7 @@ let courses = [
     },
     {
         "id": "360c7440-c70e-11ec-96f7-e913400288b6",
-        "name": "Data Science",
+        "name": "Data Science Beginner",
         "duration": "23",
         "description": "Descripcion de del curso Data Science.",
         "review": "4",
@@ -135,7 +135,7 @@ let courses = [
     },
     {
         "id": "460c7440-c70e-11ec-96f7-e913400288b7",
-        "name": "Machine learning",
+        "name": "Machine learning Advanced",
         "duration": "25",
         "description": "Curso introductorio a Machine Learning. ",
         "review": "5",
