@@ -101,6 +101,7 @@ export default function CourseLessons() {
           <button onClick={handleSubmitClass}> Crear Clase</button>
         </div>
 
+
         <div className={style.body}>
           <div className={style.left}>
             <LessonsVideo
@@ -201,7 +202,9 @@ export default function CourseLessons() {
         <button className={style.send} onClick={handleSubmit}>
           Enviar
         </button>
+
       </main>
     </div>
+    
   );
 }
