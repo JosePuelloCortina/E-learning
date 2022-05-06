@@ -191,19 +191,7 @@ export default function CourseLessons() {
           </button>
         </main>
       </div>
-      <main>
-        <label>Contanos tu experiencia</label>
-        <textarea
-          placeholder="Escribe tu comentario.."
-          name="coment"
-          value={review.coment}
-          onChange={handleChange}
-        />
-        <button className={style.send} onClick={handleSubmit}>
-          Enviar
-        </button>
-
-      </main>
+     
     </div>
     
   );
