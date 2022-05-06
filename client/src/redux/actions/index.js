@@ -177,7 +177,6 @@ export function purchase(payload) {
   };
 }
 
-
 export function getAllClasses() {
   return async function (dispatch) {
     try {
@@ -191,7 +190,6 @@ export function getAllClasses() {
     }
   };
 }
-
 
 export function getAvatares() {
   return async function (dispatch) {
@@ -223,4 +221,3 @@ export function getAllReviews() {
     }
   };
 }
-

@@ -12,6 +12,8 @@ import logo from "../../Images/logoAkademit.png";
 export default function Home() {
   const loggedUser = useSelector((state) => state.loggedUsers);
 
+  const user = useSelector((state) => state.userDetail);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -41,10 +43,17 @@ export default function Home() {
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
       )}
 
-      <Link className={styles.linkHome} to="/home">
-        {/* <img src={logo} alt='' /> */}
-        <h1>AkademIT</h1>
-      </Link>
+      {user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
+        <Link className={styles.linkHome} to="/admin">
+          {/* <img src={logo} alt='' /> */}
+          <h1>AkademIT</h1>
+        </Link>
+      ) : (
+        <Link className={styles.linkHome} to="/home">
+          {/* <img src={logo} alt='' /> */}
+          <h1>AkademIT</h1>
+        </Link>
+      )}
     </div>
   );
 }

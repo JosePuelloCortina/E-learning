@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import style from "./Login.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import GoogleLogin from "react-google-login";
-import { addLoggedUser } from "../../redux/actions/index";
+import { addLoggedUser, getUserById } from "../../redux/actions/index";
 import { useNavigate } from "react-router";
 import { allUser } from "../../redux/actions/index";
 import googleIcon from "../../Images/googleIcon.png";
@@ -82,7 +82,10 @@ export default function Login() {
       const usuario = users.find((user) => user.email === validate.email);
       if (token.data.user) {
         dispatch(addLoggedUser(usuario.id));
-        navigate(`/profile/${usuario.id}`);
+        dispatch(getUserById(usuario.id));
+        if (usuario.roles.filter((r) => r.tipo === "admin").length > 0)
+          navigate(`/admin`);
+        else navigate(`/profile/${usuario.id}`);
       } else {
         alert("Email/password incorrecto o cuenta no verificada");
       }
