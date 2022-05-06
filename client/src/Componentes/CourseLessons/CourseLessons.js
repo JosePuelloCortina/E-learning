@@ -161,21 +161,10 @@ export default function CourseLessons() {
                             onChange={handleChange}
                         />
                         <button className={style.send} onClick={handleSubmit}>Enviar</button>
-                        
-                    </main>
 
-        </div>
-        <label>Contanos tu experiencia</label>
-        <textarea
-          placeholder="Escribe tu comentario.."
-          name="coment"
-          value={review.coment}
-          onChange={handleChange}
-        />
-        <button className={style.send} onClick={handleSubmit}>
-          Enviar
-        </button>
+
       </main>
     </div>
+    
   );
 }
