@@ -6,24 +6,27 @@ import styles from "./CarouselSuggestions.module.css";
 function CarouselSuggestions( {loggedUser} ) {
     const courses = useSelector((state) => state.coursesBackUp);
     const user = useSelector((state) => state.userDetail); 
-
-    let userCategory = user.categories.map((category) => category.name);
-
-    let suggestedCourses = courses.filter((course) => {
-        return course.categories.some((category) => {
-            return userCategory.includes(category.name);
-        });
-    }); // filter courses by categories of user and return the courses with the same categories
-    console.log(suggestedCourses, "suggestedCourses");
-
+    let userCategory = null
+    let suggestedCourses = null
+    if (user.categories) {
+        userCategory = user.categories && user.categories.map((category) => category.name);
+        suggestedCourses = courses.filter((course) => {
+            return course.categories.some((category) => {
+                return userCategory.includes(category.name);
+            });
+        }); // filter courses by categories of user and return the courses with the same categories
+        console.log(suggestedCourses, "suggestedCourses");
+    }
+    
     const [currentSlide, setCurrentSlide] = useState(0);
     let length = null;
 
-    if(suggestedCourses.length === 0 || loggedUser.length === 0) {
+    if(!suggestedCourses || suggestedCourses.length === 0 || loggedUser.length === 0) {
         length = courses.length;
     } else {
         length = suggestedCourses.length;
     }
+
 
     const autoScroll = true;
     let slideInterval = null;

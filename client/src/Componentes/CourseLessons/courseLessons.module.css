@@ -31,6 +31,12 @@
     font-size: 40px;
     align-self: center;
 }
+
+.title h1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .body{
     display: flex;
     flex-direction: row;
@@ -76,9 +82,7 @@
     justify-content: space-around;
 }
 
-.star{
 
-}
 textarea{
     align-self: center;
     width: 800px;
@@ -151,3 +155,13 @@ textarea{
      filter: opacity(0.3) ;
 
 } 
+
+
+.buttonClasses {
+
+    background-color: red;
+}
+
+.hiddenButtonClasses {
+    display: none;
+}

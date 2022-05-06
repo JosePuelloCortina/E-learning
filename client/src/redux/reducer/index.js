@@ -9,8 +9,7 @@ const initialState = {
   loggedUsers: [],
   token: {},
   classes: [],
-
-  // avatares:[],
+  avatares:[],
 
   reviews: [],
 
@@ -50,6 +49,11 @@ export default function rootReducer(state = initialState, action) {
       };
 
       case "POST_COURSE":
+        return {
+          ...state,
+        };
+
+        case "POST_CLASS":
         return {
           ...state,
         };
@@ -165,11 +169,11 @@ export default function rootReducer(state = initialState, action) {
         classes: action.payload,
       };
 
-    // case "GET_AVATARES":
-    //   return {
-    //     ...state,
-    //     avatares: action.payload,
-    //   };
+    case "GET_AVATARES":
+      return {
+        ...state,
+        avatares: action.payload,
+      };
 
       case "POST_REVIEW":
       return {

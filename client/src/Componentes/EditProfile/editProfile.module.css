@@ -116,3 +116,18 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+.avatares img{
+    width: 100px;
+
+}
+
+.avatares{
+    display: flex;
+    flex-direction: row;
+}
+
+.avatares input{
+    width: 10px;
+    margin: 0px;
+}

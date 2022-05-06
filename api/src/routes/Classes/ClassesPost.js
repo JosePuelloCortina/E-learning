@@ -8,7 +8,7 @@ server.post("/create", async (req, res) => {
     try {
       const courseUser = await Course.findOne({
           where: {
-            id: course
+            id: id
           },
           include: {
             model: User, include: {
@@ -27,7 +27,7 @@ server.post("/create", async (req, res) => {
           url: url,
         })
         .then(claseCourse => {
-          claseCourse.setCourse(course)
+          claseCourse.setCourse(courseUser)
         }).catch(error =>{
           console.log(error)
         })

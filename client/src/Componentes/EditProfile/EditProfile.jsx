@@ -4,12 +4,13 @@ import styles from "./editProfile.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { getUserById, updateUser, getAvatares } from "../../redux/actions/index";
+import { getUserById, updateUser, getAvatares} from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
 export default function EditProfile() {
   const dispatch = useDispatch();
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
@@ -17,7 +18,6 @@ export default function EditProfile() {
   useEffect(() => {
     dispatch(getAvatares());
   }, [dispatch]);
-  const userInit = useSelector((state) => state.user);
 
   const userInit = useSelector((state) => state.userDetail );
   const stateCategories = useSelector((state) => state.categories);
@@ -25,7 +25,10 @@ export default function EditProfile() {
   const userCategory = userInit.categories && userInit.categories.map((category) => category.name);
 
   const navigate = useNavigate();
+
   const avatars = useSelector((state) => state.avatares);
+  console.log(avatars, "esto es avatars")
+  console.log(avatars.data[0], "probando")
 
   const [input, setInput] = useState({
     id: id,
@@ -34,6 +37,7 @@ export default function EditProfile() {
     confirmPassword: undefined,
     email: userInit.email,
     categories: userCategory,
+    image: "",
   });
   console.log(input, "input");
   const [errors, setErrors] = useState({});
@@ -56,7 +60,7 @@ export default function EditProfile() {
   }
 
   function handleAddCategory(e){
-    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value)){
+    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value) && input.categories.length < 5 ){
       setInput({
         ...input,
         categories: [...input.categories, e.target.value]
@@ -72,7 +76,13 @@ export default function EditProfile() {
     });
   };
 
-
+  function handleSelect(e) {
+    setInput({
+            ...input,
+            avatars: [input.avatars, e.target.value]
+        })
+    }
+    
 
   function handleSubmit(e) {
     if (
@@ -211,6 +221,23 @@ export default function EditProfile() {
                 </div>
               </div>
             </div>
+            <div className={styles.avatares}>
+                        <label>Elije tu Avatar: </label>
+                        {/* <img src={avatars.data[0].image} alt="" />   */}
+                            {
+                avatars && avatars.data.map((a) => {
+                  
+                  return(
+                    <div>
+                      <img src={a.image} alt="" key={a.image} />
+                      <input type="radio" name="image" value={a.image}
+                      onChange={handleInputChange} />
+                    </div>
+                  )
+                })
+                            }
+              
+            </div>
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>
                 <button className={styles.save}>Volver atrás</button>
@@ -220,6 +247,7 @@ export default function EditProfile() {
               </button>
             </div>
           </form>
+
         </div>
       </div>
       <Footer />

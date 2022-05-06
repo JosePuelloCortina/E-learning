@@ -29,8 +29,6 @@ const Order =require('./Order/Order');
 
 const MercadoPago = require('./MercadoPago/MercadoPago')
 const Avatar = require('./Avatar/Avatar');
-
-const MercadoPago = require ('./MercadoPago/MercadoPago');
 const ReviewPost = require ('./Review/ReviewPost');
 const ReviewGet = require ('./Review/ReviewGet')
 
@@ -67,11 +65,8 @@ router.use('/buy', BuyPost);
 router.use('/buy', BuyGet);
 router.use('/buy', BuyId);
 router.use('/order', Order);
-
 router.use('/mercadopago', MercadoPago);
 router.use('/avatar', Avatar);
-
-router.use('/mercadopago', MercadoPago)
 router.use('/review', ReviewPost)
 router.use('/review', ReviewGet)
 

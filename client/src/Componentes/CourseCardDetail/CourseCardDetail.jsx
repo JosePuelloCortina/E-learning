@@ -54,28 +54,28 @@ function CourseCardDetail() {
         <div className={styles.title}><h3>{detail.name}</h3></div>
         <div className={styles.detail}>
             <div className={styles.left}>
-              <div className={styles.image}>
+              {/* <div className={styles.image}>
                 <img src={detail.image} alt="" />
-              </div>
+              </div> */}
+              <br/>
+              <br/>
               <h4>{detail.description}</h4>
               {detail.users && detail.users.map((user, index) => {
                 return(
                   <div key={index}>
                       <h4>Instructor: {user.name}</h4>
+                      <br/>
                   </div>
               )})}
-              <h4>Duracion: {detail.duration} Horas</h4>
-              <h4>Cantidad: {cantidad}</h4>
-            </div>
-          <div className={styles.right}>
-            <h4>Valor: ${detail.price}</h4>
-            <button onClick={() => handlePurchase()}>Comprar</button>
-          </div>
-        </div>
-          
-            
-            <div className={styles.courseInfo}>
-              <h4>Puntuación: </h4>
+              <h4>Duración: {detail.duration} hs</h4>
+              <br/>
+              <h3 className={styles.price}> ${detail.price}</h3>
+              <br/>
+              <button onClick={() => handlePurchase()}>Comprar</button>
+              <br/>
+              <div className={styles.courseInfo}>
+              <br/>
+              <h4>Valoración </h4>
               <div>
                 {
                 detail.review === 0 ? <p>Este curso no tiene calificacion</p> :
@@ -84,24 +84,36 @@ function CourseCardDetail() {
                       detail.review === 3 ? <p>⭐⭐⭐</p>:
                         detail.review === 4 ? <p>⭐⭐⭐⭐</p>:
                           <p>⭐⭐⭐⭐⭐</p>
+                          
                 }
               </div>
-              
-              
-            </div>
-
-            {detail.clases &&
+              <div>
+              <br/>
+              <h4>Programa:</h4>
+             
+              { 
+              detail.clases &&
               detail.clases.map((e, index) => {
                 return (
                   <div key={index} className={styles.containerClases}>
-                    <ul>
-                      <li>{e.name}</li>
-                      <li>{e.duration}</li>
-                      <li>{e.description}</li>
-                    </ul>
+                      <p>{e.name}</p>
                   </div>
                 );
               })}
+              </div>
+              
+            </div>
+            
+            </div>
+          <div className={styles.right}>
+          <div className={styles.image}>
+                <img src={detail.image} alt="" />
+              </div>
+            {/* <h4>Valor: ${detail.price}</h4> */}
+           
+          </div>
+        </div>
+              
               <Reviews id={id}/>
             <Link to="/home">
               <button>Volver</button>
