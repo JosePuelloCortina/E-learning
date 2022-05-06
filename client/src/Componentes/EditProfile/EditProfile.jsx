@@ -202,11 +202,36 @@ export default function EditProfile() {
                 </div>
               </div>
               <div>
-                <div className={styles.containerSelect}>
+                
+              </div>
+            </div>
+            <div className={styles.avatares}>
+              <label>Elije tu Avatar: </label>
+              {/* <img src={avatars.data[0].image} alt="" />   */}
+              <div className={styles.conteineravatar}>
+              {avatars &&
+                avatars.data.map((a) => {
+                  return (
+                    <div className={styles.avatar}>
+                      <img src={a.image} alt="" key={a.image} />
+                      <input
+                        type="radio"
+                        name="image"
+                        value={a.image}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.containerSelect}>
                   {/* <label>Categoria</label> */}
                   <div>
+                  <label>Selecciona tus temas de preferencia:</label>  
                     <select onChange={(e) => handleAddCategory(e)}>
-                      <option>Categoria</option>
+                      <option>Seleccionar</option>
+                      <div className={styles.titulo}>
                       {stateCategories &&
                         stateCategories.map((category) => {
                           return (
@@ -215,6 +240,7 @@ export default function EditProfile() {
                             </option>
                           );
                         })}
+                      </div>
                     </select>
                   </div>
                 </div>
@@ -232,26 +258,6 @@ export default function EditProfile() {
                       </div>
                     ))}
                 </div>
-              </div>
-            </div>
-            <div className={styles.avatares}>
-              <label>Elije tu Avatar: </label>
-              {/* <img src={avatars.data[0].image} alt="" />   */}
-              {avatars &&
-                avatars.data.map((a) => {
-                  return (
-                    <div>
-                      <img src={a.image} alt="" key={a.image} />
-                      <input
-                        type="radio"
-                        name="image"
-                        value={a.image}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  );
-                })}
-            </div>
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>
                 <button className={styles.save}>Volver atrás</button>
