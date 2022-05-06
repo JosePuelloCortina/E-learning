@@ -76,9 +76,7 @@
     justify-content: space-around;
 }
 
-.star{
 
-}
 textarea{
     align-self: center;
     width: 800px;
@@ -151,3 +149,13 @@ textarea{
      filter: opacity(0.3) ;
 
 } 
+
+
+.buttonClasses {
+
+    background-color: red;
+}
+
+.hiddenButtonClasses {
+    display: none;
+}

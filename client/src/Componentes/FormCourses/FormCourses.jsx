@@ -67,10 +67,24 @@ export default function FormularioRegistro() {
     }
   };
 
-  function handleSelect2(e) {
+  function handleAddCategory(e) {
+    if (
+      e.target.value !== "Categoria" &&
+      !form.category.includes(e.target.value) &&
+      form.category.length < 5
+    ) {
+      setForm({
+        ...form,
+        category: [...form.category, e.target.value],
+      });
+    }
+  }
+
+  function handleRemoveCategory(e) {
+    e.preventDefault();
     setForm({
       ...form,
-      category: e.target.value,
+      category: form.category.filter((category) => category !== e.target.value),
     });
   }
 
@@ -83,6 +97,7 @@ export default function FormularioRegistro() {
       </div>
       <div className={style.title}>
         <h2>Creacion de curso</h2>
+
         <form class={style.form} onSubmit={(e) => handleOnSubmit(e)}>
           <div className={style.container1}>
             <div class={style.SubcontainerInput}>
@@ -107,7 +122,7 @@ export default function FormularioRegistro() {
                 value={form.price}
               />
             </div>
-               {errors.price && <p>{errors.price}</p>}
+            {errors.price && <p>{errors.price}</p>}
 
             <div class={style.SubcontainerInput}>
               <label>Imagen URL : </label>
@@ -120,17 +135,39 @@ export default function FormularioRegistro() {
               />
             </div>
 
-            <div class={style.SubcontainerCategori}>
-              <label>Categoría :</label>
-              <select class={style.category} onChange={(e) => handleSelect2(e)}>
-                {categories?.map((c) => {
-                  return (
-                    <option key={c.id} name={c.name} value={c.name}>
-                      {c.name}
-                    </option>
-                  );
-                })}
-              </select>
+            <div className={style.contenedorCategoria}>
+              <div className={style.containerSelect}>
+                <div className={style.select}>
+                  <select
+                    className={style.selecttodo}
+                    onChange={(e) => handleAddCategory(e)}
+                  >
+                    <option>Categoria</option>
+                    {categories &&
+                      categories.map((category) => {
+                        return (
+                          <option key={category.name} value={category.name}>
+                            {category.name}
+                          </option>
+                        );
+                      })}
+                  </select>
+                </div>
+              </div>
+              <div className={style.map}>
+                {form.category &&
+                  form.category.map((category) => (
+                    <div className={style.containerSelectMap} key={category}>
+                      <label className={style.select}> {category}</label>
+                      <button
+                        onClick={(e) => handleRemoveCategory(e)}
+                        value={category}
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
 
