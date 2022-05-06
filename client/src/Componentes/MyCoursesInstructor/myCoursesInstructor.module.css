@@ -3,7 +3,7 @@
   flex-direction: column;
   align-self: center;
   width: 800px;
-  height: 400px;
+  /* height: 400px; */
   background-color: white;
   margin: 20px;
   color: black;
@@ -17,7 +17,6 @@
 .title h2 {
   color: black;
   font-size: 30px;
-
 }
 .cursesInstructor {
   display: flex;
