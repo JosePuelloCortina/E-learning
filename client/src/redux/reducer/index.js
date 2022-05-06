@@ -185,11 +185,13 @@ export default function rootReducer(state = initialState, action) {
           reviews: action.payload,
         };
 
+
         case "EDIT_COURSES_BY_ID":
         return {
           ...state,
           courseDetail: action.payload
         };
+
 
     default:
       return state;
