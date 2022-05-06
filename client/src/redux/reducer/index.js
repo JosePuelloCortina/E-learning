@@ -185,6 +185,8 @@ export default function rootReducer(state = initialState, action) {
           reviews: action.payload,
         };
 
+        
+
     default:
       return state;
   }
