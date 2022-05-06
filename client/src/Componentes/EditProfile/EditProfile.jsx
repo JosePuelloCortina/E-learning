@@ -60,7 +60,7 @@ export default function EditProfile() {
   }
 
   function handleAddCategory(e){
-    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value)){
+    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value) && input.categories.length < 5 ){
       setInput({
         ...input,
         categories: [...input.categories, e.target.value]

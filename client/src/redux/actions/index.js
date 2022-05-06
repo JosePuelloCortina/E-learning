@@ -42,6 +42,13 @@ export function createCourse(form) {
   };
 }
 
+export function createClass(form) {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/classes/create`, form);
+    dispatch({ type: "POST_CLASS" });
+  };
+}
+
 export function validateUser(form) {
   return async function (dispatch) {
     const token = await axios.post(`http://localhost:3001/user/login`, form);

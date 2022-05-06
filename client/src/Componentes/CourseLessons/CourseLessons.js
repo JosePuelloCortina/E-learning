@@ -1,67 +1,87 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import style from './courseLessons.module.css'
-import NavBar from '../NavBar/NavBar'
-import Footer from '../Footer/Footer'
-import { getCoursesById, removeCourseDetail, getAllClasses, allUser, createReview} from "../../redux/actions";
+import style from "./courseLessons.module.css";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
+import {
+  getCoursesById,
+  removeCourseDetail,
+  getAllClasses,
+  allUser,
+  createReview,
+} from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
-import LessonsVideo from './../LessonsVideo/LessonsVideo';
-
-export default function CourseLessons (){
-    const dispatch = useDispatch();
-    const { id } = useParams();
-    const course = useSelector((state) => state.courseDetail);
-    const loggedUserId = useSelector( state => state.loggedUsers);
-    const allUsers= useSelector( state => state.user)
-    const user = allUsers.find(e => e.id === loggedUserId)
-    const totalClasses = useSelector( state => state.classes)
-   
-    const courseClasses = totalClasses.filter( c => c.courseId === course.id)
-    console.log(user, 'esto es user')
-
-    const [currentLesson, setCurrentLesson] = useState({});
-    const [form, setForm] = useState(false);
-    const [review, setReview] = useState({
-        idCourse: id,
-        score: '',
-        coment: '',
-        userName:user.name ,
-    })
+import LessonsVideo from "./../LessonsVideo/LessonsVideo";
+import { Link, useNavigate } from "react-router-dom";
 
 
-    
-    useEffect(() => {
-        dispatch(getCoursesById(id));
-        return () => {
-        dispatch(removeCourseDetail());
-        };
-    }, []);
-    
-    useEffect(()=> dispatch(getAllClasses()), [])
-    useEffect(()=> dispatch(allUser()), [])
+export default function CourseLessons() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const course = useSelector((state) => state.courseDetail);
+  const loggedUserId = useSelector((state) => state.loggedUsers);
+  const allUsers = useSelector((state) => state.user);
+  const user = allUsers.find((e) => e.id === loggedUserId);
 
-    function handleClose(e){
-        e.preventDefault(e);
-        setForm(false);
-    }
+  const totalClasses = useSelector((state) => state.classes);
+  const navigate = useNavigate();
+  const userRole = useSelector((state) => state.userDetail);
 
-    function handleChange(e){
-        e.preventDefault(e);
-        setReview({
-            ...review,
-            [e.target.name] : e.target.value,
-        })
-    }
 
-    function handleSubmit(e){
-        e.preventDefault(e);
-        if(review.score && review.coment) {
-        dispatch(createReview(review));
-        alert('Calificación enviada.');
-        setForm(false);
 
+  const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
+  console.log(user, "esto es user");
+
+
+  const [currentLesson, setCurrentLesson] = useState({});
+  const [form, setForm] = useState(false);
+  const [review, setReview] = useState({
+    idCourse: id,
+    score: "",
+    coment: "",
+    userName: user.name,
+  });
+
+
+  console.log(review);
+
+  useEffect(() => {
+    dispatch(getCoursesById(id));
+    // return () => {
+    // dispatch(removeCourseDetail());
+    // };
+  }, []);
+
+  useEffect(() => dispatch(getAllClasses()), []);
+  useEffect(() => dispatch(allUser()), []);
+
+  function handleClose(e) {
+    e.preventDefault(e);
+    setForm(false);
+  }
+
+  function handleChange(e) {
+    e.preventDefault(e);
+    setReview({
+      ...review,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleSubmitClass(e) {
+    e.preventDefault(e);
+    navigate(`/formClass`);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault(e);
+    if (review.score && review.coment) {
+      dispatch(createReview(review));
+      alert("Calificación enviada.");
+      setForm(false);
     } else {
+
         alert('Por favor seleccione un puntaje y deje su comentario.')
     }
 
@@ -77,6 +97,18 @@ export default function CourseLessons (){
                 <div className={style.title}>
                     <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
                 </div>
+
+  <div
+          className={
+            userRole.roles[0].tipo === "instructor"
+              ? style.buttonClasses
+              : style.hiddenButtonClasses
+          }
+        >
+          <button onClick={handleSubmitClass}> Crear Clase</button>
+        </div>
+
+
                 <div className={style.body}>
                     <div className={style.left}>
                         <LessonsVideo lessons={courseClasses} currentLesson={currentLesson} course={course}/>
@@ -131,6 +163,19 @@ export default function CourseLessons (){
                         <button className={style.send} onClick={handleSubmit}>Enviar</button>
                         
                     </main>
+
         </div>
-    )
+        <label>Contanos tu experiencia</label>
+        <textarea
+          placeholder="Escribe tu comentario.."
+          name="coment"
+          value={review.coment}
+          onChange={handleChange}
+        />
+        <button className={style.send} onClick={handleSubmit}>
+          Enviar
+        </button>
+      </main>
+    </div>
+  );
 }

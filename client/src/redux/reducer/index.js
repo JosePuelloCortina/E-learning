@@ -53,6 +53,11 @@ export default function rootReducer(state = initialState, action) {
           ...state,
         };
 
+        case "POST_CLASS":
+        return {
+          ...state,
+        };
+
     case "VALIDATE_USER":
       return {
         ...state,
