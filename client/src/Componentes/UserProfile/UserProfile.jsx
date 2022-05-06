@@ -7,17 +7,16 @@ import MyCoursesAlumn from "./../MyCoursesAlumn/MyCoursesAlumn";
 import MyCoursesInstructor from "./../MyCoursesInstructor/MyCoursesInstructor";
 import ProfileLateralBar from "../ProfileLateralBar/ProfileLateralBar";
 import Error404 from "../Error404/Error404";
-import { getUserById } from "../../redux/actions/index";
+import { getUserById, getAvatares } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-
-
   useEffect(() => {
     dispatch(getUserById(id));
+    dispatch(getAvatares());
   }, [dispatch]);
 
   const loggedUser = useSelector((state) => state.loggedUsers);
@@ -35,14 +34,11 @@ export default function UserProfile() {
             <div className={styles.totalProfile}>
               <div className={styles.profileDetail}>
                 <ProfileLateralBar
-
                   name={userDetail.name}
                   id={userDetail.id}
                   email={userDetail.email}
                   categories={userDetail.categories}
                   image={userDetail.image}
-
-                 
                 />
               </div>
               <div className={styles.cursesDetail}>

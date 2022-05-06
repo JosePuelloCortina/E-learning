@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function ConfirmCourse() {
-
   const user = useSelector((state) => state.userDetail);
 
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ export default function ConfirmCourse() {
   return (
     <div className={styles.container}>
       <h2>Curso creado correctamente!</h2>
-      <h3>En unos segundos serás redirigido para iniciar sesión...</h3>
+      <h3>En unos segundos serás redirigido a su perfil...</h3>
       <br />
       <br />
       <h1>AkademIT</h1>

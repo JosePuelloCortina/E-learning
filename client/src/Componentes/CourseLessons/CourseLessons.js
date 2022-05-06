@@ -15,7 +15,6 @@ import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from "./../LessonsVideo/LessonsVideo";
 import { Link, useNavigate } from "react-router-dom";
 
-
 export default function CourseLessons() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -28,11 +27,8 @@ export default function CourseLessons() {
   const navigate = useNavigate();
   const userRole = useSelector((state) => state.userDetail);
 
-
-
   const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
   console.log(user, "esto es user");
-
 
   const [currentLesson, setCurrentLesson] = useState({});
   const [form, setForm] = useState(false);
@@ -42,7 +38,6 @@ export default function CourseLessons() {
     coment: "",
     userName: user.name,
   });
-
 
   console.log(review);
 
@@ -81,24 +76,22 @@ export default function CourseLessons() {
       alert("Calificación enviada.");
       setForm(false);
     } else {
-
-        alert('Por favor seleccione un puntaje y deje su comentario.')
+      alert("Por favor seleccione un puntaje y deje su comentario.");
     }
+  }
+  function resetCurrentLesson() {
+    setCurrentLesson({});
+  }
 
-}
-    function resetCurrentLesson() {
-        setCurrentLesson({});
-    }
+  return (
+    <div>
+      <NavBar />
+      <div className={form === false ? style.container : style.hiddenContainer}>
+        <div className={style.title}>
+          <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
+        </div>
 
-    return(
-        <div>
-            <NavBar/>
-            <div className={form===false?style.container: style.hiddenContainer}>
-                <div className={style.title}>
-                    <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
-                </div>
-
-  <div
+        <div
           className={
             userRole.roles[0].tipo === "instructor"
               ? style.buttonClasses
@@ -109,59 +102,106 @@ export default function CourseLessons() {
         </div>
 
 
-                <div className={style.body}>
-                    <div className={style.left}>
-                        <LessonsVideo lessons={courseClasses} currentLesson={currentLesson} course={course}/>
-                    </div>
-                    <div className={style.right}>
-                        <LessonsList lessons={courseClasses}
-                             form={form}
-                            setForm={setForm}
-                            setCurrentLesson={setCurrentLesson}
-                        />
-                    </div>
-                   
-                </div>
-            </div>
-           
-            <Footer/>
-            <main className={form? style.visible:style.hidden }>
-                        <button className={style.close} onClick={handleClose}>Cerrar</button>
-                        <h4>Calificar el curso de {course.name}</h4>
-                        
-                        <label>¿Qué puntaje le das?</label>
-                        <div className={style.calif}>
-                        <div className={style.star}>
-                        <p>⭐</p>
-                        <input type='radio' name='score' value='1' onChange={handleChange}/>
-                        </div>
-                        <div className={style.star}>
-                        <p>⭐⭐</p>
-                        <input type='radio' name='score' value='2' onChange={handleChange} />
-                        </div>
-                        <div className={style.star}>
-                        <p>⭐⭐⭐</p>
-                        <input type='radio' name='score' value='3' onChange={handleChange}/>
-                        </div>
-                        <div className={style.star}>
-                        <p>⭐⭐⭐⭐</p>
-                        <input type='radio' name='score' value='4' onChange={handleChange}/>
-                        </div>
-                        <div className={style.star}>
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <input type='radio' name='score' value='5' onChange={handleChange}/>
-                        </div>
-                        <br/>
-                        <br/>
-                        </div>
-                        <label>Contanos tu experiencia</label>
-                        <textarea placeholder="Escribe tu comentario.."
-                            name='coment'
-                            value={review.coment}
-                            onChange={handleChange}
-                        />
-                        <button className={style.send} onClick={handleSubmit}>Enviar</button>
+        <div className={style.body}>
+          <div className={style.left}>
+            <LessonsVideo
+              lessons={courseClasses}
+              currentLesson={currentLesson}
+              course={course}
+            />
+          </div>
+          <div className={style.right}>
+            <LessonsList
+              lessons={courseClasses}
+              form={form}
+              setForm={setForm}
+              setCurrentLesson={setCurrentLesson}
+            />
+          </div>
+        </div>
+      </div>
 
+      <Footer />
+      <div>
+        <main className={form ? style.visible : style.hidden}>
+          <button className={style.close} onClick={handleClose}>
+            Cerrar
+          </button>
+          <h4>Calificar el curso de {course.name}</h4>
+
+          <label>¿Qué puntaje le das?</label>
+          <div className={style.calif}>
+            <div className={style.star}>
+              <p>⭐</p>
+              <input
+                type="radio"
+                name="score"
+                value="1"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={style.star}>
+              <p>⭐⭐</p>
+              <input
+                type="radio"
+                name="score"
+                value="2"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={style.star}>
+              <p>⭐⭐⭐</p>
+              <input
+                type="radio"
+                name="score"
+                value="3"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={style.star}>
+              <p>⭐⭐⭐⭐</p>
+              <input
+                type="radio"
+                name="score"
+                value="4"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={style.star}>
+              <p>⭐⭐⭐⭐⭐</p>
+              <input
+                type="radio"
+                name="score"
+                value="5"
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <br />
+          </div>
+          <label>Contanos tu experiencia</label>
+          <textarea
+            placeholder="Escribe tu comentario.."
+            name="coment"
+            value={review.coment}
+            onChange={handleChange}
+          />
+          <button className={style.send} onClick={handleSubmit}>
+            Enviar
+          </button>
+        </main>
+      </div>
+      <main>
+        <label>Contanos tu experiencia</label>
+        <textarea
+          placeholder="Escribe tu comentario.."
+          name="coment"
+          value={review.coment}
+          onChange={handleChange}
+        />
+        <button className={style.send} onClick={handleSubmit}>
+          Enviar
+        </button>
 
       </main>
     </div>

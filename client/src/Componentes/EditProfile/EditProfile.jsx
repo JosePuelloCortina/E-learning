@@ -4,31 +4,35 @@ import styles from "./editProfile.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { getUserById, updateUser, getAvatares} from "../../redux/actions/index";
+import {
+  getUserById,
+  updateUser,
+  getAvatares,
+} from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
 export default function EditProfile() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  // useEffect(() => {}, [dispatch, id]);
+
   useEffect(() => {
     dispatch(getUserById(id));
-  }, [dispatch, id]);
-
-  useEffect(() => {
-    dispatch(getAvatares());
+    // dispatch(getAvatares());
   }, [dispatch]);
 
-  const userInit = useSelector((state) => state.userDetail );
+  const userInit = useSelector((state) => state.userDetail);
   const stateCategories = useSelector((state) => state.categories);
   console.log(userInit, "userInit");
-  const userCategory = userInit.categories && userInit.categories.map((category) => category.name);
+  const userCategory =
+    userInit.categories && userInit.categories.map((category) => category.name);
 
   const navigate = useNavigate();
 
   const avatars = useSelector((state) => state.avatares);
-  console.log(avatars, "esto es avatars")
-  console.log(avatars.data[0], "probando")
+  console.log(avatars, "esto es avatars");
+  // console.log(avatars.data[0], "probando")
 
   const [input, setInput] = useState({
     id: id,
@@ -44,8 +48,6 @@ export default function EditProfile() {
 
   // console.log(input)
 
-
-
   function handleInputChange(e) {
     setInput({
       ...input,
@@ -59,30 +61,35 @@ export default function EditProfile() {
     );
   }
 
-  function handleAddCategory(e){
-    if(e.target.value !== "Categoria" && !input.categories.includes(e.target.value) && input.categories.length < 5 ){
+  function handleAddCategory(e) {
+    if (
+      e.target.value !== "Categoria" &&
+      !input.categories.includes(e.target.value) &&
+      input.categories.length < 5
+    ) {
       setInput({
         ...input,
-        categories: [...input.categories, e.target.value]
+        categories: [...input.categories, e.target.value],
       });
     }
-  };
+  }
 
-  function handleRemoveCategory(e){
-    e.preventDefault()
+  function handleRemoveCategory(e) {
+    e.preventDefault();
     setInput({
       ...input,
-      categories: input.categories.filter(category => category !== e.target.value)
+      categories: input.categories.filter(
+        (category) => category !== e.target.value
+      ),
     });
-  };
+  }
 
   function handleSelect(e) {
     setInput({
-            ...input,
-            avatars: [input.avatars, e.target.value]
-        })
-    }
-    
+      ...input,
+      avatars: [input.avatars, e.target.value],
+    });
+  }
 
   function handleSubmit(e) {
     if (
@@ -102,7 +109,6 @@ export default function EditProfile() {
       }
     }
   }
-
 
   function validate(input) {
     let emailExp =
@@ -199,44 +205,52 @@ export default function EditProfile() {
                 <div className={styles.containerSelect}>
                   {/* <label>Categoria</label> */}
                   <div>
-                  <select  onChange={(e) => handleAddCategory(e)}>
-                    <option>Categoria</option>
-                    {stateCategories && stateCategories.map((category) => {
-                      return (
-                        <option key={category.name} value={category.name}>
-                          {category.name}
-                        </option>
-                      );
-                    })}
-                  </select>
+                    <select onChange={(e) => handleAddCategory(e)}>
+                      <option>Categoria</option>
+                      {stateCategories &&
+                        stateCategories.map((category) => {
+                          return (
+                            <option key={category.name} value={category.name}>
+                              {category.name}
+                            </option>
+                          );
+                        })}
+                    </select>
                   </div>
-          </div>
+                </div>
                 <div>
-                  {input.categories && input.categories.map((category) => (
-                    <div key={category}>
-                      <p>{category}</p>
-                      <button onClick={(e) => handleRemoveCategory(e)} value={category}>X</button>
-                    </div>
-                  ))}
+                  {input.categories &&
+                    input.categories.map((category) => (
+                      <div key={category}>
+                        <p>{category}</p>
+                        <button
+                          onClick={(e) => handleRemoveCategory(e)}
+                          value={category}
+                        >
+                          X
+                        </button>
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>
             <div className={styles.avatares}>
-                        <label>Elije tu Avatar: </label>
-                        {/* <img src={avatars.data[0].image} alt="" />   */}
-                            {
-                avatars && avatars.data.map((a) => {
-                  
-                  return(
+              <label>Elije tu Avatar: </label>
+              {/* <img src={avatars.data[0].image} alt="" />   */}
+              {avatars &&
+                avatars.data.map((a) => {
+                  return (
                     <div>
                       <img src={a.image} alt="" key={a.image} />
-                      <input type="radio" name="image" value={a.image}
-                      onChange={handleInputChange} />
+                      <input
+                        type="radio"
+                        name="image"
+                        value={a.image}
+                        onChange={handleInputChange}
+                      />
                     </div>
-                  )
-                })
-                            }
-              
+                  );
+                })}
             </div>
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>
@@ -247,7 +261,6 @@ export default function EditProfile() {
               </button>
             </div>
           </form>
-
         </div>
       </div>
       <Footer />
