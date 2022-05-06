@@ -116,6 +116,7 @@ export default function CourseLessons() {
               form={form}
               setForm={setForm}
               setCurrentLesson={setCurrentLesson}
+              user={user}
             />
           </div>
         </div>

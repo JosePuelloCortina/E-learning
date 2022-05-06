@@ -34,7 +34,7 @@ export default function LessonsVideo({currentLesson, course}){
             </div>
             <div className={styles.down}>
                 <h2>{description}</h2>
-                <h3>{duration}</h3>
+                
             </div>
         </div>
     )
