@@ -45,12 +45,8 @@ export default function Home() {
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
-          
-  <Carousel />
-          
-  {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
-
-
+      <Carousel/>
+      
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}
@@ -59,6 +55,9 @@ export default function Home() {
         allCourses={courses}
         setCurrentPage={setCurrentPage}
       />
+      <br/>
+      <br/>
+       {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
       <div className={styles.footer}>
         <Footer />
       </div>
