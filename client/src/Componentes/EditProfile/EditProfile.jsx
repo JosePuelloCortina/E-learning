@@ -190,7 +190,9 @@ export default function EditProfile() {
 
                   {/* <label>Categoria</label> */}
                   <div >
-                  <label>Selecciona tus temas favoritos:  </label>
+                  <div className={styles.tituloseleccionar}>  
+                  <label >Selecciona tus temas favoritos: </label>
+                  </div>  
                     <select className={styles.decorando} onChange={(e) => handleAddCategory(e)}>
                       <option>Seleccionar</option>
                      

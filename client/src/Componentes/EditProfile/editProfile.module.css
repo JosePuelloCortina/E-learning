@@ -154,10 +154,15 @@
   margin: 20px;
 }
 
+.containerSelect .tituloseleccionar{
+  margin-bottom: 10px;
+}
 
 .containerSelect .titulo{
     display: flex;
     flex-direction: row;
+    
+    
 }
 
 .containerSelect .decorando{
@@ -170,6 +175,7 @@
     margin-right: 10px;
     margin-left: 4rem;
     height: 30px;
+    
 }
 
 .decorando .p {
@@ -184,6 +190,7 @@
     height: 30px;
     font-family:'Montserrat', sans-serif;
     font-size: 18px;
+    
     
 }
 
