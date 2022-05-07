@@ -42,9 +42,9 @@ export default function UserProfile() {
                 />
               </div>
               <div className={styles.cursesDetail}>
-                {userDetail.roles.filter((r) => r.tipo === "alumno").length >
+                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "alumno").length >
                   0 && <MyCoursesAlumn user={userDetail} />}
-                {userDetail.roles.filter((r) => r.tipo === "instructor")
+                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "instructor")
                   .length > 0 && <MyCoursesInstructor user={userDetail} />}
               </div>
             </div>

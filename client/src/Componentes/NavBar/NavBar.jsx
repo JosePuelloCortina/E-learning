@@ -41,9 +41,10 @@ export default function Home() {
         </Link>
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
-      )}
+      )
+      }
 
-      {user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
+      {user.roles &&  user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
         <Link className={styles.linkHome} to="/admin">
           {/* <img src={logo} alt='' /> */}
           <h1>AkademIT</h1>
