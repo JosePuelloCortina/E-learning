@@ -34,19 +34,20 @@ export default function EditProfile() {
   console.log(avatars, "esto es avatars");
   // console.log(avatars.data[0], "probando")
 
+  // const salt = bcrypt.genSaltSync(10);
+  // const hashPassword = bcrypt.hashSync(userInit.password, 10);
+
   const [input, setInput] = useState({
-    id: id,
+    // id: id,
     name: userInit.name,
-    password: "",
-    confirmPassword: "",
+    newPassword: userInit.password,
+    // confirmPassword: "",
     email: userInit.email,
     categories: userCategory,
     image: "",
   });
   console.log(input, "input");
   const [errors, setErrors] = useState({});
-
-  // console.log(input)
 
   function handleInputChange(e) {
     setInput({
@@ -73,6 +74,7 @@ export default function EditProfile() {
       });
     }
   }
+  console.log(id, "id")
 
   function handleRemoveCategory(e) {
     e.preventDefault();
@@ -84,24 +86,21 @@ export default function EditProfile() {
     });
   }
 
-  function handleSelect(e) {
-    setInput({
-      ...input,
-      avatars: [input.avatars, e.target.value],
-    });
-  }
+  // function handleSelect(e) {
+  //   setAvatares({
+  //     ...avatares,
+  //     avatares: [e.target.value],
+  //   });
+  // }
 
   function handleSubmit(e) {
-    if (
-      !input.name ||
-      !input.email ||
-      !input.password ||
-      !input.confirmPassword
-    ) {
+
+    if (!input.name || !input.email) {
       alert("Por favor complete todos los campos.");
     } else {
       if (window.confirm("¿Desea modificar sus datos?") === true) {
         dispatch(updateUser(id, input));
+        console.log(input, "input FINAL ")
         alert("Cambios guardados.");
         navigate(`/profile/${id}`);
       } else {
@@ -120,23 +119,6 @@ export default function EditProfile() {
     }
     if (!input.email) {
       errors.email = "Por favor agregue un electrónico.";
-    }
-    if (!input.password) {
-      errors.password = "Agregue una nueva contraseña.";
-    }
-    if (!input.confirmPassword) {
-      errors.confirmPassword = "Confirme su nueva contraseña.";
-    }
-
-    if (input.confirmPassword && input.confirmPassword !== input.password) {
-      errors.confirmPassword = "Las contraseñas no coinciden.";
-    }
-    if (input.email && !emailExp.test(input.email)) {
-      errors.email = "Ingrese una dirección de correo válida.";
-    }
-    if (input.password && !passExp.test(input.password)) {
-      errors.password =
-        "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial.";
     }
     return errors;
   }
@@ -169,63 +151,43 @@ export default function EditProfile() {
                     value={input.email}
                     onChange={handleInputChange}
                     name="email"
+                    readOnly
                   />
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
               </div>
 
               <div className={styles.right}>
-                <div>
-                  <label>Nueva Contraseña</label>
-                  <input
-                    type="password"
-                    value={input.password}
-                    onChange={handleInputChange}
-                    name="password"
-                  />
-
-                  {errors.password && (
-                    <p className="error">{errors.password}</p>
-                  )}
-                </div>
-                <div>
-                  <label>Confirmar Contraseña</label>
-                  <input
-                    type="password"
-                    value={input.confirmPassword}
-                    onChange={handleInputChange}
-                    name="confirmPassword"
-                  />
-                  {errors.confirmPassword && (
-                    <p className="error">{errors.confirmPassword}</p>
-                  )}
-                </div>
-              </div>
-              <div>
-                
+                <Link
+                  to={`/profile/edit/password/${id}`}
+                  className={styles.linkContraseña}
+                >
+                  Cambiar contraseña
+                </Link>
               </div>
             </div>
             <div className={styles.avatares}>
               <label>Elije tu Avatar: </label>
               {/* <img src={avatars.data[0].image} alt="" />   */}
               <div className={styles.conteineravatar}>
-              {avatars &&
-                avatars.data.map((a) => {
-                  return (
-                    <div className={styles.avatar}>
-                      <img src={a.image} alt="" key={a.image} />
-                      <input
-                        type="radio"
-                        name="image"
-                        value={a.image}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  );
-                })}
+                {avatars &&
+                  avatars.data.map((a) => {
+                    return (
+                      <div className={styles.avatar}>
+                        <img src={a.image} alt="" key={a.image} />
+                        <input
+                          type="radio"
+                          name="image"
+                          value={a.image}
+                          onChange={(e) => handleInputChange(e)}
+                        />
+                      </div>
+                    );
+                  })}
               </div>
             </div>
             <div className={styles.containerSelect}>
+
                   {/* <label>Categoria</label> */}
                   <div >
                   <label>Selecciona tus temas favoritos:  </label>
@@ -262,6 +224,7 @@ export default function EditProfile() {
                       </div>
                     ))}
                 </div>
+
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>
                 <button className={styles.save}>Volver atrás</button>

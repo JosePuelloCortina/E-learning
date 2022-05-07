@@ -12,10 +12,15 @@ export default function LessonsVideo({currentLesson, course}){
             <div className={styles.container}>
             <div className={styles.up}>
                 <h2>Bienvenido a mi curso {course.name}</h2>
+
+                <div className={styles.img}>
                 <img src={course.image} alt={course.name}/>
-                <h2>{course.description}</h2>
+                </div>
+               
             </div>
             <div className={styles.down}>
+            <h2>Descripcion</h2>
+                <h3>{course.description}</h3>
             </div>
         </div>
         )
@@ -33,7 +38,8 @@ export default function LessonsVideo({currentLesson, course}){
                 />
             </div>
             <div className={styles.down}>
-                <h2>{description}</h2>
+                <h2>Descripcion</h2>
+                <h3>{description}</h3>
                 
             </div>
         </div>
