@@ -34,10 +34,10 @@
     justify-content: center;
     margin-top:15px;
     width: 400px; 
+
+
+    /* background-color: #ff9b00; */
 } 
-
-
-
 
 .SubcontainerInput2 {
   display: flex;  
@@ -103,7 +103,7 @@
     border-radius: 5px;
     font-size: 14px;
     color: white;
-    width: 300px;
+    width: 200px;
     /* background-color: aqua; */
    
 }

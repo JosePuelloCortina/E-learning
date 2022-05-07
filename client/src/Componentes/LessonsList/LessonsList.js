@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./lessonsList.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { getClassById } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 export default function LessonsList({
   lessons,
@@ -11,29 +13,61 @@ export default function LessonsList({
 }) {
   console.log(lessons, "esto es lessons");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   function handleReview(e) {
     e.preventDefault(e);
     setForm(true);
   }
+
+  function handleLesson(e) {
+    setCurrentLesson(e)
+    dispatch(getClassById(e.id));
+  }
+
+  sortAsc(lessons)
 
   function handleSubmitClass(e) {
     e.preventDefault(e);
     navigate(`/formClass`);
   }
 
+
+  function sortAsc(lessons, name) {
+    return lessons.sort(function (a, b) {
+      if (a.name > b.name) return 1;
+  
+      if (b.name > a.name) return -1;
+  
+      return 0;
+    });
+  }
+
+
+
+
+
+
+
+
+
   if (user.roles[0].tipo === "instructor") {
     return (
       <div className={styles.container}>
-        <h3>Clases</h3>
-        <button>editar clase</button>
+
+        <div className={styles.containerTitle}>
+        <h3>Clases</h3>  
+        </div>
+       
+  
+
         <br></br>
-        <button onClick={handleSubmitClass}> Crear Clase</button>
+        <button onClick={handleSubmitClass} className={styles.buttonEditar}> Crear Clase</button>
         {lessons
           ? lessons.map((e) => {
               return (
                 <div className={styles.classes}>
-                  <p value={e} onClick={() => setCurrentLesson(e)}>
-                    {e.name}
+                  <p value={e} onClick={() => handleLesson(e)}>
+                   - {e.name}
                   </p>
 
                   {user.roles[0].tipo === "alumn" ? (
@@ -52,12 +86,14 @@ export default function LessonsList({
         {lessons
           ? lessons.map((e) => {
               return (
+
+                
                 <div className={styles.classes}>
+                   <input type="checkbox" />
                   <p value={e} onClick={() => setCurrentLesson(e)}>
-                    {e.name}
+                   - {e.name}
                   </p>
 
-                  <input type="checkbox" />
                 </div>
               );
             })

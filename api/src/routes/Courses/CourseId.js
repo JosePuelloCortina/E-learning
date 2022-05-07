@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { Course, Clase, User } = require("../../db");
+const { Course, Clase, User, Category } = require("../../db");
 
 router.get("/id/:id", async (req, res) => {
   const { id } = req.params;
-  try {
+  try { 
     const course = await Course.findByPk(id, {
       //  include: [Clase]
       include: [
@@ -17,6 +17,10 @@ router.get("/id/:id", async (req, res) => {
         {
             model: Clase,
         },
+
+        {
+          model: Category,
+      },
       ],
     });
     if (!course) {

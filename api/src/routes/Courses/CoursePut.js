@@ -3,8 +3,8 @@ const { Course } = require('../../db');
 
 server.put('/update/id/:id', (req, res)=>{
     const { id } = req.params;
-    const { name, description, duration, img } = req.body;
-    if(!name || !description || !duration || !img ){
+    const { name, description, image, price, category} = req.body;
+    if(!name || !description || !image || !price ){
         return res.status(422).json({error: "No se enviaron todos los datos"}) 
     }
     
@@ -13,12 +13,21 @@ server.put('/update/id/:id', (req, res)=>{
      res.send(course.update({
         name: name,
         description: description,
-        duration: duration,
-        img: img
-    }))
+        price: price,
+        image: image
+    })
+    .then((courseUpdate) => {
+        courseUpdate.setCategories(category).then(async () => {
+            courseUpdate.category = await courseUpdate.getCategories();
+        });
+      })
+    
+    )
+    
     }).catch((error)=>{
         console.log(error)
     })
+
 });
 
 module.exports = server;
