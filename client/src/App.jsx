@@ -18,6 +18,9 @@ import Checkout from "./Componentes/Checkout/Checkout";
 import FormCourses from "./Componentes/FormCourses/FormCourses";
 import AdminPanel from "./Componentes/AdminPanel/AdminPanel";
 import FormClass from "./Componentes/FormClass/FormClass";
+
+import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
+
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 
 function App() {
@@ -29,7 +32,7 @@ function App() {
           <Route exact path="/home" element={<Home />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/form" element={<FormularioRegistro />} />
-          <Route path="/formClass" element={<FormClass/>} />
+          <Route path="/formClass" element={<FormClass />} />
           <Route path="/formCourses" element={<FormCourses />} />
           <Route path="/editCourse/:id" element={<EditCourse />} />
           <Route path="/user" element={<Login />} />
@@ -45,6 +48,11 @@ function App() {
           <Route path="/courselessons/:id" element={<CourseLessons />} />
           <Route path="/checkout/id/:id" element={<Checkout />} />
           <Route exact path="/admin" element={<AdminPanel />} />
+          <Route
+            exact
+            path="/profile/edit/password/:id"
+            element={<ChangePassword />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
