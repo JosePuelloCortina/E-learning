@@ -64,10 +64,11 @@ export default function CourseLessons() {
     });
   }
 
-  function handleSubmitClass(e) {
+  function handleSubmitCourse(e) {
     e.preventDefault(e);
-    navigate(`/formClass`);
+    navigate(`/editCourse/${id}`);
   }
+
 
   function handleSubmit(e) {
     e.preventDefault(e);
@@ -90,17 +91,9 @@ export default function CourseLessons() {
         <div className={style.title}>
           <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
         </div>
-
-        <div
-          className={
-            userRole.roles[0].tipo === "instructor"
-              ? style.buttonClasses
-              : style.hiddenButtonClasses
-          }
-        >
-          <button onClick={handleSubmitClass}> Crear Clase</button>
-        </div>
-
+        
+{ userRole.roles[0].tipo === "instructor" ? <button onClick={handleSubmitCourse}> Editar Curso </button>:null}
+        
 
         <div className={style.body}>
           <div className={style.left}>

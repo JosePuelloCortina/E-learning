@@ -18,7 +18,10 @@ import Checkout from "./Componentes/Checkout/Checkout";
 import FormCourses from "./Componentes/FormCourses/FormCourses";
 import AdminPanel from "./Componentes/AdminPanel/AdminPanel";
 import FormClass from "./Componentes/FormClass/FormClass";
+
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
+
+import EditCourse from "./Componentes/EditCourse/EditCourse";
 
 function App() {
   return (
@@ -31,6 +34,7 @@ function App() {
           <Route path="/form" element={<FormularioRegistro />} />
           <Route path="/formClass" element={<FormClass />} />
           <Route path="/formCourses" element={<FormCourses />} />
+          <Route path="/editCourse/:id" element={<EditCourse />} />
           <Route path="/user" element={<Login />} />
           <Route path="/user/verification" element={<UserVerification />} />
           <Route path="/profile/:id" element={<UserProfile />} />
