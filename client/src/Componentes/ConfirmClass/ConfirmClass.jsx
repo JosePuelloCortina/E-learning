@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function ConfirmCourse() {
-  const user = useSelector((state) => state.userDetail);
+  const course = useSelector((state) => state.courseDetail);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function ConfirmCourse() {
 
   function redirect() {
     setTimeout(() => {
-      navigate(`/courselessons/${user.id}`);
+      navigate(`/courselessons/${course.id}`);
     }, 5000);
   }
   return (

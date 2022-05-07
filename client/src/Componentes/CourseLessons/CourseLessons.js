@@ -69,7 +69,6 @@ export default function CourseLessons() {
     navigate(`/editCourse/${id}`);
   }
 
-
   function handleSubmit(e) {
     e.preventDefault(e);
     if (review.score && review.coment) {
@@ -87,20 +86,24 @@ export default function CourseLessons() {
   return (
     <div>
       <NavBar />
-      <div className={form === false ? style.container : style.hiddenContainer}>
-        <div className={style.title}>
-          <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
-        </div>
-        
-{ userRole.roles[0].tipo === "instructor" ? <button onClick={handleSubmitCourse}> Editar Curso </button>:null}
-        
 
+      <div className={form === false ? style.container : style.hiddenContainer}>
+        <div className={style.body2}>
+          <div className={style.title}>
+            <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
+          </div>
+        </div>
+
+       
+       
         <div className={style.body}>
           <div className={style.left}>
             <LessonsVideo
               lessons={courseClasses}
               currentLesson={currentLesson}
               course={course}
+              user={user}
+              // idCourse={id}
             />
           </div>
           <div className={style.right}>
@@ -185,8 +188,6 @@ export default function CourseLessons() {
           </button>
         </main>
       </div>
-     
     </div>
-    
   );
 }

@@ -9,6 +9,7 @@ const initialState = {
   loggedUsers: [],
   token: {},
   classes: [],
+  classDetail: [],
   avatares:[],
 
   reviews: [],
@@ -90,6 +91,15 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courseDetail: action.payload,
       };
+
+      case "GET_CLASS_BY_ID":
+        return {
+          ...state,
+          classDetail: action.payload,
+        };
+
+
+
     case "REMOVE_COURSE_DETAIL":
       return {
         ...state,

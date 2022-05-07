@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./confirmCourse.module.css";
+import styles from "./confirmClass.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -19,8 +19,8 @@ export default function ConfirmCourse() {
   }
   return (
     <div className={styles.container}>
-      <h2>Curso creado correctamente!</h2>
-      <h3>En unos segundos serás redirigido a su perfil...</h3>
+      <h2>Clase editada correctamente!</h2>
+      <h3>En unos segundos serás redirigido a su curso...</h3>
       <br />
       <br />
       <h1>AkademIT</h1>

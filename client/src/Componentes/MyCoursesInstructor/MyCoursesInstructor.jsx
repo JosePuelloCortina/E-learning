@@ -26,7 +26,7 @@ export default function MyCoursesInstructor() {
       <div className={style.title}>
         <h2>Mis Cursos | Instructor |</h2>
         <Link to="/formCourses">
-          <button>Crear Curso</button>
+          <button className={style.buttonEditar}>Crear Curso</button>
         </Link>
       </div>
       <div className={style.cursesInstructor}>

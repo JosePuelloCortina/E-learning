@@ -119,6 +119,25 @@ export function editCoursesById(id, payload) {
 }
 
 
+export function editClassById(id, payload) {
+  return async function (dispatch) {
+    try {
+     const update =  await axios.put(`http://localhost:3001/classes/update/id/${id}`, payload);
+      dispatch({ type: "EDIT_CLASS_BY_ID", payload: update.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getClassById = (id) => {
+  return async (dispatch) => {
+    const json = await axios.get(`http://localhost:3001/classes/id/${id}`);
+    dispatch({ type: "GET_CLASS_BY_ID", payload: json.data });
+  };
+};
+
+
 
 export const getCoursesById = (id) => {
   return async (dispatch) => {
