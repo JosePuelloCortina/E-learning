@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./lessonsList.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getClassById } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { allCourses, getAllClasses, getClassById, getCoursesById, removeClass } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function LessonsList({
   lessons,
@@ -11,7 +11,9 @@ export default function LessonsList({
   setCurrentLesson,
   user,
 }) {
-  console.log(lessons, "esto es lessons");
+
+const [stateLocal, setStateLocal] = useState([])
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   function handleReview(e) {
@@ -32,6 +34,7 @@ export default function LessonsList({
   }
 
 
+
   function sortAsc(lessons, name) {
     return lessons.sort(function (a, b) {
       if (a.name > b.name) return 1;
@@ -41,11 +44,6 @@ export default function LessonsList({
       return 0;
     });
   }
-
-
-
-
-
 
 
 
@@ -62,10 +60,11 @@ export default function LessonsList({
 
         <br></br>
         <button onClick={handleSubmitClass} className={styles.buttonEditar}> Crear Clase</button>
-        {lessons
-          ? lessons.map((e) => {
+        {lessons 
+          ? [...lessons].map((e) => {
               return (
                 <div className={styles.classes}>
+                 
                   <p value={e} onClick={() => handleLesson(e)}>
                    - {e.name}
                   </p>

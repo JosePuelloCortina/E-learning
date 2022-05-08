@@ -38,7 +38,7 @@ export default function ConfirmCourse() {
       <h1>AkademIT</h1>
       <br />
       <br />
-      <Link to="/user">
+      <Link to={`/courselessons/${id}`} >
         <p>Si no fuiste redirigido clickea aqui.</p>
       </Link>
     </div>

@@ -193,7 +193,7 @@ export default function EditCourse() {
                 Editar{" "}
               </button>
 
-              <Link to="/home">
+              <Link to={`/courselessons/${coursestate.id}`} >
                 <button class={style.buttonYellow}>Volver</button>
               </Link>
             </div>

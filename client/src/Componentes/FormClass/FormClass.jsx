@@ -152,7 +152,7 @@ export default function FormClass() {
                 Agregar
               </button>
 
-              <Link to="/home">
+              <Link to={`/courselessons/${course.id}`}>
                 <button className={style.buttonYellow}>Volver</button>
               </Link>
             </div>
