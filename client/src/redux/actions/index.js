@@ -150,6 +150,13 @@ export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
 
+export const removeClass= (id) => {
+  return async (dispatch) => {
+    const json = await axios.delete(`http://localhost:3001/classes/delete/id/${id}`);
+    dispatch({ type: "REMOVE_CLASS"});
+  };
+};
+
 export const courseSearch = (name) => {
   return async (dispatch) => {
     try {

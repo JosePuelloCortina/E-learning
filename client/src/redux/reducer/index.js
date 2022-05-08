@@ -11,7 +11,6 @@ const initialState = {
   classes: [],
   classDetail: [],
   avatares:[],
-
   reviews: [],
 
 };
@@ -98,7 +97,10 @@ export default function rootReducer(state = initialState, action) {
           classDetail: action.payload,
         };
 
-
+        case "REMOVE_CLASS":
+          return {
+            ...state,
+          };
 
     case "REMOVE_COURSE_DETAIL":
       return {

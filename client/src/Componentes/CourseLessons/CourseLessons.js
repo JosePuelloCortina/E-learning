@@ -95,6 +95,7 @@ export default function CourseLessons() {
             <LessonsVideo
               lessons={courseClasses}
               currentLesson={currentLesson}
+              setCurrentLesson={setCurrentLesson}
               course={course}
               user={user}
               idCourse={id}

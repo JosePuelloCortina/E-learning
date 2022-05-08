@@ -9,6 +9,7 @@ import {
   getAllClasses,
   getCoursesById,
   editClassById,
+  removeClass,
 } from "../../redux/actions/index";
 
 export function validation(form) {
@@ -44,10 +45,11 @@ export default function EditClass() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const classState = useSelector((state) => state.classDetail);
+  const course = useSelector((state) => state.courseDetail);
 
   const [errors, setErrors] = React.useState({});
 
-  const [clasesCarrito, setclasesCarrito] = React.useState([]);
+
 
   const [form, setForm] = React.useState({
     name: classState.name,
@@ -78,7 +80,12 @@ export default function EditClass() {
     dispatch(getAllClasses());
     navigate(`/ClassEditok`);
     };
- 
+
+    function RemoveClass(e) {
+      // e.preventDefault(e);
+      dispatch(removeClass(classState.id));
+      // dispatch(getAllClasses());
+    }
 
   return (
     <div className={style.container}>
@@ -148,9 +155,10 @@ export default function EditClass() {
                 Editar
               </button>
 
-              <Link to="/home">
+              <Link to={`/courselessons/${course.id}`}>
                 <button className={style.buttonYellow}>Volver</button>
               </Link>
+
             </div>
           </div>
         </form>

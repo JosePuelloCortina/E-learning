@@ -61,7 +61,7 @@
     align-self: center;
 }
 
-.buttonEditar {
+.buttonEditarCourse {
 
     color: rgb(255, 255, 255);
     background: #ff9b00;
@@ -78,8 +78,61 @@
     
 }
 
-.buttonEditar:hover {
+ .buttonEditarCourse:hover {
     background: rgb(122, 3, 122);
     color: white;
     cursor: pointer;
 }
+
+ .container .buttonEdicion .buttonEditarClass {
+
+    color: rgb(0, 0, 0);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+
+ 
+    
+}
+
+.container .buttonEdicion button:hover {
+    background: rgb(122, 3, 122);
+    color: white;
+    cursor: pointer;
+}
+
+.buttonEdicion {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+
+
+.container .buttonEdicion button {
+
+    color: rgb(0, 0, 0);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+    margin-left: 20px;
+
+    
+   
+    
+}
+
+

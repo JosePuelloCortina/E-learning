@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './lessonsVideo.module.css'
 import video from '../../Images/videoClase.mp4'
 import ReactPlayer from 'react-player'
 import { useNavigate } from 'react-router'
 import { useParams } from "react-router";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { allUser, getAllClasses, getCoursesById, removeClass } from '../../redux/actions'
 
-export default function LessonsVideo({currentLesson, course, user, id, idCourse  }){
+export default function LessonsVideo({currentLesson,setCurrentLesson, course, user, id, idCourse  }){
     console.log(course, 'esto es course')
+    const dispatch = useDispatch();
     const {name, description, duration, url} = currentLesson
     const classState = useSelector((state) => state.classDetail);
     const navigate = useNavigate();
     
+
 
     function handleSubmitCourse(e) {
         e.preventDefault(e);
@@ -23,9 +26,20 @@ export default function LessonsVideo({currentLesson, course, user, id, idCourse 
         navigate(`/editClass/${classState.id}`);
       }
 
-   
 
 
+
+      const handleRemoveClass = (e) => {
+        e.preventDefault(e);
+        dispatch(getAllClasses());
+        dispatch(getCoursesById(idCourse));
+        dispatch(removeClass(classState.id));
+        setCurrentLesson({})
+        window.location.reload(false);
+     
+      }
+    
+    
 
     if(!currentLesson.name) {
         return (
@@ -46,7 +60,7 @@ export default function LessonsVideo({currentLesson, course, user, id, idCourse 
              
 
             </div>
-            {user.roles[0].tipo === "instructor" ? <button  onClick={handleSubmitCourse} className={styles.buttonEditar}> Editar Curso </button >:null}
+            {user.roles[0].tipo === "instructor" ? <button  onClick={handleSubmitCourse} className={styles.buttonEditarCourse}> Editar Curso </button >:null}
         </div>
         )
     }  
@@ -68,11 +82,14 @@ export default function LessonsVideo({currentLesson, course, user, id, idCourse 
                 <h2>{description}</h2>
             
             </div>
-         <div>
+
+         <div className={styles.buttonEdicion}>
            
-           
- { user.roles[0].tipo === "instructor" ? (<button onClick={handleSubmitClass} className= {styles.buttonEditar}> Editar Clase </button>) : null} 
-            
+      
+ { user.roles[0].tipo === "instructor" ? (<button onClick={handleSubmitClass} className= {styles.buttonEditarClass}> Editar Clase </button>) : null} 
+ <button   onClick={handleRemoveClass} >Eliminar Clase</button>
+ 
+
  </div>    
 
         </div>
