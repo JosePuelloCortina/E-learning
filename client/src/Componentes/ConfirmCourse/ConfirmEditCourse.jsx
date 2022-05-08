@@ -2,25 +2,41 @@ import React from "react";
 import styles from "./confirmCourse.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoursesById } from "../../redux/actions";
+import { useParams } from "react-router";
+
+
 
 export default function ConfirmCourse() {
-  const user = useSelector((state) => state.userDetail);
-  
+
+  const {id} = useParams()
+
+  // const course = useSelector((state) => state.courseDetail);
+  // const dispatch = useDispatch()
+  // console.log(course, "probando el course")
 
   const navigate = useNavigate();
   useEffect(() => {
     redirect();
   });
 
+  // useEffect(() => {
+  //   dispatch(getCoursesById(course.id));
+  
+  // }, []);
+
   function redirect() {
     setTimeout(() => {
-      navigate(`/profile/${user.id}`);
-    }, 5000);
+      navigate(`/courselessons/${id}`);
+    }, 10000);
+  
   }
+
+  
   return (
     <div className={styles.container}>
-      <h2>Curso creado correctamente!</h2>
+      <h2>Curso editado correctamente!</h2>
       <h3>En unos segundos serás redirigido a su perfil...</h3>
       <br />
       <br />

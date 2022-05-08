@@ -11,7 +11,7 @@ import ConfirmRegister from "./Componentes/ConfirmRegister/ConfirmRegister";
 import ConfirmCourse from "./Componentes/ConfirmCourse/ConfirmCourse";
 import ConfirmClass from "./Componentes/ConfirmClass/ConfirmClass";
 import ConfirmEditClass from "./Componentes/ConfirmClass/ConfirmEditClass";
-// import ConfirmEditCourse from "./Componentes/ConfirmCourse/ConfirmEditCourse";
+import ConfirmEditCourse from "./Componentes/ConfirmCourse/ConfirmEditCourse";
 import PurchaseConfirm from "./Componentes/PurchaseConfirm/PurchaseConfirm";
 import Error404 from "./Componentes/Error404/Error404";
 import CourseLessons from "./Componentes/CourseLessons/CourseLessons";
@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/Courseok" element={<ConfirmCourse />} />
           <Route exact path="/Classok" element={<ConfirmClass />} />
           <Route exact path="/ClassEditok" element={<ConfirmEditClass />} />
-          {/* <Route exact path="/CourseEditok" element={<ConfirmEditCourse />} /> */}
+          <Route exact path="/CourseEditok/:id" element={<ConfirmEditCourse />} />
           <Route exact path="/purchaseok" element={<PurchaseConfirm />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/courselessons/:id" element={<CourseLessons />} />

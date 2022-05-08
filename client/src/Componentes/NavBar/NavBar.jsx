@@ -29,13 +29,34 @@ export default function Home() {
 
   return (
     <div className={styles.navBar}>
-      {loggedUser.length > 0 && (
+
+     
+
+{loggedUser.length > 0 && (
+        <div className={styles.myPerfil}>
+          <p className={styles.userName}>
+            {user.roles[0].tipo.charAt(0).toUpperCase() +
+              user.roles[0].tipo.slice(1)}{" "}
+            {user.name}
+          </p>
+          <Link to={`/profile/${loggedUser}`}>
+            <button className={styles.buttonPerfil}>Mi perfil</button>
+          </Link>
+        </div>
+      )}
+
+
+
+
+
+      {/* {loggedUser.length > 0 && (
         <Link to={`/profile/${loggedUser}`}>
           <button className={styles.buttonPerfil}>Mi perfil</button>
         </Link>
-      )}
+      )} */}
 
       {loggedUser.length === 0 ? (
+
         <Link to="/user">
           <button>Ingresar</button>
         </Link>

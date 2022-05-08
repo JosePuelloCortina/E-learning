@@ -40,7 +40,9 @@ export default function LessonsVideo({currentLesson, course, user, id, idCourse 
             </div>
             <div className={styles.down}>
             <h2>Descripcion</h2>
-                <h3>{course.description}</h3>
+            <div  className={styles.este}>
+                <h3>{description}</h3>
+                </div>
             </div>
             {user.roles[0].tipo === "instructor" ? <button  onClick={handleSubmitCourse} className={styles.buttonEditar}> Editar Curso </button >:null}
         </div>
@@ -58,9 +60,12 @@ export default function LessonsVideo({currentLesson, course, user, id, idCourse 
                     controls='true'  
                 />
             </div>
-            <div className={styles.down}>
+            <div className={styles.down} >
                 <h2>Descripcion</h2>
+                <div  className={styles.este}>
                 <h3>{description}</h3>
+                </div>
+               
                 
                 
             </div>

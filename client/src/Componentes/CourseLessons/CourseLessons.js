@@ -6,7 +6,6 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import {
   getCoursesById,
-  removeCourseDetail,
   getAllClasses,
   allUser,
   createReview,
@@ -43,9 +42,7 @@ export default function CourseLessons() {
 
   useEffect(() => {
     dispatch(getCoursesById(id));
-    // return () => {
-    // dispatch(removeCourseDetail());
-    // };
+  
   }, []);
 
   useEffect(() => dispatch(getAllClasses()), []);
@@ -64,10 +61,7 @@ export default function CourseLessons() {
     });
   }
 
-  function handleSubmitCourse(e) {
-    e.preventDefault(e);
-    navigate(`/editCourse/${id}`);
-  }
+  
 
   function handleSubmit(e) {
     e.preventDefault(e);
@@ -103,7 +97,7 @@ export default function CourseLessons() {
               currentLesson={currentLesson}
               course={course}
               user={user}
-              // idCourse={id}
+              idCourse={id}
             />
           </div>
           <div className={style.right}>
