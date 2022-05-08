@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./EditCourse.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCourse, allUser, allCourses, editCoursesById } from "../../redux/actions/index";
+import { createCourse, allUser, allCourses, editCoursesById, getCoursesById } from "../../redux/actions/index";
 
 export function validation(form) {
   let errors = {};
@@ -61,7 +61,7 @@ export default function EditCourse() {
   
       dispatch(editCoursesById(coursestate.id,form));
       dispatch(allCourses());
-      navigate(`/courseok`);
+      navigate(`/CourseEditok/${coursestate.id}`);
    
   };
 
@@ -85,6 +85,8 @@ export default function EditCourse() {
       category: form.category.filter((category) => category !== e.target.value),
     });
   }
+
+
 
   return (
     <div className={style.container}>

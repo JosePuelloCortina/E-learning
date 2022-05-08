@@ -83,3 +83,13 @@
     color: white;
     cursor: pointer;
 }
+
+.este {
+
+    height: 18em;
+    line-height: 1em;
+    overflow-x:auto;
+    overflow-y: scroll;
+    width: 100%;
+    border: 1px solid;
+}

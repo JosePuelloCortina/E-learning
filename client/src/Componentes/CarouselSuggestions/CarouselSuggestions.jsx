@@ -70,7 +70,8 @@ function CarouselSuggestions( {loggedUser} ) {
         return courses;
       }
       const newCourses = randomCourses(courses);
-
+	
+     
       
       if(suggestedCourses.length <= 0 || loggedUser.length === 0) {
     return(
@@ -78,7 +79,7 @@ function CarouselSuggestions( {loggedUser} ) {
             <div className={styles.carouselTitle} >Podria gustarte...</div>
             <div className={styles.carouselContainer}>
                 <div className={styles.carouselArrows}>
-                    <button onClick={() => prevSlide()} >Flecha Izquierda</button>
+                    <button className={styles.button1} onClick={() => prevSlide()} > &#9664;</button>
                 </div>
                 <div className={styles.carouselSlides}>
                     {newCourses.map((course, index) => {
@@ -91,24 +92,24 @@ function CarouselSuggestions( {loggedUser} ) {
                                 <div className={styles.carouselSlideContent}>
                                     <img className={styles.carouselSlideContentImage} src={course.image} alt={course.name}/>
                                     <div className={styles.carouselSlideInfo}> 
-                                        <div className={styles.carouselSlideContentTitle}>{course.name}</div>
+                                        <h1 className={styles.carouselSlideContentTitle}>{course.name}</h1>
                                         <div className={styles.carouselSlideContentRewiew}>{course.review === 0 ? (
                                         <p>Este curso no tiene calificacion</p>
                                         ) : course.review === 1 ? (
-                                        <p>⭐</p>
+                                        <p>Valoracion : ⭐</p>
                                         ) : course.review === 2 ? (
-                                        <p>⭐⭐</p>
+                                        <p>Valoracion : ⭐⭐</p>
                                         ) : course.review === 3 ? (
-                                        <p>⭐⭐⭐</p>
+                                        <p>Valoracion : ⭐⭐⭐</p>
                                         ) : course.review === 4 ? (
-                                        <p>⭐⭐⭐⭐</p>
+                                        <p>Valoracion : ⭐⭐⭐⭐</p>
                                         ) : (
-                                        <p>⭐⭐⭐⭐⭐</p>
+                                        <p>Valoracion : ⭐⭐⭐⭐⭐</p>
                                         )}</div>
                                         <div className={styles.carouselSlideContentDescription}>{course.description}</div>
-                                        <div className={styles.carouselSlideContentPrice}>${course.price}</div>
-                                        <Link to={`/courses/id/${course.id}`}>
-                                            <button className={styles.carouselSlideContentButton}>Ver curso</button>
+                                        <h4 className={styles.carouselSlideContentPrice}> Precio :  ${course.price}</h4>
+                                        <Link to={`/courses/id/${course.id}`} >
+                                            <button>Ver curso</button>
                                         </Link>
                                     </div>
                                 </div>
@@ -118,7 +119,7 @@ function CarouselSuggestions( {loggedUser} ) {
                     })}              
                 </div>
                 <div className={styles.carouselArrows}>
-                    <button onClick={() => nextSlide()}>Flecha Derecha</button>
+                    <button className={styles.button1} onClick={() => nextSlide()}>&#9654;</button>
                 </div>
             </div>
                       
@@ -130,7 +131,7 @@ function CarouselSuggestions( {loggedUser} ) {
                 <div className={styles.carouselTitle} >{user.name[0].toUpperCase() + user.name.slice(1, user.name.length)}, cursos que podrian gustarte...</div>
                 <div className={styles.carouselContainer}>
                     <div className={styles.carouselArrows}>
-                        <button onClick={() => prevSlide()} >Flecha Izquierda</button>
+                        <button className={styles.button1} onClick={() => prevSlide()} >&#9664;</button>
                     </div>
                     <div className={styles.carouselSlides}>
                         {suggestedCourses.map((course, index) => {
@@ -143,22 +144,22 @@ function CarouselSuggestions( {loggedUser} ) {
                                     <div className={styles.carouselSlideContent}>
                                         <img className={styles.carouselSlideContentImage} src={course.image} alt={course.name}/>
                                         <div className={styles.carouselSlideInfo}> 
-                                            <div className={styles.carouselSlideContentTitle}>{course.name}</div>
+                                            <h1 className={styles.carouselSlideContentTitle}>{course.name}</h1>
                                             <div className={styles.carouselSlideContentRewiew}>{course.review === 0 ? (
                                             <p>Este curso no tiene calificacion</p>
                                             ) : course.review === 1 ? (
-                                            <p>⭐</p>
+                                            <p>Valoracion : ⭐</p>
                                             ) : course.review === 2 ? (
-                                            <p>⭐⭐</p>
+                                            <p>Valoracion :⭐⭐</p>
                                             ) : course.review === 3 ? (
-                                            <p>⭐⭐⭐</p>
+                                            <p>Valoracion :⭐⭐⭐</p>
                                             ) : course.review === 4 ? (
-                                            <p>⭐⭐⭐⭐</p>
+                                            <p>Valoracion :⭐⭐⭐⭐</p>
                                             ) : (
-                                            <p>⭐⭐⭐⭐⭐</p>
+                                            <p>Valoracion :⭐⭐⭐⭐⭐</p>
                                             )}</div>
                                             <div className={styles.carouselSlideContentDescription}>{course.description}</div>
-                                            <div className={styles.carouselSlideContentPrice}>${course.price}</div>
+                                            <h4 className={styles.carouselSlideContentPrice}> Precio :  ${course.price}</h4>
                                             <Link to={`/courses/id/${course.id}`}>
                                             <button className={styles.carouselSlideContentButton}>Ver curso</button>
                                         </Link>
@@ -170,7 +171,7 @@ function CarouselSuggestions( {loggedUser} ) {
                         })}              
                     </div>
                     <div className={styles.carouselArrows}>
-                        <button onClick={() => nextSlide()}>Flecha Derecha</button>
+                        <button className={styles.button1}  onClick={() => nextSlide()}>&#9654;</button>
                     </div>
                 </div>
                           
