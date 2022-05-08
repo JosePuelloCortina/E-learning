@@ -12,24 +12,18 @@ export default function ConfirmCourse() {
 
   const {id} = useParams()
 
-  // const course = useSelector((state) => state.courseDetail);
-  // const dispatch = useDispatch()
-  // console.log(course, "probando el course")
+ 
 
   const navigate = useNavigate();
   useEffect(() => {
     redirect();
   });
 
-  // useEffect(() => {
-  //   dispatch(getCoursesById(course.id));
-  
-  // }, []);
-
+ 
   function redirect() {
     setTimeout(() => {
       navigate(`/courselessons/${id}`);
-    }, 10000);
+    }, 4000);
   
   }
 

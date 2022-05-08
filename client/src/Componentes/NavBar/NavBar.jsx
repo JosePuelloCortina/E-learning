@@ -47,14 +47,6 @@ export default function Home() {
 
 
 
-
-
-      {/* {loggedUser.length > 0 && (
-        <Link to={`/profile/${loggedUser}`}>
-          <button className={styles.buttonPerfil}>Mi perfil</button>
-        </Link>
-      )} */}
-
       {loggedUser.length === 0 ? (
 
         <Link to="/user">
