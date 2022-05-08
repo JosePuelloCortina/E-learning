@@ -23,7 +23,11 @@ export default function ConfirmCourse() {
   function redirect() {
     setTimeout(() => {
       navigate(`/courselessons/${id}`);
+<<<<<<< HEAD
     }, 4000);
+=======
+    }, 5000);
+>>>>>>> bdb429136b839a356063a5be2cf8f1c6e9c61082
   
   }
 
