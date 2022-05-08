@@ -80,7 +80,7 @@ export default function Login() {
       );
 
       const usuario = users.find((user) => user.email === validate.email);
-      if (token.data.user) {
+      if (token.data.user && usuario.validated === "true") {
         dispatch(addLoggedUser(usuario.id));
         dispatch(getUserById(usuario.id));
         if (usuario.roles.filter((r) => r.tipo === "admin").length > 0)
@@ -105,7 +105,7 @@ export default function Login() {
         password: userGoogle.password,
       });
 
-      if (token.data.user) {
+      if (token.data.user && userGoogle.validated === "true") {
         dispatch(addLoggedUser(userGoogle.id));
         navigate(`/profile/${userGoogle.id}`);
       } else {
