@@ -24,7 +24,6 @@ export default function CourseLessons() {
 
   const totalClasses = useSelector((state) => state.classes);
   const navigate = useNavigate();
-  const userRole = useSelector((state) => state.userDetail);
 
   const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
   console.log(user, "esto es user");

@@ -230,48 +230,6 @@ export default function EditProfile() {
               </div>
             )}
 
-            {/* <div className={styles.containerSelect}>
-             
-              //probando
-              <div>
-                <div className={styles.tituloseleccionar}>
-                  <label>Selecciona tus temas favoritos: </label>
-                </div>
-                <select
-                  className={styles.decorando}
-                  onChange={(e) => handleAddCategory(e)}
-                >
-                  <option>Seleccionar</option>
-
-                  {stateCategories &&
-                    stateCategories.map((category) => {
-                      return (
-                        <option key={category.name} value={category.name}>
-                          {category.name}
-                        </option>
-                      );
-                    })}
-                </select>
-              </div>
-            </div> */}
-            {/* <div className={styles.decorando}>
-              {input.categories &&
-                input.categories.map((category) => (
-                  <div className={styles.decorando} key={category}>
-                    <p className={styles.p}>
-                      {category}
-                      <button
-                        onClick={(e) => handleRemoveCategory(e)}
-                        value={category}
-                        className={styles.botonx}
-                      >
-                        X
-                      </button>
-                    </p>
-                  </div>
-                ))}
-            </div> */}
-
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>
                 <button className={styles.save}>Volver atrás</button>
