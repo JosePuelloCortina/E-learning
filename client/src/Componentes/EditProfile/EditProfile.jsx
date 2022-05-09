@@ -27,6 +27,7 @@ export default function EditProfile() {
   console.log(userInit, "userInit");
   const userCategory =
     userInit.categories && userInit.categories.map((category) => category.name);
+  const userRole = userInit.roles ? userInit.roles[0].tipo : "";
 
   const navigate = useNavigate();
 
@@ -74,7 +75,7 @@ export default function EditProfile() {
       });
     }
   }
-  console.log(id, "id")
+  console.log(id, "id");
 
   function handleRemoveCategory(e) {
     e.preventDefault();
@@ -94,13 +95,12 @@ export default function EditProfile() {
   // }
 
   function handleSubmit(e) {
-
     if (!input.name || !input.email) {
       alert("Por favor complete todos los campos.");
     } else {
       if (window.confirm("¿Desea modificar sus datos?") === true) {
         dispatch(updateUser(id, input));
-        console.log(input, "input FINAL ")
+        console.log(input, "input FINAL ");
         alert("Cambios guardados.");
         navigate(`/profile/${id}`);
       } else {
@@ -186,34 +186,37 @@ export default function EditProfile() {
                   })}
               </div>
             </div>
-            <div className={styles.containerSelect}>
-
-                  {/* <label>Categoria</label> */}
-                  <div >
-                  <div className={styles.tituloseleccionar}>  
-                  <label >Selecciona tus temas favoritos: </label>
-                  </div>  
-                    <select className={styles.decorando} onChange={(e) => handleAddCategory(e)}>
-                      <option>Seleccionar</option>
-                     
-                      {stateCategories &&
-                        stateCategories.map((category) => {
-                          return (
-                            <option key={category.name} value={category.name}>
-                              {category.name}
-                            </option>
-                          );
-                        })}
-                    
-                    </select>
-                    
+            {userRole === "alumno" && (
+              <div className={styles.containerSelect}>
+                <div>
+                  <div className={styles.tituloseleccionar}>
+                    <label>Selecciona tus temas favoritos: </label>
                   </div>
+                  <select
+                    className={styles.decorando}
+                    onChange={(e) => handleAddCategory(e)}
+                  >
+                    <option>Seleccionar</option>
+
+                    {stateCategories &&
+                      stateCategories.map((category) => {
+                        return (
+                          <option key={category.name} value={category.name}>
+                            {category.name}
+                          </option>
+                        );
+                      })}
+                  </select>
                 </div>
-                <div className={styles.decorando}>
-                  {input.categories &&
-                    input.categories.map((category) => (
-                      <div className={styles.decorando} key={category}>
-                        <p className={styles.p}>{category}
+              </div>
+            )}
+            {userRole === "alumno" && (
+              <div className={styles.decorando}>
+                {input.categories &&
+                  input.categories.map((category) => (
+                    <div className={styles.decorando} key={category}>
+                      <p className={styles.p}>
+                        {category}
                         <button
                           onClick={(e) => handleRemoveCategory(e)}
                           value={category}
@@ -221,11 +224,52 @@ export default function EditProfile() {
                         >
                           X
                         </button>
-                        </p>
-
-                      </div>
-                    ))}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            )}
+            {/* <div className={styles.containerSelect}>
+             
+              
+              <div>
+                <div className={styles.tituloseleccionar}>
+                  <label>Selecciona tus temas favoritos: </label>
                 </div>
+                <select
+                  className={styles.decorando}
+                  onChange={(e) => handleAddCategory(e)}
+                >
+                  <option>Seleccionar</option>
+
+                  {stateCategories &&
+                    stateCategories.map((category) => {
+                      return (
+                        <option key={category.name} value={category.name}>
+                          {category.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              </div>
+            </div> */}
+            {/* <div className={styles.decorando}>
+              {input.categories &&
+                input.categories.map((category) => (
+                  <div className={styles.decorando} key={category}>
+                    <p className={styles.p}>
+                      {category}
+                      <button
+                        onClick={(e) => handleRemoveCategory(e)}
+                        value={category}
+                        className={styles.botonx}
+                      >
+                        X
+                      </button>
+                    </p>
+                  </div>
+                ))}
+            </div> */}
 
             <div className={styles.buttons}>
               <Link to={`/profile/${id}`}>

@@ -4,10 +4,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const { uuid } = require("uuidv4");
+const { PASS_EMAIL } = process.env;
 
 const mail = {
   user: "albano.rc99@gmail.com",
-  pass: "ghvgnxfpfdtsxxmm",
+  pass: PASS_EMAIL,
 };
 
 let transporter = nodemailer.createTransport({

@@ -10,9 +10,8 @@ const initialState = {
   token: {},
   classes: [],
   classDetail: [],
-  avatares:[],
+  avatares: [],
   reviews: [],
-
 };
 
 function sortAsc(arr, field) {
@@ -48,15 +47,15 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
 
-      case "POST_COURSE":
-        return {
-          ...state,
-        };
+    case "POST_COURSE":
+      return {
+        ...state,
+      };
 
-        case "POST_CLASS":
-        return {
-          ...state,
-        };
+    case "POST_CLASS":
+      return {
+        ...state,
+      };
 
     case "VALIDATE_USER":
       return {
@@ -91,16 +90,16 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: action.payload,
       };
 
-      case "GET_CLASS_BY_ID":
-        return {
-          ...state,
-          classDetail: action.payload,
-        };
+    case "GET_CLASS_BY_ID":
+      return {
+        ...state,
+        classDetail: action.payload,
+      };
 
-        case "REMOVE_CLASS":
-          return {
-            ...state,
-          };
+    case "REMOVE_CLASS":
+      return {
+        ...state,
+      };
 
     case "REMOVE_COURSE_DETAIL":
       return {
@@ -168,12 +167,17 @@ export default function rootReducer(state = initialState, action) {
     case "ADD_LOGGED_USER":
       return {
         ...state,
-        loggedUsers: action.payload,
+        loggedUsers: [action.payload],
       };
     case "REMOVE_LOGGED_USER":
       return {
         ...state,
         loggedUsers: [],
+      };
+    case "REMOVE_USER_DETAIL":
+      return {
+        ...state,
+        userDetail: [],
       };
     case "GET_ALL_CLASSES":
       return {
@@ -187,27 +191,23 @@ export default function rootReducer(state = initialState, action) {
         avatares: action.payload,
       };
 
-       case "POST_REVIEW":
+    case "POST_REVIEW":
       return {
         ...state,
       };
-      case "GET_ALL_REVIEWS":
-        return {
-          ...state,
-          reviews: action.payload,
-        };
+    case "GET_ALL_REVIEWS":
+      return {
+        ...state,
+        reviews: action.payload,
+      };
 
-
-        case "EDIT_COURSES_BY_ID":
-        return {
-          ...state,
-          courseDetail: action.payload
-        };
-
+    case "EDIT_COURSES_BY_ID":
+      return {
+        ...state,
+        courseDetail: action.payload,
+      };
 
     default:
       return state;
   }
 }
-
-

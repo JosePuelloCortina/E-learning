@@ -29,10 +29,7 @@ export default function Home() {
 
   return (
     <div className={styles.navBar}>
-
-     
-
-{loggedUser.length > 0 && (
+      {loggedUser.length > 0 && Object.keys(user).length > 0 ? (
         <div className={styles.myPerfil}>
           <p className={styles.userName}>
             {user.roles[0].tipo.charAt(0).toUpperCase() +
@@ -43,21 +40,17 @@ export default function Home() {
             <button className={styles.buttonPerfil}>Mi perfil</button>
           </Link>
         </div>
-      )}
-
-
+      ) : null}
 
       {loggedUser.length === 0 ? (
-
         <Link to="/user">
           <button>Ingresar</button>
         </Link>
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
-      )
-      }
+      )}
 
-      {user.roles &&  user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
+      {user.roles && user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
         <Link className={styles.linkHome} to="/admin">
           {/* <img src={logo} alt='' /> */}
           <h1>AkademIT</h1>
