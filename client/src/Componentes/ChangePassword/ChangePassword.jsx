@@ -50,8 +50,8 @@ function ChangePassword() {
       errors.password = "Su contraseña actual no es correcta";
     }
 
-    if (input.password && !passExp.test(input.password)) {
-      errors.password =
+    if (input.newPassword && !passExp.test(input.newPassword)) {
+      errors.newPassword =
         "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial.";
     }
     return errors;

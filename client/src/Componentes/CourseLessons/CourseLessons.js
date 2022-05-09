@@ -20,7 +20,7 @@ export default function CourseLessons() {
   const course = useSelector((state) => state.courseDetail);
   const loggedUserId = useSelector((state) => state.loggedUsers);
   const allUsers = useSelector((state) => state.user);
-  const user = allUsers.find((e) => e.id === loggedUserId);
+  const user = allUsers.find((e) => e.id === loggedUserId[0]);
 
   const totalClasses = useSelector((state) => state.classes);
   const navigate = useNavigate();
@@ -42,7 +42,6 @@ export default function CourseLessons() {
 
   useEffect(() => {
     dispatch(getCoursesById(id));
-  
   }, []);
 
   useEffect(() => dispatch(getAllClasses()), []);
@@ -60,8 +59,6 @@ export default function CourseLessons() {
       [e.target.name]: e.target.value,
     });
   }
-
-  
 
   function handleSubmit(e) {
     e.preventDefault(e);
@@ -88,8 +85,6 @@ export default function CourseLessons() {
           </div>
         </div>
 
-       
-       
         <div className={style.body}>
           <div className={style.left}>
             <LessonsVideo
