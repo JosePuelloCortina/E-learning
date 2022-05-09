@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Comprar from '../MercadoPago/Comprar'
+import { getCoursesById } from '../../redux/actions'
+import { useParams } from "react-router-dom";
+
 
 function Checkout() {
-    const [datos, setDatos] = useState("")
+    const course = useSelector((state) => state.courseDetail);
+    const idCourse = course.id;
+    const [datos, setDatos] = useState({
+        idCourse:idCourse,
+        name:course.name,
+        price:course.price
+    })
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    
     
     useEffect(()=>{
+        dispatch(getCoursesById(id));
         axios
-        .get(`http://localhost:3001/mercadopago`)
+        .post(`http://localhost:3001/mercadopago`, datos)
         .then((data)=>{
-        setDatos(data.data)
-        console.info('Contenido de data:', data)
+            setDatos(data.data)
+            console.info('Contenido de data:', data)
         }).catch(err => console.error(err)) 
     },[])
 
-    const user = useSelector((state) => state.userDetail);
+    
     return (
         <div>
             { 
@@ -25,23 +38,22 @@ function Checkout() {
                 <table>
                 <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Curso</th>
                     <th>Precio</th>
-                    <th>Cantidad</th>
+                  
 
                 </tr>
                 </thead>
                 <tbody>
-                {
-                user.buys.map((buy, i) => {
-                    return(
-                    <tr key={buy.id}>
-                        <td>{buy.courseName}</td>
-                        <td>{buy.total_price}</td>
-                        <td>{buy.quantity}</td> 
-                    </tr>
-                    )
-                })} 
+                
+                <tr key={idCourse}>
+                    <td>{idCourse}</td>
+                    <td>{course.name}</td>
+                    <td>{course.price}</td>
+                    
+                </tr>
+                     
                 </tbody>  
                 </table>
                 <Comprar data={datos}/>
