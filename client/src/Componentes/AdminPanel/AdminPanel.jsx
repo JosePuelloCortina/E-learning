@@ -11,6 +11,7 @@ function AdminPanel() {
   return (
     <div>
       {loggedUser.length > 0 &&
+      Object.keys(user).length > 0 &&
       user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
         <div>
           <NavBar></NavBar>

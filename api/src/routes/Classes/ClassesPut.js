@@ -4,9 +4,9 @@ const { Clase } = require("../../db");
 server.put("/update/id/:id", (req, res) => {
   const { id } = req.params;
   const { name, description, duration, url } = req.body;
-  if (!name || !description || !duration || !url) {
-    return res.status(422).json({ error: "No se enviaron todos los datos" });
-  }
+  // if (!name || !description || !duration || !url) {
+  //   return res.status(422).json({ error: "No se enviaron todos los datos" });
+  // }  /// no tocar sin permiso.
 
   Clase.findByPk(id)
     .then((clase) => {
