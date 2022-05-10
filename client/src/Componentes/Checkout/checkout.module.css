@@ -1,0 +1,72 @@
+.container {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: auto;
+    background: rgb(11,82,91);
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+}
+
+
+.container h1 {
+    font-family: 'Gugi', cursive;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 120px;
+    text-shadow: 5px 5px 5px rgba(13, 167, 187, 0.67);
+    margin: 10px;
+}
+
+.container h2 {
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+
+.container .items {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+}
+
+.container .items .item {
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.container .data {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+
+.container .data .dataItem{
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 22px;
+    margin: 20px;
+}
+
+.container p{
+    font-family:'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 0px;
+    font-size: 12px;
+}
+
+.container a{
+    color: white;
+    cursor: pointer;
+    font-family:'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+
