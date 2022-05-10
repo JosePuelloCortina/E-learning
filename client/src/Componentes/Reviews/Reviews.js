@@ -25,7 +25,7 @@ useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
                 return (
                     <div className={styles.reviewCard}>
                         <div>
-                            <h4>{e.userName}</h4>
+                            <h4>{e.userName.charAt(0).toUpperCase() + e.userName.slice(1)}</h4>
                             <div>
                                 {
                                 e.score === 1 ? <p>⭐</p> :
