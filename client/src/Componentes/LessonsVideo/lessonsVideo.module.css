@@ -8,7 +8,7 @@
     background-color: white;
     color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     border-radius: 30px;
     padding: 30px;
     margin: 5px;
@@ -54,6 +54,7 @@
 .container h2{
     display: flex;
     justify-content: center;
+    font-size: 18px;
     
 }
 

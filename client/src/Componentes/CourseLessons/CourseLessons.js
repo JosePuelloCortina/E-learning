@@ -23,6 +23,7 @@ export default function CourseLessons() {
   const user = allUsers.find((e) => e.id === loggedUserId[0]);
 
   const totalClasses = useSelector((state) => state.classes);
+
   const navigate = useNavigate();
 
   const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
