@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 function Checkout() {
     const course = useSelector((state) => state.courseDetail);
     const idCourse = course.id;
-    const [datos, setDatos] = useState({
+    const [datos, setDatos] = useState({ 
         idCourse:idCourse,
         name:course.name,
         price:course.price
