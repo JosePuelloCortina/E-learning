@@ -29,7 +29,9 @@ function CourseCardDetail() {
   const cantidad = 1;
   const detail = useSelector((state) => state.courseDetail);
   const loggedUser = useSelector( state => state.loggedUsers);
+  const userDetail = useSelector((state) => state.userDetail);
   console.log(loggedUser, "este es el usuario" )
+  const userPurchase = userDetail && userDetail.buys.map(buy => buy.courseId);
  
  
   // const idCourse = detail.id
@@ -40,7 +42,11 @@ function CourseCardDetail() {
       alert("Para comprar el curso debes iniciar sesión")
       navigate('/user')
     }else{
-      navigate(`/checkout/id/${id}`)
+      if(userPurchase.includes(id)){
+        alert("Ya has comprado este curso")
+      } else{
+        navigate(`/checkout/id/${id}`)
+    }
   }
   }
 
