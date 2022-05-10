@@ -15,11 +15,11 @@ const mercadopago = require ('mercadopago');
 const { route } = require('../Order/Order');
 
 server.post("/", async (req, res, next)=>{
-  //const id_orden = req.query.id 
+//  const id_orden = req.query.id 
 // const id_buy = req.query.id
 // const id_buy = "394606a0-c77e-11ec-8c73-834ec4650dd3"
 let { idCourse, name, price } = req.body;
-const quantity = 1;
+// const quantity = 1;
 //   const id_orden= 1
 //   // cargamos el carrido de la bd
 //   const carrito = [
@@ -27,8 +27,11 @@ const quantity = 1;
 //     {title: "Producto 2", quantity: 15, price: 100.52},
 //     {title: "Producto 3", quantity: 6, price: 200}
 //   ]
-// const buy = await Buy.findAll()
-// console.log(buy + "aquí está la compra")
+// const carrito = [
+//   {title: name, quantity: 1, price: price}
+// ]
+// const buy = await Order.findAll()
+//  console.log(buy + "aquí está la compra")
   // Agrega credenciales
 mercadopago.configure({ 
     access_token: ACCESS_TOKEN
@@ -40,16 +43,22 @@ mercadopago.configure({
   //   unit_price: i.total_price,
   //   quantity: i.quantity,
   // }))
+
+//   Order.create({
+//     userId: userId,
+//     status: status
+// })
   const items_ml = [{
     title: name,
     unit_price: price,
-    quantity: quantity,
+    quantity: 1,
   }]
   console.info('compra', items_ml)
   // Crea un objeto de preferencia
   let preference = {
     items: items_ml,
     external_reference : `${idCourse}`, //`${new Date().valueOf()}`,
+ 
     back_urls: {
       success: `${DB_HOST}:3001/mercadopago/pagos`,
       failure: `${DB_HOST}:3001/mercadopago/pagos`,
@@ -61,6 +70,7 @@ mercadopago.configure({
       ]
     },
   };
+  console.log(idCourse, 'esto es idcourse')
   console.info('preference:', preference)
   mercadopago.preferences.create(preference)
 
@@ -105,7 +115,9 @@ server.get("/pagos", (req, res)=>{
 
   //Aquí edito el status de mi orden
 
-  Order.findByPk(external_reference)
+  Order.findByPk({
+    where: {id: merchant_order_id}
+  })
   .then((order) => {
     order.payment_id= payment_id
     order.payment_status= payment_status

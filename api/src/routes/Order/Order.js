@@ -27,10 +27,10 @@ server.post('/', (req, res, next) => {
                 .then(secondResponse => { //nos da el arreglo creado
                     const cant = secondResponse.dataValues.quantity
                     const courId = secondResponse.dataValues.courseId
-                    Course.decrement(
-                        {stock: cant},
-                        { where: { id: courId } }
-                    )
+                    // Course.decrement(
+                    //     {stock: cant},
+                    //     { where: { id: courId } }
+                    // )
                 })
             })
         )
