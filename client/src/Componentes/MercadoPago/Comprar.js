@@ -5,7 +5,7 @@ export default function Comprar({courses, data }){
  useEffect(()=>{
   const script = document.createElement('script');
   const attr_data_preference = document.createAttribute('data-preference-id')
-  //const attr_nonce = document.createAttribute('nonce')
+  // const attr_nonce = document.createAttribute('nonce')
 
   attr_data_preference.value = data.id
   //attr_nonce.value = 'abcdefg'
@@ -13,17 +13,21 @@ export default function Comprar({courses, data }){
   script.setAttributeNode(attr_data_preference)
  // script.setAttributeNode(attr_nonce)
 console.log(data, " data")
+  
   document.getElementById('form1').appendChild(script)
-  /*return () =>{
+  return () =>{
     document.getElementById('form1').removeChild(script);
-  }*/
+  }
  },[data])
 return(
   <div>
+  {data ? 
+  
+  <form id='form1'> 
 
-  <form id='form1'>
-
-      </form>
+      </form> :
+      null
+}
 
      </div>
     )

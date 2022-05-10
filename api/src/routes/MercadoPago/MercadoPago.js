@@ -54,7 +54,12 @@ mercadopago.configure({
       success: `${DB_HOST}:3001/mercadopago/pagos`,
       failure: `${DB_HOST}:3001/mercadopago/pagos`,
       pending: `${DB_HOST}:3001/mercadopago/pagos`,
-    }
+    },
+    payment_methods: {
+        excluded_payment_types: [
+        { "id": "ticket"}
+      ]
+    },
   };
   console.info('preference:', preference)
   mercadopago.preferences.create(preference)
