@@ -73,12 +73,20 @@
 .container h5{
    font-size: 16px;
    margin-left: 10px;
+   margin-top: 2px;
+   margin-bottom: 3px;
    
 }
 .container h4{
-    font-size: 16px;
+    font-size: 18px;
     color: rgb(15, 53, 114);
     cursor: pointer;
+    margin: 0px;
+    
+}
+.container h4:hover{
+    text-decoration: underline;
+    color: rgb(9, 40, 89);
 }
 
 .buttonEditar {
