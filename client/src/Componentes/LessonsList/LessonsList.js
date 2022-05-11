@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./lessonsList.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { allCourses, getAllClasses, getClassById, getCoursesById, removeClass } from "../../redux/actions";
+import {
+  allCourses,
+  getAllClasses,
+  getClassById,
+  getCoursesById,
+  removeClass,
+} from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function LessonsList({
@@ -11,9 +17,6 @@ export default function LessonsList({
   setCurrentLesson,
   user,
 }) {
-
-
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   function handleReview(e) {
@@ -22,51 +25,53 @@ export default function LessonsList({
   }
 
   function handleLesson(e) {
-    setCurrentLesson(e)
+    setCurrentLesson(e);
     dispatch(getClassById(e.id));
   }
 
-  sortAsc(lessons)
+  sortAsc(lessons);
 
   function handleSubmitClass(e) {
     e.preventDefault(e);
     navigate(`/formClass`);
   }
 
-
-
   function sortAsc(lessons, name) {
     return lessons.sort(function (a, b) {
       if (a.name > b.name) return 1;
-  
+
       if (b.name > a.name) return -1;
-  
+
       return 0;
     });
   }
 
-
-
-
   if (user.roles[0].tipo === "instructor") {
     return (
       <div className={styles.container}>
-
         <div className={styles.containerTitle}>
-        <h3>Clases</h3>  
+          <h3>Clases</h3>
         </div>
-       
-  
 
         <br></br>
-        <button onClick={handleSubmitClass} className={styles.buttonEditar}> Crear Clase</button>
-        {lessons 
+        <button onClick={handleSubmitClass} className={styles.buttonEditar}>
+          {" "}
+          Crear Clase
+        </button>
+        {lessons
           ? [...lessons].map((e) => {
               return (
                 <div className={styles.classes}>
-                  <p value={e} className ={ e.deshabilitar === "false"  ? styles.habilitado : styles.deshabilitado}
-                  onClick={() => handleLesson(e)}>
-                   - {e.name}
+                  <p
+                    value={e}
+                    className={
+                      e.deshabilitar === "false"
+                        ? styles.habilitado
+                        : styles.deshabilitado
+                    }
+                    onClick={() => handleLesson(e)}
+                  >
+                    - {e.name}
                   </p>
 
                   {user.roles[0].tipo === "alumn" ? (
@@ -84,17 +89,16 @@ export default function LessonsList({
         <h3>Clases || Mi progreso</h3>
         {lessons
           ? lessons.map((e) => {
-
-             if (e.deshabilitar==="true") {
-              return (
-                <div className={styles.classes}>
-                   <input type="checkbox" />
-                  <p value={e} onClick={() => setCurrentLesson(e)}>
-                   - {e.name}
-                  </p>
-                </div>
-              )
-             };
+              if (e.deshabilitar === "false") {
+                return (
+                  <div className={styles.classes}>
+                    <input type="checkbox" />
+                    <p value={e} onClick={() => setCurrentLesson(e)}>
+                      - {e.name}
+                    </p>
+                  </div>
+                );
+              }
             })
           : null}
         <br />
