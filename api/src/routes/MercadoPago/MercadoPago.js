@@ -55,6 +55,9 @@ mercadopago.configure({
     })
   }
 
+
+  if(idUser && idCourse && name && price){
+
   var newOrder = await Order.create({
     userId : idUser,
     courseId: idCourse,
@@ -76,8 +79,9 @@ console.log("newOrder", newOrder)
  
     back_urls: {
       success: `${DB_HOST}:3000/purchaseok`,
-      failure: `${DB_HOST}:3001/mercadopago/pagos`,
-      pending: `${DB_HOST}:3001/mercadopago/pagos`,
+      failure: `${DB_HOST}:3000/home`,
+      pending: `${DB_HOST}:3000/home`,
+      rejected: `${DB_HOST}:3000/home`,
     },
     payment_methods: {
         excluded_payment_types: [
@@ -98,7 +102,7 @@ console.log("newOrder", newOrder)
   }).catch(function(error){
     console.log(error);
   })
-
+  }
 
 }) 
 
@@ -160,8 +164,11 @@ server.get("/pagos", async (req, res)=>{
     
     
     res.json({status: "approved"})
-  } else {
+  } else if (payment_status === "rejected") {
     console.log("payment not approved")
+    return res.redirect(`${DB_HOST}:3000/home`)
+
+  } else {
     res.json({status: "not approved"})
   }
   }catch (error) {
