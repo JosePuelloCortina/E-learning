@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./userProfile.module.css";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import MyPurchases from "../MyPurchases/MyPurchases";
 import MyCoursesAlumn from "./../MyCoursesAlumn/MyCoursesAlumn";
 import MyCoursesInstructor from "./../MyCoursesInstructor/MyCoursesInstructor";
 import ProfileLateralBar from "../ProfileLateralBar/ProfileLateralBar";
@@ -43,7 +44,11 @@ export default function UserProfile() {
               </div>
               <div className={styles.cursesDetail}>
                 {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "alumno").length >
-                  0 && <MyCoursesAlumn user={userDetail} />}
+                  0 && <div>
+                  <MyCoursesAlumn user={userDetail} />
+                  <MyPurchases user={userDetail} />
+                  </div>
+                  }
                 {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "instructor")
                   .length > 0 && <MyCoursesInstructor user={userDetail} />}
               </div>
