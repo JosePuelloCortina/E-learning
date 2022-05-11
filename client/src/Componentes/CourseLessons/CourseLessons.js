@@ -72,13 +72,20 @@ export default function CourseLessons() {
     if (review.score && review.coment) {
       dispatch(createReview(review));
       alert("Calificación enviada.");
+      dispatch(getAllReviews());
       setForm(false);
+      setReview(
+       {  
+          score: "",
+          coment: "",
+          }
+      )
     } else {
       alert("Por favor seleccione un puntaje y deje su comentario.");
     }
   }
  else {
-  alert('Ya calificaste este curso!');
+  alert('Ya calificaste este curso! Sólo podes hacerlo una vez.');
   setForm(false);
 }
 }
