@@ -29,22 +29,22 @@ export default function LessonsList({
     dispatch(getClassById(e.id));
   }
 
-  sortAsc(lessons);
+  // sortAsc(lessons);
 
   function handleSubmitClass(e) {
     e.preventDefault(e);
     navigate(`/formClass`);
   }
 
-  function sortAsc(lessons, name) {
-    return lessons.sort(function (a, b) {
-      if (a.name > b.name) return 1;
+  // function sortAsc(lessons, name) {
+  //   return lessons.sort(function (a, b) {
+  //     if (a.name > b.name) return 1;
 
-      if (b.name > a.name) return -1;
+  //     if (b.name > a.name) return -1;
 
-      return 0;
-    });
-  }
+  //     return 0;
+  //   });
+  // }
 
   if (user.roles[0].tipo === "instructor") {
     return (
