@@ -1,0 +1,25 @@
+.containertotal{
+height: 100 px;
+width: 50 px;
+
+display: flex;
+flex-direction: column;
+align-self: center;
+width: 400px;
+height: auto;
+background-color: white;
+margin: 10px;
+color: black;
+font-family: 'Montserrat', sans-serif;
+font-size: 18px;
+border-radius: 30px;
+padding: 20px;
+border: solid var(--color4) 8px;
+
+}
+
+.h2{
+    color: black;
+    font-size: 22px;
+    margin-top: 5px;
+}
