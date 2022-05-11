@@ -19,6 +19,7 @@ import UserVerification from "./Componentes/UserVerification/UserVerification";
 import Checkout from "./Componentes/Checkout/Checkout";
 import FormCourses from "./Componentes/FormCourses/FormCourses";
 import AdminPanel from "./Componentes/AdminPanel/AdminPanel";
+import AdminPage from "./Componentes/AdminCategories/AdminPage"
 import FormClass from "./Componentes/FormClass/FormClass";
 
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/courselessons/:id" element={<CourseLessons />} />
           <Route path="/checkout/id/:id" element={<Checkout />} />
           <Route exact path="/admin" element={<AdminPanel />} />
+          <Route exact path="/AdminPage" element={<AdminPage />} />
           <Route
             exact
             path="/profile/edit/password/:id"
