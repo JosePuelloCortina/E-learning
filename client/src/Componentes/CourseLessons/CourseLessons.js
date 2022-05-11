@@ -9,6 +9,7 @@ import {
   getAllClasses,
   allUser,
   createReview,
+  getAllReviews
 } from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from "./../LessonsVideo/LessonsVideo";
@@ -20,6 +21,7 @@ export default function CourseLessons() {
   const course = useSelector((state) => state.courseDetail);
   const loggedUserId = useSelector((state) => state.loggedUsers);
   const allUsers = useSelector((state) => state.user);
+  const allReviews = useSelector (state => state.reviews)
   const user = allUsers.find((e) => e.id === loggedUserId[0]);
 
   const totalClasses = useSelector((state) => state.classes);
@@ -28,7 +30,7 @@ export default function CourseLessons() {
 
   const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
   console.log(user, "esto es user");
-
+  console.log(allReviews, 'esto es reviews')
   const [currentLesson, setCurrentLesson] = useState({});
   const [form, setForm] = useState(false);
   const [review, setReview] = useState({
@@ -36,6 +38,7 @@ export default function CourseLessons() {
     score: "",
     coment: "",
     userName: user.name,
+    userId: user.id
   });
 
   console.log(review);
@@ -46,6 +49,7 @@ export default function CourseLessons() {
 
   useEffect(() => dispatch(getAllClasses()), []);
   useEffect(() => dispatch(allUser()), []);
+  useEffect(() => dispatch(getAllReviews()), [])
 
   function handleClose(e) {
     e.preventDefault(e);
@@ -62,14 +66,34 @@ export default function CourseLessons() {
 
   function handleSubmit(e) {
     e.preventDefault(e);
+    const prevCourse = allReviews.filter( e => e.idCourse === id)
+    const prevReview = prevCourse.filter(e => e.userId === user.id)
+    if (!prevReview.length){
     if (review.score && review.coment) {
       dispatch(createReview(review));
       alert("Calificación enviada.");
+      dispatch(getAllReviews());
       setForm(false);
+      setReview(
+       {  
+          score: "",
+          coment: "",
+          }
+      )
     } else {
       alert("Por favor seleccione un puntaje y deje su comentario.");
     }
   }
+ else {
+  alert('Ya calificaste este curso! Sólo podes hacerlo una vez.');
+  setForm(false);
+}
+}
+
+
+
+
+
   function resetCurrentLesson() {
     setCurrentLesson({});
   }

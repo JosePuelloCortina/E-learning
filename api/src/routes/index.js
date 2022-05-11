@@ -30,7 +30,8 @@ const Order =require('./Order/Order');
 const MercadoPago = require('./MercadoPago/MercadoPago')
 const Avatar = require('./Avatar/Avatar');
 const ReviewPost = require ('./Review/ReviewPost');
-const ReviewGet = require ('./Review/ReviewGet')
+const ReviewGet = require ('./Review/ReviewGet');
+const ReviewDelete = require ('./Review/ReviewDelete')
 
 
 
@@ -68,7 +69,8 @@ router.use('/order', Order);
 router.use('/mercadopago', MercadoPago);
 router.use('/avatar', Avatar);
 router.use('/review', ReviewPost)
-router.use('/review', ReviewGet)
+router.use('/review', ReviewGet);
+router.use('/review', ReviewDelete)
 
 
 
