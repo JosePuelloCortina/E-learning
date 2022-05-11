@@ -4,7 +4,7 @@ const {Clase, Course, User, Role} = require("../../db");
 
 server.post("/create", async (req, res) => {
 
-    let { name, duration, description, url, id } = req.body;
+    let { name, duration, description, url, id, deshabilitar} = req.body;
     try {
       const courseUser = await Course.findOne({
           where: {
@@ -25,6 +25,7 @@ server.post("/create", async (req, res) => {
           duration: duration,
           description: description,
           url: url,
+          deshabilitar: deshabilitar,
         })
         .then(claseCourse => {
           claseCourse.setCourse(courseUser)

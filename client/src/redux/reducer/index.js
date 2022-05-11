@@ -218,6 +218,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
 
+        case "GET_ALL_PAYMENTS":
+        return {
+          ...state,
+        };
+
     default:
       return state;
   }

@@ -261,9 +261,25 @@ export function getAllReviews() {
   };
 }
 
+
 export const deleteReview = (id) => {
   return async (dispatch) => {
     await axios.delete(`http://localhost:3001/review/${id}`);
     dispatch({ type: "DELETE_REVIEW"});
   };
 };
+
+
+export function confirmPayment() {
+  return async function (dispatch) {
+    try {
+      await axios.get(`http://localhost:3001/mercadopago/pagos`);
+      return dispatch({
+        type: "GET_ALL_PAYMENTS",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+

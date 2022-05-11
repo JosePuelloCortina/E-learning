@@ -21,13 +21,9 @@ console.log(data, " data")
  },[data])
 return(
   <div>
-  {data ? 
   
-  <form id='form1'> 
-
-      </form> :
-      null
-}
+  
+      <form id='form1'></form>
 
      </div>
     )

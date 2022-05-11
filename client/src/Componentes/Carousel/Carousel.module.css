@@ -66,7 +66,7 @@
   transform: translate3d(0, 0, 0);
   transition: all 600ms;
   animation-name: autoplay;
-  animation-duration: 6.5s;
+  animation-duration: 18s;
   animation-direction: forwards;
   animation-iteration-count: infinite;
   height: 100%;

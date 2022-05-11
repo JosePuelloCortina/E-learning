@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react'
 import { useParams } from "react-router";
 import {
+  confirmPayment,
     getCoursesById,
     removeCourseDetail
   } from "../../redux/actions";
@@ -18,6 +19,7 @@ export default function PurchaseConfirm(){
     id = user.id
     useEffect(() => {
         dispatch(getCoursesById(id));
+        dispatch(confirmPayment())
         return () => {
           dispatch(removeCourseDetail());
         };
