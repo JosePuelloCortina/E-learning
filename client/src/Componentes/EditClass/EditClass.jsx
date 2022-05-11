@@ -81,11 +81,7 @@ export default function EditClass() {
     navigate(`/ClassEditok`);
     };
 
-    // function RemoveClass(e) {
-    //   // e.preventDefault(e);
-    //   dispatch(removeClass(classState.id));
-    //   dispatch(getAllClasses());
-    // }
+    
 
   return (
     <div className={style.container}>

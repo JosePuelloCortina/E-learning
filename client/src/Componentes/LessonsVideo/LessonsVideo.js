@@ -5,15 +5,29 @@ import ReactPlayer from 'react-player'
 import { useNavigate } from 'react-router'
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from 'react-redux'
-import { allUser, getAllClasses, getCoursesById, removeClass } from '../../redux/actions'
+import { allUser, editClassById, getAllClasses, getClassById, getCoursesById, removeClass } from '../../redux/actions'
 
 export default function LessonsVideo({currentLesson,setCurrentLesson, course, user, id, idCourse  }){
     console.log(course, 'esto es course')
     const dispatch = useDispatch();
-    const {name, description, duration, url} = currentLesson
+    const {name, description, duration, url, deshabilitar} = currentLesson
     const classState = useSelector((state) => state.classDetail);
     const navigate = useNavigate();
     
+
+
+
+   const form = {
+   
+   name: name,
+   description: description,
+   url: url,
+   deshabilitar:deshabilitar === "false"?"true":"false"
+
+   }
+
+
+
 
 
     function handleSubmitCourse(e) {
@@ -36,6 +50,25 @@ export default function LessonsVideo({currentLesson,setCurrentLesson, course, us
         dispatch(removeClass(classState.id));
         setCurrentLesson({})
         window.location.reload(false);
+     
+      }
+
+      const handleDeshabilitarClass = (e) => {
+
+        console.log(form, "PROBANDO-DESHABILITAR")
+        dispatch(editClassById(classState.id,form));
+        setTimeout(() => {
+            dispatch(getAllClasses());
+            dispatch(getClassById(classState.id)); 
+            setCurrentLesson({})  
+            console.log(form, "PROBANDO-DESHABILITAR2")
+        }, 1000);
+       
+        // window.location.reload(false);
+        // e.preventDefault(e);
+        // dispatch(editClassById(classState.id,form));
+        // setCurrentLesson({})
+        // window.location.reload(false);
      
       }
     
@@ -88,6 +121,7 @@ export default function LessonsVideo({currentLesson,setCurrentLesson, course, us
       
  { user.roles[0].tipo === "instructor" ? (<button onClick={handleSubmitClass} className= {styles.buttonEditarClass}> Editar Clase </button>) : null} 
  <button   onClick={handleRemoveClass} >Eliminar Clase</button>
+ <button   onClick={handleDeshabilitarClass} >Hablitar/Deshabilitar</button>
  
 
  </div>    

@@ -21,6 +21,9 @@ export default function Home() {
   //   await dispatch(allCategories());
   // }
 
+  
+ 
+  
   useEffect(() => {
     dispatch(allCourses());
     dispatch(allCategories());

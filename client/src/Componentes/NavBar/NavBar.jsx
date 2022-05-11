@@ -32,7 +32,7 @@ export default function Home() {
       {loggedUser.length > 0 && Object.keys(user).length > 0 ? (
         <div className={styles.myPerfil}>
           <p className={styles.userName}>
-            {user.roles[0].tipo.charAt(0).toUpperCase() +
+            {user.roles && user.roles[0].tipo.charAt(0).toUpperCase() +
               user.roles[0].tipo.slice(1)}{" "}
             {user.name}
           </p>

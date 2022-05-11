@@ -4,7 +4,7 @@ import styles from './checkout.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import Comprar from '../MercadoPago/Comprar'
 import { getCoursesById } from '../../redux/actions'
-import {Link, useParams } from "react-router-dom";
+import {Link, useParams, useNavigate } from "react-router-dom";
 
 
 function Checkout() {
@@ -19,6 +19,8 @@ function Checkout() {
     })
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     
     
     
@@ -32,6 +34,12 @@ function Checkout() {
         }).catch(err => console.error(err)) 
     },[])
     
+    function handleBack() {
+        const home = window.location.href = "/home";
+        window.reload(home)
+    }
+
+
     
     return (
         <div className={styles.container}>
@@ -67,11 +75,16 @@ function Checkout() {
                      
                 </tbody>  
                 </table>
-                <Comprar data={datos}/>
-                <p>En caso de ver dos botones por favor clickea el segundo. Disculpa las molestias.</p>
-                <Link to='/home'>
-                <h3>Cancelar compra y volver a Home</h3>
-                </Link>
+                { !open && <button onClick={()=>setOpen(true)}>Continuar con la compra</button>}
+                {
+                    open && <Comprar data={datos}/>
+                }
+
+                
+               <Link to="/home">
+                <h3 onClick={() => handleBack()}>Cancelar compra y volver a Home</h3>
+                   </Link>
+              
             </>
             }
         </div>
