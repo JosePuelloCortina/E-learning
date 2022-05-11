@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './reviews.module.css'
 import { useEffect } from 'react';
-import { getAllReviews } from './../../redux/actions/index';
-
+import { getAllReviews, getUserById, deleteReview
+ } from './../../redux/actions/index';
+import img from "../../Images/avatar4.jpg";
 import { useDispatch, useSelector} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -12,9 +13,25 @@ export default function Reviews({id}){
     const courseId = useParams();
     const allReviews = useSelector( state => state.reviews)
     const courseReviews = allReviews.filter( e => e.idCourse === courseId.id)
-    console.log(courseId, "reviewsssss")
+    const userId = useSelector(state => state.loggedUsers)
+    const userDetail = useSelector(state => state.userDetail)
+    const reviewId = courseReviews.filter( e => e.userId === userId[0])
 
-useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
+
+useEffect(()=>{dispatch(getAllReviews())})
+useEffect(()=> {dispatch(getUserById(userId))}, [dispatch])
+
+function handleDelete(e){
+    e.preventDefault(e);
+    if (window.confirm("¿Desea eliminar este comentario?") === true) {
+        dispatch(deleteReview(reviewId[0].id));
+        alert("Comentario eliminado.");
+   
+      } else {
+        alert("Cancelado.")
+      }
+}
+
     return(
         <div className={styles.container}>
         <div className={styles.title}>
@@ -24,6 +41,10 @@ useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
             { courseReviews && courseReviews.map( e => {
                 return (
                     <div className={styles.reviewCard}>
+                        <div className={styles.header}>
+                        <div className={styles.img}>
+                            <img src={e.image ? e.image : img} alt=" "/>
+                        </div>
                         <div>
                             <h4>{e.userName.charAt(0).toUpperCase() + e.userName.slice(1)}</h4>
                             <div>
@@ -35,6 +56,10 @@ useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
                                         <p>⭐⭐⭐⭐⭐</p>
                                 }
                             </div>
+                            </div>
+                            {/* { userDetail.roles[0].tipo === "admin" ||  */
+                            e.userId === userId[0] ?
+                            <button onClick={handleDelete}>Eliminar</button> : null}
                         </div>
                         <div>
                             <p>{e.coment}</p>

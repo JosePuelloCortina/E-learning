@@ -213,6 +213,10 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           classDetail: action.payload,
         };
+        case "DELETE_REVIEW":
+      return {
+        ...state,
+      };
 
     default:
       return state;

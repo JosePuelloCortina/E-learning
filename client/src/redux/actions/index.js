@@ -260,3 +260,10 @@ export function getAllReviews() {
     }
   };
 }
+
+export const deleteReview = (id) => {
+  return async (dispatch) => {
+    await axios.delete(`http://localhost:3001/review/${id}`);
+    dispatch({ type: "DELETE_REVIEW"});
+  };
+};

@@ -21,10 +21,12 @@
     flex-direction: column;
     width: 250px;
     height: fit-content;
-    border-radius: 30px;
-    padding: 15px;
-    border: solid var(--color4) 1.8px;
+    border-radius: 15px;
+    padding: 20px;
+    border: solid var(--color4) 1.9px;
     margin: 10px;
+    
+    
 }
 
 .reviewCard p{
@@ -33,4 +35,33 @@
 
 .reviewCard h4 {
     margin: 5px;
+}
+
+.container .img img{
+    width: 50px;
+    margin-right: 10px;
+}
+.container .header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    
+}
+
+.container .reviewCard button{
+
+    width: fit-content;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    padding: 3px;
+    cursor: pointer;
+    font-weight: 200;
+}
+.container .reviewCard button:hover{
+    background-color: rgb(208, 203, 203);
+    color: black;
 }
