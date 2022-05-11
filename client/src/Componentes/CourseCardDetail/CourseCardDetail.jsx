@@ -49,20 +49,21 @@ function CourseCardDetail() {
 
     }
   }
+}
 
-  function handlePurchase() {
-    if (loggedUser.length === 0) {
-      alert("Para comprar el curso debes iniciar sesión");
-      navigate("/user");
-    } else {
-      console.log("LO que le llega al post es :", loggedUser);
-      dispatch(
-        purchase({ userId: loggedUser[0], courseId: id, quantity: cantidad })
-      );
-      // dispatch(purchase(loggedUser, id, cantidad));
-      navigate("/purchaseok");
-    }
-  }
+  // function handlePurchase() {
+  //   if (loggedUser.length === 0) {
+  //     alert("Para comprar el curso debes iniciar sesión");
+  //     navigate("/user");
+  //   } else {
+  //     console.log("LO que le llega al post es :", loggedUser);
+  //     dispatch(
+  //       purchase({ userId: loggedUser[0], courseId: id, quantity: cantidad })
+  //     );
+  //     // dispatch(purchase(loggedUser, id, cantidad));
+  //     navigate("/purchaseok");
+  //   }
+  // }
   return (
     <div>
       <NavBar />
@@ -96,7 +97,7 @@ function CourseCardDetail() {
                 <button onClick={() => handleMercadoPago()}>
                   Comprar MercadoPago
                 </button>
-                <button onClick={() => handlePurchase()}>Comprar</button>
+                {/* <button onClick={() => handlePurchase()}>Comprar</button> */}
                 <br />
                 <div className={styles.courseInfo}>
                   <br />
