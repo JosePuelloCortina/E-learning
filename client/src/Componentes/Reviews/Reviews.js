@@ -59,7 +59,7 @@ function handleDelete(e){
                             </div>
                             {/* { userDetail.roles[0].tipo === "admin" ||  */
                             e.userId === userId[0] ?
-                            <button onClick={handleDelete}>Eliminar</button> : null}
+                            <button onClick={handleDelete}>Eliminar</button> : <button>Reportar</button>}
                         </div>
                         <div>
                             <p>{e.coment}</p>
