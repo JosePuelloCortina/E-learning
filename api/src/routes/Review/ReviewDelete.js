@@ -3,14 +3,17 @@ const {Review} = require("../../db");
 
 server.delete("/:id", async (req, res) => {
   const id = req.params.id;
-
-  let deletReview = await Review.destroy({
+try{
+  await Review.destroy({
     where: { id: id },
   });
 
-  res.json({
-    deleteReview: deleteReview,
-  });
+  res.send('Reseña eliminada correctamente');
+}
+  
+  catch(error){
+    res.send('Error al eliminar la reseña')
+  }
 });
 
 module.exports = server;
