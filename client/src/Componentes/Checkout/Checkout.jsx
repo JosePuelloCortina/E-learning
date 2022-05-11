@@ -4,22 +4,27 @@ import styles from './checkout.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import Comprar from '../MercadoPago/Comprar'
 import { getCoursesById } from '../../redux/actions'
-import {Link, useParams } from "react-router-dom";
+import {Link, useParams, useNavigate } from "react-router-dom";
 
 
 function Checkout() {
     const course = useSelector((state) => state.courseDetail);
+    const loggedUser = useSelector((state) => state.loggedUsers);
     const idCourse = course.id;
-    const [datos, setDatos] = useState({ 
+    const [datos, setDatos] = useState({
+        idUser: loggedUser[0],
         idCourse:idCourse,
         name:course.name,
         price:course.price
     })
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     
     
-    useEffect(()=>{
+    
+    useEffect(()=>{ 
         dispatch(getCoursesById(id));
         axios
         .post(`http://localhost:3001/mercadopago`, datos)
@@ -28,6 +33,12 @@ function Checkout() {
             console.info('Contenido de data:', data)
         }).catch(err => console.error(err)) 
     },[])
+    
+    function handleBack() {
+        const home = window.location.href = "/home";
+        window.reload(home)
+    }
+
 
     
     return (
@@ -64,11 +75,16 @@ function Checkout() {
                      
                 </tbody>  
                 </table>
-                <Comprar data={datos}/>
-                <p>En caso de ver dos botones por favor clickea el segundo. Disculpa las molestias.</p>
-                <Link to='/home'>
-                <h3>Cancelar compra y volver a Home</h3>
-                </Link>
+                { !open && <button onClick={()=>setOpen(true)}>Continuar con la compra</button>}
+                {
+                    open && <Comprar data={datos}/>
+                }
+
+                
+               <Link to="/home">
+                <h3 onClick={() => handleBack()}>Cancelar compra y volver a Home</h3>
+                   </Link>
+              
             </>
             }
         </div>

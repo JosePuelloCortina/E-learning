@@ -1,4 +1,4 @@
-const { Buy , Order} = require("../../db");
+const { Buy , Order, Course, User, Role} = require("../../db");
 
 const {
   DB_HOST,
@@ -18,7 +18,8 @@ server.post("/", async (req, res, next)=>{
 //  const id_orden = req.query.id 
 // const id_buy = req.query.id
 // const id_buy = "394606a0-c77e-11ec-8c73-834ec4650dd3"
-let { idCourse, name, price } = req.body;
+let {idUser, idCourse, name, price } = req.body;
+console.log(idCourse," idCourse")
 // const quantity = 1;
 //   const id_orden= 1
 //   // cargamos el carrido de la bd
@@ -44,10 +45,27 @@ mercadopago.configure({
   //   quantity: i.quantity,
   // }))
 
-//   Order.create({
-//     userId: userId,
-//     status: status
-// })
+  var destroyOrder = await Order.findAll()
+
+  if(destroyOrder.length > 0){
+    await Order.destroy({
+      where: {
+        id: destroyOrder[0].dataValues.id
+      }
+    })
+  }
+
+
+  if(idUser && idCourse && name && price){
+
+  var newOrder = await Order.create({
+    userId : idUser,
+    courseId: idCourse,
+    status: "created"
+})
+
+console.log("newOrder", newOrder)
+
   const items_ml = [{
     title: name,
     unit_price: price,
@@ -57,12 +75,13 @@ mercadopago.configure({
   // Crea un objeto de preferencia
   let preference = {
     items: items_ml,
-    external_reference : `${idCourse}`, //`${new Date().valueOf()}`,
+    external_reference : `${newOrder.dataValues.id}`, //`${new Date().valueOf()}`,
  
     back_urls: {
-      success: `${DB_HOST}:3001/mercadopago/pagos`,
-      failure: `${DB_HOST}:3001/mercadopago/pagos`,
-      pending: `${DB_HOST}:3001/mercadopago/pagos`,
+      success: `${DB_HOST}:3000/purchaseok`,
+      failure: `${DB_HOST}:3000/home`,
+      pending: `${DB_HOST}:3000/home`,
+      rejected: `${DB_HOST}:3000/home`,
     },
     payment_methods: {
         excluded_payment_types: [
@@ -83,66 +102,138 @@ mercadopago.configure({
   }).catch(function(error){
     console.log(error);
   })
-
+  }
 
 }) 
 
-server.get("/pagos/:id", (req, res)=>{
+server.get("/pagos", async (req, res)=>{
   const mp = new mercadopago (ACCESS_TOKEN)
-  const id = req.params.id
+
+  const orderFindId = await Order.findAll({
+  })
+  console.log(orderFindId, 'orderId')
+
+  const id = orderFindId[0].dataValues.id
   console.info("Buscando el id", id)
-  mp.get(`/v1/payments/search`, {'status': 'pending'})//{"external_reference":id})
-  .then(resultado  => {
-    console.info('resultado', resultado)
-    res.json({"resultado": resultado})
-  })
-  .catch(err => {
-    console.error('No se consulto:', err)
-    res.json({
-      error: err
-    })
-  })
- 
+  try {
+  const payment = await mp.get(`/v1/payments/search`, {"external_reference":id}) //{'status': 'created'})
+  console.log("payment body", payment.body )
+  const payment_status= payment.body.results[0].status
+  
+  if (payment_status === "approved") {
+    console.log("payment approved")
+    const order = await Order.findByPk(id)
+    order.status = "completed" // "approved"
+    await order.save()
+
+    const course = await Course.findByPk(order.courseId);
+    const courseName = course.dataValues.name
+    
+    const user = await User.findByPk(order.userId, {
+          include: [Role, Buy]
+      })
+    const userRole = user.dataValues.roles[0].dataValues.tipo;
+    const userPurchase = user.dataValues.buys.map(buy => buy.dataValues.courseId);
+
+    if(userPurchase.includes(order.courseId)){
+      return res.status(422).send("Ya compraste este curso");
+    }
+    if ( userRole === "alumno") {
+      Buy.create({
+        courseName: courseName,
+        discount: 0,
+        pay_method: "tarjeta",
+        total_price: course.dataValues.price,
+        quantity: 1
+      }) //crea la compra
+      .then(buyCourse => {
+        buyCourse.setCourse(order.courseId)
+        buyCourse.setUser(order.userId)    
+      }) //relaciona la compra con el curso y el usuario
+      .catch(error =>{
+        console.log(error)
+      })
+
+      
+    } else {
+      return res.status(422).send("No tienes permiso para comprar este curso"); 
+    }
+    
+    
+    
+    
+    
+    res.json({status: "approved"})
+  } else if (payment_status === "rejected") {
+    console.log("payment not approved")
+    return res.redirect(`${DB_HOST}:3000/home`)
+
+  } else {
+    res.json({status: "not approved"})
+  }
+  }catch (error) {
+    console.log(error)
+  }
 })
 
-server.get("/pagos", (req, res)=>{
-  console.info("EN LA RUTA PAGOS ", req)
-  const payment_id= req.query.payment_id
-  const payment_status= req.query.status
-  const external_reference = req.query.external_reference
-  const merchant_order_id= req.query.merchant_order_id
-  console.log("EXTERNAL REFERENCE ", external_reference)
+  
+  // .then(resultado  => {
+  //   console.info('resultado', resultado)
+  //   res.json({"resultado": resultado})
+
+    
+  // })
+  
+  // .catch(err => {
+  //   console.error('No se consulto:', err)
+  //   res.json({
+  //     error: err
+  //   })
+  // })
+ 
+// })
+
+// server.get("/pagos", (req, res)=>{
+//   console.info("EN LA RUTA PAGOS ", req)
+//   const payment_id= req.query.payment_id
+//   const payment_status= req.query.status
+//   const external_reference = req.query.external_reference
+//   const merchant_order_id= req.query.merchant_order_id
+//   console.log("EXTERNAL REFERENCE ", external_reference)
 
   //Aquí edito el status de mi orden
 
-  Order.findByPk({
-    where: {id: merchant_order_id}
-  })
-  .then((order) => {
-    order.payment_id= payment_id
-    order.payment_status= payment_status
-    order.merchant_order_id = merchant_order_id
-    order.status = "created"
-    console.info('Salvando order')
-    order.save()
-    .then((_) => {
-      console.info('redirect success')
+  // Order.findByPk(external_reference)
+  // .then((order) => {
+  //   order.payment_id= payment_id
+  //   order.payment_status= payment_status
+  //   order.merchant_order_id = merchant_order_id
+  //   order.status = "completed"
+  //   console.info('Salvando order')
+  //   order.save()
+  //   .then((_) => {
+  //     console.info('redirect success')
       
-      return res.redirect(`${BASE_URL}`)
-    }).catch((err) =>{
-      console.error('error al salvar', err)
-      return res.redirect(`${BASE_URL}/?error=${err}&where=al+salvar`)
-    })
-  }).catch(err =>{
-    console.error('error al buscar', err)
-    return res.redirect(`${BASE_URL}/?error=${err}&where=al+buscar`)
-  })
+  //     return res.redirect(`${BASE_URL}`)
+  //   }).catch((err) =>{
+  //     console.error('error al salvar', err)
+  //     return res.redirect(`${BASE_URL}/?error=${err}&where=al+salvar`)
+  //   })
+  // }).catch(err =>{
+  //   console.error('error al buscar', err)
+  //   return res.redirect(`${BASE_URL}/?error=${err}&where=al+buscar`)
+  // })
+
+  //  res.json({
+  //    "req": req
+  //   })
+   
 
 
   //proceso los datos del pago 
   // redirijo de nuevo a react con mensaje de exito, falla o pendiente
   //res.send(`${payment_id} ${payment_status} ${external_reference} ${merchant_order_id} `)
-})
+// })
 
 
 module.exports = server;
