@@ -94,11 +94,10 @@
     font-size: 20px;
     border-radius: 17px;
     border: solid var(--color4) 2px;
-    width: 200px;
+    width: auto;
     height: 50px;
     font-weight: bold;
 
- 
     
 }
 
@@ -115,10 +114,8 @@
 }
 
 
-
-
 .container .buttonEdicion button {
-
+    
     color: rgb(0, 0, 0);
     background: #ff9b00;
     padding: 10px;
@@ -126,13 +123,11 @@
     font-size: 20px;
     border-radius: 17px;
     border: solid var(--color4) 2px;
-    width: 200px;
+    width: auto;
     height: 50px;
     font-weight: bold;
     margin-left: 20px;
 
-    
-   
     
 }
 

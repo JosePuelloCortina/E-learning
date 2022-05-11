@@ -54,6 +54,7 @@ export default function FormClass() {
     description: "",
     url: "",
     id: course.id,
+    deshabilitar: "false",
   });
 
   const handleInputChange = function (e) {

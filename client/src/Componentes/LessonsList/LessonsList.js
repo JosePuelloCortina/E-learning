@@ -12,7 +12,7 @@ export default function LessonsList({
   user,
 }) {
 
-const [stateLocal, setStateLocal] = useState([])
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,8 +64,8 @@ const [stateLocal, setStateLocal] = useState([])
           ? [...lessons].map((e) => {
               return (
                 <div className={styles.classes}>
-                 
-                  <p value={e} onClick={() => handleLesson(e)}>
+                  <p value={e} className ={ e.deshabilitar === "false"  ? styles.habilitado : styles.deshabilitado}
+                  onClick={() => handleLesson(e)}>
                    - {e.name}
                   </p>
 
@@ -84,17 +84,17 @@ const [stateLocal, setStateLocal] = useState([])
         <h3>Clases || Mi progreso</h3>
         {lessons
           ? lessons.map((e) => {
-              return (
 
-                
+             if (e.deshabilitar==="true") {
+              return (
                 <div className={styles.classes}>
                    <input type="checkbox" />
                   <p value={e} onClick={() => setCurrentLesson(e)}>
                    - {e.name}
                   </p>
-
                 </div>
-              );
+              )
+             };
             })
           : null}
         <br />
