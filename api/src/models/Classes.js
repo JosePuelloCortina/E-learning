@@ -32,5 +32,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    deshabilitar: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "false",
+    },
+
   });
 };
