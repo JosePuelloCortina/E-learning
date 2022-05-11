@@ -4,18 +4,19 @@ const { Op } = require("sequelize");
 const mercadopago = require("mercadopago");
 
 server.post('/', (req, res, next) => {
-    const { userId, orderlines, status } = req.body
+    const { status, courseId  } = req.body
 
     Order.create({
-        userId: userId,
+        // userId: userId,
+        courseId: courseId,
         status: status
     })
-    .then(response => {
-        Promise.all(
-        orderlines.map(elem => {
-            Course.findByPk( elem.id)
-              .then(curso =>{
-                const orderId = response.dataValues.id //nos da el id de order
+    // .then(response => {
+    //     Promise.all(
+    //     orderlines.map(elem => {
+    //         Course.findByPk( elem.id)
+    //           .then(curso =>{
+    //             const orderId = response.dataValues.id //nos da el id de order
                 
                 // return Buy.create({
                 //     orderId: orderId,
@@ -23,21 +24,21 @@ server.post('/', (req, res, next) => {
                 //     quantity: elem.quantity,
                 //     price: curso.price
                 // })
-              })
-                .then(secondResponse => { //nos da el arreglo creado
-                    const cant = secondResponse.dataValues.quantity
-                    const courId = secondResponse.dataValues.courseId
+              // })
+                // .then(secondResponse => { 
+                  //nos da el arreglo creado
+                    // const cant = secondResponse.dataValues.quantity
+                    // const courId = secondResponse.dataValues.courseId
                     // Course.decrement(
                     //     {stock: cant},
                     //     { where: { id: courId } }
                     // )
-                })
-            })
-        )
-        .then( _ => res.send("OK"))
-        .catch(err => next(err))
-    })
-});
+                // })
+            // })
+            .then( _ => res.send("OK"))
+            .catch(err => next(err))
+          }  
+                )
 
 
 server.get('/detalle/:id', (req, res, next) => {

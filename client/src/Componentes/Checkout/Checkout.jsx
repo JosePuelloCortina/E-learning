@@ -9,8 +9,10 @@ import {Link, useParams } from "react-router-dom";
 
 function Checkout() {
     const course = useSelector((state) => state.courseDetail);
+    const loggedUser = useSelector((state) => state.loggedUsers);
     const idCourse = course.id;
-    const [datos, setDatos] = useState({ 
+    const [datos, setDatos] = useState({
+        idUser: loggedUser[0],
         idCourse:idCourse,
         name:course.name,
         price:course.price
@@ -19,7 +21,8 @@ function Checkout() {
     const { id } = useParams();
     
     
-    useEffect(()=>{
+    
+    useEffect(()=>{ 
         dispatch(getCoursesById(id));
         axios
         .post(`http://localhost:3001/mercadopago`, datos)
@@ -28,7 +31,7 @@ function Checkout() {
             console.info('Contenido de data:', data)
         }).catch(err => console.error(err)) 
     },[])
-
+    
     
     return (
         <div className={styles.container}>

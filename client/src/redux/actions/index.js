@@ -260,3 +260,17 @@ export function getAllReviews() {
     }
   };
 }
+
+
+export function confirmPayment() {
+  return async function (dispatch) {
+    try {
+      await axios.get(`http://localhost:3001/mercadopago/pagos`);
+      return dispatch({
+        type: "GET_ALL_PAYMENTS",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
