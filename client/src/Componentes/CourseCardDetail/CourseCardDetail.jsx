@@ -105,11 +105,12 @@ function CourseCardDetail() {
               { 
               detail.clases &&
               detail.clases.map((e, index) => {
+                if (e.deshabilitar==="false"){
                 return (
                   <div key={index} className={styles.containerClases}>
                       <p>{e.name}</p>
                   </div>
-                );
+                )};
               })}
               </div>
               
