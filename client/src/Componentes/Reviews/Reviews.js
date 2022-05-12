@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './reviews.module.css'
 import { useEffect } from 'react';
-import { getAllReviews, getUserById, deleteReview
+import { getAllReviews, getUserById, deleteReview, reportReview
  } from './../../redux/actions/index';
 import img from "../../Images/avatar4.jpg";
 import { useDispatch, useSelector} from 'react-redux';
@@ -16,9 +16,10 @@ export default function Reviews({id}){
     const userId = useSelector(state => state.loggedUsers)
     const userDetail = useSelector(state => state.userDetail)
     const reviewId = courseReviews.filter( e => e.userId === userId[0])
+    console.log(courseReviews)
 
 
-useEffect(()=>{dispatch(getAllReviews())})
+useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
 useEffect(()=> {dispatch(getUserById(userId))}, [dispatch])
 
 function handleDelete(e){
@@ -26,7 +27,20 @@ function handleDelete(e){
     if (window.confirm("¿Desea eliminar este comentario?") === true) {
         dispatch(deleteReview(reviewId[0].id));
         alert("Comentario eliminado.");
+        dispatch(getAllReviews());
    
+      } else {
+        alert("Cancelado.")
+      }
+}
+
+function handleReport(e){
+    e.preventDefault(e);
+    if (window.confirm("¿Desea reportar este comentario?") === true) {
+        dispatch(reportReview(e.target.name));
+        console.log(e.target.name)
+        alert("Comentario reportado.");
+        dispatch(getAllReviews());
       } else {
         alert("Cancelado.")
       }
@@ -59,7 +73,8 @@ function handleDelete(e){
                             </div>
                             {/* { userDetail.roles[0].tipo === "admin" ||  */
                             e.userId === userId[0] ?
-                            <button onClick={handleDelete}>Eliminar</button> : <button>Reportar</button>}
+                            <button onClick={handleDelete}>Eliminar</button> :
+                             <button onClick={handleReport} name={e.id}>Reportar</button>}
                         </div>
                         <div>
                             <p>{e.coment}</p>

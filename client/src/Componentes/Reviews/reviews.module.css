@@ -19,7 +19,7 @@
 .reviewCard{
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 300px;
     height: fit-content;
     border-radius: 15px;
     padding: 20px;
@@ -55,13 +55,16 @@
     height: 30px;
     font-size: 14px;
     border-radius: 10px;
-    color: white;
-    background-color: black;
-    padding: 3px;
-    cursor: pointer;
-    font-weight: 200;
-}
-.container .reviewCard button:hover{
     background-color: rgb(208, 203, 203);
     color: black;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 200;
+    margin-left: 25px;
+    border: none;
+}
+.container .reviewCard button:hover{
+    
+    color: white;
+    background-color: rgb(42, 41, 41);
 }
