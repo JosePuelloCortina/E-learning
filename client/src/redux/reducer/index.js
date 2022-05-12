@@ -236,7 +236,16 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
         };
-
+        case "CREATE_CATEGORY":
+          return {
+            ...state,
+          };
+         
+          case "REMOVE_CATEGORY":
+          return {
+            ...state,
+          };
+         
     default:
       return state;
   }
