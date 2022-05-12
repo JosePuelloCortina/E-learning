@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.usersContainer {
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 60px;
+  padding: 30px;
+  border: solid var(--color4) 6px;
+}
+
+.containerInfo {
+  text-align: center;
+}
+
+.adminPagUsers {
+  margin-bottom: 20px;
+}

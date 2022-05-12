@@ -107,6 +107,7 @@ export default function Login() {
 
       if (token.data.user && userGoogle.validated === "true") {
         dispatch(addLoggedUser(userGoogle.id));
+        dispatch(getUserById(userGoogle.id));
         navigate(`/profile/${userGoogle.id}`);
       } else {
         alert("Email/password incorrecto o cuenta no verificada");

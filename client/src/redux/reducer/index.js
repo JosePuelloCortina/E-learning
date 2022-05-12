@@ -96,7 +96,6 @@ export default function rootReducer(state = initialState, action) {
         classDetail: action.payload,
       };
 
-
     case "REMOVE_CLASS":
       return {
         ...state,
@@ -208,20 +207,24 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: action.payload,
       };
 
-      case "EDIT_CLASS_BY_ID":
-        return {
-          ...state,
-          classDetail: action.payload,
-        };
-        case "DELETE_REVIEW":
+    case "EDIT_CLASS_BY_ID":
+      return {
+        ...state,
+        classDetail: action.payload,
+      };
+    case "DELETE_REVIEW":
+      return {
+        ...state,
+      };
+    case "DELETE_USER":
       return {
         ...state,
       };
 
-        case "GET_ALL_PAYMENTS":
-        return {
-          ...state,
-        };
+    case "GET_ALL_PAYMENTS":
+      return {
+        ...state,
+      };
 
     default:
       return state;
