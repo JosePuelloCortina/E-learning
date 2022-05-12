@@ -13,7 +13,19 @@ export default function AdminReviewsPage(){
         </div>
         <div className={styles.body}>
          <div className={styles.top}>
+         <h3>Filtrar por: </h3>
+            <select>
+                <option>Curso</option>
+            </select>
 
+            <select>
+                <option>Todos</option>
+                <option>Reportados</option>
+            </select>
+
+            <select>
+                <option>ID Usuario</option>
+            </select>
          </div>
          <div className={styles.bottom}>
 
