@@ -297,3 +297,13 @@ export function getAllPurchases(){
   }
 }
 
+export function reportReview(id) {
+  return async function (dispatch) {
+    try {
+     await axios.put(`http://localhost:3001/review/update/${id}`);
+      dispatch({ type: "REPORT_REVIEW" });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

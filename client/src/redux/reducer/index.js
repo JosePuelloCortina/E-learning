@@ -229,6 +229,10 @@ export default function rootReducer(state = initialState, action) {
             ...state,
             purchases: action.payload
           };
+        case "REPORT_REVIEW":
+        return {
+          ...state,
+        };
 
     default:
       return state;
