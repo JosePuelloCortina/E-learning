@@ -282,4 +282,30 @@ export function confirmPayment() {
     }
   }
 }
+export function createCategory(name) {
+  return async function (dispatch) {
+    try {
+      await axios.post(`http://localhost:3001/category/create`, {name:name});
+      return dispatch({
+        type: "CREATE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+export function removeCategory(id) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/category/${id}`);
+      return dispatch({
+        type: "REMOVE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+
 

@@ -1,17 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { filterCategory } from "../../redux/actions/index";
+import React, { useState, useEffect } from "react";
+import { createCategory, allCategories, removeCategory } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './AdminPage.module.css'
 
-function FiltersCategory({setCurrentPage}) {
+function AgregarCategorias() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
-  const [category, setCategory] = useState([]);
+  const [input, setInput] = useState("")
 
-  function handleRemoveCategory(e) {
-      setCategory(category.filter(cat => cat !== e.target.value));
+function handleRemove(e){
+  e.preventDefault();
+  dispatch(removeCategory(e.target.value))
+  alert("Categoría eliminada correctamente")
+  dispatch(allCategories())
+}
+
+ function handleSubmit(e){
+    e.preventDefault();   
+    dispatch(createCategory(input))
+    alert("Categoría creada exitosamente")
+    
+    setInput("")
+    dispatch(allCategories())
+  }  
+    
+    function handleChange(e){
+      setInput(e.target.value)
+      console.log(input)
+      
+  
   }
-
   return (
     <div className={styles.containertotal}>
       <div className={styles.containerSelect}>
@@ -23,25 +41,24 @@ function FiltersCategory({setCurrentPage}) {
             return (
               <li key={category.name} value={category.name}>
                 {category.name}
-                <input type="checkbox" />
+                <button value={category.id} onClick={(e) =>handleRemove(e)}>X</button>
               </li>
-          
             );
           })}
         </ul>
+        <div className={styles.containertotal}>  
+      <div>
+      <input 
+      type="text" value= {input} name="name"
+      onChange={(e) =>handleChange(e)}></input>
+      <button onClick={(e) =>handleSubmit(e)}type="submit">Añadir categoria</button>
+     
+        </div>             
+      </div>
         </div>
-      </div>
-      <div className={styles.map}>
-         {category.map((cat) => {
-          return (
-            <div className={styles.containerSelectMap} key={cat}>
-              <label className={styles.select}  >{cat}</label>
-              <button onClick={(e) => handleRemoveCategory(e)} value={cat}>X</button>
-            </div>
-          );
-        })}
-      </div>
+      </div>     
     </div>
   );
+  
 }
-export default FiltersCategory;
+export default AgregarCategorias;
