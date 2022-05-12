@@ -51,7 +51,7 @@ export default function Home() {
       )}
 
       {user.roles && user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
-        <Link className={styles.linkHome} to="/admin">
+        <Link className={styles.linkHome} to="/home">
           {/* <img src={logo} alt='' /> */}
           <h1>AkademIT</h1>
         </Link>
