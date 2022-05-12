@@ -32,7 +32,7 @@ function AdminUsersPage() {
   return (
     <div className={styles.container}>
       <div className={styles.usersContainer}>
-        <table>
+        <table className={styles.usersTable}>
           <thead>
             <tr>
               <th>Id</th>

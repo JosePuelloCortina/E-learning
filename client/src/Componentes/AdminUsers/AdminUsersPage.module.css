@@ -19,6 +19,20 @@
   border: solid var(--color4) 6px;
 }
 
+.usersTable {
+  position: relative;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+.usersTable td,
+.usersTable th {
+  white-space: nowrap;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
 .containerInfo {
   text-align: center;
 }
