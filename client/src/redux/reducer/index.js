@@ -12,6 +12,7 @@ const initialState = {
   classDetail: [],
   avatares: [],
   reviews: [],
+  purchases: [],
 };
 
 function sortAsc(arr, field) {
@@ -225,6 +226,16 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
+        case "GET_ALL_PURCHASES":
+          return {
+            ...state,
+            purchases: action.payload
+          };
+        case "REPORT_REVIEW":
+        return {
+          ...state,
+        };
 
     default:
       return state;

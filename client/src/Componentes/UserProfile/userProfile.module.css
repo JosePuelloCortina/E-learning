@@ -35,3 +35,15 @@
     width: auto;
     
 }
+.admin {
+    display: flex;
+    flex-direction: row;
+}
+.admin .left{
+    display: flex;
+    flex-direction: column;
+}
+.admin .right{
+    display: flex;
+    flex-direction: column;
+}

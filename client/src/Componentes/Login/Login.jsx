@@ -84,7 +84,9 @@ export default function Login() {
         dispatch(addLoggedUser(usuario.id));
         dispatch(getUserById(usuario.id));
         if (usuario.roles.filter((r) => r.tipo === "admin").length > 0)
-          navigate(`/admin`);
+          // navigate(`/admin`);
+          navigate(`/profile/${usuario.id}`)
+      
         else navigate(`/profile/${usuario.id}`);
       } else {
         alert("Email/password incorrecto o cuenta no verificada");
