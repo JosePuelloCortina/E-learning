@@ -87,3 +87,7 @@
     height: 40px;
   
 }
+.table button{
+    cursor: pointer;
+    font-size: 15px;
+}
