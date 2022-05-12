@@ -26,6 +26,7 @@ import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
+import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/checkout/id/:id" element={<Checkout />} />
           <Route exact path="/admin" element={<AdminPanel />} />
           <Route exact path="/AdminPage" element={<AdminPage />} />
+          <Route exact path="/adminReviews" element={<AdminReviewsPage/>} />
           <Route
             exact
             path="/profile/edit/password/:id"
