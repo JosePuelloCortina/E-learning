@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
             type: DataTypes.UUID,
             allowNull: false,
         },
+        reported: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false,
+        },
  
     })
 }

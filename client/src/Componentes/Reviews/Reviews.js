@@ -16,9 +16,10 @@ export default function Reviews({id}){
     const userId = useSelector(state => state.loggedUsers)
     const userDetail = useSelector(state => state.userDetail)
     const reviewId = courseReviews.filter( e => e.userId === userId[0])
+    console.log(courseReviews)
 
 
-useEffect(()=>{dispatch(getAllReviews())})
+useEffect(()=>{dispatch(getAllReviews())}, [dispatch])
 useEffect(()=> {dispatch(getUserById(userId))}, [dispatch])
 
 function handleDelete(e){
@@ -26,6 +27,7 @@ function handleDelete(e){
     if (window.confirm("¿Desea eliminar este comentario?") === true) {
         dispatch(deleteReview(reviewId[0].id));
         alert("Comentario eliminado.");
+        dispatch(getAllReviews());
    
       } else {
         alert("Cancelado.")

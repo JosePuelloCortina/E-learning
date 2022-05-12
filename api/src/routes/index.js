@@ -31,7 +31,8 @@ const MercadoPago = require('./MercadoPago/MercadoPago')
 const Avatar = require('./Avatar/Avatar');
 const ReviewPost = require ('./Review/ReviewPost');
 const ReviewGet = require ('./Review/ReviewGet');
-const ReviewDelete = require ('./Review/ReviewDelete')
+const ReviewDelete = require ('./Review/ReviewDelete');
+const ReviewPut = require ('./Review/ReviewPut');
 
 
 
@@ -70,7 +71,8 @@ router.use('/mercadopago', MercadoPago);
 router.use('/avatar', Avatar);
 router.use('/review', ReviewPost)
 router.use('/review', ReviewGet);
-router.use('/review', ReviewDelete)
+router.use('/review', ReviewDelete);
+router.use('/review', ReviewPut)
 
 
 
