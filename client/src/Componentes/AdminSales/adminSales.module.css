@@ -1,8 +1,12 @@
+a{
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 400px;
+    width: 380px;
     height: 160px;
     background-color: white;
     margin: 10px;
@@ -12,6 +16,9 @@
     border-radius: 30px;
     padding: 20px;
     border: solid var(--color4) 8px;
+}
+.container:hover{
+    background-color: rgb(250, 242, 196);
 }
 .title h2 {
     color: black;

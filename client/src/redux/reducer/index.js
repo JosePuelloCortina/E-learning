@@ -12,7 +12,7 @@ const initialState = {
   classDetail: [],
   avatares: [],
   reviews: [],
-  category: [],
+  purchases: [],
 };
 
 function sortAsc(arr, field) {
@@ -96,7 +96,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classDetail: action.payload,
       };
-
 
     case "REMOVE_CLASS":
       return {
@@ -209,17 +208,31 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: action.payload,
       };
 
-      case "EDIT_CLASS_BY_ID":
-        return {
-          ...state,
-          classDetail: action.payload,
-        };
-        case "DELETE_REVIEW":
+    case "EDIT_CLASS_BY_ID":
+      return {
+        ...state,
+        classDetail: action.payload,
+      };
+    case "DELETE_REVIEW":
+      return {
+        ...state,
+      };
+    case "DELETE_USER":
       return {
         ...state,
       };
 
-        case "GET_ALL_PAYMENTS":
+    case "GET_ALL_PAYMENTS":
+      return {
+        ...state,
+      };
+
+        case "GET_ALL_PURCHASES":
+          return {
+            ...state,
+            purchases: action.payload
+          };
+        case "REPORT_REVIEW":
         return {
           ...state,
         };

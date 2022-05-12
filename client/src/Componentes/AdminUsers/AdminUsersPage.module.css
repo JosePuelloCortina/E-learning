@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.usersContainer {
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 60px;
+  padding: 30px;
+  border: solid var(--color4) 6px;
+}
+
+.usersTable {
+  position: relative;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+.usersTable td,
+.usersTable th {
+  white-space: nowrap;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.containerInfo {
+  text-align: center;
+}
+
+.adminPagUsers {
+  margin-bottom: 20px;
+}
