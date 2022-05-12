@@ -283,3 +283,17 @@ export function confirmPayment() {
   }
 }
 
+export function getAllPurchases(){
+  return async function(dispatch){
+    try{
+      const purchases = await axios.get(`http://localhost:3001/buy/all`)
+      return dispatch({
+        type: 'GET_ALL_PURCHASES', payload: purchases.data
+      })
+    }
+    catch(error){
+      console.log(error, 'error al traer todas las compras')
+    }
+  }
+}
+
