@@ -4,14 +4,18 @@ import NavBar from "../NavBar/NavBar"
 import Footer from './../Footer/Footer';
 import { useEffect } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { getAllReviews, deleteReview, filterByReported } from '../../redux/actions';
+import { getAllReviews, deleteReview, filterByReported, allUser } from '../../redux/actions';
 
 export default function AdminReviewsPage(){
 const dispatch = useDispatch()
 const allReviews = useSelector(state=> state.reviews)
+const allUsers = useSelector(state => state.reviews)
+const allIds = allUsers.filter(e => e.id)
 console.log(allReviews, 'esto es all reviews')
+console.log(allIds, 'esto es all ids')
 
     useEffect(() => dispatch(getAllReviews()), [dispatch])
+    useEffect(() => dispatch(allUser()), [dispatch])
 
     function handleDelete(e){
         e.preventDefault(e);
@@ -49,9 +53,12 @@ console.log(allReviews, 'esto es all reviews')
                 <option value="reported">Reportados</option>
             </select>
 
-            <select>
+            {/* <select>
                 <option>ID Usuario</option>
-            </select>
+            </select> */}
+            <h3>Buscar por ID Usuario </h3>
+            <input value=""/>
+            <button className={styles.buscar}>Buscar</button>
          </div>
          <div className={styles.bottom}>
 
@@ -63,7 +70,7 @@ console.log(allReviews, 'esto es all reviews')
             <th width='20%'>Nombre del Curso</th>
             <th width='25%'>Comentario</th>
             <th width='8%'>Reportado</th>
-            <th width='7%'></th>
+            <th width='7%'>Acción</th>
             </tr>
          { allReviews && allReviews.map( e => {
              return (
