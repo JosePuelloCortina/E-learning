@@ -8,12 +8,12 @@ import MyCoursesAlumn from "./../MyCoursesAlumn/MyCoursesAlumn";
 import MyCoursesInstructor from "./../MyCoursesInstructor/MyCoursesInstructor";
 import ProfileLateralBar from "../ProfileLateralBar/ProfileLateralBar";
 import Error404 from "../Error404/Error404";
-import AdminCourses from "../AdminCourses/AdminCourses"
-import AdminSales from "../AdminSales/AdminSales"
-import AdminReviews from "../AdminReviews/AdminReviews"
-import AdminCategories from "../AdminCategories/AdminCategories"
-import AdminUsers from "../AdminUsers/AdminUsers"
-import { getUserById, getAvatares } from "../../redux/actions/index";
+import AdminCourses from "../AdminCourses/AdminCourses";
+import AdminSales from "../AdminSales/AdminSales";
+import AdminReviews from "../AdminReviews/AdminReviews";
+import AdminCategories from "../AdminCategories/AdminCategories";
+import AdminUsers from "../AdminUsers/AdminUsers";
+import { getUserById, getAvatares, allUser } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
 export default function UserProfile() {
@@ -23,6 +23,7 @@ export default function UserProfile() {
   useEffect(() => {
     dispatch(getUserById(id));
     dispatch(getAvatares());
+    dispatch(allUser());
   }, [dispatch]);
 
   const loggedUser = useSelector((state) => state.loggedUsers);
@@ -48,32 +49,32 @@ export default function UserProfile() {
                 />
               </div>
               <div className={styles.cursesDetail}>
-                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "alumno").length >
-                  0 && <div>
-                  <MyCoursesAlumn user={userDetail} />
-                  <MyPurchases user={userDetail} />
-                  </div>
-                  }
-                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "instructor")
-                  .length > 0 && <MyCoursesInstructor user={userDetail} />}
-                  {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "admin")
-                  .length > 0 && 
-                   <div className={styles.admin}>
-                    <div className={styles.left}>
-                    <AdminSales/>
-                    <AdminCourses/>
-                    <AdminUsers/>
+                {userDetail.roles &&
+                  userDetail.roles.filter((r) => r.tipo === "alumno").length >
+                    0 && (
+                    <div>
+                      <MyCoursesAlumn user={userDetail} />
+                      <MyPurchases user={userDetail} />
                     </div>
-                    <div className={styles.right}>
-                      <AdminReviews/>
-                      <AdminCategories/>
+                  )}
+                {userDetail.roles &&
+                  userDetail.roles.filter((r) => r.tipo === "instructor")
+                    .length > 0 && <MyCoursesInstructor user={userDetail} />}
+                {userDetail.roles &&
+                  userDetail.roles.filter((r) => r.tipo === "admin").length >
+                    0 && (
+                    <div className={styles.admin}>
+                      <div className={styles.left}>
+                        <AdminSales />
+                        <AdminCourses />
+                        <AdminUsers />
+                      </div>
+                      <div className={styles.right}>
+                        <AdminReviews />
+                        <AdminCategories />
+                      </div>
                     </div>
-                    </div>
-                  
-                  
-                  
-                  }
-
+                  )}
               </div>
             </div>
           </div>

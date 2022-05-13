@@ -10,6 +10,7 @@ let users = [
     role: "alumno",
     category: ["Front-End", "React", "Full-Stack", "Mobile", "Redux"],
     validated: "true",
+    banned: "false",
   },
   {
     id: "b65232b0-c6a0-11ec-b926-ff69e9773727",
@@ -20,6 +21,7 @@ let users = [
     role: "instructor",
     category: ["Front-End", "React", "Redux", "Git", "Bootstrap"],
     validated: "true",
+    banned: "false",
   },
   {
     id: "b65232b0-c6a0-11ec-b926-ff69e9773728",
@@ -30,6 +32,7 @@ let users = [
     role: "instructor",
     category: ["Front-End", "JavaScript", "CSS", "HTML", "SASS"],
     validated: "true",
+    banned: "false",
   },
   {
     id: "b65232b0-c6a0-11ec-b926-ff69e9773729",
@@ -40,6 +43,7 @@ let users = [
     role: "instructor",
     category: ["Front-End", "JavaScript", "Bootstrap", "Vue", "Angular"],
     validated: "true",
+    banned: "false",
   },
   {
     id: "b65232b0-c6a0-11ec-b926-ff69e9773720",
@@ -50,6 +54,7 @@ let users = [
     role: "admin",
     category: ["Back-End", "Python", "Java", "Ruby", "Kotlin"],
     validated: "true",
+    banned: "false",
   },
   {
     id: "b65232b0-c6a0-11ec-b926-ff69e9773723",
@@ -60,6 +65,7 @@ let users = [
     role: "alumno",
     category: [],
     validated: "true",
+    banned: "false",
   },
 ];
 
@@ -73,6 +79,7 @@ const initializeUser = async () => {
         image: u.image,
         email: u.email,
         validated: u.validated,
+        banned: u.banned,
       };
       const createUser = await User.create(user);
       await createUser.addRoles(u.role);
