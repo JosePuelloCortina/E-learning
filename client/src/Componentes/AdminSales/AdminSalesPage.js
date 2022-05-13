@@ -91,8 +91,9 @@ console.log(allPurchases, 'esto es all purchases')
         <tbody>
             <tr>
             <th width='20%'>Nombre del Curso</th>
+            <th width='10%'>Nombre Instructor</th>
             <th width='15%'>ID Instructor</th>
-            <th width='15%'>CBU Instructor</th>
+            <th width='10%'>CBU Instructor</th>
             <th width='10%'>Precio del Curso</th>
             <th width='10%'>Ganancia Admin</th>
             <th width='10%'>Ganancia Instructor</th>
@@ -103,8 +104,9 @@ console.log(allPurchases, 'esto es all purchases')
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
+                <td width='10%'>{e.course.users[0].name}</td>
                 <td width='15%'>{e.course.users[0].id}</td>
-                <td width='15%'>arreglar</td>
+                <td width='10%'>arreglar</td>
                 <td width='10%'>$ {e.total_price}</td>
                 <td width='10%'>$ {e.total_price/5}</td>
                 <td width='10%'>$ {e.total_price/5*4}</td>
