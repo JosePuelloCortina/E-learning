@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './adminReviewsPage.module.css'
 import NavBar from "../NavBar/NavBar"
 import Footer from './../Footer/Footer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { getAllReviews, deleteReview, filterByReported, allUser } from '../../redux/actions';
+import { getAllReviews, deleteReview, filterByReported, allUser, searchReviewById } from '../../redux/actions';
 
 export default function AdminReviewsPage(){
 const dispatch = useDispatch()
@@ -16,6 +16,7 @@ console.log(allIds, 'esto es all ids')
 
     useEffect(() => dispatch(getAllReviews()), [dispatch])
     useEffect(() => dispatch(allUser()), [dispatch])
+    const [input, setInput] = useState("")
 
     function handleDelete(e){
         e.preventDefault(e);
@@ -33,6 +34,15 @@ console.log(allIds, 'esto es all ids')
         e.preventDefault(e);
         dispatch(filterByReported(e.target.value));
     }
+    function handleSearch(e){
+        e.preventDefault(e);
+        dispatch(searchReviewById(input))
+    }
+
+    function handleInputChange(e){
+        setInput(e.target.value)
+    }
+
 
     return(
     <div>
@@ -57,8 +67,8 @@ console.log(allIds, 'esto es all ids')
                 <option>ID Usuario</option>
             </select> */}
             <h3>Buscar por ID Usuario </h3>
-            <input value=""/>
-            <button className={styles.buscar}>Buscar</button>
+            <input onChange={handleInputChange} value={input} />
+            <button className={styles.buscar} onClick={handleSearch}>Buscar</button>
          </div>
          <div className={styles.bottom}>
 
@@ -77,7 +87,7 @@ console.log(allIds, 'esto es all ids')
                 <tr>
                 <td width='15%'>{e.userName}</td>
                 <td width='25%'>{e.userId}</td>
-                <td width='20%'>arreglar esto</td>
+                <td width='20%'>{e.course.name}</td>
                 <td width='25%'>{e.coment}</td>
                 <td width='8%'>{e.reported === true? "Si": "No"}</td>
                 <td width='7%'><button name={e.id} onClick={handleDelete}>Eliminar</button></td>
