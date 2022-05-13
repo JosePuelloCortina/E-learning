@@ -28,6 +28,7 @@ import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
 import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
+import AdminSalesPage from "./Componentes/AdminSales/AdminSalesPage";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           <Route exact path="/adminReviews" element={<AdminReviewsPage/>} />
 
           <Route exact path="/AdminUsers" element={<AdminUsersPage />} />
+          <Route exact path="/AdminSales" element={<AdminSalesPage />} />
 
           <Route
             exact
