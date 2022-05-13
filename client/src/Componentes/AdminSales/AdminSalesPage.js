@@ -4,7 +4,9 @@ import NavBar from "../NavBar/NavBar"
 import Footer from './../Footer/Footer';
 import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { getAllReviews, deleteReview, filterByReported, allUser, searchReviewById, allCourses, filterReviewByCourse } from '../../redux/actions';
+import { getAllReviews, deleteReview, filterByReported, 
+    allUser, searchReviewById, allCourses, 
+    getAllPurchases, filterPurchasesByCourse} from '../../redux/actions';
 
 export default function AdminSalesPage(){
 const dispatch = useDispatch()
@@ -17,7 +19,7 @@ console.log(allPurchases, 'esto es all purchases')
 
     useEffect(() => dispatch(allUser()), [dispatch])
     useEffect(() => dispatch(allCourses()), [dispatch])
-    useEffect(() => dispatch(allCourses()), [dispatch])
+    useEffect(() => dispatch( getAllPurchases()), [dispatch])
     const [input, setInput] = useState("")
 
     function handleDelete(e){
@@ -47,7 +49,7 @@ console.log(allPurchases, 'esto es all purchases')
 
     function handleFilterCourse(e){
         e.preventDefault(e);
-        dispatch(filterReviewByCourse(e.target.value));
+        dispatch(filterPurchasesByCourse(e.target.value));
     }
 
     return(

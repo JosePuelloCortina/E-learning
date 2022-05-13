@@ -14,6 +14,7 @@ const initialState = {
   reviews: [],
   purchases: [],
   allReviews: [],
+  purchasesCopy: [],
 };
 
 function sortAsc(arr, field) {
@@ -232,7 +233,8 @@ export default function rootReducer(state = initialState, action) {
         case "GET_ALL_PURCHASES":
           return {
             ...state,
-            purchases: action.payload
+            purchases: action.payload,
+            purchasesCopy: action.payload
           };
         case "REPORT_REVIEW":
         return {
@@ -268,7 +270,14 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 reviews: reviewByCourse
               }
-         
+
+            case "FILTER_PURCHASES_BY_COURSE":
+              const allPurchases = state.purchasesCopy
+              const purchasesByCourse = action.payload === "all"? allPurchases : allPurchases.filter(e => e.courseName === action.payload)
+              return {
+                ...state, 
+                purchases: purchasesByCourse
+              }
     default:
       return state;
   }
