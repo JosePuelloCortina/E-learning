@@ -39,6 +39,7 @@ export default function FormularioRegistro() {
     price: 0,
     user: user.id,
     category: "",
+    deshabilitar: "revisar",
   });
 
   const handleInputChange = function (e) {

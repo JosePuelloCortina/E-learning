@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             unique: true,
             primaryKey: true,
-            allowNull: false,
+            // allowNull: true,
         }
 
     })
