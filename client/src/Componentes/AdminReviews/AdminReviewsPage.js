@@ -66,9 +66,9 @@ console.log(allReviews, 'esto es all reviews')
                 <tr>
                 <td width='15%'>{e.userName}</td>
                 <td width='25%'>{e.userId}</td>
-                <td width='20%'>{e.course.name}</td>
+                <td width='20%'>arreglar esto</td>
                 <td width='25%'>{e.coment}</td>
-                <td width='8%'>{e.reported === "true"? "Si": "No"}</td>
+                <td width='8%'>{e.reported === true? "Si": "No"}</td>
                 <td width='7%'><button name={e.id} onClick={handleDelete}>Eliminar</button></td>
                 </tr>
              )
