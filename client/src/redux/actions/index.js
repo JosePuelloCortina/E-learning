@@ -351,3 +351,7 @@ export function filterByReported(payload){
 export function searchReviewById(payload){
   return {type: "SEARCH_REVIEW_BY_ID", payload}
 }
+
+export function filterReviewByCourse(payload){
+  return {type: "FILTER_REVIEW_BY_COURSE", payload}
+}

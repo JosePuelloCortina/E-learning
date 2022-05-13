@@ -4,18 +4,20 @@ import NavBar from "../NavBar/NavBar"
 import Footer from './../Footer/Footer';
 import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { getAllReviews, deleteReview, filterByReported, allUser, searchReviewById } from '../../redux/actions';
+import { getAllReviews, deleteReview, filterByReported, allUser, searchReviewById, allCourses, filterReviewByCourse } from '../../redux/actions';
 
 export default function AdminReviewsPage(){
 const dispatch = useDispatch()
 const allReviews = useSelector(state=> state.reviews)
 const allUsers = useSelector(state => state.reviews)
 const allIds = allUsers.filter(e => e.id)
+const courses = useSelector(state => state.courses)
 console.log(allReviews, 'esto es all reviews')
 console.log(allIds, 'esto es all ids')
 
     useEffect(() => dispatch(getAllReviews()), [dispatch])
     useEffect(() => dispatch(allUser()), [dispatch])
+    useEffect(() => dispatch(allCourses()), [dispatch])
     const [input, setInput] = useState("")
 
     function handleDelete(e){
@@ -43,6 +45,10 @@ console.log(allIds, 'esto es all ids')
         setInput(e.target.value)
     }
 
+    function handleFilterCourse(e){
+        e.preventDefault(e);
+        dispatch(filterReviewByCourse(e.target.value));
+    }
 
     return(
     <div>
@@ -54,8 +60,14 @@ console.log(allIds, 'esto es all ids')
         <div className={styles.body}>
          <div className={styles.top}>
          <h3>Filtrar por: </h3>
-            <select>
-                <option>Curso</option>
+            <select onChange={handleFilterCourse}>
+            <option value="all">Curso</option>
+            {courses && courses.map(e => {
+                return(
+                    <option value={e.name}>{e.name}</option>
+                )
+            })}
+                
             </select>
 
             <select onChange={handleFilterReported}>

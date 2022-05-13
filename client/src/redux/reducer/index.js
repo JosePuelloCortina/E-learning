@@ -254,12 +254,19 @@ export default function rootReducer(state = initialState, action) {
               ...state,
               reviews:reportedFilter
             };
-            case "SEARCH_REVIEW_BY_ID":
+          case "SEARCH_REVIEW_BY_ID":
               const allReviews2 = state.allReviews
               const reviewById = action.payload.length? allReviews2.filter(e => e.userId === action.payload): allReviews2
               return{
                 ...state,
                 reviews: reviewById
+              }
+            case "FILTER_REVIEW_BY_COURSE":
+              const allReviews3 = state.allReviews
+              const reviewByCourse = action.payload === "all"? allReviews3 : allReviews3.filter(e => e.course.name === action.payload) 
+              return{
+                ...state,
+                reviews: reviewByCourse
               }
          
     default:
