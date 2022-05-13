@@ -5,11 +5,16 @@ const { Buy, User, Course} = require('../../db');
 server.get("/All", async function(req, res, next){ 
     try {
         const buys = await Buy.findAll({
+            include: [{
                 model: User ,
-                attributes: ["name"],
-                through:{
-                    attributes: [],
-                }, 
+                }    
+            ,
+            {
+                model: Course ,
+                include: {model: User}
+                
+            }
+        ],
                 attributes: { exclude: ['createdAt', 'updatedAt'] }
         });
         // const userId = buys[0].dataValues.userId;

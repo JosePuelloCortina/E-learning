@@ -61,7 +61,7 @@ function CourseCardDetail() {
   //       purchase({ userId: loggedUser[0], courseId: id, quantity: cantidad })
   //     );
   //     // dispatch(purchase(loggedUser, id, cantidad));
-  //     navigate("/purchaseok");
+  //     navigate("/home");
   //   }
   // }
   return (

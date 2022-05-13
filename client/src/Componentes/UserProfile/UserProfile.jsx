@@ -13,6 +13,7 @@ import AdminSales from "../AdminSales/AdminSales"
 import AdminReviews from "../AdminReviews/AdminReviews"
 import AdminCategories from "../AdminCategories/AdminCategories"
 import AdminUsers from "../AdminUsers/AdminUsers"
+import MySalesInstructor from "../MySalesInstructor/MySalesInstructor";
 import { getUserById, getAvatares } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
@@ -55,7 +56,11 @@ export default function UserProfile() {
                   </div>
                   }
                 {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "instructor")
-                  .length > 0 && <MyCoursesInstructor user={userDetail} />}
+                  .length > 0 && <div>
+                  <MyCoursesInstructor user={userDetail} />
+                  <MySalesInstructor user={userDetail} />
+                  </div>
+                  }
                   {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "admin")
                   .length > 0 && 
                    <div className={styles.admin}>

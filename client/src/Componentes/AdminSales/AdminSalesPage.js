@@ -103,12 +103,12 @@ console.log(allPurchases, 'esto es all purchases')
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
-                <td width='15%'></td>
-                <td width='15%'></td>
+                <td width='15%'>{e.course.users[0].id}</td>
+                <td width='15%'>arreglar</td>
                 <td width='10%'>$ {e.total_price}</td>
                 <td width='10%'>$ {e.total_price/5}</td>
                 <td width='10%'>$ {e.total_price/5*4}</td>
-                <td width='10%'></td>
+                <td width='10%'>arregalr</td>
                 <td width='10%'><button>Marcar como Pagado</button></td>
                 </tr>
              )
