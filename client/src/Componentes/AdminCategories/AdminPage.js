@@ -68,6 +68,7 @@ function handleRemove(e){
         <div className={styles.conteinerañadir}>
           <div className={styles.contenedorañadir}>
             <div>
+              <h1 className={styles.titleañadir}>Añadir Categorías</h1>
               <input
                 className={styles.input}
                 type="text"

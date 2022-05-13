@@ -29,7 +29,7 @@
     justify-content: center;
     align-self: flex-start;
     width: 500px;
-    height: 200px;
+    height: auto;
     background-color: white;
     margin: 10px;
     color: black;
@@ -64,8 +64,8 @@
 }
 
 .conteinerañadir .contenedorañadir{
-    width: 95%;
-    height: 95%;
+    width: 200%;
+    height: 400%;
     background-color: rgb(248, 242, 210);
     border-radius: 20px;
     border: solid var(--color4) 2px;;
@@ -85,4 +85,14 @@
     background-color: rgb(248, 242, 210);
     display: flex;
     align-items: center;
+    border-radius: 60%;
+}
+
+.contenedorañadir .titleañadir{
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: black;
+    align-self: center;
 }
