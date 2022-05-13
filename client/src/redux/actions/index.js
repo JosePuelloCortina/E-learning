@@ -110,7 +110,10 @@ export function updateUser(id, payload) {
 export function editCoursesById(id, payload) {
   return async function (dispatch) {
     try {
-     const update =  await axios.put(`http://localhost:3001/courses/update/id/${id}`, payload);
+      const update = await axios.put(
+        `http://localhost:3001/courses/update/id/${id}`,
+        payload
+      );
       dispatch({ type: "EDIT_COURSES_BY_ID", payload: update.data });
     } catch (error) {
       console.log(error);
@@ -118,17 +121,19 @@ export function editCoursesById(id, payload) {
   };
 }
 
-
 export function editClassById(id, payload) {
   return async function (dispatch) {
     try {
-     const update =  await axios.put(`http://localhost:3001/classes/update/id/${id}`, payload);
+      const update = await axios.put(
+        `http://localhost:3001/classes/update/id/${id}`,
+        payload
+      );
       dispatch({ type: "EDIT_CLASS_BY_ID", payload: update.data });
     } catch (error) {
       console.log(error);
     }
   };
-};
+}
 
 export const getClassById = (id) => {
   return async (dispatch) => {
@@ -136,8 +141,6 @@ export const getClassById = (id) => {
     dispatch({ type: "GET_CLASS_BY_ID", payload: json.data });
   };
 };
-
-
 
 export const getCoursesById = (id) => {
   return async (dispatch) => {
@@ -150,6 +153,7 @@ export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
 
+
 export const removeClassDetail = () => {
   return { type: "REMOVE_CLASS_DETAIL" };
 };
@@ -161,10 +165,15 @@ export const removeCourse= (id) => {
   };
 };
 
-export const removeClass= (id) => {
+
+
+export const removeClass = (id) => {
+
   return async (dispatch) => {
-    const json = await axios.delete(`http://localhost:3001/classes/delete/id/${id}`);
-    dispatch({ type: "REMOVE_CLASS"});
+    const json = await axios.delete(
+      `http://localhost:3001/classes/delete/id/${id}`
+    );
+    dispatch({ type: "REMOVE_CLASS" });
   };
 };
 
@@ -272,14 +281,12 @@ export function getAllReviews() {
   };
 }
 
-
 export const deleteReview = (id) => {
   return async (dispatch) => {
     await axios.delete(`http://localhost:3001/review/${id}`);
-    dispatch({ type: "DELETE_REVIEW"});
+    dispatch({ type: "DELETE_REVIEW" });
   };
 };
-
 
 export function confirmPayment() {
   return async function (dispatch) {
@@ -287,12 +294,19 @@ export function confirmPayment() {
       await axios.get(`http://localhost:3001/mercadopago/pagos`);
       return dispatch({
         type: "GET_ALL_PAYMENTS",
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
+
+export const deleteUser = (id) => {
+  return async (dispatch) => {
+    await axios.delete(`http://localhost:3001/user/delete/${id}`);
+    dispatch({ type: "DELETE_USER" });
+  };
+};
 
 export function getAllPurchases(){
   return async function(dispatch){
@@ -307,6 +321,32 @@ export function getAllPurchases(){
     }
   }
 }
+export function createCategory(name) {
+  return async function (dispatch) {
+    try {
+      await axios.post(`http://localhost:3001/category/create`, {name:name});
+      return dispatch({
+        type: "CREATE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+export function removeCategory(id) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/category/${id}`);
+      return dispatch({
+        type: "REMOVE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+
 
 export function reportReview(id) {
   return async function (dispatch) {
@@ -318,3 +358,15 @@ export function reportReview(id) {
     }
   };
 };
+
+export function filterByReported(payload){
+  return {type: "FILTER_BY_REPORTED", payload}
+}
+
+export function searchReviewById(payload){
+  return {type: "SEARCH_REVIEW_BY_ID", payload}
+}
+
+export function filterReviewByCourse(payload){
+  return {type: "FILTER_REVIEW_BY_COURSE", payload}
+}

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 export default function AdminReviews(){
     return(
-      <Link to="/sdjkahskjdak">
+      <Link to="/adminReviews">
         <div className={styles.container}>
         <div className={styles.title}>
              <h2>Administrar Reseñas</h2>

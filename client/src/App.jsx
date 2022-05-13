@@ -19,15 +19,20 @@ import UserVerification from "./Componentes/UserVerification/UserVerification";
 import Checkout from "./Componentes/Checkout/Checkout";
 import FormCourses from "./Componentes/FormCourses/FormCourses";
 import AdminPanel from "./Componentes/AdminPanel/AdminPanel";
+
 import AdminPage from "./Componentes/AdminCategories/AdminPage"
 import AdminPageCourses from "./Componentes/AdminCourses/AdminPageCourses"
+
+
+import AdminUsersPage from "./Componentes/AdminUsers/AdminUsersPage";
+
 import FormClass from "./Componentes/FormClass/FormClass";
 
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
-
+import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
 
 function App() {
   return (
@@ -51,14 +56,26 @@ function App() {
           <Route exact path="/Courseok" element={<ConfirmCourse />} />
           <Route exact path="/Classok" element={<ConfirmClass />} />
           <Route exact path="/ClassEditok" element={<ConfirmEditClass />} />
-          <Route exact path="/CourseEditok/:id" element={<ConfirmEditCourse />} />
+          <Route
+            exact
+            path="/CourseEditok/:id"
+            element={<ConfirmEditCourse />}
+          />
           <Route exact path="/purchaseok" element={<PurchaseConfirm />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/courselessons/:id" element={<CourseLessons />} />
           <Route path="/checkout/id/:id" element={<Checkout />} />
           <Route exact path="/admin" element={<AdminPanel />} />
           <Route exact path="/AdminPage" element={<AdminPage />} />
+
           <Route exact path="/AdminCourses" element={<AdminPageCourses />} />
+
+
+          <Route exact path="/adminReviews" element={<AdminReviewsPage/>} />
+
+          <Route exact path="/AdminUsers" element={<AdminUsersPage />} />
+
+
           <Route
             exact
             path="/profile/edit/password/:id"

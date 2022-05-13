@@ -13,6 +13,7 @@ const initialState = {
   avatares: [],
   reviews: [],
   purchases: [],
+  allReviews: [],
 };
 
 function sortAsc(arr, field) {
@@ -96,7 +97,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classDetail: action.payload,
       };
-
 
     case "REMOVE_CLASS":
       return {
@@ -208,6 +208,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         reviews: action.payload,
+        allReviews: action.payload,
       };
 
     case "EDIT_COURSES_BY_ID":
@@ -216,20 +217,24 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: action.payload,
       };
 
-      case "EDIT_CLASS_BY_ID":
-        return {
-          ...state,
-          classDetail: action.payload,
-        };
-        case "DELETE_REVIEW":
+    case "EDIT_CLASS_BY_ID":
+      return {
+        ...state,
+        classDetail: action.payload,
+      };
+    case "DELETE_REVIEW":
+      return {
+        ...state,
+      };
+    case "DELETE_USER":
       return {
         ...state,
       };
 
-        case "GET_ALL_PAYMENTS":
-        return {
-          ...state,
-        };
+    case "GET_ALL_PAYMENTS":
+      return {
+        ...state,
+      };
 
         case "GET_ALL_PURCHASES":
           return {
@@ -240,7 +245,37 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
         };
-
+        case "CREATE_CATEGORY":
+          return {
+            ...state,
+          };
+         
+          case "REMOVE_CATEGORY":
+          return {
+            ...state,
+          };
+          case "FILTER_BY_REPORTED":
+            const allReviews1 = state.allReviews
+            const reportedFilter= action.payload === "reported" ? allReviews1.filter(e => e.reported === true): allReviews1
+            return{
+              ...state,
+              reviews:reportedFilter
+            };
+          case "SEARCH_REVIEW_BY_ID":
+              const allReviews2 = state.allReviews
+              const reviewById = action.payload.length? allReviews2.filter(e => e.userId === action.payload): allReviews2
+              return{
+                ...state,
+                reviews: reviewById
+              }
+            case "FILTER_REVIEW_BY_COURSE":
+              const allReviews3 = state.allReviews
+              const reviewByCourse = action.payload === "all"? allReviews3 : allReviews3.filter(e => e.course.name === action.payload) 
+              return{
+                ...state,
+                reviews: reviewByCourse
+              }
+         
     default:
       return state;
   }

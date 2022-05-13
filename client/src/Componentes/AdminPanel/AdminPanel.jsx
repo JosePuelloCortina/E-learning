@@ -1,12 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from './adminPanel.module.css'
+import styles from "./adminPanel.module.css";
 import NavBar from "../NavBar/NavBar";
 import Error404 from "../Error404/Error404";
 // import AdminSales from "../AdminSales/AdminSales";
 // import AdminCategories from "../AdminCategories/AdminCategories";
+
 // import AdminUsers from "../AdminUsers/AdminUsers";
-import AdminCourses from "../AdminCourses/AdminCourses";
+
+
+
+// import AdminCourses from "../AdminCourses/AdminCourses";
+
 // import AdminReviews from "../AdminReviews/AdminReviews";
 // import ProfileLateralBar from './../ProfileLateralBar/ProfileLateralBar';
 
@@ -28,12 +33,17 @@ function AdminPanel() {
               <AdminReviews/> */}
             </div>
             <div className={styles.center}>
+
               {/* <AdminUsers/> */}
-              <AdminCourses/>
+            
             </div>
             <div className={styles.right}>
-           
+
+            
+              {/* <AdminCourses/> */}
+
             </div>
+            <div className={styles.right}></div>
           </div>
         </div>
       ) : (

@@ -1,0 +1,112 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 800px;
+    height: auto;
+    width: 100%;
+}
+
+.container .title{
+    display: flex;
+    justify-content: center;
+}
+.container .title h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: white;
+    align-self: center;
+}
+
+.container .body{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 1200px;
+    height: 600px;
+    background-color: white;
+    margin: 10px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 30px;
+    border: solid var(--color4) 8px;
+}
+
+.container .body .top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 80px;
+    width: 100%;
+    margin-bottom: 30px;
+    border: solid var(--color4) 1px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: rgb(248, 242, 210);
+}
+.top h3{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0px;
+    margin: 5px;
+    align-self: center;
+
+}
+.top select{
+    height: 45px;
+    width: 160px;
+    margin: 15px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    align-self: center;
+}
+
+
+.container .body .bottom{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 800px;
+    border: solid var(--color4) 1px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(248, 242, 210);
+}
+
+.container .body .bottom .table{
+    width: 100%;
+    align-items: flex-start;
+    height: 40px;
+  
+}
+.table button{
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.container input{
+    height: 38px;
+    width: 400px;
+    margin: 20px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    align-self: center;
+}
+.container .buscar{
+    height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    align-self: center;
+    margin: 10px;
+    cursor: pointer;
+
+}
