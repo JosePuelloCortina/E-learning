@@ -18,7 +18,7 @@ useEffect(() =>{ dispatch(getAllPurchases())}, [])
     return(
         <div className={styles.container}>
         <div className={styles.title}>
-        <h2>Mis Ventas</h2>
+        <h2>Mis Ventas | Alumnos Inscriptos</h2>
         <table className={styles.table} border="1" >
         <tbody>
             <tr>
@@ -37,7 +37,7 @@ useEffect(() =>{ dispatch(getAllPurchases())}, [])
                     <td width="15%">$ {e.total_price}</td>
                    
                     <td width="15%">$ {e.total_price/5*4}</td>
-                    <td width="15%"></td>
+                    <td width="15%">{e.payed === true ? "Acreditado": "No"}</td>
                     </tr>
                 )
             })}
