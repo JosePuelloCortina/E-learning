@@ -13,6 +13,7 @@ const initialState = {
   avatares: [],
   reviews: [],
   purchases: [],
+  allReviews: [],
 };
 
 function sortAsc(arr, field) {
@@ -200,6 +201,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         reviews: action.payload,
+        allReviews: action.payload,
       };
 
     case "EDIT_COURSES_BY_ID":
@@ -245,6 +247,13 @@ export default function rootReducer(state = initialState, action) {
           return {
             ...state,
           };
+          case "FILTER_BY_REPORTED":
+            const allReviews1 = state.allReviews
+            const reportedFilter= action.payload === "reported" ? allReviews1.filter(e => e.reported === true): allReviews1
+            return{
+              ...state,
+              reviews:reportedFilter
+            }
          
     default:
       return state;

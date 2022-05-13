@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar"
 import Footer from './../Footer/Footer';
 import { useEffect } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { getAllReviews, deleteReview } from '../../redux/actions';
+import { getAllReviews, deleteReview, filterByReported } from '../../redux/actions';
 
 export default function AdminReviewsPage(){
 const dispatch = useDispatch()
@@ -25,6 +25,10 @@ console.log(allReviews, 'esto es all reviews')
           }
     }
 
+    function handleFilterReported(e){
+        e.preventDefault(e);
+        dispatch(filterByReported(e.target.value));
+    }
 
     return(
     <div>
@@ -40,9 +44,9 @@ console.log(allReviews, 'esto es all reviews')
                 <option>Curso</option>
             </select>
 
-            <select>
-                <option>Todos</option>
-                <option>Reportados</option>
+            <select onChange={handleFilterReported}>
+                <option value="all">Todos</option>
+                <option value="reported">Reportados</option>
             </select>
 
             <select>
@@ -54,9 +58,9 @@ console.log(allReviews, 'esto es all reviews')
          <table className={styles.table} border="1" >
         <tbody>
             <tr>
-            <th width='15%'>Nombre</th>
+            <th width='15%'>Nombre de Usuario</th>
             <th width='25%'>ID Usuario</th>
-            <th width='20%'>Curso</th>
+            <th width='20%'>Nombre del Curso</th>
             <th width='25%'>Comentario</th>
             <th width='8%'>Reportado</th>
             <th width='7%'></th>

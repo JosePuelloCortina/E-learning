@@ -344,3 +344,6 @@ export function reportReview(id) {
   };
 };
 
+export function filterByReported(payload){
+  return {type: "FILTER_BY_REPORTED", payload}
+}
