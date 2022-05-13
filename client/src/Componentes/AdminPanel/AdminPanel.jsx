@@ -8,8 +8,6 @@ import Error404 from "../Error404/Error404";
 
 // import AdminUsers from "../AdminUsers/AdminUsers";
 
-
-
 // import AdminCourses from "../AdminCourses/AdminCourses";
 
 // import AdminReviews from "../AdminReviews/AdminReviews";
@@ -34,12 +32,12 @@ function AdminPanel() {
             </div>
             <div className={styles.center}>
 
+
               {/* <AdminUsers/> */}
             
             </div>
             <div className={styles.right}>
 
-            
               {/* <AdminCourses/> */}
 
             </div>

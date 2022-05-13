@@ -10,9 +10,8 @@ export default function AdminUsers() {
           {" "}
           <h2>Administrar Usuarios</h2>{" "}
         </div>
-        <div className={styles.body}></div>
+        <div className={styles.body}>Editar, bloquear y eliminar usuarios.</div>
       </div>
     </Link>
   );
 }
-

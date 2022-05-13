@@ -31,6 +31,9 @@ module.exports = (sequelize) => {
     validated: {
       type: DataTypes.ENUM("true", "false"),
     },
+    banned: {
+      type: DataTypes.ENUM("true", "false"),
+    },
     code: {
       type: DataTypes.UUID,
     },

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { allUser, deleteUser } from "../../redux/actions";
 import styles from "../AdminUsers/AdminUsersPage.module.css";
 import Pagination from "../Pagination/Pagination";
+import NavBar from "../NavBar/NavBar";
+import EditUserInfo from "./EditUserInfo/EditUserInfo";
+import { useNavigate } from "react-router";
 
 function AdminUsersPage() {
   const users = useSelector((state) => state.user);
@@ -14,9 +17,24 @@ function AdminUsersPage() {
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
   const currentUsers = users.slice(firstCourseIndex, lastCourseIndex);
 
+  const [currentUser, setCurrentUser] = useState(0);
+
+  const [editInfo, setEditInfo] = useState(false);
+
   useEffect(() => {
     dispatch(allUser());
   }, []);
+
+  const toggleEditInfo = () => {
+    setEditInfo(!editInfo);
+  };
+
+  const handleEdit = (e, id) => {
+    e.preventDefault();
+    console.log("id es ", id);
+    toggleEditInfo();
+    setCurrentUser(id);
+  };
 
   const handleDelete = (e, id) => {
     e.preventDefault();
@@ -31,6 +49,14 @@ function AdminUsersPage() {
 
   return (
     <div className={styles.container}>
+      {editInfo && (
+        <EditUserInfo
+          editInfo={editInfo}
+          setEditInfo={setEditInfo}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      )}
       <div className={styles.usersContainer}>
         <table className={styles.usersTable}>
           <thead>
@@ -40,6 +66,7 @@ function AdminUsersPage() {
               <th>Email</th>
               <th>Rol</th>
               <th>Verificado</th>
+              <th>Bloqueado</th>
               <th>Accion</th>
             </tr>
           </thead>
@@ -47,18 +74,35 @@ function AdminUsersPage() {
             {currentUsers &&
               currentUsers.map((u, i) => {
                 return (
-                  <tr className={styles.containerInfo}>
-                    <td className={styles.id}>{i + 1}</td>
+                  <tr
+                    style={
+                      u.banned === "true"
+                        ? { color: "red" }
+                        : { color: "black" }
+                    }
+                    className={styles.containerInfo}
+                  >
+                    <td className={styles.id}>{u.id}</td>
                     <td className={styles.name}>{u.name}</td>
                     <td className={styles.email}>{u.email}</td>
                     <td className={styles.rol}>{u.roles[0].tipo}</td>
                     <td className={styles.validated}>{u.validated}</td>
+                    <td className={styles.banned}>{u.banned}</td>
                     <td className={styles.actions}>
-                      <button>Editar</button>
-                      <button>Banear</button>
-                      <button onClick={(e) => handleDelete(e, u.id)}>
-                        Eliminar
+                      <button
+                        onClick={(e) => handleEdit(e, u.id)}
+                        className={styles.editBtn}
+                      >
+                        Editar
                       </button>
+                      {u.roles[0].tipo !== "admin" && (
+                        <button
+                          onClick={(e) => handleDelete(e, u.id)}
+                          className={styles.deleteBtn}
+                        >
+                          Eliminar
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );

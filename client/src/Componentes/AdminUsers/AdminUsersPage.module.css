@@ -8,7 +8,6 @@
   background-color: white;
   height: 90%;
   width: 90%;
-  border-radius: 30px;
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -22,6 +21,7 @@
 .usersTable {
   position: relative;
   border: 1px solid #ddd;
+  border-radius: 30px;
   border-collapse: collapse;
 }
 
@@ -35,6 +35,29 @@
 
 .containerInfo {
   text-align: center;
+}
+
+.editBtn {
+  background-color: rgb(4, 144, 46);
+  color: #fff;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: rgb(26, 184, 74);
+  color: #fff;
+}
+
+.deleteBtn {
+  background-color: rgb(235, 43, 43);
+  margin-left: 5px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: rgb(254, 60, 60);
+  color: rgb(255, 255, 255);
 }
 
 .adminPagUsers {
