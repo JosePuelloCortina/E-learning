@@ -108,6 +108,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         courseDetail: [],
       };
+
+      case "REMOVE_CLASS_DETAIL":
+      return {
+        ...state,
+        classDetail: [],
+      };
+      
     case "GET_SEARCH_COURSE":
       return {
         ...state,

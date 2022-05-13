@@ -47,7 +47,13 @@ module.exports = (sequelize) => {
     price: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    }
+    },
+
+    deshabilitar: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "aprobado",
+      },
     
   });
 };

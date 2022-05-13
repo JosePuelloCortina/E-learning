@@ -28,17 +28,17 @@ export default function Carousel() {
         <div className={styles.containerAll}>
           <div className={styles.slide}>
             <div className={styles.itemslide}>
-              <img src={coursesOrder[0].image} />
+              <img src={coursesOrder[0]&&coursesOrder[0].image} />
 
               <Link to={`/courses/id/${coursesOrder[0].id}`}>
                 <div className={styles.contDescription}>
-                  <h2 className={styles.name}>{coursesOrder[0].name}</h2>
+                  <h2 className={styles.name}>{coursesOrder[0]&&coursesOrder[0].name}</h2>
                   <p className={styles.description}>
-                    {coursesOrder[0].description}
+                    {coursesOrder[0]&&coursesOrder[0].description}
                   </p>
-                  {coursesOrder[0].review === 3 ? (
+                  {coursesOrder[0]&&coursesOrder[0].review === 3 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
-                  ) : coursesOrder[0].review === 4 ? (
+                  ) : coursesOrder[0]&&coursesOrder[0].review === 4 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
                   ) : (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
@@ -48,17 +48,17 @@ export default function Carousel() {
             </div>
 
             <div className={styles.itemslide}>
-              <img src={coursesOrder[1].image} />
+              <img src={coursesOrder[1]&&coursesOrder[0]&&coursesOrder[1].image} />
 
-              <Link to={`/courses/id/${coursesOrder[1].id}`}>
+              <Link to={`/courses/id/${coursesOrder[1]&&coursesOrder[1].id}`}>
                 <div className={styles.contDescription}>
-                  <h2 className={styles.name}>{coursesOrder[1].name}</h2>
+                  <h2 className={styles.name}>{coursesOrder[1]&&coursesOrder[1].name}</h2>
                   <p className={styles.description}>
-                    {coursesOrder[1].description}
+                    {coursesOrder[1]&&coursesOrder[1].description}
                   </p>
-                  {coursesOrder[1].review === 3 ? (
+                  {coursesOrder[1]&&coursesOrder[1].review === 3 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
-                  ) : coursesOrder[1].review === 4 ? (
+                  ) : coursesOrder[1]&&coursesOrder[1].review === 4 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
                   ) : (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
@@ -68,17 +68,17 @@ export default function Carousel() {
             </div>
 
             <div className={styles.itemslide}>
-              <img src={coursesOrder[2].image} />
+              <img src={coursesOrder[2]&&coursesOrder[2].image} />
 
-              <Link to={`/courses/id/${coursesOrder[0].id}`}>
+              <Link to={`/courses/id/${coursesOrder[2]&&coursesOrder[2].id}`}>
                 <div className={styles.contDescription}>
-                  <h2 className={styles.name}>{coursesOrder[2].name}</h2>
+                  <h2 className={styles.name}>{coursesOrder[2]&&coursesOrder[2].name}</h2>
                   <p className={styles.description}>
-                    {coursesOrder[2].description}
+                    {coursesOrder[2]&&coursesOrder[2].description}
                   </p>
-                  {coursesOrder[2].review === 3 ? (
+                  {coursesOrder[2]&&coursesOrder[2].review === 3 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐</p>
-                  ) : coursesOrder[2].review === 4 ? (
+                  ) : coursesOrder[2]&&coursesOrder[2].review === 4 ? (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐</p>
                   ) : (
                     <p className={styles.puntuacion}>Puntuacion: ⭐⭐⭐⭐⭐</p>
