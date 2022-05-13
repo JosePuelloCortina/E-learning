@@ -153,7 +153,22 @@ export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
 
+
+export const removeClassDetail = () => {
+  return { type: "REMOVE_CLASS_DETAIL" };
+};
+
+export const removeCourse= (id) => {
+  return async (dispatch) => {
+    const json = await axios.delete(`http://localhost:3001/courses/delete/id/${id}`);
+    dispatch({ type: "REMOVE_COURSE"});
+  };
+};
+
+
+
 export const removeClass = (id) => {
+
   return async (dispatch) => {
     const json = await axios.delete(
       `http://localhost:3001/classes/delete/id/${id}`
@@ -306,6 +321,32 @@ export function getAllPurchases(){
     }
   }
 }
+export function createCategory(name) {
+  return async function (dispatch) {
+    try {
+      await axios.post(`http://localhost:3001/category/create`, {name:name});
+      return dispatch({
+        type: "CREATE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+export function removeCategory(id) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/category/${id}`);
+      return dispatch({
+        type: "REMOVE_CATEGORY",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+
 
 export function reportReview(id) {
   return async function (dispatch) {
@@ -318,3 +359,18 @@ export function reportReview(id) {
   };
 };
 
+export function filterByReported(payload){
+  return {type: "FILTER_BY_REPORTED", payload}
+}
+
+export function searchReviewById(payload){
+  return {type: "SEARCH_REVIEW_BY_ID", payload}
+}
+
+export function filterReviewByCourse(payload){
+  return {type: "FILTER_REVIEW_BY_COURSE", payload}
+}
+
+export function filterPurchasesByCourse(payload){
+  return {type: "FILTER_PURCHASES_BY_COURSE", payload}
+}

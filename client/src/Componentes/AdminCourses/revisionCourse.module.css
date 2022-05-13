@@ -1,0 +1,257 @@
+
+
+
+.containerTotal {
+
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    min-height: 1000px;
+    /* background-color: rgb(223, 0, 0); */
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    border-radius: 30px;
+    padding: 30px;
+    margin: 5px;
+    border: solid var(--color4) 6px;
+}
+
+.containerClases {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    min-height: 1000px;
+    /* background-color: rgb(73, 184, 184); */
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    border-radius: 30px;
+    padding: 30px;
+    margin: 5px;
+    border: solid var(--color4) 6px;
+}
+
+/* .container .up video{
+    align-self: center;
+    width: 90%;
+    height: auto;
+    margin: 10px;
+} */
+.containerTotal .container .up{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    /* background-color: blueviolet; */
+}
+
+.container img {
+  object-fit: cover;
+  margin-top: 50px;
+  width: 900px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:25px;
+
+  /* background-color: aqua; */
+} 
+
+
+.container .down{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 45px ;
+    /* background-color: #ff0000; */
+   
+}
+
+.container h2{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    
+}
+
+.video{
+    align-self: center;
+}
+
+.buttonEditarCourse {
+
+    color: rgb(255, 255, 255);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+
+ 
+    
+}
+
+ .buttonEditarCourse:hover {
+    background: rgb(122, 3, 122);
+    color: white;
+    cursor: pointer;
+}
+
+ .container .buttonEdicion .buttonEditarClass {
+
+    color: rgb(0, 0, 0);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: auto;
+    height: 50px;
+    font-weight: bold;
+
+    
+}
+
+.container .buttonEdicion button:hover {
+    background: rgb(122, 3, 122);
+    color: white;
+    cursor: pointer;
+}
+
+.containerTotal .buttonEdicion button:hover {
+    background: rgb(122, 3, 122);
+    color: white;
+    cursor: pointer;
+}
+
+.buttonEdicion {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.containerTotal .buttonEdicion button {
+    
+    color: rgb(0, 0, 0);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: auto;
+    height: 50px;
+    font-weight: bold;
+    margin-left: 20px;
+
+    
+}
+
+.buttonEdicion {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.containerClass {
+
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    width: 100%px;
+    height: 650px;
+    /* background-color: rgb(139, 119, 0); */
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 5px;
+    border: solid var(--color4) 3px;
+}
+
+
+.container .classes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 250px;
+    margin-top: 10px;
+    /* background-color: #ff0000; */
+ 
+}
+
+.classes .deshabilitado {
+
+    color: rgba(255, 0, 0, 0.266);
+     
+}
+
+.classes .habilitado {
+
+    color: rgb(0, 0, 0);
+     
+}
+
+.containerClases .classes p:hover {
+    cursor: pointer;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.container .containerClass  .containerVideo .video{
+    /* align-self: center; */
+    width: 50%;
+    height: auto;
+
+    margin-bottom: 35px;
+  
+}
+
+.containerVideo {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* background-color: rgba(0, 0, 0, 0.123); */
+    width: min-content;
+    height: auto;
+    padding: 0;
+}
+
+.mapeo {
+
+    display: flex;
+    height: auto;
+    width: 650px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.096);
+}

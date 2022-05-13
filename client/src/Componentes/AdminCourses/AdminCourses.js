@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 export default function AdminCourses(){
     return(
-        <Link to="/sdjkahskjdak">
+        <Link to="/adminCourses">
         <div className={styles.container}>
         <div className={styles.title}>
              <h2>Administrar Cursos</h2>

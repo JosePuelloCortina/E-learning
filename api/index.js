@@ -27,6 +27,7 @@ const initializeCourses = require('./src/initializer/Courses')
 const initializeClases = require('./src/initializer/Classes')
 const initializeBuys = require('./src/initializer/Buy');
 const initializeAvatar = require('./src/initializer/Avatar');
+const initializeReviews = require('./src/initializer/Reviews')
 
 
 // Syncing all the models at once.
@@ -40,7 +41,8 @@ conn.sync({ force: true }).then(async() => {
     await initializeClases();
     //await initializeBuys();
     await initializeAvatar();
-
+    await initializeReviews();
+    
     console.log("Tablas cargadas!!")
     server.listen(3001, () => {
       console.log('%s listening at 3001'); // eslint-disable-line no-console
