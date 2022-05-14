@@ -367,9 +367,6 @@ export function filterReviewByCourse(payload) {
   return { type: "FILTER_REVIEW_BY_COURSE", payload };
 }
 
-export function filterPurchasesByCourse(payload) {
-  return { type: "FILTER_PURCHASES_BY_COURSE", payload };
-}
 export function filterByBlocked(payload) {
   return { type: "FILTER_BY_BLOCKED", payload };
 }
@@ -387,3 +384,15 @@ export function searchUser(id) {
     }
   };
 }
+export function filterPurchasesByCourse(payload){
+  return {type: "FILTER_PURCHASES_BY_COURSE", payload}
+}
+
+export function filterSalesByPayed(payload){
+  return {type: "FILTER_SALES_BY_PAYED", payload}
+}
+
+export function searchSaleById(payload){
+  return {type: "SEARCH_SALE_BY_ID", payload}
+}
+

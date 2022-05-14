@@ -10,6 +10,7 @@ import {
   getCoursesById,
   editClassById,
   removeClass,
+  editCoursesById,
 } from "../../redux/actions/index";
 
 export function validation(form) {
@@ -56,7 +57,27 @@ export default function EditClass() {
     duration: classState.duration,
     description: classState.description,
     url: classState.url,
+
   });
+
+
+
+const formCourse = {
+            name: course.name,
+            description: course.description,
+            price: course.price,
+            image: course.image,
+            deshabilitar: course.deshabilitar,
+            category:course.category,
+            state:"inprocess",
+            commentary:course.commentary
+}
+
+
+
+
+
+
 
   const handleInputChange = function (e) {
     console.log(e);
@@ -78,6 +99,8 @@ export default function EditClass() {
     event.preventDefault();
     dispatch(editClassById(classState.id,form));
     dispatch(getAllClasses());
+    dispatch(editCoursesById(course.id,formCourse));
+dispatch(allCourses());
     navigate(`/ClassEditok`);
     };
 

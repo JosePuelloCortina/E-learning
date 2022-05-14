@@ -40,6 +40,8 @@ export default function FormularioRegistro() {
     user: user.id,
     category: "",
     deshabilitar: "revisar",
+    state: "inprocess",
+    commentary:""
   });
 
   const handleInputChange = function (e) {

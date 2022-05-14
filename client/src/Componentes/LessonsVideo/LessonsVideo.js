@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   allUser,
   editClassById,
+  editCoursesById,
   getAllClasses,
   getClassById,
   getCoursesById,
@@ -47,11 +48,15 @@ export default function LessonsVideo({
 
   const handleRemoveClass = (e) => {
     e.preventDefault(e);
-    dispatch(getAllClasses());
-    dispatch(getCoursesById(idCourse));
-    dispatch(removeClass(classState.id));
-    setCurrentLesson({});
-    window.location.reload(false);
+    if (window.confirm("¿Desea eliminar este comentario?") === true) {
+      dispatch(getAllClasses());
+      dispatch(getCoursesById(idCourse));
+      dispatch(removeClass(classState.id));
+      setCurrentLesson({});
+      window.location.reload(false);
+    } else {
+      alert("Cancelado.");
+    }
   };
 
   const handleDeshabilitarClass = (e) => {
@@ -75,19 +80,40 @@ export default function LessonsVideo({
             <img src={course.image} alt={course.name} />
           </div>
         </div>
+
         <div className={styles.down}>
           <h2>Descripcion</h2>
+          <br></br>
           <h2>{course.description}</h2>
+          {course.state === "reject" ? (
+            <div className={styles.Commentary}>
+              <h2 style={{ color: "red" }}>
+                Modifique el curso y/o clases segun sugerencias:
+              </h2>
+              <h4>{course.commentary}</h4>
+            </div>
+          ) : null}
         </div>
-        {user.roles[0].tipo === "instructor" ? (
-          <button
-            onClick={handleSubmitCourse}
-            className={styles.buttonEditarCourse}
-          >
-            {" "}
-            Editar Curso{" "}
-          </button>
-        ) : null}
+
+        <div className={styles.buttonEdicion}>
+          {user.roles[0].tipo === "instructor" && course.state === "reject" ? (
+            <button
+              onClick={handleSubmitCourse}
+              className={styles.buttonEditarCourse}
+            >
+              {" "}
+              Correccion Curso{" "}
+            </button>
+          ) : (
+            <button
+              onClick={handleSubmitCourse}
+              className={styles.buttonEditarCourse}
+            >
+              {" "}
+              Editar Curso{" "}
+            </button>
+          )}
+        </div>
       </div>
     );
   }
@@ -96,28 +122,42 @@ export default function LessonsVideo({
     <div className={styles.container}>
       <div className={styles.up}>
         <h2>{name}</h2>
+
         {/* <video src={video} controls="true" /> */}
         <ReactPlayer className={styles.video} url={url} controls="true" />
       </div>
       <div className={styles.down}>
         <h2>Descripcion</h2>
-
         <h2>{description}</h2>
       </div>
 
-      <div className={styles.buttonEdicion}>
-        {user.roles[0].tipo === "instructor" ? (
+      {course.state !== "reject" ? (
+        <div className={styles.buttonEdicion}>
+          {user.roles[0].tipo === "instructor" ? (
+            <button
+              onClick={handleSubmitClass}
+              className={styles.buttonEditarClass}
+            >
+              {" "}
+              Editar Clase{" "}
+            </button>
+          ) : null}
+          <button onClick={handleRemoveClass}>Eliminar Clase</button>
+          <button onClick={handleDeshabilitarClass}>
+            Hablitar/Deshabilitar
+          </button>
+        </div>
+      ) : (
+        <div className={styles.buttonEdicion}>
           <button
             onClick={handleSubmitClass}
             className={styles.buttonEditarClass}
           >
             {" "}
-            Editar Clase{" "}
+            Correccion de clase{" "}
           </button>
-        ) : null}
-        <button onClick={handleRemoveClass}>Eliminar Clase</button>
-        <button onClick={handleDeshabilitarClass}>Hablitar/Deshabilitar</button>
-      </div>
+        </div>
+      )}
     </div>
   );
 }
