@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { getAllReviews, deleteReview, filterByReported, 
     allUser, searchReviewById, allCourses, 
-    getAllPurchases, filterPurchasesByCourse} from '../../redux/actions';
+    getAllPurchases, filterPurchasesByCourse,
+    filterSalesByPayed, searchSaleById} from '../../redux/actions';
 
 export default function AdminSalesPage(){
 const dispatch = useDispatch()
@@ -34,13 +35,13 @@ console.log(allPurchases, 'esto es all purchases')
           }
     }
 
-    function handleFilterReported(e){
+    function handleFilterPayed(e){
         e.preventDefault(e);
-        dispatch(filterByReported(e.target.value));
+        dispatch(filterSalesByPayed(e.target.value));
     }
     function handleSearch(e){
         e.preventDefault(e);
-        dispatch(searchReviewById(input))
+        dispatch(searchSaleById(input))
     }
 
     function handleInputChange(e){
@@ -72,7 +73,7 @@ console.log(allPurchases, 'esto es all purchases')
                 
             </select>
 
-            <select onChange={handleFilterReported}>
+            <select onChange={handleFilterPayed}>
                 <option value="all">Todas</option>
                 <option value="payed">Pagadas</option>
                 <option value="notPayed">Sin pagar</option>
@@ -91,8 +92,9 @@ console.log(allPurchases, 'esto es all purchases')
         <tbody>
             <tr>
             <th width='20%'>Nombre del Curso</th>
+            <th width='10%'>Nombre Instructor</th>
             <th width='15%'>ID Instructor</th>
-            <th width='15%'>CBU Instructor</th>
+            <th width='10%'>CBU Instructor</th>
             <th width='10%'>Precio del Curso</th>
             <th width='10%'>Ganancia Admin</th>
             <th width='10%'>Ganancia Instructor</th>
@@ -103,12 +105,13 @@ console.log(allPurchases, 'esto es all purchases')
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
-                <td width='15%'></td>
-                <td width='15%'></td>
+                <td width='10%'>{e.course.users[0].name}</td>
+                <td width='15%'>{e.course.users[0].id}</td>
+                <td width='10%'>{e.course.users[0].cbu? e.course.users[0].cbu : 'No hay CBU registrado'}</td>
                 <td width='10%'>$ {e.total_price}</td>
                 <td width='10%'>$ {e.total_price/5}</td>
                 <td width='10%'>$ {e.total_price/5*4}</td>
-                <td width='10%'></td>
+                <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
                 <td width='10%'><button>Marcar como Pagado</button></td>
                 </tr>
              )

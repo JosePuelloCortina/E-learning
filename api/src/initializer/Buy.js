@@ -2,38 +2,75 @@ const { Buy } = require('../db');
 
 let buys = [ 
     {
-        "id": "394606a0-c77e-11ec-8c73-834ec4650dd3",
-        "discount": 2,
-        "pay_method": "efectivo",
+        "total_price": 110,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
+        "courseId": "360c7440-c70e-11ec-96f7-e913400288b6",
+        "courseName": "Data Science Beginner",
+        "quantity" : 1 
+    },
+    {
         "total_price": 120,
         "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b4",
         "courseName": "Fullstack Web Developer",
         "quantity" : 1 
-    }
+    },
+    {
+        "total_price": 150,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773726",
+        "courseId": "460c7440-c70e-11ec-96f7-e913400288b7",
+        "courseName": "Machine learning Advanced",
+        "quantity" : 1 
+    },
+    {
+        "total_price": 110,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "courseId": "360c7440-c70e-11ec-96f7-e913400288b6",
+        "courseName": "Data Science Beginner",
+        "quantity" : 1 
+    },
+    {
+        "total_price": 120,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "courseId": "760c7440-c70e-11ec-96f7-e913400288b4",
+        "courseName": "Fullstack Web Developer",
+        "quantity" : 1 
+    },
+    {
+        "total_price": 100,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "courseId": "760c7440-c70e-11ec-96f7-e913400288b5",
+        "courseName": "Software Developer",
+        "quantity" : 1 
+    },
+    
 ]
 
 const initializeBuys = async() =>{
     try {
         
         buys = buys.forEach(async b =>{
-            const buy = {
-                id: b.id,
-                discount : b.discount,
-                pay_method : b.pay_method,
-                total_price: b.total_price,
+            Buy.create({
                 courseName: b.courseName,
+                discount: 0,
+                pay_method: "tarjeta",
+                total_price: b.total_price,
                 quantity: b.quantity
-
-            }           
-            const createBuy = await Buy.create(buy);
-            await createBuy.setUser(b.userId)
-            await createBuy.setCourse(b.courseId)
-        })
+              }) //crea la compra
+              .then(buyCourse => {
+                buyCourse.setCourse(b.courseId)
+                buyCourse.setUser(b.userId)    
+              }) //relaciona la compra con el curso y el usuario
+              
+              .catch(error =>{
+                console.log(error)
+              })
+            })  
         
     } catch (error) {
         console.log(error)
         
     }
+
 }
 module.exports = initializeBuys;

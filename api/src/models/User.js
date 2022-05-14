@@ -37,5 +37,9 @@ module.exports = (sequelize) => {
     code: {
       type: DataTypes.UUID,
     },
+    cbu: {
+      type: DataTypes.BIGINT,
+    },
+
   });
 };
