@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { getAllReviews, deleteReview, filterByReported, 
     allUser, searchReviewById, allCourses, 
-    getAllPurchases, filterPurchasesByCourse} from '../../redux/actions';
+    getAllPurchases, filterPurchasesByCourse,
+    filterSalesByPayed} from '../../redux/actions';
 
 export default function AdminSalesPage(){
 const dispatch = useDispatch()
@@ -34,9 +35,9 @@ console.log(allPurchases, 'esto es all purchases')
           }
     }
 
-    function handleFilterReported(e){
+    function handleFilterPayed(e){
         e.preventDefault(e);
-        dispatch(filterByReported(e.target.value));
+        dispatch(filterSalesByPayed(e.target.value));
     }
     function handleSearch(e){
         e.preventDefault(e);
@@ -72,7 +73,7 @@ console.log(allPurchases, 'esto es all purchases')
                 
             </select>
 
-            <select onChange={handleFilterReported}>
+            <select onChange={handleFilterPayed}>
                 <option value="all">Todas</option>
                 <option value="payed">Pagadas</option>
                 <option value="notPayed">Sin pagar</option>

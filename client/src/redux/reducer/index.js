@@ -285,6 +285,17 @@ export default function rootReducer(state = initialState, action) {
                 ...state, 
                 purchases: purchasesByCourse
               }
+
+            case "FILTER_SALES_BY_PAYED":
+              const allSales = state.purchasesCopy
+              const salesByPayed = action.payload === "payed"? allSales.filter(e => e.payed === true):
+              action.payload === "notPayed" ? allSales.filter(e => e.payed === false):
+              action.payload === "all" ? allSales : null
+              return {
+                ...state,
+                purchases: salesByPayed
+              }
+              
     default:
       return state;
   }

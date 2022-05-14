@@ -374,3 +374,7 @@ export function filterReviewByCourse(payload){
 export function filterPurchasesByCourse(payload){
   return {type: "FILTER_PURCHASES_BY_COURSE", payload}
 }
+
+export function filterSalesByPayed(payload){
+  return {type: "FILTER_SALES_BY_PAYED", payload}
+}
