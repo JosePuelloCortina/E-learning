@@ -41,7 +41,7 @@ export default function EditProfile() {
   const [input, setInput] = useState({
     // id: id,
     name: userInit.name,
-    newPassword: userInit.password,
+    // newPassword: userInit.password,
     // confirmPassword: "",
     email: userInit.email,
     categories: userCategory,

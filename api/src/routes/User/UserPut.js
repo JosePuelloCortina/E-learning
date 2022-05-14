@@ -1,14 +1,29 @@
 const server = require("express").Router();
-const { User, Category } = require("../../db");
+const { User, Category, Role } = require("../../db");
 const bcrypt = require("bcryptjs");
 
 server.put("/update/id/:id", async (req, res) => {
   const { id } = req.params;
-  const { name, newPassword, email, categories, image } = req.body;
-  if (!name || !newPassword || !email) {
-    return res.status(422).json({ error: "No se enviaron todos los datos" });
+  const {
+    name,
+    password,
+    newPassword,
+    email,
+    categories,
+    image,
+    rol,
+    validated,
+    banned,
+  } = req.body;
+  // if (!name || !newPassword || !email) {
+  //   return res.status(422).json({ error: "No se enviaron todos los datos" });
+  // }
+  let hashPassword;
+  if (newPassword) {
+    hashPassword = await bcrypt.hash(newPassword, 10);
+  } else {
+    hashPassword = password;
   }
-  const hashPassword = await bcrypt.hash(newPassword, 10);
   User.findByPk(id)
     .then((user) => {
       res.send(
@@ -18,11 +33,20 @@ server.put("/update/id/:id", async (req, res) => {
             password: hashPassword,
             email: email,
             image: image,
+            validated: validated,
+            banned: banned,
           })
           .then((userUpdate) => {
-            userUpdate.setCategories(categories).then(async () => {
-              userUpdate.categories = await userUpdate.getCategories();
-            });
+            if (categories) {
+              userUpdate.setCategories(categories).then(async () => {
+                userUpdate.categories = await userUpdate.getCategories();
+              });
+            }
+            if (rol) {
+              userUpdate.setRoles(rol).then(async () => {
+                userUpdate.roles = await userUpdate.getRoles();
+              });
+            }
           })
       );
     })
