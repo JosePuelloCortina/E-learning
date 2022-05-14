@@ -35,7 +35,15 @@ let buys = [
         "courseId": "760c7440-c70e-11ec-96f7-e913400288b4",
         "courseName": "Fullstack Web Developer",
         "quantity" : 1 
-    }
+    },
+    {
+        "total_price": 100,
+        "userId": "b65232b0-c6a0-11ec-b926-ff69e9773723",
+        "courseId": "760c7440-c70e-11ec-96f7-e913400288b5",
+        "courseName": "Software Developer",
+        "quantity" : 1 
+    },
+    
 ]
 
 const initializeBuys = async() =>{

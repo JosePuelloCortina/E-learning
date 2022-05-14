@@ -7,7 +7,7 @@ import { useDispatch , useSelector} from 'react-redux';
 import { getAllReviews, deleteReview, filterByReported, 
     allUser, searchReviewById, allCourses, 
     getAllPurchases, filterPurchasesByCourse,
-    filterSalesByPayed} from '../../redux/actions';
+    filterSalesByPayed, searchSaleById} from '../../redux/actions';
 
 export default function AdminSalesPage(){
 const dispatch = useDispatch()
@@ -41,7 +41,7 @@ console.log(allPurchases, 'esto es all purchases')
     }
     function handleSearch(e){
         e.preventDefault(e);
-        dispatch(searchReviewById(input))
+        dispatch(searchSaleById(input))
     }
 
     function handleInputChange(e){
