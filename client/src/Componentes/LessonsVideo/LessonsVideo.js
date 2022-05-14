@@ -84,7 +84,7 @@ export default function LessonsVideo({
         <div className={styles.down}>
           <h2>Descripcion</h2>
           <br></br>
-
+          <h2>{course.description}</h2>
           {course.state === "reject" ? (
             <div className={styles.Commentary}>
               <h2 style={{ color: "red" }}>
