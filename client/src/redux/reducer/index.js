@@ -1,5 +1,6 @@
 const initialState = {
   user: [],
+  filteredUsers: [],
   userDetail: {},
   courses: [],
   coursesBackUp: [],
@@ -43,6 +44,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+        filteredUsers: action.payload,
       };
 
     case "POST_USER":
@@ -110,12 +112,12 @@ export default function rootReducer(state = initialState, action) {
         courseDetail: [],
       };
 
-      case "REMOVE_CLASS_DETAIL":
+    case "REMOVE_CLASS_DETAIL":
       return {
         ...state,
         classDetail: [],
       };
-      
+
     case "GET_SEARCH_COURSE":
       return {
         ...state,
@@ -237,54 +239,80 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
 
-        case "GET_ALL_PURCHASES":
-          return {
-            ...state,
-            purchases: action.payload,
-            purchasesCopy: action.payload
-          };
-        case "REPORT_REVIEW":
-        return {
-          ...state,
-        };
-        case "CREATE_CATEGORY":
-          return {
-            ...state,
-          };
-         
-          case "REMOVE_CATEGORY":
-          return {
-            ...state,
-          };
-          case "FILTER_BY_REPORTED":
-            const allReviews1 = state.allReviews
-            const reportedFilter= action.payload === "reported" ? allReviews1.filter(e => e.reported === true): allReviews1
-            return{
-              ...state,
-              reviews:reportedFilter
-            };
-          case "SEARCH_REVIEW_BY_ID":
-              const allReviews2 = state.allReviews
-              const reviewById = action.payload.length? allReviews2.filter(e => e.userId === action.payload): allReviews2
-              return{
-                ...state,
-                reviews: reviewById
-              }
-            case "FILTER_REVIEW_BY_COURSE":
-              const allReviews3 = state.allReviews
-              const reviewByCourse = action.payload === "all"? allReviews3 : allReviews3.filter(e => e.course.name === action.payload) 
-              return{
-                ...state,
-                reviews: reviewByCourse
-              }
+    case "GET_ALL_PURCHASES":
+      return {
+        ...state,
+        purchases: action.payload,
+        purchasesCopy: action.payload,
+      };
+    case "REPORT_REVIEW":
+      return {
+        ...state,
+      };
+    case "CREATE_CATEGORY":
+      return {
+        ...state,
+      };
 
-            case "FILTER_PURCHASES_BY_COURSE":
-              const allPurchases = state.purchasesCopy
-              const purchasesByCourse = action.payload === "all"? allPurchases : allPurchases.filter(e => e.courseName === action.payload)
-              return {
-                ...state, 
-                purchases: purchasesByCourse
-              }
+    case "REMOVE_CATEGORY":
+      return {
+        ...state,
+      };
+    case "FILTER_BY_REPORTED":
+      const allReviews1 = state.allReviews;
+      const reportedFilter =
+        action.payload === "reported"
+          ? allReviews1.filter((e) => e.reported === true)
+          : allReviews1;
+      return {
+        ...state,
+        reviews: reportedFilter,
+      };
+    case "SEARCH_REVIEW_BY_ID":
+      const allReviews2 = state.allReviews;
+      const reviewById = action.payload.length
+        ? allReviews2.filter((e) => e.userId === action.payload)
+        : allReviews2;
+      return {
+        ...state,
+        reviews: reviewById,
+      };
+    case "FILTER_REVIEW_BY_COURSE":
+      const allReviews3 = state.allReviews;
+      const reviewByCourse =
+        action.payload === "all"
+          ? allReviews3
+          : allReviews3.filter((e) => e.course.name === action.payload);
+      return {
+        ...state,
+        reviews: reviewByCourse,
+      };
+
+    case "FILTER_PURCHASES_BY_COURSE":
+      const allPurchases = state.purchasesCopy;
+      const purchasesByCourse =
+        action.payload === "all"
+          ? allPurchases
+          : allPurchases.filter((e) => e.courseName === action.payload);
+      return {
+        ...state,
+        purchases: purchasesByCourse,
+      };
+    case "FILTER_BY_BLOCKED":
+      let filteredBlocked =
+        action.payload === "all"
+          ? state.user
+          : state.user.filter((u) => u.banned === action.payload);
+      return {
+        ...state,
+        filteredUsers: filteredBlocked,
+      };
+    case "SEARCH_USER":
+      return {
+        ...state,
+        filteredUsers: [action.payload],
+      };
+
     default:
       return state;
   }

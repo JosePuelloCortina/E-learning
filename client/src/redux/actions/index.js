@@ -153,22 +153,20 @@ export const removeCourseDetail = () => {
   return { type: "REMOVE_COURSE_DETAIL" };
 };
 
-
 export const removeClassDetail = () => {
   return { type: "REMOVE_CLASS_DETAIL" };
 };
 
-export const removeCourse= (id) => {
+export const removeCourse = (id) => {
   return async (dispatch) => {
-    const json = await axios.delete(`http://localhost:3001/courses/delete/id/${id}`);
-    dispatch({ type: "REMOVE_COURSE"});
+    const json = await axios.delete(
+      `http://localhost:3001/courses/delete/id/${id}`
+    );
+    dispatch({ type: "REMOVE_COURSE" });
   };
 };
 
-
-
 export const removeClass = (id) => {
-
   return async (dispatch) => {
     const json = await axios.delete(
       `http://localhost:3001/classes/delete/id/${id}`
@@ -308,30 +306,30 @@ export const deleteUser = (id) => {
   };
 };
 
-export function getAllPurchases(){
-  return async function(dispatch){
-    try{
-      const purchases = await axios.get(`http://localhost:3001/buy/all`)
+export function getAllPurchases() {
+  return async function (dispatch) {
+    try {
+      const purchases = await axios.get(`http://localhost:3001/buy/all`);
       return dispatch({
-        type: 'GET_ALL_PURCHASES', payload: purchases.data
-      })
+        type: "GET_ALL_PURCHASES",
+        payload: purchases.data,
+      });
+    } catch (error) {
+      console.log(error, "error al traer todas las compras");
     }
-    catch(error){
-      console.log(error, 'error al traer todas las compras')
-    }
-  }
+  };
 }
 export function createCategory(name) {
   return async function (dispatch) {
     try {
-      await axios.post(`http://localhost:3001/category/create`, {name:name});
+      await axios.post(`http://localhost:3001/category/create`, { name: name });
       return dispatch({
         type: "CREATE_CATEGORY",
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
 export function removeCategory(id) {
   return async function (dispatch) {
@@ -339,38 +337,53 @@ export function removeCategory(id) {
       await axios.delete(`http://localhost:3001/category/${id}`);
       return dispatch({
         type: "REMOVE_CATEGORY",
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
-
-
 
 export function reportReview(id) {
   return async function (dispatch) {
     try {
-     await axios.put(`http://localhost:3001/review/update/${id}`);
+      await axios.put(`http://localhost:3001/review/update/${id}`);
       dispatch({ type: "REPORT_REVIEW" });
     } catch (error) {
       console.log(error);
     }
   };
-};
-
-export function filterByReported(payload){
-  return {type: "FILTER_BY_REPORTED", payload}
 }
 
-export function searchReviewById(payload){
-  return {type: "SEARCH_REVIEW_BY_ID", payload}
+export function filterByReported(payload) {
+  return { type: "FILTER_BY_REPORTED", payload };
 }
 
-export function filterReviewByCourse(payload){
-  return {type: "FILTER_REVIEW_BY_COURSE", payload}
+export function searchReviewById(payload) {
+  return { type: "SEARCH_REVIEW_BY_ID", payload };
 }
 
-export function filterPurchasesByCourse(payload){
-  return {type: "FILTER_PURCHASES_BY_COURSE", payload}
+export function filterReviewByCourse(payload) {
+  return { type: "FILTER_REVIEW_BY_COURSE", payload };
+}
+
+export function filterPurchasesByCourse(payload) {
+  return { type: "FILTER_PURCHASES_BY_COURSE", payload };
+}
+export function filterByBlocked(payload) {
+  return { type: "FILTER_BY_BLOCKED", payload };
+}
+
+export function searchUser(id) {
+  return async function (dispatch) {
+    try {
+      const user = await axios.get(`http://localhost:3001/user/id/${id}`);
+      return dispatch({
+        type: "SEARCH_USER",
+        payload: user.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
