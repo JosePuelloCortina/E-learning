@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-self: center; */
     width: 90%;
-    height: 1100px;
+    height: fit-content; 
     background-color: white;
     color: black;
     font-family: 'Montserrat', sans-serif;
@@ -36,6 +35,7 @@
   margin-left: auto;
   margin-right: auto;
   border-radius:25px;
+  margin-bottom: 10px;
 
   background-color: aqua;
 } 
@@ -48,6 +48,7 @@
     height: 50%;
     flex-direction: column;
     margin-top: 50px;
+    margin-bottom: 10px;
    
 }
 
@@ -131,4 +132,22 @@
     
 }
 
+.Commentary {
+     margin-top: 10px;
+    color:rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 300px;
+    width:600px;
+    border: 1px solid #ff0000;
+    border-radius: 20px;
+    padding: 10px;
+  
+}
 
+
+.Commentary  h4 {
+     
+     color:red
+}

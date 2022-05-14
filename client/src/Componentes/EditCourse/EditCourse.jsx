@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./EditCourse.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCourse, allUser, allCourses, editCoursesById, getCoursesById } from "../../redux/actions/index";
+import {
+  createCourse,
+  allUser,
+  allCourses,
+  editCoursesById,
+  getCoursesById,
+} from "../../redux/actions/index";
 
 export function validation(form) {
   let errors = {};
@@ -29,16 +35,16 @@ export default function EditCourse() {
   const user = useSelector((state) => state.userDetail);
   const coursestate = useSelector((state) => state.courseDetail);
   const categories = useSelector((state) => state.categories);
-  const categoriesName = coursestate.categories.map((e)=>e.name)
+  const categoriesName = coursestate.categories.map((e) => e.name);
   const [errors, setErrors] = React.useState({});
-  console.log(categoriesName, "lpm")
+  console.log(categoriesName, "lpm");
   const [form, setForm] = React.useState({
-    
     name: coursestate.name,
-    description:  coursestate.description,
+    description: coursestate.description,
     image: coursestate.image,
     price: coursestate.price,
     category: categoriesName,
+    state: "inprocess",
   });
 
   const handleInputChange = function (e) {
@@ -58,11 +64,10 @@ export default function EditCourse() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-  
-      dispatch(editCoursesById(coursestate.id,form));
-      dispatch(allCourses());
-      navigate(`/CourseEditok/${coursestate.id}`);
-   
+
+    dispatch(editCoursesById(coursestate.id, form));
+    dispatch(allCourses());
+    navigate(`/CourseEditok/${coursestate.id}`);
   };
 
   function handleAddCategory(e) {
@@ -86,8 +91,6 @@ export default function EditCourse() {
     });
   }
 
-
-
   return (
     <div className={style.container}>
       <div className={style.logo}>
@@ -107,7 +110,7 @@ export default function EditCourse() {
                 // placeholder={coursestate.name}
                 name="name"
                 onChange={handleInputChange}
-                value= {form.name}
+                value={form.name}
               />
             </div>
             {errors.name && <p>{errors.name}</p>}
@@ -120,7 +123,7 @@ export default function EditCourse() {
                 name="price"
                 autoComplete="off"
                 onChange={handleInputChange}
-                value=  {form.price}
+                value={form.price}
               />
             </div>
             {errors.price && <p>{errors.price}</p>}
@@ -133,7 +136,7 @@ export default function EditCourse() {
                 name="image"
                 autoComplete="off"
                 onChange={handleInputChange}
-                value= {form.image}
+                value={form.image}
               />
             </div>
 
@@ -182,7 +185,7 @@ export default function EditCourse() {
                 id={style.description}
                 autoComplete="off"
                 onChange={handleInputChange}
-                value= {form.description}
+                value={form.description}
                 cols="30"
                 rows="10"
               ></textarea>
@@ -193,7 +196,7 @@ export default function EditCourse() {
                 Editar{" "}
               </button>
 
-              <Link to={`/courselessons/${coursestate.id}`} >
+              <Link to={`/courselessons/${coursestate.id}`}>
                 <button class={style.buttonYellow}>Volver</button>
               </Link>
             </div>

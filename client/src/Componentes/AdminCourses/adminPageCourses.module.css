@@ -4,28 +4,26 @@ display: flex;
 flex-direction: column;
 align-self: center;
 justify-content: space-between;
-width: 95%;
+width: 100%;
 height: auto;
-background-color: white;
-margin: 10px;
+background-color: none;
 color: black;
 font-family: 'Montserrat', sans-serif;
 font-size: 18px;
-border-radius: 30px;
-padding: 20px;
-border: solid var(--color4) 8px;
+padding: 0px;
 
 }
 
 .containerSelect {
 
-    display: flex;
+display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
 width: 100%;
 height: auto;
-/* background-color:rgb(255, 0, 0) */
+margin-top: 20px;
+background-color:rgb(250, 242, 196)
 }
 
 .h2{
@@ -35,16 +33,31 @@ height: auto;
 }
 
 .map {
-    /* background-color: rgba(150, 150, 150, 0.566); */
+   
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width:500px;
     height:20px;
-    /* border: 1px black solid; */
-    margin-top: 2px;
+    border: 1px black solid;
+    margin-top: 4px;
     padding: 2px;
+}
+
+.map button {
+    
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 2px;
+    border-radius: 1px;
+
+}
+
+.map   button:hover {
+    background-color: rgb(105, 0, 105);
+    color: white;
 }
 
  .deshabilitado {
@@ -66,12 +79,12 @@ height: auto;
     align-self: center;
     width: 500px;
     height: 450px;
-    background-color: white;
+    background-color: rgb(250, 242, 196);
     margin: 5px;
     color: black;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 20px;
     border: solid var(--color4) 4px;
 }

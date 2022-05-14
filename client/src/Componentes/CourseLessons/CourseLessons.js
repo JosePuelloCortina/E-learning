@@ -105,7 +105,15 @@ export default function CourseLessons() {
       <div className={form === false ? style.container : style.hiddenContainer}>
         <div className={style.body2}>
           <div className={style.title}>
-            <h1 onClick={() => resetCurrentLesson()}>{course.name}</h1>
+            <h1 onClick={() => resetCurrentLesson()}>{course.name} </h1>
+            <h3 
+            style={course.state === "passed"? {color:"green"}:{color:"red"}}
+            >{course.state==="inprocess"?"(Estado: En revision)": course.state==="reject"? "(Estado: rechazado)":"(Estado: Aprobado)"}
+            
+            
+            
+            
+            </h3>
           </div>
         </div>
 

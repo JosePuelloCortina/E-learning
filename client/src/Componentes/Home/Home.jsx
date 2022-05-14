@@ -32,6 +32,7 @@ export default function Home() {
   const [orderReview, setOrderReview] = useState("");
 
   const courses = useSelector((state) => state.courses);
+  const coursePassed = courses.filter(curs => curs.state == "passed");
   const loggedUser = useSelector((state) => state.loggedUsers);
   console.log(loggedUser, "loggedUser");
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,8 +40,11 @@ export default function Home() {
   const [coursesPerPage] = useState(6);
   const lastCourseIndex = currentPage * coursesPerPage;
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
-  const currentCourses = courses.slice(firstCourseIndex, lastCourseIndex);
+  const currentCourses = coursePassed.slice(firstCourseIndex, lastCourseIndex);
 
+ 
+
+console.log("Cursos aprobados", coursePassed )
   return (
     <div className={styles.home}>
       <NavBar />
@@ -55,7 +59,7 @@ export default function Home() {
         currentPage={currentPage}
         coursesPerPage={coursesPerPage}
         lastCourseIndex={lastCourseIndex}
-        allCourses={courses}
+        allCourses={coursePassed}
         setCurrentPage={setCurrentPage}
       />
       <br/>
