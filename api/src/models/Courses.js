@@ -54,6 +54,18 @@ module.exports = (sequelize) => {
         allowNull: true,
         defaultValue: "aprobado",
       },
+
+      state: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "passed",
+      },
+      commentary: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "",
+      },
+
     
   });
 };

@@ -5,7 +5,7 @@ const { User, Course, Role, Category } = require('../../db');
 
 server.post("/create", async (req, res) =>{
 
-    let {name, description, review, duration, progress, image, user, category, price, deshabilitar} = req.body //recibe los datos por body mediante formulario
+    let {name, description, review, duration, progress, image, user, category, price, deshabilitar, state, commentary} = req.body //recibe los datos por body mediante formulario
 
     try {
 
@@ -39,7 +39,9 @@ server.post("/create", async (req, res) =>{
                 progress: progress, 
                 image: image,
                 price: price, 
-                deshabilitar: deshabilitar,              
+                deshabilitar: deshabilitar,
+                state:state,
+                commentary:commentary              
             })
             .then(course =>{
                 course.addUser(user)
