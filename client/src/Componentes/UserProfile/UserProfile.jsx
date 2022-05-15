@@ -15,11 +15,7 @@ import AdminReviews from "../AdminReviews/AdminReviews"
 import AdminCategories from "../AdminCategories/AdminCategories"
 import AdminUsers from "../AdminUsers/AdminUsers"
 import MySalesInstructor from "../MySalesInstructor/MySalesInstructor";
-import AdminCourses from "../AdminCourses/AdminCourses";
-import AdminSales from "../AdminSales/AdminSales";
-import AdminReviews from "../AdminReviews/AdminReviews";
-import AdminCategories from "../AdminCategories/AdminCategories";
-import AdminUsers from "../AdminUsers/AdminUsers";
+
 import { getUserById, getAvatares, allUser } from "../../redux/actions/index";
 
 import { useParams } from "react-router-dom";
@@ -70,13 +66,6 @@ export default function UserProfile() {
                   <MySalesInstructor user={userDetail} />
                   </div>
                   }
-                  {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "admin")
-                  .length > 0 && 
-                   <div className={styles.admin}>
-                    <div className={styles.left}>
-                    <AdminSales/>
-                    <AdminCourses/>
-                    <AdminUsers/>
 
                 {userDetail.roles &&
                   userDetail.roles.filter((r) => r.tipo === "alumno").length >
@@ -90,9 +79,7 @@ export default function UserProfile() {
                 {userDetail.roles &&
                   userDetail.roles.filter((r) => r.tipo === "instructor")
                     .length > 0 && <MyCoursesInstructor user={userDetail} />}
-                {userDetail.roles &&
-                  userDetail.roles.filter((r) => r.tipo === "admin").length >
-                    0 && (
+                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "admin").length > 0 && (
                     <div className={styles.admin}>
                       <div className={styles.left}>
                         <AdminSales />
