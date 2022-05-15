@@ -27,29 +27,28 @@ function CourseCardDetail() {
   const cantidad = 1;
   const detail = useSelector((state) => state.courseDetail);
 
-  const loggedUser = useSelector( state => state.loggedUsers);
+  const loggedUser = useSelector((state) => state.loggedUsers);
   const userDetail = useSelector((state) => state.userDetail);
-  console.log(loggedUser, "este es el usuario" )
-  const userPurchase = userDetail && userDetail.buys.map(buy => buy.courseId);
- 
+  console.log(loggedUser, "este es el usuario");
+  // const userPurchase = userDetail && userDetail.buys.map(buy => buy.courseId);
+  const userPurchase =
+    userDetail.name && userDetail.buys.map((buy) => buy.courseId);
 
   // const idCourse = detail.id
   console.log(id, "ESTO ES IDcourse");
 
-
-   function handleMercadoPago(){
-    if(loggedUser.length === 0){
-      alert("Para comprar el curso debes iniciar sesión")
-      navigate('/user')
-    }else{
-      if(userPurchase.includes(id)){
-        alert("Ya has comprado este curso")
-      } else{
-        navigate(`/checkout/id/${id}`)
-
+  function handleMercadoPago() {
+    if (loggedUser.length === 0) {
+      alert("Para comprar el curso debes iniciar sesión");
+      navigate("/user");
+    } else {
+      if (userPurchase.includes(id)) {
+        alert("Ya has comprado este curso");
+      } else {
+        navigate(`/checkout/id/${id}`);
+      }
     }
   }
-}
 
   // function handlePurchase() {
   //   if (loggedUser.length === 0) {

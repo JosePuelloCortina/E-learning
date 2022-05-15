@@ -39,13 +39,10 @@ export default function EditProfile() {
   // const hashPassword = bcrypt.hashSync(userInit.password, 10);
 
   const [input, setInput] = useState({
-    // id: id,
     name: userInit.name,
-    // newPassword: userInit.password,
-    // confirmPassword: "",
     email: userInit.email,
     categories: userCategory,
-    image: "",
+    image: userInit.image,
   });
   console.log(input, "input");
   const [errors, setErrors] = useState({});
@@ -179,6 +176,7 @@ export default function EditProfile() {
                           type="radio"
                           name="image"
                           value={a.image}
+                          checked={a.image === input.image ? "checked" : ""}
                           onChange={(e) => handleInputChange(e)}
                         />
                       </div>
