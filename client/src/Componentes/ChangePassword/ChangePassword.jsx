@@ -18,10 +18,9 @@ function ChangePassword() {
   const [input, setInput] = useState({
     name: userInit.name,
     newPassword: "",
-    // confirmPassword: "",
     email: userInit.email,
     categories: userCategory,
-    image: "",
+    image: userInit.image,
   });
 
   const [errors, setErrors] = useState({});

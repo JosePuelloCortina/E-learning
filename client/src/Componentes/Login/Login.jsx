@@ -80,19 +80,23 @@ export default function Login() {
       );
 
       const usuario = users.find((user) => user.email === validate.email);
-      if (token.data.user && usuario.validated === "true") {
+      if (
+        token.data.user &&
+        usuario.validated === "true" &&
+        usuario.banned === "false"
+      ) {
         dispatch(addLoggedUser(usuario.id));
         dispatch(getUserById(usuario.id));
         if (usuario.roles.filter((r) => r.tipo === "admin").length > 0)
-          // navigate(`/admin`);
-          navigate(`/profile/${usuario.id}`)
-      
+          navigate(`/profile/${usuario.id}`);
         else navigate(`/profile/${usuario.id}`);
       } else {
-        alert("Email/password incorrecto o cuenta no verificada");
+        if (!token.data.user) alert("Email/password incorrecto");
+        else if (usuario.validated !== "true") alert("Cuenta no verificada");
+        else alert("Cuenta bloqueada");
       }
     } else {
-      alert("Debes rellenar todos los campos antes de registrarte");
+      alert("Debes rellenar todos los campos antes de loguearte");
     }
   };
 
@@ -107,12 +111,18 @@ export default function Login() {
         password: userGoogle.password,
       });
 
-      if (token.data.user && userGoogle.validated === "true") {
+      if (
+        token.data.user &&
+        userGoogle.validated === "true" &&
+        userGoogle.banned === "false"
+      ) {
         dispatch(addLoggedUser(userGoogle.id));
         dispatch(getUserById(userGoogle.id));
         navigate(`/profile/${userGoogle.id}`);
       } else {
-        alert("Email/password incorrecto o cuenta no verificada");
+        if (!token.data.user) alert("Email/password incorrecto");
+        else if (userGoogle.validated !== "true") alert("Cuenta no verificada");
+        else alert("Cuenta bloqueada");
       }
     } else {
       alert("No estas registrado, ahora seras redireccionado para registrarte");
