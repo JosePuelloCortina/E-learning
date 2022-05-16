@@ -57,6 +57,7 @@ export default function EditClass() {
     duration: classState.duration,
     description: classState.description,
     url: classState.url,
+    state:"inprocess"
 
   });
 

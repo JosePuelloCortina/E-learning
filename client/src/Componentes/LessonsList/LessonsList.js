@@ -61,7 +61,10 @@ export default function LessonsList({
         {lessons
           ? [...lessons].map((e) => {
               return (
-                <div className={styles.classes}>
+
+
+
+<div className={styles.classes}>
                   <p
                     value={e}
                     className={
@@ -90,13 +93,21 @@ export default function LessonsList({
         {lessons
           ? lessons.map((e) => {
               if (e.deshabilitar === "false") {
+
+
+
                 return (
+
+
+                  e.state === "passed"? 
                   <div className={styles.classes}>
                     <input type="checkbox" />
                     <p value={e} onClick={() => setCurrentLesson(e)}>
                       - {e.name}
                     </p>
-                  </div>
+                  </div>:null
+
+
                 );
               }
             })

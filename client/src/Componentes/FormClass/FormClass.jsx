@@ -8,6 +8,7 @@ import {
   allCourses,
   getAllClasses,
   getCoursesById,
+  editCoursesById,
 } from "../../redux/actions/index";
 
 export function validation(form) {
@@ -55,7 +56,27 @@ export default function FormClass() {
     url: "",
     id: course.id,
     deshabilitar: "false",
+    state:"inprocess",
   });
+
+
+
+  const formCourse = {
+    name: course.name,
+    description: course.description,
+    price: course.price,
+    image: course.image,
+    deshabilitar: course.deshabilitar,
+    category:course.category,
+    state:"inprocess",
+    commentary:course.commentary
+}
+
+
+
+
+
+
 
   const handleInputChange = function (e) {
     console.log(e);
@@ -80,6 +101,7 @@ export default function FormClass() {
     } else {
       dispatch(createClass(form));
       dispatch(getAllClasses());
+      dispatch(editCoursesById(course.id,formCourse));
       dispatch(getCoursesById(course.id));
       navigate(`/Classok`);
     }
