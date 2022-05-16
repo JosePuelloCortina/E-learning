@@ -71,7 +71,9 @@ export default function LessonsVideo({
   };
 
   if (!currentLesson.name) {
+
     return (
+       
       <div className={styles.container}>
         <div className={styles.up}>
           <h2>Bienvenido a mi curso {course.name}</h2>
@@ -85,7 +87,8 @@ export default function LessonsVideo({
           <h2>Descripcion</h2>
           <br></br>
           <h2>{course.description}</h2>
-          {course.state === "reject" ? (
+
+          {course.state === "reject" && user.roles[0].tipo === "instructor" ? (
             <div className={styles.Commentary}>
               <h2 style={{ color: "red" }}>
                 Modifique el curso y/o clases segun sugerencias:
@@ -95,27 +98,35 @@ export default function LessonsVideo({
           ) : null}
         </div>
 
-        <div className={styles.buttonEdicion}>
-          {user.roles[0].tipo === "instructor" && course.state === "reject" ? (
-            <button
-              onClick={handleSubmitCourse}
-              className={styles.buttonEditarCourse}
-            >
-              {" "}
-              Correccion Curso{" "}
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmitCourse}
-              className={styles.buttonEditarCourse}
-            >
-              {" "}
-              Editar Curso{" "}
-            </button>
-          )}
-        </div>
+
+{user.roles[0].tipo === "instructor"?
+
+<div className={styles.buttonEdicion}>
+{user.roles[0].tipo === "instructor" && course.state === "reject" ? (
+<button
+onClick={handleSubmitCourse}
+className={styles.buttonEditarCourse}
+>
+{" "}
+Correccion Curso{" "}
+</button>
+) : (
+<button
+onClick={handleSubmitCourse}
+className={styles.buttonEditarCourse}
+>
+{" "}
+Editar Curso{" "}
+</button>
+)}
+</div>:null
+
+}
+
       </div>
-    );
+            );  
+
+   
   }
 
   return (
@@ -129,35 +140,48 @@ export default function LessonsVideo({
       <div className={styles.down}>
         <h2>Descripcion</h2>
         <h2>{description}</h2>
-      </div>
+        </div>
 
-      {course.state !== "reject" ? (
-        <div className={styles.buttonEdicion}>
-          {user.roles[0].tipo === "instructor" ? (
-            <button
-              onClick={handleSubmitClass}
-              className={styles.buttonEditarClass}
-            >
-              {" "}
-              Editar Clase{" "}
-            </button>
-          ) : null}
-          <button onClick={handleRemoveClass}>Eliminar Clase</button>
-          <button onClick={handleDeshabilitarClass}>
-            Hablitar/Deshabilitar
-          </button>
-        </div>
-      ) : (
-        <div className={styles.buttonEdicion}>
-          <button
-            onClick={handleSubmitClass}
-            className={styles.buttonEditarClass}
-          >
-            {" "}
-            Correccion de clase{" "}
-          </button>
-        </div>
-      )}
+ { user.roles[0].tipo === "instructor"? 
+
+
+<div> 
+
+ {course.state !== "reject" ? (
+  <div className={styles.buttonEdicion}>
+    {user.roles[0].tipo === "instructor" ? (
+      <button
+        onClick={handleSubmitClass}
+        className={styles.buttonEditarClass}
+      >
+        {" "}
+        Editar Clase{" "}
+      </button>
+    ) : null}
+    <button onClick={handleRemoveClass}>Eliminar Clase</button>
+    <button onClick={handleDeshabilitarClass}>
+      Hablitar/Deshabilitar
+    </button>
+  </div>
+ ) : (
+  <div className={styles.buttonEdicion}>
+    <button
+      onClick={handleSubmitClass}
+      className={styles.buttonEditarClass}
+    >
+      {" "}
+      Correccion de clase{" "}
+    </button>
+  </div>
+ )}
+
+
+</div>
+:null
+ }
+
+
+      
     </div>
   );
 }

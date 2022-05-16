@@ -106,14 +106,12 @@ export default function CourseLessons() {
         <div className={style.body2}>
           <div className={style.title}>
             <h1 onClick={() => resetCurrentLesson()}>{course.name} </h1>
-            <h3 
+
+{user.roles[0].tipo === "instructor"?<h3 
             style={course.state === "passed"? {color:"green"}:{color:"red"}}
             >{course.state==="inprocess"?"(Estado: En revision)": course.state==="reject"? "(Estado: rechazado)":"(Estado: Aprobado)"}
-            
-            
-            
-            
-            </h3>
+            </h3>:null }
+
           </div>
         </div>
 

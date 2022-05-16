@@ -39,5 +39,11 @@ module.exports = (sequelize) => {
       defaultValue: "false",
     },
 
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "passed",
+    },
+
   });
 };
