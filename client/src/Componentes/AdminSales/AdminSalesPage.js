@@ -101,7 +101,7 @@ console.log(allPurchases, 'esto es all purchases')
             <th width='10%'>Pagado al Instructor</th>
             <th width='10%'>Acción</th>
             </tr>
-         { allPurchases && allPurchases.map( e => {
+         { allPurchases[0].user && allPurchases.map( e => {
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
