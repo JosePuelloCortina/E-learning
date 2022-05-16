@@ -7,7 +7,7 @@ const { uuid } = require("uuidv4");
 const { PASS_EMAIL } = process.env;
 
 const mail = {
-  user: "albano.rc99@gmail.com",
+  user: "akademit.adm@gmail.com",
   pass: PASS_EMAIL,
 };
 
@@ -41,7 +41,7 @@ const sendEmail = async (email, subject, tokenRegister) => {
 
 server.post("/create", async function (req, res, next) {
   try {
-    const { name, password, email, role } = req.body;
+    const { name, password, email, role, banned } = req.body;
     const code = uuid();
     const newPassword = await bcrypt.hash(password, 10);
     if (!name || !password || !email) {
@@ -57,6 +57,7 @@ server.post("/create", async function (req, res, next) {
         password: newPassword,
         email: email,
         code: code,
+        banned: banned,
       }).then((user) => {
         user.addRole(role).then(async () => {
           user.role = await user.getRoles();
