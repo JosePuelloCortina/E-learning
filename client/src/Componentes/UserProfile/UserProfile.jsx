@@ -14,6 +14,7 @@ import AdminSales from "../AdminSales/AdminSales"
 import AdminReviews from "../AdminReviews/AdminReviews"
 import AdminCategories from "../AdminCategories/AdminCategories"
 import AdminUsers from "../AdminUsers/AdminUsers"
+import AdminEarnings from "../AdminEarnings/AdminEarnings"
 import MySalesInstructor from "../MySalesInstructor/MySalesInstructor";
 
 import { getUserById, getAvatares, allUser } from "../../redux/actions/index";
@@ -83,12 +84,15 @@ export default function UserProfile() {
                     <div className={styles.admin}>
                       <div className={styles.left}>
                         <AdminSales />
+                        <AdminEarnings/>
                         <AdminCourses />
-                        <AdminUsers />
+                        
                       </div>
                       <div className={styles.right}>
+                        <AdminUsers />
                         <AdminReviews />
                         <AdminCategories />
+                        
                       </div>
                     </div>
                   )}

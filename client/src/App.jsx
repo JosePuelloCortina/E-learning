@@ -25,7 +25,7 @@ import AdminPageCourses from "./Componentes/AdminCourses/AdminPageCourses"
 
 
 import AdminUsersPage from "./Componentes/AdminUsers/AdminUsersPage";
-
+import AdminEarningsPage from "./Componentes/AdminEarnings/AdminEarningsPage";
 import FormClass from "./Componentes/FormClass/FormClass";
 
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
@@ -76,7 +76,7 @@ function App() {
 
           <Route exact path="/AdminUsers" element={<AdminUsersPage />} />
           <Route exact path="/AdminSales" element={<AdminSalesPage />} />
-
+          <Route exact path="/AdminEarnings" element={<AdminEarningsPage />} />
 
           <Route
             exact
