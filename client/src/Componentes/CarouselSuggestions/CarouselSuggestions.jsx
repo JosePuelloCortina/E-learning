@@ -59,19 +59,24 @@ function CarouselSuggestions( {loggedUser} ) {
         return null;
     }
 
-    function randomCourses(courses) {
-        let i = courses.length - 1;
+
+    const coursesToRandom = courses.map(courses => courses);
+
+    function randomCourses(coursesToRandom) {
+        let i = coursesToRandom.length - 1;
         for (; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          const temp = courses[i];
-          courses[i] = courses[j];
-          courses[j] = temp;
+          const temp = coursesToRandom[i];
+          coursesToRandom[i] = coursesToRandom[j];
+          coursesToRandom[j] = temp;
         }
-        return courses;
+        return coursesToRandom;
       }
-      const newCourses = randomCourses(courses);
-	
-     
+      const newCourses = randomCourses(coursesToRandom);
+
+
+    // const newCourses = courses
+
       
       if(suggestedCourses.length <= 0 || loggedUser.length === 0) {
     return(
