@@ -65,6 +65,7 @@ console.log("Cursos aprobados", coursePassed )
       <br/>
       <br/>
        {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
+     
       <div className={styles.footer}>
         <Footer />
       </div>

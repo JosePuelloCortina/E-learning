@@ -1,4 +1,4 @@
-const { Buy , Order, Course, User, Role} = require("../../db");
+const { Buy , Order, Course, User, Role, Clase, BuyClase} = require("../../db");
 
 const {
   DB_HOST,
@@ -126,8 +126,13 @@ server.get("/pagos", async (req, res)=>{
     order.status = "completed" // "approved"
     await order.save()
 
-    const course = await Course.findByPk(order.courseId);
+    const course = await Course.findByPk(order.courseId, {
+      include: [{
+        model: Clase,
+      }]
+    });
     const courseName = course.dataValues.name
+    const courseClases = course.dataValues.clases.map(clase => clase.dataValues.id)
     
     const user = await User.findByPk(order.userId, {
           include: [Role, Buy]
@@ -148,8 +153,16 @@ server.get("/pagos", async (req, res)=>{
       }) //crea la compra
       .then(buyCourse => {
         buyCourse.setCourse(order.courseId)
-        buyCourse.setUser(order.userId)    
+        buyCourse.setUser(order.userId)  
+        buyCourse.addClase(courseClases.map(clase => clase), {through: {
+          status: false,
+          courseId: course.id
+          },
+          
+        })
+
       }) //relaciona la compra con el curso y el usuario
+        
       .catch(error =>{
         console.log(error)
       })
