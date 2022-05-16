@@ -1,16 +1,16 @@
 import React from 'react'
-import styles from './adminSales.module.css'
+import styles from './adminEarnings.module.css'
 import {Link} from 'react-router-dom'
 
-export default function AdminSales(){
+export default function AdminEarnings(){
     return(
-      <Link to="/adminSales">
+      <Link to="/adminEarnings">
         <div className={styles.container}>
         <div className={styles.title}>
-             <h2>Administrar Ventas</h2>
+             <h2>Administrar Ganancias</h2>
         </div>
         <div className={styles.body}>
-          Registro de ventas. Pago de instructores.
+          Administrar ganancias. Modificar porcentaje de comisión. Crear descuentos.
         </div>
         </div>
         </Link>
