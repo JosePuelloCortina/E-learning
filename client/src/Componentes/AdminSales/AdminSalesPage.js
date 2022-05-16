@@ -109,8 +109,8 @@ const courses = useSelector(state => state.courses)
                 <td width='15%'>{e.course.users[0].id}</td>
                 <td width='10%'>{e.course.users[0].cbu? e.course.users[0].cbu : 'No hay CBU registrado'}</td>
                 <td width='10%'>$ {e.total_price}</td>
-                <td width='10%'>$ {e.total_price/5}</td>
-                <td width='10%'>$ {e.total_price/5*4}</td>
+                <td width='10%'>$ {(e.total_price * e.commission) / 100}</td>
+                <td width='10%'>$ {(100 - e.commission) / 100 * e.total_price }</td>
                 <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
                 <td width='10%'><button>Marcar como Pagado</button></td>
                 </tr>

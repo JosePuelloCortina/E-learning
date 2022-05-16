@@ -34,8 +34,11 @@ module.exports = (sequelize) =>{
         payed:{
             type: DataTypes.BOOLEAN,
             defaultValue: false,
+        },
+        commission: {
+            type: DataTypes.DECIMAL,
+            defaultValue: 20,
         }
-    
 
     })
 }
