@@ -15,7 +15,7 @@ const allPurchases = useSelector(state => state.purchases)
 const allUsers = useSelector(state => state.reviews)
 const allIds = allUsers.filter(e => e.id)
 const courses = useSelector(state => state.courses)
-console.log(allPurchases, 'esto es all purchases')
+// console.log(allPurchases, 'esto es all purchases')
 
 
     useEffect(() => dispatch(allUser()), [dispatch])
@@ -101,7 +101,7 @@ console.log(allPurchases, 'esto es all purchases')
             <th width='10%'>Pagado al Instructor</th>
             <th width='10%'>Acción</th>
             </tr>
-         { allPurchases[0].user && allPurchases.map( e => {
+         { allPurchases && allPurchases[0] && allPurchases.map( e => {
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
