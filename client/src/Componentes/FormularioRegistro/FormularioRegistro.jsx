@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./FormularioRegistro.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createUser, allUser } from "../../redux/actions/index";
 import GoogleLogin from "react-google-login";
 import googleIcon from "../../Images/googleIcon.png";
@@ -50,12 +50,18 @@ export function validation(form) {
     errors.confirmacionPassword = "Las contraseñas ingresadas no coinciden";
   }
 
+  if (!form.role || form.role === "Quiero ser") {
+    errors.role = "Tiene que elegir una opcion";
+  }
+
   return errors;
 }
 
 export default function FormularioRegistro() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const users = useSelector((state) => state.user);
   const [errors, setErrors] = React.useState({});
 
   const [form, setForm] = React.useState({
@@ -65,6 +71,7 @@ export default function FormularioRegistro() {
     image: "",
     role: "",
     confirmacionPassword: "",
+    banned: "false",
   });
 
   const handleInputChange = function (e) {
@@ -87,9 +94,11 @@ export default function FormularioRegistro() {
     if (!form.name || !form.password || !form.email) {
       alert("Debes rellenar todos los campos antes de registrarte");
     } else {
-      dispatch(createUser(form));
+      if (Object.keys(errors).length === 0) {
+        dispatch(createUser(form));
 
-      navigate(`/registerok`);
+        navigate(`/registerok`);
+      }
     }
   };
   function handleSelect2(e) {
@@ -97,6 +106,12 @@ export default function FormularioRegistro() {
       ...form,
       role: e.target.value,
     });
+    setErrors(
+      validation({
+        ...form,
+        role: e.target.value,
+      })
+    );
   }
 
   const passwordGenerate = generator.generate({
@@ -110,16 +125,21 @@ export default function FormularioRegistro() {
     email: "",
     image: "",
     role: "alumno",
+    banned: "false",
   };
 
   const handleSucces = (response) => {
-    user.name = response.profileObj.name;
-    user.email = response.profileObj.email;
-    user.image = response.profileObj.imageUrl;
-    console.log(user);
-    dispatch(createUser(user));
-    dispatch(allUser());
-    navigate(`/registerok`);
+    const searchUser = users.find((u) => u.email === response.profileObj.email);
+    if (searchUser === undefined) {
+      user.name = response.profileObj.name;
+      user.email = response.profileObj.email;
+      user.image = response.profileObj.imageUrl;
+      dispatch(createUser(user));
+      dispatch(allUser());
+      navigate(`/registerok`);
+    } else {
+      alert("Ese usuario ya se encuentra registrado");
+    }
   };
 
   const handleFailure = () => {};
@@ -208,6 +228,7 @@ export default function FormularioRegistro() {
               <option value="alumno">Alumno</option>
             </select>
           </div>
+          {errors.role && <p>{errors.role}</p>}
           {/* </div> */}
 
           <button class={style.buttonYellow} type="submit">
