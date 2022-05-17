@@ -97,26 +97,10 @@ export function getUserById(id) {
   };
 }
 
-// export function updateUser(id, payload) {
-//   return async function (dispatch) {
-//     try {
-//       await axios.put(`http://localhost:3001/user/update/id/${id}`, payload);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }
-
-
-
 export function updateUser(id, payload) {
   return async function (dispatch) {
     try {
-      const update = await axios.put(
-        `http://localhost:3001/user/update/id/${id}`,
-        payload
-      );
-      dispatch({ type: "EDIT_USER_BY_ID", payload: update.data });
+      await axios.put(`http://localhost:3001/user/update/id/${id}`, payload);
     } catch (error) {
       console.log(error);
     }
