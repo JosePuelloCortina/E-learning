@@ -11,12 +11,23 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./adminPageCourses.module.css";
 import RevisionCourse from "./RevisionCourse";
 import NavBar from "../NavBar/NavBar";
+import Pagination from "../Pagination/Pagination";
 
 function AdminPageCourses() {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.coursesBackUp);
+  const coursesApro = courses.filter((c) => c.state === "passed");
 
   const [currentCourse, setcurrentCourse] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [coursesPerPage] = useState(8);
+  const lastCourseIndex = currentPage * coursesPerPage;
+  const firstCourseIndex = lastCourseIndex - coursesPerPage;
+  const currentCourses = coursesApro.slice(firstCourseIndex, lastCourseIndex);
+
+  // const [currentUser, setCurrentUser] = useState(0);
 
   const handleCargaCourse = (e) => {
     setcurrentCourse(courses.find((curs) => curs.id === e.target.value));
@@ -77,7 +88,7 @@ function AdminPageCourses() {
 
         <div className={styles.containerCourse}>
           <h1 className={styles.h2}>Cursos Aprobados</h1>
-          {courses.map((curs) => {
+          {currentCourses.map((curs) => {
             if (curs.state === "passed") {
               return (
                 <div className={styles.map}>
@@ -96,6 +107,13 @@ function AdminPageCourses() {
               );
             }
           })}
+          <Pagination
+            currentPage={currentPage}
+            coursesPerPage={coursesPerPage}
+            lastCourseIndex={lastCourseIndex}
+            allCourses={coursesApro}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
 

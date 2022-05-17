@@ -9,12 +9,12 @@ import MyCoursesInstructor from "./../MyCoursesInstructor/MyCoursesInstructor";
 import ProfileLateralBar from "../ProfileLateralBar/ProfileLateralBar";
 import Error404 from "../Error404/Error404";
 
-import AdminCourses from "../AdminCourses/AdminCourses"
-import AdminSales from "../AdminSales/AdminSales"
-import AdminReviews from "../AdminReviews/AdminReviews"
-import AdminCategories from "../AdminCategories/AdminCategories"
-import AdminUsers from "../AdminUsers/AdminUsers"
-import AdminEarnings from "../AdminEarnings/AdminEarnings"
+import AdminCourses from "../AdminCourses/AdminCourses";
+import AdminSales from "../AdminSales/AdminSales";
+import AdminReviews from "../AdminReviews/AdminReviews";
+import AdminCategories from "../AdminCategories/AdminCategories";
+import AdminUsers from "../AdminUsers/AdminUsers";
+import AdminEarnings from "../AdminEarnings/AdminEarnings";
 import MySalesInstructor from "../MySalesInstructor/MySalesInstructor";
 
 import { getUserById, getAvatares, allUser } from "../../redux/actions/index";
@@ -54,19 +54,20 @@ export default function UserProfile() {
                 />
               </div>
               <div className={styles.cursesDetail}>
-
-                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "alumno").length >
+                {/* {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "alumno").length >
                   0 && <div>
                   <MyCoursesAlumn user={userDetail} />
                   <MyPurchases user={userDetail} />
                   </div>
-                  }
-                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "instructor")
-                  .length > 0 && <div>
-                  <MyCoursesInstructor user={userDetail} />
-                  <MySalesInstructor user={userDetail} />
-                  </div>
-                  }
+                  } */}
+                {userDetail.roles &&
+                  userDetail.roles.filter((r) => r.tipo === "instructor")
+                    .length > 0 && (
+                    <div>
+                      <MyCoursesInstructor user={userDetail} />
+                      <MySalesInstructor user={userDetail} />
+                    </div>
+                  )}
 
                 {userDetail.roles &&
                   userDetail.roles.filter((r) => r.tipo === "alumno").length >
@@ -74,25 +75,24 @@ export default function UserProfile() {
                     <div>
                       <MyCoursesAlumn user={userDetail} />
                       <MyPurchases user={userDetail} />
-
                     </div>
                   )}
                 {userDetail.roles &&
                   userDetail.roles.filter((r) => r.tipo === "instructor")
                     .length > 0 && <MyCoursesInstructor user={userDetail} />}
-                {userDetail.roles && userDetail.roles.filter((r) => r.tipo === "admin").length > 0 && (
+                {userDetail.roles &&
+                  userDetail.roles.filter((r) => r.tipo === "admin").length >
+                    0 && (
                     <div className={styles.admin}>
                       <div className={styles.left}>
                         <AdminSales />
-                        <AdminEarnings/>
+                        <AdminEarnings />
                         <AdminCourses />
-                        
                       </div>
                       <div className={styles.right}>
                         <AdminUsers />
                         <AdminReviews />
                         <AdminCategories />
-                        
                       </div>
                     </div>
                   )}
