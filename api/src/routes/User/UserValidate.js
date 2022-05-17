@@ -3,6 +3,8 @@ const { User } = require("../../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+const { DB_HOST } = process.env;
+
 const getUsersDb = async () => {
   const info = User.findAll({
     raw: true,
@@ -51,14 +53,19 @@ router.get("/validated/:tokenRegister", async (req, res) => {
     });
   }
 
+  const BASE_URL =
+    DB_HOST === "localhost"
+      ? "http://localhost:3000"
+      : "https://akademit.vercel.app";
+
   if (code !== user.code) {
-    return res.redirect("https://akademit.vercel.app/error");
+    return res.redirect(`${BASE_URL}/error`);
   }
 
   user.validated = "true";
   await user.save();
 
-  return res.redirect("https://akademit.vercel.app/user/verification");
+  return res.redirect(`${BASE_URL}/user/verification`);
 });
 
 router.post("/login", async (req, res) => {

@@ -24,7 +24,7 @@ function Checkout() {
   useEffect(() => {
     dispatch(getCoursesById(id));
     axios
-      .post(`https://deploy-akademit.herokuapp.com/mercadopago`, datos)
+      .post(`/mercadopago`, datos)
       .then((data) => {
         setDatos(data.data);
         console.info("Contenido de data:", data);

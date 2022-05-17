@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const { uuid } = require("uuidv4");
-const { PASS_EMAIL } = process.env;
+const { PASS_EMAIL, DB_HOST } = process.env;
 
 const mail = {
   user: "akademit.adm@gmail.com",
@@ -24,6 +24,11 @@ let transporter = nodemailer.createTransport({
   },
 });
 
+const BASE_URL3 =
+  DB_HOST === "localhost"
+    ? "http://localhost:3001"
+    : "https://deploy-akademit.herokuapp.com";
+
 const sendEmail = async (email, subject, tokenRegister) => {
   try {
     await transporter.sendMail({
@@ -32,7 +37,7 @@ const sendEmail = async (email, subject, tokenRegister) => {
       subject,
       text: "Hola amigos",
       html: `<b>Click en el siguiente link para verificar su cuenta</b>
-              <a href="https://deploy-akademit.herokuapp.com/user/validated/${tokenRegister}">Verificar usuario</a>`, // html body
+              <a href="${BASE_URL3}/user/validated/${tokenRegister}">Verificar usuario</a>`, // html body
     });
   } catch (error) {
     console.log("Algo no va bien con el email", error);

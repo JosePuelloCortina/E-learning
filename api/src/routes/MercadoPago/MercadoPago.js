@@ -5,6 +5,11 @@ const { DB_HOST, BASE_URL, ACCESS_TOKEN } = process.env;
 // const BASE_URL = process.env.NODE_BASE_URL ? process.env.NODE_BASE_URL : 'http://localhost:3000'
 // const BASE_BACK = process.env.NODE_BASE_BACK ? process.env.NODE_BASE_BACK : 'http://localhost:3001'
 
+const BASE_URL2 =
+  DB_HOST === "localhost"
+    ? "http://localhost:3000"
+    : "https://akademit.vercel.app";
+
 const server = require("express").Router();
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
@@ -74,10 +79,10 @@ server.post("/", async (req, res, next) => {
       external_reference: `${newOrder.dataValues.id}`, //`${new Date().valueOf()}`,
 
       back_urls: {
-        success: `https://akademit.vercel.app/purchaseok`,
-        failure: `https://akademit.vercel.app/home`,
-        pending: `https://akademit.vercel.app/home`,
-        rejected: `https://akademit.vercel.app/home`,
+        success: `${BASE_URL2}/purchaseok`,
+        failure: `${BASE_URL2}/home`,
+        pending: `${BASE_URL2}/home`,
+        rejected: `${BASE_URL2}/home`,
       },
       payment_methods: {
         excluded_payment_types: [{ id: "ticket" }],
@@ -179,7 +184,7 @@ server.get("/pagos", async (req, res) => {
       res.json({ status: "approved" });
     } else if (payment_status === "rejected") {
       console.log("payment not approved");
-      return res.redirect(`https://akademit.vercel.app/home`);
+      return res.redirect(`${BASE_URL2}/home`);
     } else {
       res.json({ status: "not approved" });
     }

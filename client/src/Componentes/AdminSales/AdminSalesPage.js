@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./adminSalesPage.module.css";
 import NavBar from "../NavBar/NavBar";
 import Footer from "./../Footer/Footer";
+import Pagination from "../Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -25,6 +26,18 @@ export default function AdminSalesPage() {
   const allIds = allUsers.filter((e) => e.id);
   const courses = useSelector((state) => state.courses);
   console.log(allPurchases, "esto es all purchases");
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [coursesPerPage] = useState(5);
+  const lastCourseIndex = currentPage * coursesPerPage;
+  const firstCourseIndex = lastCourseIndex - coursesPerPage;
+  const currentPurchases = allPurchases.slice(
+    firstCourseIndex,
+    lastCourseIndex
+  );
+
+  const [currentUser, setCurrentUser] = useState(0);
 
   useEffect(() => dispatch(allUser()), [dispatch]);
   useEffect(() => dispatch(allCourses()), [dispatch]);
@@ -125,9 +138,9 @@ export default function AdminSalesPage() {
                   <th width="10%">Pagado al Instructor</th>
                   <th width="10%">Acción</th>
                 </tr>
-                {allPurchases &&
-                  allPurchases[0] &&
-                  allPurchases.map((e) => {
+                {currentPurchases &&
+                  currentPurchases[0] &&
+                  currentPurchases.map((e) => {
                     console.log(e.id, "esto es e id");
                     return (
                       <tr>
@@ -164,6 +177,13 @@ export default function AdminSalesPage() {
               </tbody>
             </table>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            coursesPerPage={coursesPerPage}
+            lastCourseIndex={lastCourseIndex}
+            allCourses={allPurchases}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
       <Footer />

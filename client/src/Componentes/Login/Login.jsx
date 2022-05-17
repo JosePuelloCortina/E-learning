@@ -74,10 +74,7 @@ export default function Login() {
     event.preventDefault();
 
     if (validate.email !== "" && validate.password !== "") {
-      const token = await axios.post(
-        `https://deploy-akademit.herokuapp.com/user/login`,
-        validate
-      );
+      const token = await axios.post(`/user/login`, validate);
 
       const usuario = users.find((user) => user.email === validate.email);
       if (
@@ -106,13 +103,10 @@ export default function Login() {
     );
 
     if (userGoogle !== undefined) {
-      const token = await axios.post(
-        `https://deploy-akademit.herokuapp.com/user/login`,
-        {
-          email: userGoogle.email,
-          password: userGoogle.password,
-        }
-      );
+      const token = await axios.post(`/user/login`, {
+        email: userGoogle.email,
+        password: userGoogle.password,
+      });
 
       if (
         token.data.user &&

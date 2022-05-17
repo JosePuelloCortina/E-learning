@@ -396,12 +396,24 @@ export function updateBuy(id, payload) {
 }
 
 export function claseSetStatus(payload) {
-  console.log(payload);
   return async function(dispatch) {
     try {
       await axios.put(`/buy/setStatus`, payload);
       return dispatch({
         type: "SET_STATUS",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function courseSetReview(payload) {
+  return async function(dispatch) {
+    try {
+      await axios.put(`/courses/updateReview`, payload);
+      return dispatch({
+        type: "SET_REVIEW",
       });
     } catch (error) {
       console.log(error);
