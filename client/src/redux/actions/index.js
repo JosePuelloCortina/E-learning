@@ -399,14 +399,16 @@ export function searchSaleById(payload){
   return {type: "SEARCH_SALE_BY_ID", payload}
 }
 
-export function updateBuy(id, payload) {
+
+export function claseSetStatus(payload) {
+  console.log(payload);
   return async function (dispatch) {
     try {
-      const update = await axios.put(
-        `http://localhost:3001/buy/update/${id}`,
-        payload
-      );
-      dispatch({ type: "UPDATE_BUY", payload: update.data });
+      await axios.put(`http://localhost:3001/buy/setStatus`, payload);
+      return dispatch({
+        type: "SET_STATUS",
+      });
+
     } catch (error) {
       console.log(error);
     }

@@ -39,7 +39,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Role, Buy, Course, Clase, Category, Order, Avatar, Review} = sequelize.models;
+const { User, Role, Buy, Course, Clase, Category, Order, Avatar, Review, BuyClase} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -59,6 +59,10 @@ Buy.belongsTo(User);
 Course.hasMany(Buy);
 Buy.belongsTo(Course); 
 
+// Relacion de compra a clases // Cada clase muchas compras cada compraa muchas clases
+Buy.belongsToMany(Clase, { through: BuyClase});
+Clase.belongsToMany(Buy, { through: BuyClase});
+
 // Relacion muchos a muchos usuarios -> cursos 
 User.belongsToMany(Course, { through: 'userCourse'});
 Course.belongsToMany(User, { through: 'userCourse'});
@@ -72,6 +76,8 @@ User.belongsToMany(Category, { through: 'categoriaUser'});
 Category.belongsToMany(User, { through: 'categoriaUser'});
 
 
+
+
 //Relacion de muchos a uno curso -> clase
 Course.hasMany(Clase);
 Clase.belongsTo(Course);
@@ -80,8 +86,6 @@ User.hasMany(Order)
 Order.belongsTo(User)
 
 Order.hasMany(Buy)
-Course.hasMany(Buy)
-Buy.belongsTo(Course)
 
 Avatar.hasMany(User);
 User.belongsTo(Avatar);
@@ -89,6 +93,10 @@ User.belongsTo(Avatar);
 //Relación de muchos a uno curso -> reviews
 Course.hasMany(Review);
 Review.belongsTo(Course);
+
+
+
+
 
 
 module.exports = {

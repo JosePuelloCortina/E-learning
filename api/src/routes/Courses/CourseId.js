@@ -26,6 +26,8 @@ router.get("/id/:id", async (req, res) => {
     if (!course) {
       res.status(404).send("This course is not found");
     }
+    const courseClases = course.dataValues.clases.map(clase => clase.dataValues.id)
+    console.log(courseClases, 'courseClases')
     res.status(200).send(course);
   } catch (error) {
     console.log(error);
