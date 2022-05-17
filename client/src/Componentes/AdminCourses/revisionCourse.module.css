@@ -129,6 +129,25 @@
     
 }
 
+
+
+ .containerClases .buttonAprobClass {
+
+    color: rgb(0, 0, 0);
+    background: #ff9b00;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif ;
+    font-size: 20px;
+    border-radius: 17px;
+    border: solid var(--color4) 2px;
+    width: auto;
+    height: 50px;
+    font-weight: bold;
+    margin-top: 50px;
+
+    
+}
+
 .container .buttonEdicion button:hover {
     background: rgb(122, 3, 122);
     color: white;
@@ -187,7 +206,7 @@
 
 .classes .deshabilitado {
 
-    color: rgba(255, 0, 0, 0.266);
+    color: rgba(255, 0, 0);
      
 }
 
