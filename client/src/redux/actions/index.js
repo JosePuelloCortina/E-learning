@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export function allUser() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const users = await axios.get(`http://localhost:3001/user`);
+      const users = await axios.get(`/user`);
       return dispatch({
         type: "ALL_USERS",
         payload: users.data,
@@ -15,9 +15,9 @@ export function allUser() {
 }
 
 export function allCategories() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const users = await axios.get(`http://localhost:3001/category`);
+      const users = await axios.get(`/category`);
       return dispatch({
         type: "ALL_CATEGORIES",
         payload: users.data,
@@ -29,50 +29,50 @@ export function allCategories() {
 }
 
 export function createUser(form) {
-  return async function (dispatch) {
-    await axios.post(`http://localhost:3001/user/create`, form);
+  return async function(dispatch) {
+    await axios.post(`/user/create`, form);
     dispatch({ type: "POST_USER" });
   };
 }
 
 export function createCourse(form) {
-  return async function (dispatch) {
-    await axios.post(`http://localhost:3001/courses/create`, form);
+  return async function(dispatch) {
+    await axios.post(`/courses/create`, form);
     dispatch({ type: "POST_COURSE" });
   };
 }
 
 export function createClass(form) {
-  return async function (dispatch) {
-    await axios.post(`http://localhost:3001/classes/create`, form);
+  return async function(dispatch) {
+    await axios.post(`/classes/create`, form);
     dispatch({ type: "POST_CLASS" });
   };
 }
 
 export function validateUser(form) {
-  return async function (dispatch) {
-    const token = await axios.post(`http://localhost:3001/user/login`, form);
+  return async function(dispatch) {
+    const token = await axios.post(`/user/login`, form);
     console.log(token.data);
     dispatch({ type: "VALIDATE_USER", payload: token.data });
   };
 }
 
 export function removeToken() {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({ type: "REMOVE_TOKEN" });
   };
 }
 
 export function removeUserDetail() {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({ type: "REMOVE_USER_DETAIL" });
   };
 }
 
 export function allCourses() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const users = await axios.get(`http://localhost:3001/courses/all`);
+      const users = await axios.get(`/courses/all`);
       return dispatch({
         type: "ALL_COURSES",
         payload: users.data,
@@ -84,9 +84,9 @@ export function allCourses() {
 }
 
 export function getUserById(id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const user = await axios.get(`http://localhost:3001/user/id/${id}`);
+      const user = await axios.get(`/user/id/${id}`);
       return dispatch({
         type: "GET_USER_BY_ID",
         payload: user.data,
@@ -98,25 +98,19 @@ export function getUserById(id) {
 }
 
 export function updateUser(id, payload) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.put(`http://localhost:3001/user/update/id/${id}`, payload);
+      await axios.put(`/user/update/id/${id}`, payload);
     } catch (error) {
       console.log(error);
     }
   };
 }
 
-
-
-
 export function editCoursesById(id, payload) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const update = await axios.put(
-        `http://localhost:3001/courses/update/id/${id}`,
-        payload
-      );
+      const update = await axios.put(`/courses/update/id/${id}`, payload);
       dispatch({ type: "EDIT_COURSES_BY_ID", payload: update.data });
     } catch (error) {
       console.log(error);
@@ -125,12 +119,9 @@ export function editCoursesById(id, payload) {
 }
 
 export function editClassById(id, payload) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const update = await axios.put(
-        `http://localhost:3001/classes/update/id/${id}`,
-        payload
-      );
+      const update = await axios.put(`/classes/update/id/${id}`, payload);
       dispatch({ type: "EDIT_CLASS_BY_ID", payload: update.data });
     } catch (error) {
       console.log(error);
@@ -140,14 +131,14 @@ export function editClassById(id, payload) {
 
 export const getClassById = (id) => {
   return async (dispatch) => {
-    const json = await axios.get(`http://localhost:3001/classes/id/${id}`);
+    const json = await axios.get(`/classes/id/${id}`);
     dispatch({ type: "GET_CLASS_BY_ID", payload: json.data });
   };
 };
 
 export const getCoursesById = (id) => {
   return async (dispatch) => {
-    const json = await axios.get(`http://localhost:3001/courses/id/${id}`);
+    const json = await axios.get(`/courses/id/${id}`);
     dispatch({ type: "GET_COURSES_BY_ID", payload: json.data });
   };
 };
@@ -162,18 +153,14 @@ export const removeClassDetail = () => {
 
 export const removeCourse = (id) => {
   return async (dispatch) => {
-    const json = await axios.delete(
-      `http://localhost:3001/courses/delete/id/${id}`
-    );
+    const json = await axios.delete(`/courses/delete/id/${id}`);
     dispatch({ type: "REMOVE_COURSE" });
   };
 };
 
 export const removeClass = (id) => {
   return async (dispatch) => {
-    const json = await axios.delete(
-      `http://localhost:3001/classes/delete/id/${id}`
-    );
+    const json = await axios.delete(`/classes/delete/id/${id}`);
     dispatch({ type: "REMOVE_CLASS" });
   };
 };
@@ -181,9 +168,7 @@ export const removeClass = (id) => {
 export const courseSearch = (name) => {
   return async (dispatch) => {
     try {
-      const course = await axios.get(
-        "http://localhost:3001/courses/search?name=" + name
-      );
+      const course = await axios.get("/courses/search?name=" + name);
       dispatch({ type: "GET_SEARCH_COURSE", payload: course.data });
     } catch (error) {
       console.log(error);
@@ -228,9 +213,9 @@ export const removeLoggedUser = (payload) => {
 };
 
 export function purchase(payload) {
-  return async function () {
+  return async function() {
     try {
-      await axios.post(`http://localhost:3001/buy/`, payload);
+      await axios.post(`/buy/`, payload);
     } catch (error) {
       console.log(error);
     }
@@ -238,9 +223,9 @@ export function purchase(payload) {
 }
 
 export function getAllClasses() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const classes = await axios.get(`http://localhost:3001/classes/all`);
+      const classes = await axios.get(`/classes/all`);
       return dispatch({
         type: "GET_ALL_CLASSES",
         payload: classes.data,
@@ -252,8 +237,8 @@ export function getAllClasses() {
 }
 
 export function getAvatares() {
-  return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/avatar");
+  return async function(dispatch) {
+    var json = await axios.get("/avatar");
     return dispatch({
       type: "GET_AVATARES",
       payload: json.data,
@@ -262,16 +247,16 @@ export function getAvatares() {
 }
 
 export function createReview(payload) {
-  return async function (dispatch) {
-    await axios.post(`http://localhost:3001/review/create`, payload);
+  return async function(dispatch) {
+    await axios.post(`/review/create`, payload);
     dispatch({ type: "POST_REVIEW" });
   };
 }
 
 export function getAllReviews() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const classes = await axios.get(`http://localhost:3001/review/all`);
+      const classes = await axios.get(`/review/all`);
       return dispatch({
         type: "GET_ALL_REVIEWS",
         payload: classes.data,
@@ -284,15 +269,15 @@ export function getAllReviews() {
 
 export const deleteReview = (id) => {
   return async (dispatch) => {
-    await axios.delete(`http://localhost:3001/review/${id}`);
+    await axios.delete(`/review/${id}`);
     dispatch({ type: "DELETE_REVIEW" });
   };
 };
 
 export function confirmPayment() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.get(`http://localhost:3001/mercadopago/pagos`);
+      await axios.get(`/mercadopago/pagos`);
       return dispatch({
         type: "GET_ALL_PAYMENTS",
       });
@@ -304,15 +289,15 @@ export function confirmPayment() {
 
 export const deleteUser = (id) => {
   return async (dispatch) => {
-    await axios.delete(`http://localhost:3001/user/delete/${id}`);
+    await axios.delete(`/user/delete/${id}`);
     dispatch({ type: "DELETE_USER" });
   };
 };
 
 export function getAllPurchases() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const purchases = await axios.get(`http://localhost:3001/buy/all`);
+      const purchases = await axios.get(`/buy/all`);
       return dispatch({
         type: "GET_ALL_PURCHASES",
         payload: purchases.data,
@@ -323,9 +308,9 @@ export function getAllPurchases() {
   };
 }
 export function createCategory(name) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.post(`http://localhost:3001/category/create`, { name: name });
+      await axios.post(`/category/create`, { name: name });
       return dispatch({
         type: "CREATE_CATEGORY",
       });
@@ -335,9 +320,9 @@ export function createCategory(name) {
   };
 }
 export function removeCategory(id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.delete(`http://localhost:3001/category/${id}`);
+      await axios.delete(`/category/${id}`);
       return dispatch({
         type: "REMOVE_CATEGORY",
       });
@@ -348,9 +333,9 @@ export function removeCategory(id) {
 }
 
 export function reportReview(id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.put(`http://localhost:3001/review/update/${id}`);
+      await axios.put(`/review/update/${id}`);
       dispatch({ type: "REPORT_REVIEW" });
     } catch (error) {
       console.log(error);
@@ -375,9 +360,9 @@ export function filterByBlocked(payload) {
 }
 
 export function searchUser(id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const user = await axios.get(`http://localhost:3001/user/id/${id}`);
+      const user = await axios.get(`/user/id/${id}`);
       return dispatch({
         type: "SEARCH_USER",
         payload: user.data,
@@ -387,25 +372,22 @@ export function searchUser(id) {
     }
   };
 }
-export function filterPurchasesByCourse(payload){
-  return {type: "FILTER_PURCHASES_BY_COURSE", payload}
+export function filterPurchasesByCourse(payload) {
+  return { type: "FILTER_PURCHASES_BY_COURSE", payload };
 }
 
-export function filterSalesByPayed(payload){
-  return {type: "FILTER_SALES_BY_PAYED", payload}
+export function filterSalesByPayed(payload) {
+  return { type: "FILTER_SALES_BY_PAYED", payload };
 }
 
-export function searchSaleById(payload){
-  return {type: "SEARCH_SALE_BY_ID", payload}
+export function searchSaleById(payload) {
+  return { type: "SEARCH_SALE_BY_ID", payload };
 }
 
 export function updateBuy(id, payload) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const update = await axios.put(
-        `http://localhost:3001/buy/update/${id}`,
-        payload
-      );
+      const update = await axios.put(`/buy/update/${id}`, payload);
       dispatch({ type: "UPDATE_BUY", payload: update.data });
     } catch (error) {
       console.log(error);
@@ -413,16 +395,14 @@ export function updateBuy(id, payload) {
   };
 }
 
-
 export function claseSetStatus(payload) {
   console.log(payload);
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      await axios.put(`http://localhost:3001/buy/setStatus`, payload);
+      await axios.put(`/buy/setStatus`, payload);
       return dispatch({
         type: "SET_STATUS",
       });
-
     } catch (error) {
       console.log(error);
     }
