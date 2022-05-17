@@ -324,7 +324,7 @@ export default function rootReducer(state = initialState, action) {
               }
             case "SEARCH_SALE_BY_ID": 
             const allSales1 = state.purchasesCopy
-            const salesById = allSales1.filter(e => e.course.users[0].id === action.payload) 
+            const salesById = action.payload.length ? allSales1.filter(e => e.course.users[0].id === action.payload): allSales1 
             return{
               ...state,
               purchases: salesById
