@@ -1,3 +1,4 @@
+
 import React from 'react'
 import styles from './adminSalesPage.module.css'
 import NavBar from "../NavBar/NavBar"
