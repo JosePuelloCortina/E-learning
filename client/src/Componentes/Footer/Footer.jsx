@@ -1,14 +1,16 @@
 import React from "react";
 import styles from "./Footer.module.css";
-
+import {Link} from "react-router-dom"; 
 function Footer() {
   return (
     <div className={styles.container}>
       <div className={styles.footerLeft}>
         <div className={styles.footerLinks}>
-          <a className={styles.link} href="#">
+          <Link to ="/nosotros">
+          <a className={styles.link} href="/nosotros">
             Sobre Nosotros
           </a>
+          </Link>
           <a className={styles.link} href="#">
             Contacto
           </a>

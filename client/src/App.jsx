@@ -29,7 +29,7 @@ import AdminEarningsPage from "./Componentes/AdminEarnings/AdminEarningsPage";
 import FormClass from "./Componentes/FormClass/FormClass";
 import Contenido from "./Componentes/Chatbot/Chatbot"
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
-
+import Nosotros from "./Componentes/Nosotros/Nosotros";
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
 import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
@@ -43,6 +43,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/home" element={<Home />} />
+          <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route exact path="/chatbox" element={<Contenido />} />
           <Route path="/form" element={<FormularioRegistro />} />
