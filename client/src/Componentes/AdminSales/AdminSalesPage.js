@@ -1,8 +1,7 @@
-
 import React from 'react'
 import styles from './adminSalesPage.module.css'
 import NavBar from "../NavBar/NavBar"
-import Footer from './../Footer/Footer';
+import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { getAllReviews, deleteReview, filterByReported, 
