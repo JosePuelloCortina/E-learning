@@ -23,102 +23,41 @@ const courses = useSelector(state => state.courses)
     useEffect(() => dispatch( getAllPurchases()), [dispatch])
     const [input, setInput] = useState("")
 
-    function handleDelete(e){
-        e.preventDefault(e);
-        if (window.confirm("¿Desea eliminar este comentario?") === true) {
-            dispatch(deleteReview(e.target.name));
-            alert("Comentario eliminado.");
-            dispatch(getAllReviews());
-       
-          } else {
-            alert("Cancelado.")
-          }
-    }
 
-    function handleFilterPayed(e){
-        e.preventDefault(e);
-        dispatch(filterSalesByPayed(e.target.value));
-    }
-    function handleSearch(e){
-        e.preventDefault(e);
-        dispatch(searchSaleById(input))
-    }
-
-    function handleInputChange(e){
-        setInput(e.target.value)
-    }
-
-    function handleFilterCourse(e){
-        e.preventDefault(e);
-        dispatch(filterPurchasesByCourse(e.target.value));
-    }
+const allEarnings = allPurchases.map( e => e.total_price)
+console.log(allEarnings, 'eesto es all earnings')
+const totalEarnings = allEarnings.reduce((prev, curr) => prev + curr, 0)
+console.log(totalEarnings, 'esto es total earnings')
+const finalEarnings = totalEarnings / 5
+console.log(finalEarnings, 'final earnings')
 
     return(
     <div>
         <NavBar/>
         <div className={styles.container}>
         <div className={styles.title}>
-             <h2>Administrar Ganancias</h2>
+             <h2>Estadísticas</h2>
         </div>
         <div className={styles.body}>
-         <div className={styles.top}>
-         {/* <h3>Filtrar por: </h3>
-            <select onChange={handleFilterCourse}>
-            <option value="all">Curso</option>
-            {courses && courses.map(e => {
-                return(
-                    <option value={e.name}>{e.name}</option>
-                )
-            })}
-                
-            </select>
+         <div className={styles.insideBody}>
 
-            <select onChange={handleFilterPayed}>
-                <option value="all">Todas</option>
-                <option value="payed">Pagadas</option>
-                <option value="notPayed">Sin pagar</option>
-            </select>
-
-         
-            <h3>Buscar por ID Instructor </h3>
-            <input onChange={handleInputChange} value={input} />
-            <button className={styles.buscar} onClick={handleSearch}>Buscar</button> */}
-         </div>
-         <div className={styles.bottom}>
-{/* 
-         <table className={styles.table} border="1" >
-        <tbody>
-            <tr>
-            <th width='20%'>Nombre del Curso</th>
-            <th width='10%'>Nombre Instructor</th>
-            <th width='15%'>ID Instructor</th>
-            <th width='10%'>CBU Instructor</th>
-            <th width='10%'>Precio del Curso</th>
-            <th width='10%'>Ganancia Admin</th>
-            <th width='10%'>Ganancia Instructor</th>
-            <th width='10%'>Pagado al Instructor</th>
-            <th width='10%'>Acción</th>
-            </tr>
-         { allPurchases && allPurchases[0] && allPurchases.map( e => {
-             return (
-                <tr>
-                <td width='20%'>{e.courseName}</td>
-                <td width='10%'>{e.course.users[0].name}</td>
-                <td width='15%'>{e.course.users[0].id}</td>
-                <td width='10%'>{e.course.users[0].cbu? e.course.users[0].cbu : 'No hay CBU registrado'}</td>
-                <td width='10%'>$ {e.total_price}</td>
-                <td width='10%'>$ {e.total_price/5}</td>
-                <td width='10%'>$ {e.total_price/5*4}</td>
-                <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
-                <td width='10%'><button>Marcar como Pagado</button></td>
-                </tr>
-             )
-         })}
+         <div className={styles.numbers}>
+            <h2>Datos totales</h2>
+            <p>Total Usuarios</p>
+            <p>Total Instructores</p>
+            <p>Total Alumnos</p>
+            <p>Total Cursos</p>
+            <p>Total Ventas</p>
             
-     
-        </tbody>
-        </table> */}
          </div>
+         <div className={styles.totalEarnings}>
+            <h2>Ganancias Totales</h2>
+            <h3>$ {finalEarnings}</h3>
+         </div>
+        
+        
+         </div>
+         
         </div>
         </div>
         <Footer/>

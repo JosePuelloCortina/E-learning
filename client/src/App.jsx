@@ -76,7 +76,7 @@ function App() {
 
           <Route exact path="/AdminUsers" element={<AdminUsersPage />} />
           <Route exact path="/AdminSales" element={<AdminSalesPage />} />
-          <Route exact path="/AdminEarnings" element={<AdminEarningsPage />} />
+          <Route exact path="/statistics" element={<AdminEarningsPage />} />
 
           <Route
             exact
