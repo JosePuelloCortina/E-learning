@@ -225,6 +225,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classDetail: action.payload,
       };
+
+      case "EDIT_USER_BY_ID":
+      return {
+        ...state,
+        userDetail: action.payload,
+      };
+
     case "DELETE_REVIEW":
       return {
         ...state,

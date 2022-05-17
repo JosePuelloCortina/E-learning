@@ -14,6 +14,8 @@ server.put("/update/id/:id", async (req, res) => {
     rol,
     validated,
     banned,
+    cbu
+    
   } = req.body;
   // if (!name || !newPassword || !email) {
   //   return res.status(422).json({ error: "No se enviaron todos los datos" });
@@ -35,10 +37,13 @@ server.put("/update/id/:id", async (req, res) => {
             image: image,
             validated: validated,
             banned: banned,
+            cbu:cbu
+
           })
           .then((userUpdate) => {
             if (categories) {
               userUpdate.setCategories(categories).then(async () => {
+
                 userUpdate.categories = await userUpdate.getCategories();
               });
             }
