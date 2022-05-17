@@ -2,7 +2,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./FormCourses.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCourse, allUser, allCourses } from "../../redux/actions/index";
+import {
+  createCourse,
+  allUser,
+  allCourses,
+  updateUser,
+} from "../../redux/actions/index";
 
 export function validation(form) {
   let errors = {};
@@ -25,12 +30,29 @@ export function validation(form) {
   return errors;
 }
 
+export function validation2(formUser) {
+  let errors2 = {};
+
+  //CBU
+
+  if (!formUser.cbu) {
+    errors2.cbu = "Ingrese un valor";
+  } else if (!Number(formUser.cbu)) {
+    errors2.cbu = "El valor debe ser un entero";
+  } else if (formUser.cbu.length !== 22) {
+    errors2.cbu = "La longuitud del valor debe ser de 22 caracteres";
+  }
+
+  return errors2;
+}
+
 export default function FormularioRegistro() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.userDetail);
   const categories = useSelector((state) => state.categories);
   const [errors, setErrors] = React.useState({});
+  const [errors2, setErrors2] = React.useState({});
 
   const [form, setForm] = React.useState({
     name: "",
@@ -41,8 +63,27 @@ export default function FormularioRegistro() {
     category: "",
     deshabilitar: "revisar",
     state: "inprocess",
-    commentary:""
+    commentary: "",
   });
+
+  const [formUser, setFormUser] = React.useState({
+    cbu: user.cbu,
+  });
+
+  const handleInputChange2 = function (e) {
+    console.log(e);
+
+    setFormUser({
+      ...formUser,
+      [e.target.name]: e.target.value,
+    });
+    setErrors2(
+      validation2({
+        ...formUser,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
 
   const handleInputChange = function (e) {
     console.log(e);
@@ -61,14 +102,25 @@ export default function FormularioRegistro() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    if (!form.name || !form.description || !form.price) {
-      alert("Debes rellenar todos los campos antes de registrarte");
+
+
+    
+    if (!form.name || !form.description || !form.price || !formUser.cbu) {
+      alert("Debes rellenar todos los campos antes de crear el curso");
     } else {
-      dispatch(createCourse(form));
-      dispatch(allCourses());
-      navigate(`/courseok`);
+      if (
+        Object.keys(errors).length === 0 &&
+        Object.keys(errors2).length === 0
+      ) {
+        dispatch(createCourse(form));
+        dispatch(updateUser(user.id, formUser));
+        dispatch(allCourses());
+        navigate(`/courseok`);
+      }
     }
-  };
+  }
+
+
 
   function handleAddCategory(e) {
     if (
@@ -125,7 +177,24 @@ export default function FormularioRegistro() {
                 value={form.price}
               />
             </div>
+
             {errors.price && <p>{errors.price}</p>}
+
+            {!user.cbu ? (
+              <div class={style.SubcontainerInput}>
+                <label>CBU:</label>
+                <input
+                  type="text"
+                  name="cbu"
+                  placeholder="cbu"
+                  autoComplete="off"
+                  onChange={handleInputChange2}
+                  value={formUser.cbu}
+                />
+              </div>
+            ) : null}
+
+            {errors2.cbu && <p>{errors2.cbu}</p>}
 
             <div class={style.SubcontainerInput}>
               <label>Imagen URL : </label>

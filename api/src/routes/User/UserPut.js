@@ -41,6 +41,7 @@ server.put("/update/id/:id", async (req, res) => {
           .then((userUpdate) => {
             if (categories) {
               userUpdate.setCategories(categories).then(async () => {
+
                 userUpdate.categories = await userUpdate.getCategories();
               });
             }
