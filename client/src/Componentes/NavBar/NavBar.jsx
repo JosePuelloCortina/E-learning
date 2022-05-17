@@ -9,7 +9,12 @@ import {
 } from "../../redux/actions";
 import logo from "../../Images/logoAkademit.png";
 
-export default function Home() {
+export default function Home({chatbot,setChatbot}) {
+  // function handleChatbot(e){
+  //   e.preventDefault(e);
+  //   setChatbot(!chatbot)
+    
+  //    }
   const loggedUser = useSelector((state) => state.loggedUsers);
 
   const user = useSelector((state) => state.userDetail);
@@ -49,9 +54,9 @@ export default function Home() {
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
       )}
-      <Link to="/chatbox">
-        <button className={styles.buttonPerfil}>Ayuda</button>
-      </Link>
+      
+      <button onClick={() =>setChatbot(!chatbot)} className={styles.buttonPerfil}>Ayuda</button>
+   
       {user.roles && user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
         <Link className={styles.linkHome} to="/home">
           {/* <img src={logo} alt='' /> */}
