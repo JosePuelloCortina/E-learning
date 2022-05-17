@@ -27,5 +27,6 @@ a{
 }
 
 .container .body{
-    align-self: center;
+    text-align: left;
+    margin-left: 0px;
 }
