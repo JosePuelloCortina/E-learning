@@ -132,7 +132,7 @@ console.log(allPurchases, 'esto es all purchases')
                 <td width='10%'>$ {(e.total_price * e.commission) / 100}</td>
                 <td width='10%'>$ {(100 - e.commission) / 100 * e.total_price }</td>
                 <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
-                <td width='10%'><button  onClick={handlePayed} name={e.id} >Marcar como Pagado</button></td>
+                <td width='10%'><button  onClick={handlePayed} name={e.id} disabled={e.payed === true? true: false}>Marcar como Pagado</button></td>
                 </tr>
              )
          })}
