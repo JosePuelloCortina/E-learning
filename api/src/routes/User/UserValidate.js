@@ -52,13 +52,13 @@ router.get("/validated/:tokenRegister", async (req, res) => {
   }
 
   if (code !== user.code) {
-    return res.redirect("http://localhost:3000/error");
+    return res.redirect("https://akademit.vercel.app/error");
   }
 
   user.validated = "true";
   await user.save();
 
-  return res.redirect("http://localhost:3000/user/verification");
+  return res.redirect("https://akademit.vercel.app/user/verification");
 });
 
 router.post("/login", async (req, res) => {
