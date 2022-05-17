@@ -7,7 +7,7 @@ import { useDispatch , useSelector} from 'react-redux';
 import { getAllReviews, deleteReview, filterByReported, 
     allUser, searchReviewById, allCourses, 
     getAllPurchases, filterPurchasesByCourse,
-    filterSalesByPayed, searchSaleById} from '../../redux/actions';
+    filterSalesByPayed, searchSaleById, updateBuy} from '../../redux/actions';
 
 export default function AdminSalesPage(){
 const dispatch = useDispatch()
@@ -15,13 +15,16 @@ const allPurchases = useSelector(state => state.purchases)
 const allUsers = useSelector(state => state.reviews)
 const allIds = allUsers.filter(e => e.id)
 const courses = useSelector(state => state.courses)
-// console.log(allPurchases, 'esto es all purchases')
+console.log(allPurchases, 'esto es all purchases')
 
 
     useEffect(() => dispatch(allUser()), [dispatch])
     useEffect(() => dispatch(allCourses()), [dispatch])
     useEffect(() => dispatch( getAllPurchases()), [dispatch])
     const [input, setInput] = useState("")
+    const [purchase, setPurchase] = useState({
+        payed: false,
+    })
 
     function handleDelete(e){
         e.preventDefault(e);
@@ -51,6 +54,16 @@ const courses = useSelector(state => state.courses)
     function handleFilterCourse(e){
         e.preventDefault(e);
         dispatch(filterPurchasesByCourse(e.target.value));
+    }
+
+    function handlePayed(e){
+        e.preventDefault(e);
+        const id= e.target.value
+        setPurchase({
+            payed: true
+        })
+        dispatch(updateBuy(id, purchase));
+        dispatch(getAllPurchases());
     }
 
     return(
@@ -102,6 +115,7 @@ const courses = useSelector(state => state.courses)
             <th width='10%'>Acción</th>
             </tr>
          { allPurchases && allPurchases[0] && allPurchases.map( e => {
+             console.log(e.id, 'esto es e id')
              return (
                 <tr>
                 <td width='20%'>{e.courseName}</td>
@@ -112,7 +126,7 @@ const courses = useSelector(state => state.courses)
                 <td width='10%'>$ {(e.total_price * e.commission) / 100}</td>
                 <td width='10%'>$ {(100 - e.commission) / 100 * e.total_price }</td>
                 <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
-                <td width='10%'><button>Marcar como Pagado</button></td>
+                <td width='10%'><button  onClick={handlePayed} value={e.id}>Marcar como Pagado</button></td>
                 </tr>
              )
          })}
