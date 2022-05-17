@@ -9,6 +9,7 @@ import {
 import styles from "../AdminUsers/AdminUsersPage.module.css";
 import Pagination from "../Pagination/Pagination";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 import EditUserInfo from "./EditUserInfo/EditUserInfo";
 
 function AdminUsersPage() {
@@ -165,6 +166,7 @@ function AdminUsersPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

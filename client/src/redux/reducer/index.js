@@ -225,6 +225,8 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         classDetail: action.payload,
       };
+
+
     case "DELETE_REVIEW":
       return {
         ...state,
@@ -313,6 +315,7 @@ export default function rootReducer(state = initialState, action) {
         filteredUsers: [action.payload],
       };
       
+
       case "FILTER_SALES_BY_PAYED":
         const allSales = state.purchasesCopy
         const salesByPayed = action.payload === "payed"? allSales.filter(e => e.payed === true):
@@ -334,6 +337,7 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
         };
+
 
 
     default:

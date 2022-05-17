@@ -107,6 +107,9 @@ export function updateUser(id, payload) {
   };
 }
 
+
+
+
 export function editCoursesById(id, payload) {
   return async function (dispatch) {
     try {
@@ -396,6 +399,7 @@ export function searchSaleById(payload){
   return {type: "SEARCH_SALE_BY_ID", payload}
 }
 
+
 export function claseSetStatus(payload) {
   console.log(payload);
   return async function (dispatch) {
@@ -404,6 +408,7 @@ export function claseSetStatus(payload) {
       return dispatch({
         type: "SET_STATUS",
       });
+
     } catch (error) {
       console.log(error);
     }

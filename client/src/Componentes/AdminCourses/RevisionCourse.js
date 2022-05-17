@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   allCourses,
+  editClassById,
   editCoursesById,
   getClassById,
   removeCourse,
@@ -53,6 +54,21 @@ export default function RevisionCourse({ currentCourse }) {
     commentary: courseState.commentary,
   };
 
+
+const formClass = {
+
+  name: currentClass.name,
+  duration:currentClass.duration,
+  description: currentClass.description,
+  url: currentClass.url,
+  id: currentClass.id,
+  deshabilitar: currentClass.deshabilitar,
+  state:"passed",
+
+}
+
+
+
   const handleInputChange = function (e) {
     console.log(e);
     form.commentary = e.target.value;
@@ -87,6 +103,15 @@ export default function RevisionCourse({ currentCourse }) {
     dispatch(getClassById(e.id));
     setCurrentclass(e);
   }
+
+  function handleAproClass(e) {
+    e.preventDefault(e);
+    dispatch(editClassById(formClass.id,formClass));
+    alert("clase aprobada")
+    
+  }
+
+  
 
   if (courseState.name) {
     return (
@@ -153,7 +178,7 @@ export default function RevisionCourse({ currentCourse }) {
                       <p
                         value={e}
                         className={
-                          e.deshabilitar === "false"
+                          e.state === "passed"
                             ? styles.habilitado
                             : styles.deshabilitado
                         }
@@ -179,6 +204,10 @@ export default function RevisionCourse({ currentCourse }) {
           <h2>Duracion:</h2>
           Min: {currentClass.duration}'<h2>Instructor:</h2>
           {courseState.users[0].name}
+          { currentClass.state === "inprocess"?
+          <button className={styles.buttonAprobClass} onClick={handleAproClass}>Aprobar clase</button>:null
+        }
+          
         </div>
       </div>
     );

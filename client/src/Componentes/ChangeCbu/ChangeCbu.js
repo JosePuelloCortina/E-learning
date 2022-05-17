@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { updateUser } from "../../redux/actions";
-import styles from "../ChangePassword/ChangePassword.module.css";
+import styles from "./changeCbu.module.css";
 import bcrypt from "bcryptjs";
 
-function ChangePassword() {
+function ChangeCbu() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function ChangePassword() {
     email: userInit.email,
     categories: userCategory,
     image: userInit.image,
+   
   });
 
   const [errors, setErrors] = useState({});
@@ -34,25 +35,11 @@ function ChangePassword() {
     if (!input.password) {
       errors.password = "Escriba su contraseña.";
     }
-    if (!input.newPassword) {
-      errors.newPassword = "Escriba su nueva contraseña.";
-    }
-    if (!input.confirmPassword) {
-      errors.confirmPassword = "Confirme su nueva contraseña.";
-    }
-
-    if (input.confirmPassword && input.confirmPassword !== input.newPassword) {
-      errors.confirmPassword = "Las contraseñas no coinciden.";
-    }
 
     if ((input.password && input.confirmPassword) !== userInit.password) {
       errors.password = "Su contraseña actual no es correcta";
     }
 
-    if (input.newPassword && !passExp.test(input.newPassword)) {
-      errors.newPassword =
-        "La contraseña debe contener entre 5 y 15 caracteres, al menos una mayúscula, una minúscula un número, y un caracter especial.";
-    }
     return errors;
   }
 
@@ -75,7 +62,7 @@ function ChangePassword() {
     if (!isValid && input.password !== userInit.password) {
       alert("Su contraseña actual no es correcta");
     } else {
-      if (!input.password || !input.newPassword || !input.confirmPassword) {
+      if (!input.password || !input.cbu ) {
         alert("Por favor complete todos los campos.");
       } else {
         if (window.confirm("¿Desea modificar sus datos?") === true) {
@@ -101,35 +88,23 @@ function ChangePassword() {
             name="password"
           />
 
-          {/* {errors.password && <p className="error">{errors.password}</p>} */}
+        
         </div>
         <div>
-          <label>Nueva Contraseña</label>
+          <label>Nuevo CBU </label>
           <input
-            type="password"
-            value={input.newPassword}
+            type="text"
+            value={input.cbu}
             onChange={handleInputChange}
-            name="newPassword"
+            name="cbu"
           />
 
-          {errors.newPassword && <p className="error">{errors.newPassword}</p>}
         </div>
-        <div>
-          <label>Confirmar Contraseña</label>
-          <input
-            type="password"
-            value={input.confirmPassword}
-            onChange={handleInputChange}
-            name="confirmPassword"
-          />
-          {errors.confirmPassword && (
-            <p className="error">{errors.confirmPassword}</p>
-          )}
-        </div>
+       
         <button className={styles.save}>Guardar Cambios</button>
       </form>
     </div>
   );
 }
 
-export default ChangePassword;
+export default ChangeCbu;

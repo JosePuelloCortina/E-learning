@@ -34,7 +34,7 @@ const ReviewPost = require ('./Review/ReviewPost');
 const ReviewGet = require ('./Review/ReviewGet');
 const ReviewDelete = require ('./Review/ReviewDelete');
 const ReviewPut = require ('./Review/ReviewPut');
-
+const BuyPut = require('./Buy/BuyPut');
 
 
 const router = Router();
@@ -74,7 +74,8 @@ router.use('/avatar', Avatar);
 router.use('/review', ReviewPost)
 router.use('/review', ReviewGet);
 router.use('/review', ReviewDelete);
-router.use('/review', ReviewPut)
+router.use('/review', ReviewPut);
+router.use('/buy', BuyPut );
 
 
 

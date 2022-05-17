@@ -1,37 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { createCategory, allCategories, removeCategory } from "../../redux/actions/index";
+import {
+  createCategory,
+  allCategories,
+  removeCategory,
+} from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import styles from './AdminPage.module.css'
+import styles from "./AdminPage.module.css";
 import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer"
+import Footer from "../Footer/Footer";
+import Pagination from "../Pagination/Pagination";
 
 function AgregarCategorias() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
 
-function handleRemove(e){
-  e.preventDefault();
-  dispatch(removeCategory(e.target.value))
-  alert("Categoría eliminada correctamente")
-  dispatch(allCategories())
-}
+  const [coursesPerPage] = useState(15);
+  const lastCourseIndex = currentPage * coursesPerPage;
+  const firstCourseIndex = lastCourseIndex - coursesPerPage;
+  const currentCategories = categories.slice(firstCourseIndex, lastCourseIndex);
 
- function handleSubmit(e){
-    e.preventDefault();   
-    dispatch(createCategory(input))
-    alert("Categoría creada exitosamente")
-    
-    setInput("")
-    dispatch(allCategories())
-  }  
-    
-    function handleChange(e){
-      setInput(e.target.value)
-      console.log(input)
-      
-  
+  const [currentUser, setCurrentUser] = useState(0);
+
+  function handleRemove(e) {
+    e.preventDefault();
+    dispatch(removeCategory(e.target.value));
+    alert("Categoría eliminada correctamente");
+    dispatch(allCategories());
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(createCategory(input));
+    alert("Categoría creada exitosamente");
+
+    setInput("");
+    dispatch(allCategories());
+  }
+
+  function handleChange(e) {
+    setInput(e.target.value);
+    console.log(input);
   }
   return (
     <div>
@@ -45,7 +56,7 @@ function handleRemove(e){
                 <th width="80%">Categorias</th>
                 <th width="20%">Acción</th>
               </tr>
-              {categories.map((category) => {
+              {currentCategories.map((category) => {
                 return (
                   <tr width="80%">
                     <td key={category.name} value={category.name}>
@@ -64,6 +75,15 @@ function handleRemove(e){
               })}
             </tbody>
           </table>
+          <div className={styles.pagination}>
+            <Pagination
+              currentPage={currentPage}
+              coursesPerPage={coursesPerPage}
+              lastCourseIndex={lastCourseIndex}
+              allCourses={categories}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
         </div>
         <div className={styles.conteinerañadir}>
           <div className={styles.contenedorañadir}>
@@ -79,16 +99,19 @@ function handleRemove(e){
               ></input>
             </div>
             <div className={styles.divañadir}>
-            <button className={styles.buttonañadir} onClick={(e) => handleSubmit(e)} type="submit">
-              Añadir
+              <button
+                className={styles.buttonañadir}
+                onClick={(e) => handleSubmit(e)}
+                type="submit"
+              >
+                Añadir
               </button>
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
-  
 }
 export default AgregarCategorias;
