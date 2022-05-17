@@ -71,6 +71,9 @@ console.log(allPurchases, 'esto es all purchases')
             }
         }
     
+        
+
+
 
     return(
     <div>
