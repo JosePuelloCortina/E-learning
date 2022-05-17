@@ -178,7 +178,7 @@ const formClass = {
                       <p
                         value={e}
                         className={
-                          e.deshabilitar === "false"
+                          e.state === "passed"
                             ? styles.habilitado
                             : styles.deshabilitado
                         }
@@ -204,7 +204,10 @@ const formClass = {
           <h2>Duracion:</h2>
           Min: {currentClass.duration}'<h2>Instructor:</h2>
           {courseState.users[0].name}
-          <button  onClick={handleAproClass}>Aprobar clase</button>
+          { currentClass.state === "inprocess"?
+          <button className={styles.buttonAprobClass} onClick={handleAproClass}>Aprobar clase</button>:null
+        }
+          
         </div>
       </div>
     );
