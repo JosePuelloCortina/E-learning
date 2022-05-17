@@ -9,6 +9,7 @@ import styles from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "../Carousel/Carousel";
 import CarouselSuggestions from "../CarouselSuggestions/CarouselSuggestions";
+import Contenido from "../Chatbot/Chatbot.js";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -48,6 +49,8 @@ export default function Home() {
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
+     
+      <br/>
       <Carousel/>
       
       <CoursesContainer currentCourses={currentCourses} />
@@ -60,6 +63,7 @@ export default function Home() {
       />
       <br/>
       <br/>
+      
        {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
       <div className={styles.footer}>
         <Footer />

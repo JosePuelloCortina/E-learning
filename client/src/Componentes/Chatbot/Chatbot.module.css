@@ -1,0 +1,14 @@
+.app {
+    text-align: center;
+    background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
+    min-height: 100vh;
+    width:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+  }
+.react-chatbot-kit-chat-container {
+    position: relative;
+    width: 500px;
+    font-weight: bold; 
+  }
