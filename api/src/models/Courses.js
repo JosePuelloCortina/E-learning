@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
     },
 
     review: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         // allowNull: true,
     },
     

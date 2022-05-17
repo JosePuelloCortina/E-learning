@@ -20,15 +20,15 @@ export default function CourseCard({ name, image, id, review, categories, price 
               })}
           </div>
           <div>
-            {review === 0 ? (
+            {review >= 0 && review < 1 ? (
               <p>Este curso no tiene calificacion</p>
-            ) : review === 1 ? (
+            ) : review >= 1 && review < 2 ? (
               <p>⭐</p>
-            ) : review === 2 ? (
+            ) : review >= 2 && review < 3 ? (
               <p>⭐⭐</p>
-            ) : review === 3 ? (
+            ) : review >= 3 && review < 4 ? (
               <p>⭐⭐⭐</p>
-            ) : review === 4 ? (
+            ) : review >= 4 && review < 5 ? (
               <p>⭐⭐⭐⭐</p>
             ) : (
               <p>⭐⭐⭐⭐⭐</p>
