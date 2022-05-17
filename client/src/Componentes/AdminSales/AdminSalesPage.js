@@ -23,7 +23,7 @@ console.log(allPurchases, 'esto es all purchases')
     useEffect(() => dispatch( getAllPurchases()), [dispatch])
     const [input, setInput] = useState("")
     const [purchase, setPurchase] = useState({
-        payed: false,
+        payed: true,
     })
 
     function handleDelete(e){
@@ -58,9 +58,9 @@ console.log(allPurchases, 'esto es all purchases')
 
     function handlePayed(e){
         e.preventDefault(e);
-        const id= e.target.value
+        const id= e.target.name
         setPurchase({
-            payed: true
+            ...purchase
         })
         dispatch(updateBuy(id, purchase));
         dispatch(getAllPurchases());
@@ -126,7 +126,7 @@ console.log(allPurchases, 'esto es all purchases')
                 <td width='10%'>$ {(e.total_price * e.commission) / 100}</td>
                 <td width='10%'>$ {(100 - e.commission) / 100 * e.total_price }</td>
                 <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
-                <td width='10%'><button  onClick={handlePayed} value={e.id}>Marcar como Pagado</button></td>
+                <td width='10%'><button  onClick={handlePayed} name={e.id} >Marcar como Pagado</button></td>
                 </tr>
              )
          })}
