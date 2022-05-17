@@ -67,7 +67,7 @@ export default function FormularioRegistro() {
   });
 
   const [formUser, setFormUser] = React.useState({
-    cbu: "",
+    cbu: user.cbu,
   });
 
   const handleInputChange2 = function (e) {
@@ -102,8 +102,11 @@ export default function FormularioRegistro() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+
+
+    
     if (!form.name || !form.description || !form.price || !formUser.cbu) {
-      alert("Debes rellenar todos los campos antes de registrarte");
+      alert("Debes rellenar todos los campos antes de crear el curso");
     } else {
       if (
         Object.keys(errors).length === 0 &&
@@ -115,7 +118,9 @@ export default function FormularioRegistro() {
         navigate(`/courseok`);
       }
     }
-  };
+  }
+
+
 
   function handleAddCategory(e) {
     if (
