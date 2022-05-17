@@ -35,11 +35,12 @@
     border: solid var(--color4) 8px;
 }
 
-.container .body .top{
+.container .body .insideBody{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    height: 80px;
+    height: 100%;
     width: 100%;
     margin-bottom: 30px;
     border: solid var(--color4) 1px;
@@ -48,49 +49,9 @@
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     background-color: rgb(248, 242, 210);
-}
-.top h3{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    letter-spacing: 0px;
-    margin: 5px;
-    align-self: center;
-
-}
-.top select{
-    height: 45px;
-    width: 160px;
-    margin: 15px;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
     align-self: center;
 }
 
-
-.container .body .bottom{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 800px;
-    border: solid var(--color4) 1px;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: rgb(248, 242, 210);
-}
-
-.container .body .bottom .table{
-    width: 100%;
-    align-items: flex-start;
-    height: 40px;
-  
-}
-.table button{
-    cursor: pointer;
-    font-size: 15px;
-}
 
 .container input{
     height: 38px;
@@ -108,5 +69,61 @@
     align-self: center;
     margin: 10px;
     cursor: pointer;
+
+}
+
+.container .totalEarnings{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 500px;
+    height: 160px;
+    background-color: white;
+    margin: 10px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 20px;
+    border: solid var(--color4) 1.8px;
+}
+
+.totalEarnings h2{
+        color: black;
+        font-size: 25px;
+        margin-top: 5px; 
+
+}
+
+.totalEarnings h3{
+    color: black;
+    font-size: 35px;
+    margin-top: 5px; 
+    /* border: solid black 0.5px; */
+    padding: 15px;
+    width: fit-content;
+    text-align: center;
+
+}
+
+.numbers{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    margin: 10px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 20px;
+    border: solid var(--color4) 1.8px;
+}
+.numbers h2{
+    color: black;
+    font-size: 25px;
+    margin-top: 5px; 
 
 }

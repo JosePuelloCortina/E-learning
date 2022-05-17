@@ -28,6 +28,7 @@ export default function AdminSalesPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const [coursesPerPage] = useState(10);
   const lastCourseIndex = currentPage * coursesPerPage;
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
@@ -67,9 +68,21 @@ export default function AdminSalesPage() {
     dispatch(searchSaleById(input));
   }
 
+
   function handleInputChange(e) {
     setInput(e.target.value);
   }
+  
+    function handlePayed(e){
+        e.preventDefault(e);
+        const id= e.target.name
+        setPurchase({
+            ...purchase
+        })
+        dispatch(updateBuy(id, purchase));
+        dispatch(getAllPurchases());
+    }
+
 
   function handleFilterCourse(e) {
     e.preventDefault(e);
@@ -123,15 +136,17 @@ export default function AdminSalesPage() {
             <table className={styles.table} border="1">
               <tbody>
                 <tr>
-                  <th width="20%">Nombre del Curso</th>
-                  <th width="10%">Nombre Instructor</th>
-                  <th width="15%">ID Instructor</th>
-                  <th width="10%">CBU Instructor</th>
-                  <th width="10%">Precio del Curso</th>
-                  <th width="10%">Ganancia Admin</th>
-                  <th width="10%">Ganancia Instructor</th>
-                  <th width="10%">Pagado al Instructor</th>
-                  <th width="10%">Acción</th>
+
+                <td width='20%'>{e.courseName}</td>
+                <td width='10%'>{e.course.users[0].name}</td>
+                <td width='15%'>{e.course.users[0].id}</td>
+                <td width='10%'>{e.course.users[0].cbu? e.course.users[0].cbu : 'No hay CBU registrado'}</td>
+                <td width='10%'>$ {e.total_price}</td>
+                <td width='10%'>$ {(e.total_price * e.commission) / 100}</td>
+                <td width='10%'>$ {(100 - e.commission) / 100 * e.total_price }</td>
+                <td width='10%'>{e.payed === true? "Pagado" : "No"}</td>
+                <td width='10%'><button  onClick={handlePayed} name={e.id} >Marcar como Pagado</button></td>
+
                 </tr>
                 {allPurchases &&
                   allPurchases[0] &&
