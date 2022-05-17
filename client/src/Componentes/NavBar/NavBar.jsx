@@ -49,7 +49,9 @@ export default function Home() {
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
       )}
-
+      <Link to="/chatbox">
+        <button className={styles.buttonPerfil}>Ayuda</button>
+      </Link>
       {user.roles && user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
         <Link className={styles.linkHome} to="/home">
           {/* <img src={logo} alt='' /> */}

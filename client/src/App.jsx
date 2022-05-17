@@ -27,13 +27,14 @@ import AdminPageCourses from "./Componentes/AdminCourses/AdminPageCourses"
 import AdminUsersPage from "./Componentes/AdminUsers/AdminUsersPage";
 import AdminEarningsPage from "./Componentes/AdminEarnings/AdminEarningsPage";
 import FormClass from "./Componentes/FormClass/FormClass";
-
+import Contenido from "./Componentes/Chatbot/Chatbot"
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
 import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
 import AdminSalesPage from "./Componentes/AdminSales/AdminSalesPage";
+import ChangeCbu from './Componentes/ChangeCbu/ChangeCbu';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/home" element={<Home />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route exact path="/chatbox" element={<Contenido />} />
           <Route path="/form" element={<FormularioRegistro />} />
           <Route path="/formClass" element={<FormClass />} />
           <Route path="/formCourses" element={<FormCourses />} />
@@ -82,6 +84,11 @@ function App() {
             exact
             path="/profile/edit/password/:id"
             element={<ChangePassword />}
+          />
+          <Route
+            exact
+            path="/profile/edit/cbu/:id"
+            element={<ChangeCbu />}
           />
         </Routes>
       </BrowserRouter>

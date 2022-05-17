@@ -210,3 +210,11 @@
   flex-direction: row;
 }
 
+.container .cbu{
+  margin-top: 30px;
+  /* margin-left:10px;
+  border: solid black 0.2px; */
+
+  width: 400px;
+  border-radius: 5px;
+}
