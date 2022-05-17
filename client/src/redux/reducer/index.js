@@ -333,6 +333,13 @@ export default function rootReducer(state = initialState, action) {
           purchases: salesById
         } 
 
+        case "UPDATE_BUY":
+              return {
+                ...state,
+                purchases: action.payload,
+              };
+
+
       case "SET_STATUS":
         return {
           ...state,
