@@ -33,7 +33,7 @@ import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
 import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
-import AdminSalesPage from "./Componentes/AdminSales/AdminSalesPage2";
+import AdminSalesPage from "./Componentes/AdminSales/AdminSalesPage";
 
 function App() {
   return (
