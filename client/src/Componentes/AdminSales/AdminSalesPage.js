@@ -79,9 +79,15 @@ export default function AdminSalesPage() {
         setPurchase({
             ...purchase
         })
-        dispatch(updateBuy(id, purchase));
-        dispatch(getAllPurchases());
-    }
+            if (window.confirm("¿Desea marcar la comisión como pagada?") === true) {
+            dispatch(updateBuy(id, purchase));
+            alert('Comisión pagada.')
+            dispatch(getAllPurchases());
+            } else {
+                alert("Cancelado.")
+            }
+        }
+    
 
 
   function handleFilterCourse(e) {
