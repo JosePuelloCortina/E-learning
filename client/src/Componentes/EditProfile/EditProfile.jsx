@@ -43,6 +43,7 @@ export default function EditProfile() {
     email: userInit.email,
     categories: userCategory,
     image: userInit.image,
+    cbu: userInit.cbu,
   });
   console.log(input, "input");
   const [errors, setErrors] = useState({});
@@ -150,7 +151,13 @@ export default function EditProfile() {
                     name="email"
                     readOnly
                   />
+                  
                   {errors.email && <p className="error">{errors.email}</p>}
+                </div>
+
+                <div className={styles.cbu}>
+                  <label>CBU:</label>
+                  <label>{input.cbu}</label>
                 </div>
               </div>
 
@@ -160,6 +167,12 @@ export default function EditProfile() {
                   className={styles.linkContraseña}
                 >
                   Cambiar contraseña
+                </Link>
+                <Link
+                  to={`/profile/edit/cbu/${id}`}
+                  className={styles.linkContraseña}
+                >
+                  Cambiar CBU
                 </Link>
               </div>
             </div>

@@ -77,9 +77,7 @@ export default function UserProfile() {
                       <MyPurchases user={userDetail} />
                     </div>
                   )}
-                {userDetail.roles &&
-                  userDetail.roles.filter((r) => r.tipo === "instructor")
-                    .length > 0 && <MyCoursesInstructor user={userDetail} />}
+             
                 {userDetail.roles &&
                   userDetail.roles.filter((r) => r.tipo === "admin").length >
                     0 && (

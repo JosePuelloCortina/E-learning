@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       type: DataTypes.UUID,
     },
     cbu: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
   });
