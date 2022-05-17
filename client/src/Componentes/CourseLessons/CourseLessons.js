@@ -20,15 +20,23 @@ export default function CourseLessons() {
   const { id } = useParams();
   const course = useSelector((state) => state.courseDetail);
   const loggedUserId = useSelector((state) => state.loggedUsers);
-  const allUsers = useSelector((state) => state.user);
+  // const allUsers = useSelector((state) => state.user);
   const allReviews = useSelector (state => state.reviews)
-  const user = allUsers.find((e) => e.id === loggedUserId[0]);
+  // const user = allUsers.find((e) => e.id === loggedUserId[0]);
+  const user = useSelector((state) => state.userDetail);
 
   const totalClasses = useSelector((state) => state.classes);
 
   const navigate = useNavigate();
 
-  const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
+  let myBuys = user.buys ? user.buys.map((buy) => buy) : [];
+  let myBuysThisCourse = myBuys.filter((buy) => buy.courseId === id);
+  let myBuy = myBuysThisCourse.length > 0 ? myBuysThisCourse[0] : null;
+  let courseClasses = myBuysThisCourse[0].clases.map((clase) => clase);
+  console.log(myBuy, "myBuy");
+
+  // const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
+  console.log(courseClasses, "courseClasses");
   console.log(user, "esto es user");
   console.log(allReviews, 'esto es reviews')
   const [currentLesson, setCurrentLesson] = useState({});
@@ -130,6 +138,7 @@ export default function CourseLessons() {
           </div>
           <div className={style.right}>
             <LessonsList
+              myBuy = {myBuy}
               lessons={courseClasses}
               form={form}
               setForm={setForm}

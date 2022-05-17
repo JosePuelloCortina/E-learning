@@ -7,6 +7,7 @@ import {
   getClassById,
   getCoursesById,
   removeClass,
+  claseSetStatus
 } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,6 +17,7 @@ export default function LessonsList({
   setForm,
   setCurrentLesson,
   user,
+  myBuy
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ export default function LessonsList({
     e.preventDefault(e);
     setForm(true);
   }
+
+  const [prueba, setPrueba] = useState(false);
 
   function handleLesson(e) {
     setCurrentLesson(e);
@@ -92,7 +96,11 @@ export default function LessonsList({
               if (e.deshabilitar === "false") {
                 return (
                   <div className={styles.classes}>
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={e.buyClase.status}
+                      onChange={() => {
+                        dispatch(claseSetStatus({ buyId: myBuy.id, idClase: e.id, status: !e.buyClase.status }));
+                      }}
+                    />
                     <p value={e} onClick={() => setCurrentLesson(e)}>
                       - {e.name}
                     </p>

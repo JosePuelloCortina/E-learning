@@ -1,5 +1,5 @@
 const server = require("express").Router();
-const { User, Role, Buy, Op, Category } = require("../../db");
+const { User, Role, Buy, Op, Category, Clase } = require("../../db");
 
 server.get("/id/:id", async function (req, res, next) {
   try {
@@ -10,8 +10,14 @@ server.get("/id/:id", async function (req, res, next) {
           id: id,
         },
         include: [
-          Role,
-          Buy,
+          {
+            model: Role
+          },
+          {
+            model: Buy,
+            include: {model: Clase}
+
+          },
           {
             model: Category,
             attributes: ["name"],

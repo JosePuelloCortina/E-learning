@@ -396,3 +396,16 @@ export function searchSaleById(payload){
   return {type: "SEARCH_SALE_BY_ID", payload}
 }
 
+export function claseSetStatus(payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    try {
+      await axios.put(`http://localhost:3001/buy/setStatus`, payload);
+      return dispatch({
+        type: "SET_STATUS",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

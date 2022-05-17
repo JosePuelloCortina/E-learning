@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Buy, User, Course, BuyClase} = require('../../db');
+const { Buy, User, Course, Clase} = require('../../db');
 
 
 server.get("/All", async function(req, res, next){ 
@@ -15,8 +15,10 @@ server.get("/All", async function(req, res, next){
                 
             },
             {
-                model: BuyClase ,
-            }
+                
+                model: Clase
+    
+              }
         ],
                 attributes: { exclude: ['createdAt', 'updatedAt'] }
         });

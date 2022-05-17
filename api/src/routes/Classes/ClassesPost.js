@@ -1,5 +1,5 @@
 const server = require("express").Router();
-const {Clase, Course, User, Role} = require("../../db");
+const {Clase, Course, User, Role, Buy} = require("../../db");
 
 
 server.post("/create", async (req, res) => {
@@ -10,12 +10,19 @@ server.post("/create", async (req, res) => {
           where: {
             id: id
           },
-          include: {
-            model: User, include: {
+          include: [
+            {
+              model: User, include: {
               model: Role
+            }},
+            {
+              model: Buy
             }
-          }
+          ]
       });
+
+      let sellCourse = courseUser.dataValues.buys.map(buy => buy.dataValues.id);
+      // console.log("sellCourse", sellCourse);
 
       const userRole = courseUser.dataValues.users[0].dataValues.roles[0].dataValues.tipo;
 
@@ -29,6 +36,12 @@ server.post("/create", async (req, res) => {
         })
         .then(claseCourse => {
           claseCourse.setCourse(courseUser)
+          claseCourse.addBuy(sellCourse.map(buy => buy), {
+            through: {
+              status: false,
+              courseId: id
+              }
+              })
         }).catch(error =>{
           console.log(error)
         })
