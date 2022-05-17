@@ -3,14 +3,14 @@ const { Buy } = require("../../db");
 
 server.put("/update/:id", (req, res) => {
   const { id } = req.params;
-  const { payed, commission} = req.body;
+  const { payed} = req.body;
 
   Buy.findByPk(id)
     .then((buy) => {
       res.send(
         buy.update({
           payed:payed,
-          commission: commission,
+          // commission: commission,
         })
         );
         console.log(buy)
