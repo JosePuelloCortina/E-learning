@@ -10,7 +10,10 @@ import {
   allUser,
   createReview,
   getAllReviews,
+<<<<<<< HEAD
   courseSetReview,
+=======
+>>>>>>> 9c13689511f922ae630e264a4a445e661a9262b2
 } from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from "./../LessonsVideo/LessonsVideo";
@@ -77,16 +80,16 @@ export default function CourseLessons() {
 
   function handleSubmit(e) {
     e.preventDefault(e);
-    const prevCourse = allReviews.filter((e) => e.idCourse === id);
-    const prevReview = prevCourse.filter((e) => e.userId === user.id);
-    if (!prevReview.length) {
-      if (review.score && review.coment) {
-        dispatch(createReview(review));
-        dispatch(courseSetReview({ id: id, review: Number(review.score) }));
-        alert("Calificación enviada.");
-        dispatch(getAllReviews());
-        setForm(false);
-        setReview({
+    const prevCourse = allReviews.filter( e => e.idCourse === id)
+    const prevReview = prevCourse.filter(e => e.userId === user.id)
+    if (!prevReview.length){
+    if (review.score && review.coment) {
+      dispatch(createReview(review));
+      alert("Calificación enviada.");
+      dispatch(getAllReviews());
+      setForm(false);
+      setReview(
+       {  
           score: "",
           coment: "",
         });

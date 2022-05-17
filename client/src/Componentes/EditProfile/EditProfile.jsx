@@ -8,6 +8,7 @@ import {
   getUserById,
   updateUser,
   getAvatares,
+  allUser,
 } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
@@ -29,6 +30,9 @@ export default function EditProfile() {
     userInit.categories && userInit.categories.map((category) => category.name);
   const userRole = userInit.roles ? userInit.roles[0].tipo : "";
 
+  const [Rol, setRol] = useState({ rol: userRole });
+  console.log(userInit);
+
   const navigate = useNavigate();
 
   const avatars = useSelector((state) => state.avatares);
@@ -44,7 +48,14 @@ export default function EditProfile() {
     categories: userCategory,
     image: userInit.image,
     cbu: userInit.cbu,
+    rol: userInit.roles[0].tipo,
   });
+
+  useEffect(() => {
+    dispatch(getUserById(userInit.id));
+    // dispatch(getAvatares());
+  }, [Rol, dispatch]);
+
   console.log(input, "input");
   const [errors, setErrors] = useState({});
 
@@ -108,9 +119,9 @@ export default function EditProfile() {
   }
 
   function validate(input) {
-    let emailExp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    let passExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/;
+    // let emailExp =
+    //   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    // let passExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/;
     let errors = {};
     if (!input.name) {
       errors.name = "Por favor complete su nombre.";
@@ -120,6 +131,12 @@ export default function EditProfile() {
     }
     return errors;
   }
+
+  // useEffect(() => {
+  //   dispatch(updateUser(userInit.id,Rol));
+  //   dispatch(getUserById(userInit.id));
+  //   dispatch(allUser())
+  // }, [Rol]);
 
   return (
     <div>
@@ -151,13 +168,36 @@ export default function EditProfile() {
                     name="email"
                     readOnly
                   />
-                  
+
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
 
-                <div className={styles.cbu}>
-                  <label>CBU:</label>
-                  <label>{input.cbu}</label>
+                {userRole === "instructor" ? (
+                  <div className={styles.cbu}>
+                    <label>CBU:</label>
+                    <label>{input.cbu}</label>
+                  </div>
+                ) : null}
+
+                <div>
+                  <span>Elegir Rol:</span>
+
+                  <p>Alumno</p>
+                  <input
+                    type="radio"
+                    name="rol"
+                    value="alumno"
+                    checked={input.rol === "alumno"}
+                    onChange={(e) => handleInputChange(e)}
+                  />
+                  <p>Instructor</p>
+                  <input
+                    type="radio"
+                    name="rol"
+                    value="instructor"
+                    checked={input.rol === "instructor"}
+                    onChange={(e) => handleInputChange(e)}
+                  />
                 </div>
               </div>
 
@@ -168,12 +208,15 @@ export default function EditProfile() {
                 >
                   Cambiar contraseña
                 </Link>
-                <Link
-                  to={`/profile/edit/cbu/${id}`}
-                  className={styles.linkContraseña}
-                >
-                  Cambiar CBU
-                </Link>
+
+                {userRole === "instructor" ? (
+                  <Link
+                    to={`/profile/edit/cbu/${id}`}
+                    className={styles.linkContraseña}
+                  >
+                    Cambiar CBU
+                  </Link>
+                ) : null}
               </div>
             </div>
             <div className={styles.avatares}>

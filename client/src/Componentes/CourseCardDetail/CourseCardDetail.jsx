@@ -102,15 +102,15 @@ function CourseCardDetail() {
                   <br />
                   <h4>Valoración </h4>
                   <div>
-                    {detail.review === 0 ? (
+                    {detail.review >= 0 && detail.review < 1 ? (
                       <p>Este curso no tiene calificacion</p>
-                    ) : detail.review === 1 ? (
+                    ) : detail.review >= 1 && detail.review < 2 ? (
                       <p>⭐</p>
-                    ) : detail.review === 2 ? (
+                    ) : detail.review >= 2 && detail.review < 3 ? (
                       <p>⭐⭐</p>
-                    ) : detail.review === 3 ? (
+                    ) : detail.review >= 3 && detail.review < 4 ? (
                       <p>⭐⭐⭐</p>
-                    ) : detail.review === 4 ? (
+                    ) : detail.review >= 4 && detail.review < 5 ? (
                       <p>⭐⭐⭐⭐</p>
                     ) : (
                       <p>⭐⭐⭐⭐⭐</p>
@@ -122,7 +122,7 @@ function CourseCardDetail() {
 
                     {detail.clases &&
                       detail.clases.map((e, index) => {
-                        if (e.deshabilitar === "false") {
+                        if (e.deshabilitar === "false" && e.state === "passed") {
                           return (
                             <div key={index} className={styles.containerClases}>
                               <p>{e.name}</p>

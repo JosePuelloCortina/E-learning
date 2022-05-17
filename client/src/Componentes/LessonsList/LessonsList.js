@@ -65,9 +65,11 @@ export default function LessonsList({
         </button>
         {instructorClases
           ? [...instructorClases].map((e) => {
+
+
               return (
 
-
+                e.state === "passed"? 
 
 <div className={styles.classes}>
                   <p
@@ -85,7 +87,29 @@ export default function LessonsList({
                   {user.roles[0].tipo === "alumn" ? (
                     <input type="checkbox" />
                   ) : null}
+                </div>:<div className={styles.classes}>
+                  <p
+                    value={e}
+                    className={
+                      e.deshabilitar === "false"
+                        ? styles.habilitado
+                        : styles.deshabilitado
+                    }
+                    onClick={() => handleLesson(e)}
+                  >
+                    - {e.name}
+                  </p>
+
+                  {user.roles[0].tipo === "alumn" ? (
+                    <input type="checkbox" />
+                  ) : null}
+
+
+{e.state === "inprocess"?<p style={{color:"red"}}> : Clase en revision </p>:<p style={{color:"red"}}> : Clase Rechazada</p>}
+
+                  
                 </div>
+                
               );
             })
           : null}

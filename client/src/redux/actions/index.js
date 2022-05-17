@@ -98,7 +98,8 @@ export function getUserById(id) {
 }
 
 export function updateUser(id, payload) {
-  return async function(dispatch) {
+  console.log(id, payload);
+  return async function() {
     try {
       await axios.put(`/user/update/id/${id}`, payload);
     } catch (error) {
@@ -267,9 +268,10 @@ export function getAllReviews() {
   };
 }
 
-export const deleteReview = (id) => {
+export const deleteReview = (id, payload) => {
+  console.log(id, payload);
   return async (dispatch) => {
-    await axios.delete(`/review/${id}`);
+    await axios.delete(`/review/${id}?idCourse=${payload}`);
     dispatch({ type: "DELETE_REVIEW" });
   };
 };
@@ -387,8 +389,8 @@ export function searchSaleById(payload) {
 export function updateBuy(id, payload) {
   return async function(dispatch) {
     try {
-      const update = await axios.put(`/buy/update/${id}`, payload);
-      dispatch({ type: "UPDATE_BUY", payload: update.data });
+      await axios.put(`/buy/update/${id}`, payload);
+      dispatch({ type: "UPDATE_BUY" });
     } catch (error) {
       console.log(error);
     }
@@ -408,15 +410,3 @@ export function claseSetStatus(payload) {
   };
 }
 
-export function courseSetReview(payload) {
-  return async function(dispatch) {
-    try {
-      await axios.put(`/courses/updateReview`, payload);
-      return dispatch({
-        type: "SET_REVIEW",
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
