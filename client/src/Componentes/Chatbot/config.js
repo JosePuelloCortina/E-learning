@@ -80,7 +80,7 @@ const config = {
                 },
                   {
                     question : "¿Tuviste un problema con el pago?",
-                    answer: "Escribinos a albano.rc99@gmail.com",
+                    answer: "Escribinos a akademit.adm@gmail.com",
                     id: 10,  
                 }
         ]
