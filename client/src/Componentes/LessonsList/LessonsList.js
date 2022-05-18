@@ -103,7 +103,11 @@ export default function LessonsList({
                   {user.roles[0].tipo === "alumn" ? (
                     <input type="checkbox" />
                   ) : null}
-                  <p style={{color:"red"}}> : Clase en revision </p>
+
+
+{e.state === "inprocess"?<p style={{color:"red"}}> : Clase en revision </p>:<p style={{color:"red"}}> : Clase Rechazada</p>}
+
+                  
                 </div>
                 
               );

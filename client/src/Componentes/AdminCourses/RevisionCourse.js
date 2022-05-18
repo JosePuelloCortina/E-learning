@@ -63,7 +63,7 @@ const formClass = {
   url: currentClass.url,
   id: currentClass.id,
   deshabilitar: currentClass.deshabilitar,
-  state:"passed",
+  state:"",
 
 }
 
@@ -105,9 +105,15 @@ const formClass = {
   }
 
   function handleAproClass(e) {
+
+    formClass.state = e.target.name
+
     e.preventDefault(e);
     dispatch(editClassById(formClass.id,formClass));
-    alert("clase aprobada")
+    if (e.target.name==="passed") 
+    {alert("clase Aprobada")}
+    else {alert("clase Rechazada")}
+    
     
   }
 
@@ -204,9 +210,16 @@ const formClass = {
           <h2>Duracion:</h2>
           Min: {currentClass.duration}'<h2>Instructor:</h2>
           {courseState.users[0].name}
-          { currentClass.state === "inprocess"?
-          <button className={styles.buttonAprobClass} onClick={handleAproClass}>Aprobar clase</button>:null
+          { currentClass.state === "inprocess" || currentClass.state === "reject" ?
+          <div className={styles.buttonEdicion}>
+<button className={styles.buttonAprobClass} name="passed" onClick={handleAproClass}>Aprobar clase</button>
+<button className={styles.buttonAprobClass} name="reject" onClick={handleAproClass}>Rechazar clase</button>
+</div>:null
         }
+        
+
+          
+          
           
         </div>
       </div>
