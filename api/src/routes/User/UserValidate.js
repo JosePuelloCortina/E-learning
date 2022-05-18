@@ -3,6 +3,8 @@ const { User } = require("../../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+const { DB_HOST } = process.env;
+
 const getUsersDb = async () => {
   const info = User.findAll({
     raw: true,

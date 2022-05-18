@@ -24,7 +24,7 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const BASE_URL =
+const BASE_URL3 =
   DB_HOST === "localhost"
     ? "http://localhost:3001"
     : "https://deploy-akademit.herokuapp.com";
@@ -37,7 +37,7 @@ const sendEmail = async (email, subject, tokenRegister) => {
       subject,
       text: "Hola amigos",
       html: `<b>Click en el siguiente link para verificar su cuenta</b>
-              <a href="${BASE_URL}/user/validated/${tokenRegister}">Verificar usuario</a>`, // html body
+              <a href="${BASE_URL3}/user/validated/${tokenRegister}">Verificar usuario</a>`, // html body
     });
   } catch (error) {
     console.log("Algo no va bien con el email", error);
