@@ -9,7 +9,8 @@ import {
   getAllClasses,
   allUser,
   createReview,
-  getAllReviews
+  getAllReviews,
+  courseSetReview
 } from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from "./../LessonsVideo/LessonsVideo";
@@ -32,10 +33,11 @@ export default function CourseLessons() {
   let myBuys = user.buys ? user.buys.map((buy) => buy) : [];
   let myBuysThisCourse = myBuys.filter((buy) => buy.courseId === id);
   let myBuy = myBuysThisCourse.length > 0 ? myBuysThisCourse[0] : null;
-  let courseClasses = myBuysThisCourse[0].clases.map((clase) => clase);
+  let courseClasses = myBuysThisCourse[0] && myBuysThisCourse[0].clases.map((clase) => clase);
   console.log(myBuy, "myBuy");
 
-  // const courseClasses = totalClasses.filter((c) => c.courseId === course.id);
+  const instructorClases = totalClasses.filter((c) => c.courseId === course.id);
+  console.log(course, "course");
   console.log(courseClasses, "courseClasses");
   console.log(user, "esto es user");
   console.log(allReviews, 'esto es reviews')
@@ -79,6 +81,7 @@ export default function CourseLessons() {
     if (!prevReview.length){
     if (review.score && review.coment) {
       dispatch(createReview(review));
+      dispatch(courseSetReview({id: id, review: Number(review.score)}));
       alert("Calificación enviada.");
       dispatch(getAllReviews());
       setForm(false);
@@ -142,6 +145,7 @@ export default function CourseLessons() {
               setForm={setForm}
               setCurrentLesson={setCurrentLesson}
               user={user}
+              instructorClases={instructorClases}
             />
           </div>
         </div>

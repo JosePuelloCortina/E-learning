@@ -10,6 +10,7 @@ const CoursesPost = require('./Courses/CoursePost');
 const CoursesDelete = require('./Courses/CourseDelete');
 const CoursesGet = require('./Courses/CourseGet')
 const CoursesPut = require('./Courses/CoursePut');
+const CourseReviewPut = require('./Courses/CourseReviewPut');
 const CourseId = require('./Courses/CourseId');
 const UserDelete = require('./User/UserDelete');
 const CategoryPost = require('./Category/CategoryPost');
@@ -54,6 +55,7 @@ router.use('/courses', CoursesGet)
 router.use('/courses', CoursesPut);
 router.use('/courses', CourseId);
 router.use('/courses', CourseSearch)
+router.use('/courses', CourseReviewPut);
 router.use('/user', UserDelete);
 router.use('/category', CategoryPost);
 router.use('/category', CategoryAll);
@@ -75,6 +77,7 @@ router.use('/review', ReviewPost)
 router.use('/review', ReviewGet);
 router.use('/review', ReviewDelete);
 router.use('/review', ReviewPut);
+
 router.use('/buy', BuyPut );
 
 

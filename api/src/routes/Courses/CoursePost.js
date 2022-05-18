@@ -35,7 +35,7 @@ server.post("/create", async (req, res) =>{
                 name : name,
                 duration : duration,
                 description : description,
-                review: review,
+                review: 0,
                 progress: progress, 
                 image: image,
                 price: price, 
