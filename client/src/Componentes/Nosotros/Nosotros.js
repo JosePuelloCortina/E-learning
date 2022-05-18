@@ -21,11 +21,11 @@ return(
     </div>
     <div className= {styles.card}>
      <h1>¿Qué hacemos?</h1>
-    <p> En AkademIT ofrecemos cursos de distintos temas relacionados con el mundo It siendo conscientes que es hacía allí </p>
+    <p> En AkademIT ofrecemos cursos de distintos temas relacionados con el mundo It siendo conscientes que es realmente necesario capacitarse en distintos lenguages informáticos y nuevas dinámicas de trabajo. Es por esto en nuestras plataforma, instructores calificados y verificados, sueben sus propuestas para capacitar en alguna temática en particular a todos los interesados en aumentar sus conocimientos y skills para las demandas del mercado laboral. </p>
     </div>
     <div className= {styles.card}>
-     <h1>¿Qué hacemos?</h1>
-    <p> En AkademIT ofrecemos cursos de distintos temas relacionados con el mundo It siendo conscientes que es realmente necesario</p>
+     <h1>¿Cómo surgió?</h1>
+    <p> AkademIT surge como un trabajo final de cierre del Henry Bootcamp en el cual se espera que un grupo de alumnos integren todo lo aprendido en los últimos 4 meses y puedan desarrollar un proyecto innovador y útil para la sociedad. Es por eso que creamos AkademIT, una plataforma que ofrece formación en las últimas tecnologías y asistencia constante a los usuarios ante cualquier inconveniente que pueda surgir.  </p>
     </div>
     </div>
          <div className={styles.img}>
