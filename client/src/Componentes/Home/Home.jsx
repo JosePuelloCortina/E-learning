@@ -9,7 +9,7 @@ import styles from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "../Carousel/Carousel";
 import CarouselSuggestions from "../CarouselSuggestions/CarouselSuggestions";
-import Contenido from "../Chatbot/Chatbot";
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function Home() {
   //   await dispatch(allCategories());
   // }
 
-  const[chatbot, setChatbot]=useState(false)
+ 
  
   
   useEffect(() => {
@@ -49,7 +49,7 @@ console.log("Cursos aprobados", coursePassed )
   return (
     <div className={styles.home}>
       
-      <NavBar setChatbot={setChatbot} chatbot ={chatbot}/>
+      <NavBar/>
       <NavBarCopy
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
@@ -58,10 +58,7 @@ console.log("Cursos aprobados", coursePassed )
       
       <br/>
       <Carousel/>
-      {
-        chatbot?
-        <div className={styles.visible}><Contenido setChatbot={setChatbot} chatbot ={chatbot} /></div>:null
-      }
+      
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}

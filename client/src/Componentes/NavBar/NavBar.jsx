@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState } from "react";
 import styles from "./NavBar.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import Contenido from "../Chatbot/Chatbot";
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeLoggedUser,
@@ -9,12 +10,13 @@ import {
 } from "../../redux/actions";
 import logo from "../../Images/logoAkademit.png";
 
-export default function Home({chatbot,setChatbot}) {
+export default function Home() {
   // function handleChatbot(e){
   //   e.preventDefault(e);
   //   setChatbot(!chatbot)
     
   //    }
+  const[chatbot, setChatbot]= useState(false)
   const loggedUser = useSelector((state) => state.loggedUsers);
 
   const user = useSelector((state) => state.userDetail);
@@ -54,7 +56,10 @@ export default function Home({chatbot,setChatbot}) {
       ) : (
         <button onClick={(e) => handleOnClick(e)}>Salir</button>
       )}
-      
+      {
+        chatbot?
+        <div className={styles.visible}><Contenido setChatbot={setChatbot} chatbot ={chatbot} /></div>:null
+      }
       <button onClick={() =>setChatbot(!chatbot)} className={styles.buttonPerfil}>Ayuda</button>
    
       {user.roles && user.roles.filter((r) => r.tipo === "admin").length > 0 ? (
