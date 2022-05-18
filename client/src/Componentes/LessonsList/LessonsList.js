@@ -17,7 +17,8 @@ export default function LessonsList({
   setForm,
   setCurrentLesson,
   user,
-  myBuy
+  myBuy,
+  instructorClases
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -62,8 +63,8 @@ export default function LessonsList({
           {" "}
           Crear Clase
         </button>
-        {lessons
-          ? [...lessons].map((e) => {
+        {instructorClases
+          ? [...instructorClases].map((e) => {
               return (
 
 

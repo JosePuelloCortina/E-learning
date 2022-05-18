@@ -13,9 +13,11 @@ export default function MyCoursesInstructor() {
  
   const dispatch = useDispatch();
 
-  let myCourses = courses.filter&&courses.filter(
-    (course) => course.users[0].name === user.name
-  );
+  let myCourses =
+    courses &&
+    courses.filter(
+      (course) => course.users[0] && course.users[0].name === user.name
+    );
  
   useEffect(() => {
     dispatch(allCourses());
