@@ -76,11 +76,12 @@
   margin: 20px;
 }
 .visible{
-  position:absolute;
+  position:fixed;
+  z-index:1;
   display:flex;
   flex-direction: column;
    
-  top: 650px; right:0%;
+  top: 145px; right:0%;
   align-self: flex-start;
 
   background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
