@@ -10,7 +10,6 @@ import {
   allUser,
   createReview,
   getAllReviews,
-  courseSetReview
 } from "../../redux/actions";
 import LessonsList from "../LessonsList/LessonsList";
 import LessonsVideo from "./../LessonsVideo/LessonsVideo";
@@ -81,7 +80,6 @@ export default function CourseLessons() {
     if (!prevReview.length){
     if (review.score && review.coment) {
       dispatch(createReview(review));
-      dispatch(courseSetReview({id: id, review: Number(review.score)}));
       alert("Calificación enviada.");
       dispatch(getAllReviews());
       setForm(false);

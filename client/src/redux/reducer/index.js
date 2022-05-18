@@ -345,10 +345,6 @@ export default function rootReducer(state = initialState, action) {
           ...state,
         };
 
-        case "SET_REVIEW":
-        return {
-          ...state,
-        };
 
 
 
