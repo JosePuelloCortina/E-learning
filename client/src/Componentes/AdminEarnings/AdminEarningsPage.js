@@ -45,14 +45,14 @@ for (let i=0; i< purchases.length; i++){
 }
 
 const user = {
-    labels: ['Admin', 'Instructor', 'Alumno'],
+    labels: ['Total Usuarios','Admin', 'Instructor', 'Alumno'],
     datasets:[
         {
             label: 'Users',
             backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,
-            data: [Admin.length, totalInstructor.length, totalAlumnos.length]
+            data: [totalUsers, Admin.length, totalInstructor.length, totalAlumnos.length]
         }
     ]
 }
@@ -67,64 +67,38 @@ const purchase = {
             borderWidth: 2,
             data: [totalPurchase, finalEarnings, totalPago]
         }
-    ]
+    ],
+
 }
-
-
-
-
-
 
 
     return(
     <div>
         <NavBar/>
         <div className={styles.container}>
-        <div className={styles.title}>
-             <h2>Estadísticas</h2>
-        </div>
-        <div className={styles.body}>
-         <div className={styles.insideBody}>
-
-         <div className={styles.numbers}>
-         <h2>Promedio de usuarios por role</h2>          
-            <Bar
-                data={user}
-                options={{
-                    title:{
-                        display:true,
-                        text:'Promedio de usuarios por role',
-                        fontSize:20
-                      },
-                      legend:{
-                        display:true,
-                        position: 'right'
-                      }
-                }}
-            />            
-         </div>
-         <div className={styles.numbers}>
-         <h2>Promedio de ventas y ganancias</h2>          
-            <Bar
-                data={purchase}
-                options={{
-                    title:{
-                        display:true,
-                        text:'Promedio de ventas y ganancias',
-                        fontSize:20
-                      },
-                      legend:{
-                        display:true,
-                        position: 'right'
-                      }
-                }}
-            />            
-         </div>
-        
-        
-         </div>
-         
-        </div>
+            <div className={styles.title}>
+                <h2>Estadísticas</h2>
+            </div>
+            <div className={styles.body}>
+                <div className={styles.insideBody}>
+                    <div className={styles.numbers}>
+                        <h2>Promedio de usuarios por role</h2>          
+                        <Bar
+                            data={user}
+                            
+                        />            
+                    </div>
+                    <div className={styles.numbers}>
+                        <h2>Promedio de ganancias</h2>          
+                        <Bar
+                            data={purchase}
+                        />            
+                    </div>
+                    <div className={styles.totalEarnings}>
+                        <h2>Total de cursos: {totalCourses} </h2>                     
+                    </div>
+                </div>
+            </div>
         </div>
         <Footer/>
         </div>
