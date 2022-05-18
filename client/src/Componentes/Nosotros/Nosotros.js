@@ -3,6 +3,10 @@ import styles from "../Nosotros/Nosotros.module.css"
 import Quienes from "./Quienes";
 import NavBar from "../NavBar/NavBar"
 import Footer from "../Footer/Footer"
+import agus from "../../Images/nosotros/agusok.png"
+
+
+
 export default function Nosotros(){
 return(
   
@@ -14,6 +18,30 @@ return(
         <h1>Sobre nosotros</h1>
     </div>
      <div className={styles.body}>
+     <div className={styles.linkedin}>
+         <div className={styles.uno}>
+        <img src={agus} alt='' />
+        <p>Agustin Agis</p>
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+         <div  className={styles.uno}>
+             
+         </div>
+     </div>
     <div className={styles.cards}>
      <div className= {styles.card}>
     <h1 >¿Quiénes somos?</h1>
@@ -34,9 +62,6 @@ return(
          
      </div>
     
-    <div>
-LinkedIns
-    </div>
     </div>
     <Footer/>
     </div>

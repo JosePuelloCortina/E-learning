@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    height:1100px;
+    height:1300px;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -64,3 +64,42 @@
     display: flex;
    
   }
+
+  .body .linkedin{
+    display: flex;
+    flex-direction: row;
+    height: 250px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.linkedin .uno{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    background-color: rgba(0, 0, 0, 0.281);
+    border: solid var(--color4) 4px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.linkedin .uno:hover{
+    background-color: rgba(255, 255, 255, 0.122);
+}
+
+.linkedin .uno img{
+    width: 150px;
+}
+
+.linkedin .uno p{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    align-self: center;
+    text-align: center;
+    display: flex;
+    letter-spacing: 2px;
+}
