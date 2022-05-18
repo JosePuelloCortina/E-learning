@@ -57,7 +57,7 @@ export default function Login() {
     dispatch(allUser());
   }, [dispatch]);
 
-  const handleInputChange = function (e) {
+  const handleInputChange = function(e) {
     setValidate({
       ...validate,
       [e.target.name]: e.target.value,
@@ -74,10 +74,7 @@ export default function Login() {
     event.preventDefault();
 
     if (validate.email !== "" && validate.password !== "") {
-      const token = await axios.post(
-        `http://localhost:3001/user/login`,
-        validate
-      );
+      const token = await axios.post(`/user/login`, validate);
 
       const usuario = users.find((user) => user.email === validate.email);
       if (
@@ -106,7 +103,7 @@ export default function Login() {
     );
 
     if (userGoogle !== undefined) {
-      const token = await axios.post(`http://localhost:3001/user/login`, {
+      const token = await axios.post(`/user/login`, {
         email: userGoogle.email,
         password: userGoogle.password,
       });
