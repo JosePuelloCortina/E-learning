@@ -8,6 +8,7 @@ import {
   getUserById,
   updateUser,
   getAvatares,
+  allUser,
 } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 
@@ -16,11 +17,14 @@ export default function EditProfile() {
   const { id } = useParams();
 
   // useEffect(() => {}, [dispatch, id]);
+ 
 
   useEffect(() => {
     dispatch(getUserById(id));
     // dispatch(getAvatares());
   }, [dispatch]);
+
+ 
 
   const userInit = useSelector((state) => state.userDetail);
   const stateCategories = useSelector((state) => state.categories);
@@ -28,6 +32,9 @@ export default function EditProfile() {
   const userCategory =
     userInit.categories && userInit.categories.map((category) => category.name);
   const userRole = userInit.roles ? userInit.roles[0].tipo : "";
+
+  const [Rol, setRol] = useState({rol:userRole});
+  console.log(userInit)
 
   const navigate = useNavigate();
 
@@ -45,6 +52,16 @@ export default function EditProfile() {
     image: userInit.image,
     cbu: userInit.cbu,
   });
+
+
+
+  useEffect(() => {
+    dispatch(getUserById(userInit.id));
+    // dispatch(getAvatares());
+  }, [Rol,dispatch]);
+
+
+
   console.log(input, "input");
   const [errors, setErrors] = useState({});
 
@@ -85,6 +102,20 @@ export default function EditProfile() {
     });
   }
 
+  function handleRole(e) {
+    e.preventDefault()
+    // if (e.target.value !== "default" && e.target.value !== Rol)
+
+    
+    setRol( 
+    {  ...Rol,
+      [e.target.name]:e.target.value});
+  console.log(Rol)
+  dispatch(updateUser(userInit.id,Rol));
+  dispatch(getUserById(userInit.id));
+}
+  
+
   // function handleSelect(e) {
   //   setAvatares({
   //     ...avatares,
@@ -108,9 +139,9 @@ export default function EditProfile() {
   }
 
   function validate(input) {
-    let emailExp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    let passExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/;
+    // let emailExp =
+    //   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    // let passExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])\S{5,15}/;
     let errors = {};
     if (!input.name) {
       errors.name = "Por favor complete su nombre.";
@@ -120,6 +151,14 @@ export default function EditProfile() {
     }
     return errors;
   }
+
+
+  // useEffect(() => {
+  //   dispatch(updateUser(userInit.id,Rol));
+  //   dispatch(getUserById(userInit.id));
+  //   dispatch(allUser())
+  // }, [Rol]);
+
 
   return (
     <div>
@@ -155,10 +194,26 @@ export default function EditProfile() {
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
 
+   
+
+   {userRole === "instructor"?
+
                 <div className={styles.cbu}>
                   <label>CBU:</label>
                   <label>{input.cbu}</label>
-                </div>
+                </div>:null
+
+}
+
+<div>
+  <p>mi Rol es: {userRole}</p>
+  <select name="rol" onChange={(e)=> handleRole(e)}>
+    <option selected disabled> Rol</option>
+    <option value="alumno" > Alumno</option>
+    <option  value="instructor"> Instructor</option>
+  </select>
+</div>
+
               </div>
 
               <div className={styles.right}>
@@ -168,12 +223,14 @@ export default function EditProfile() {
                 >
                   Cambiar contraseña
                 </Link>
+
+                {userRole === "instructor"?
                 <Link
                   to={`/profile/edit/cbu/${id}`}
                   className={styles.linkContraseña}
                 >
                   Cambiar CBU
-                </Link>
+                </Link>:null}
               </div>
             </div>
             <div className={styles.avatares}>

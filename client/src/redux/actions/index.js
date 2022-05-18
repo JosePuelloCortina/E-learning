@@ -98,9 +98,10 @@ export function getUserById(id) {
 }
 
 export function updateUser(id, payload) {
-  return async function(dispatch) {
+  console.log(id,payload)
+  return async function() {
     try {
-      await axios.put(`/user/update/id/${id}`, payload);
+     await axios.put(`/user/update/id/${id}`, payload);
     } catch (error) {
       console.log(error);
     }
