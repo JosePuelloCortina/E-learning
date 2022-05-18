@@ -98,7 +98,8 @@ export function getUserById(id) {
 }
 
 export function updateUser(id, payload) {
-  return async function(dispatch) {
+  console.log(id, payload);
+  return async function() {
     try {
       await axios.put(`/user/update/id/${id}`, payload);
     } catch (error) {
@@ -388,8 +389,8 @@ export function searchSaleById(payload) {
 export function updateBuy(id, payload) {
   return async function(dispatch) {
     try {
-      const update = await axios.put(`/buy/update/${id}`, payload);
-      dispatch({ type: "UPDATE_BUY", payload: update.data });
+      await axios.put(`/buy/update/${id}`, payload);
+      dispatch({ type: "UPDATE_BUY" });
     } catch (error) {
       console.log(error);
     }
