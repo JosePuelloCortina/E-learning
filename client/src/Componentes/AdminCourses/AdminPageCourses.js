@@ -6,6 +6,7 @@ import {
   getAllClasses,
   getCoursesById,
   removeClassDetail,
+  removeCourseDetail,
 } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./adminPageCourses.module.css";
@@ -34,6 +35,14 @@ function AdminPageCourses() {
     dispatch(getCoursesById(e.target.value));
     dispatch(removeClassDetail());
   };
+
+
+
+
+  useEffect(() => {
+    dispatch(removeCourseDetail());
+  }, []);
+
 
   return (
     <div className={styles.containertotal}>
