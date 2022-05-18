@@ -338,20 +338,18 @@ export default function rootReducer(state = initialState, action) {
         purchases: salesById,
       };
 
+
     case "UPDATE_BUY":
       return {
         ...state,
       };
+
 
     case "SET_STATUS":
       return {
         ...state,
       };
 
-    case "SET_REVIEW":
-      return {
-        ...state,
-      };
 
     default:
       return state;

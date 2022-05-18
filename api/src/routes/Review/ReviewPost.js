@@ -6,9 +6,12 @@ server.post("/create", async (req, res) => {
         try {   
             const course = await Course.findOne({
             where: {
-              id: idCourse
-              
-            }});
+              id: idCourse,
+            },
+            include: [{
+              model: Review
+            }]
+          });
             console.log(course, 'esto es course')
             Review.create({
                 idCourse:idCourse,
@@ -19,6 +22,13 @@ server.post("/create", async (req, res) => {
               })
               .then(reviewCourse => {
                 reviewCourse.setCourse(course)
+                let valueReview = course.dataValues.reviews.reduce((a, b) => a + b.dataValues.score, 0)
+                course.update({
+                  review: (valueReview + Number(score)) / (course.dataValues.reviews.length + 1)
+                })
+                .then(() => {
+                  console.log(course)
+                })
               }).catch(error =>{
                 console.log(error)
               })    

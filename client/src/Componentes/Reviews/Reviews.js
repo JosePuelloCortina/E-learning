@@ -25,9 +25,10 @@ useEffect(()=> {dispatch(getUserById(userId))}, [dispatch])
 function handleDelete(e){
     e.preventDefault(e);
     if (window.confirm("¿Desea eliminar este comentario?") === true) {
-        dispatch(deleteReview(reviewId[0].id));
+        dispatch(deleteReview(reviewId[0].id, id))
         alert("Comentario eliminado.");
         dispatch(getAllReviews());
+        window.location.reload();
    
       } else {
         alert("Cancelado.")

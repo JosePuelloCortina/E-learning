@@ -42,7 +42,7 @@ export default function AdminReviewsPage() {
   function handleDelete(e) {
     e.preventDefault(e);
     if (window.confirm("¿Desea eliminar este comentario?") === true) {
-      dispatch(deleteReview(e.target.name));
+      dispatch(deleteReview(e.target.name, e.target.value));
       alert("Comentario eliminado.");
       dispatch(getAllReviews());
     } else {
@@ -113,6 +113,7 @@ export default function AdminReviewsPage() {
                 </tr>
                 {currentReviews &&
                   currentReviews.map((e) => {
+                    console.log(e, "esto es e");
                     return (
                       <tr>
                         <td width="15%">{e.userName}</td>
@@ -121,7 +122,7 @@ export default function AdminReviewsPage() {
                         <td width="25%">{e.coment}</td>
                         <td width="8%">{e.reported === true ? "Si" : "No"}</td>
                         <td width="7%">
-                          <button name={e.id} onClick={handleDelete}>
+                          <button name={e.id} value={e.courseId} onClick={handleDelete}>
                             Eliminar
                           </button>
                         </td>
