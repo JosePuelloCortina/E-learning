@@ -19,7 +19,7 @@ const initialState = {
 };
 
 function sortAsc(arr, field) {
-  return arr.sort(function (a, b) {
+  return arr.sort(function(a, b) {
     if (a[field] > b[field]) return 1;
 
     if (b[field] > a[field]) return -1;
@@ -29,7 +29,7 @@ function sortAsc(arr, field) {
 }
 
 function sortDesc(arr, field) {
-  return arr.sort(function (a, b) {
+  return arr.sort(function(a, b) {
     if (a[field] > b[field]) return -1;
 
     if (b[field] > a[field]) return 1;
@@ -56,7 +56,6 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-
 
     case "POST_CLASS":
       return {
@@ -227,7 +226,6 @@ export default function rootReducer(state = initialState, action) {
         classDetail: action.payload,
       };
 
-
     case "DELETE_REVIEW":
       return {
         ...state,
@@ -315,43 +313,45 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         filteredUsers: [action.payload],
       };
-      
 
-      case "FILTER_SALES_BY_PAYED":
-        const allSales = state.purchasesCopy
-        const salesByPayed = action.payload === "payed"? allSales.filter(e => e.payed === true):
-        action.payload === "notPayed" ? allSales.filter(e => e.payed === false):
-        action.payload === "all" ? allSales : null
-        return {
-          ...state,
-          purchases: salesByPayed
-        }
-        case "SEARCH_SALE_BY_ID": 
-        const allSales1 = state.purchasesCopy
-        const salesById = allSales1.filter(e => e.course.users[0].id === action.payload) 
-        return{
-          ...state,
-          purchases: salesById
-        } 
+    case "FILTER_SALES_BY_PAYED":
+      const allSales = state.purchasesCopy;
+      const salesByPayed =
+        action.payload === "payed"
+          ? allSales.filter((e) => e.payed === true)
+          : action.payload === "notPayed"
+          ? allSales.filter((e) => e.payed === false)
+          : action.payload === "all"
+          ? allSales
+          : null;
+      return {
+        ...state,
+        purchases: salesByPayed,
+      };
+    case "SEARCH_SALE_BY_ID":
+      const allSales1 = state.purchasesCopy;
+      const salesById = allSales1.filter(
+        (e) => e.course.users[0].id === action.payload
+      );
+      return {
+        ...state,
+        purchases: salesById,
+      };
 
-        case "UPDATE_BUY":
-              return {
-                ...state,
-                purchases: action.payload,
-              };
+    case "UPDATE_BUY":
+      return {
+        ...state,
+      };
 
+    case "SET_STATUS":
+      return {
+        ...state,
+      };
 
-      case "SET_STATUS":
-        return {
-          ...state,
-        };
-
-        case "SET_REVIEW":
-        return {
-          ...state,
-        };
-
-
+    case "SET_REVIEW":
+      return {
+        ...state,
+      };
 
     default:
       return state;
