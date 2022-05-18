@@ -36,6 +36,7 @@ export default function Home() {
 
   return (
     <div className={styles.navBar}>
+    <Link to="/nosotros" className={styles.us}> ¿Quiénes somos?</Link>
       {loggedUser.length > 0 && Object.keys(user).length > 0 ? (
         <div className={styles.myPerfil}>
           <p className={styles.userName}>
@@ -73,6 +74,7 @@ export default function Home() {
           <h1>AkademIT</h1>
         </Link>
       )}
+
     </div>
   );
 }
