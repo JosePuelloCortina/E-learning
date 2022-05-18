@@ -3,15 +3,44 @@ const { Sequelize, Op } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 // const Review = require("./models/Review");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/elearning`,
-  {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
-);
+let sequelize =
+  process.env.NODE_ENV === "production"
+    ? new Sequelize({
+        database: DB_NAME,
+        dialect: "postgres",
+        host: DB_HOST,
+        port: 5432,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+        { logging: false, native: false }
+      );
+
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/elearning`,
+//   {
+//     logging: false, // set to console.log to see the raw SQL queries
+//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   }
+// );
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -39,17 +68,28 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Role, Buy, Course, Clase, Category, Order, Avatar, Review, BuyClase} = sequelize.models;
+const {
+  User,
+  Role,
+  Buy,
+  Course,
+  Clase,
+  Category,
+  Order,
+  Avatar,
+  Review,
+  BuyClase,
+} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// Relacion de muchos a muchos usuario -> role 
+// Relacion de muchos a muchos usuario -> role
 // User.hasMany(Role);
 // Role.belongsTo(User);
 
-User.belongsToMany(Role, { through: 'userRole'}); 
-Role.belongsToMany(User, { through: 'userRole'}); 
+User.belongsToMany(Role, { through: "userRole" });
+Role.belongsToMany(User, { through: "userRole" });
 
 // Relacion de muchos a uno usuario -> compra
 User.hasMany(Buy);
@@ -57,35 +97,32 @@ Buy.belongsTo(User);
 
 // Relacion de muchos a uno Curso -> Compras
 Course.hasMany(Buy);
-Buy.belongsTo(Course); 
+Buy.belongsTo(Course);
 
 // Relacion de compra a clases // Cada clase muchas compras cada compraa muchas clases
-Buy.belongsToMany(Clase, { through: BuyClase});
-Clase.belongsToMany(Buy, { through: BuyClase});
+Buy.belongsToMany(Clase, { through: BuyClase });
+Clase.belongsToMany(Buy, { through: BuyClase });
 
-// Relacion muchos a muchos usuarios -> cursos 
-User.belongsToMany(Course, { through: 'userCourse'});
-Course.belongsToMany(User, { through: 'userCourse'});
+// Relacion muchos a muchos usuarios -> cursos
+User.belongsToMany(Course, { through: "userCourse" });
+Course.belongsToMany(User, { through: "userCourse" });
 
 //Relacion muchos a muchos categoria -> cursos
-Course.belongsToMany(Category, { through: 'categoriaCourse'});
-Category.belongsToMany(Course, { through: 'categoriaCourse'});
+Course.belongsToMany(Category, { through: "categoriaCourse" });
+Category.belongsToMany(Course, { through: "categoriaCourse" });
 
 //Relacion muchos a muchos categoria -> User
-User.belongsToMany(Category, { through: 'categoriaUser'});
-Category.belongsToMany(User, { through: 'categoriaUser'});
-
-
-
+User.belongsToMany(Category, { through: "categoriaUser" });
+Category.belongsToMany(User, { through: "categoriaUser" });
 
 //Relacion de muchos a uno curso -> clase
 Course.hasMany(Clase);
 Clase.belongsTo(Course);
 
-User.hasMany(Order)
-Order.belongsTo(User)
+User.hasMany(Order);
+Order.belongsTo(User);
 
-Order.hasMany(Buy)
+Order.hasMany(Buy);
 
 Avatar.hasMany(User);
 User.belongsTo(Avatar);
@@ -93,11 +130,6 @@ User.belongsTo(Avatar);
 //Relación de muchos a uno curso -> reviews
 Course.hasMany(Review);
 Review.belongsTo(Course);
-
-
-
-
-
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
