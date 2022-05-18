@@ -76,11 +76,12 @@
   margin: 20px;
 }
 .visible{
-  position:absolute;
+  position:fixed;
+  z-index:1;
   display:flex;
   flex-direction: column;
    
-  top: 650px; right:0%;
+  top: 140px; right:0%;
   align-self: flex-start;
 
   background: linear-gradient(260deg, rgba(11,82,91,1) 0%, rgba(27,58,75,1) 30%, rgba(77,25,77,1) 100%);
@@ -127,4 +128,18 @@
   align-self: center;
 }
 
+.navBar .us {
+    font-family:'Montserrat', sans-serif;
+    color:white;
+    font-size: 22px;
+    margin: 20px;
+    cursor: pointer;
+    font-weight: 600;
 
+}
+.navBar .us a{
+  text-decoration: none;
+}
+.navBar .us:hover{
+  text-shadow: 5px 5px 5px rgba(248, 186, 16, 0.767);
+}

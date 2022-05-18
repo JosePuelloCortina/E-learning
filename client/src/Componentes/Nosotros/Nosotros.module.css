@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    height:1100px;
+    height:1300px;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -40,7 +40,7 @@
 .cards .card{
     position: relative;
     background-color: white;
-    width:400px;
+    width:404px;
     height: 300px;
     justify-content: center;
   align-self: center;
@@ -57,10 +57,63 @@
   }
   .container .title h1 {
     font-family: "Montserrat", sans-serif;
-    font-size: 50px;
+    font-size: 45px;
     color: white;
     align-self: center;
     text-align: center;
     display: flex;
    
   }
+
+  .body .linkedin{
+    display: flex;
+    flex-direction: row;
+    height: 260px;
+    width: 100%;
+    justify-content: space-evenly;
+    
+}
+.body .linkedin a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkedin .uno{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    height: 260px;
+    background-color: rgba(0, 0, 0, 0.281);
+    border: solid var(--color4) 4px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.linkedin .uno:hover{
+    background-color: rgba(255, 255, 255, 0.122);
+}
+
+.linkedin .uno img{
+    display: flex;
+    width: 150px;
+    align-self: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.linkedin .uno p{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 550;
+    color: white;
+    align-self: center;
+    text-align: center;
+    display: flex;
+    letter-spacing: 2px;
+    margin:2px;
+}
