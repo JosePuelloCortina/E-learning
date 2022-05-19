@@ -20,9 +20,7 @@ function CourseCardDetail() {
 
   useEffect(() => {
     dispatch(getCoursesById(id));
-    return () => {
-      dispatch(removeCourseDetail());
-    };
+    
   }, []);
   const cantidad = 1;
   const detail = useSelector((state) => state.courseDetail);
@@ -93,24 +91,26 @@ function CourseCardDetail() {
                 <br />
                 <h3 className={styles.price}> ${detail.price}</h3>
                 <br />
-                <button onClick={() => handleMercadoPago()}>
-                  Comprar MercadoPago
-                </button>
+                {detail && detail.users[0].name === userDetail.name ? <p> Eres el dueño de este curso </p> :
+                  <button onClick={() => handleMercadoPago()}>
+                    Comprar MercadoPago
+                  </button>
+                }
                 {/* <button onClick={() => handlePurchase()}>Comprar</button> */}
                 <br />
                 <div className={styles.courseInfo}>
                   <br />
                   <h4>Valoración </h4>
                   <div>
-                    {detail.review >= 0 && detail.review < 1 ? (
+                    {detail.review === 0 ? (
                       <p>Este curso no tiene calificacion</p>
-                    ) : detail.review >= 1 && detail.review < 2 ? (
+                    ) : detail.review === 1 ? (
                       <p>⭐</p>
-                    ) : detail.review >= 2 && detail.review < 3 ? (
+                    ) : detail.review === 2 ? (
                       <p>⭐⭐</p>
-                    ) : detail.review >= 3 && detail.review < 4 ? (
+                    ) : detail.review === 3 ? (
                       <p>⭐⭐⭐</p>
-                    ) : detail.review >= 4 && detail.review < 5 ? (
+                    ) : detail.review === 4 ? (
                       <p>⭐⭐⭐⭐</p>
                     ) : (
                       <p>⭐⭐⭐⭐⭐</p>
@@ -122,7 +122,7 @@ function CourseCardDetail() {
 
                     {detail.clases &&
                       detail.clases.map((e, index) => {
-                        if (e.deshabilitar === "false" && e.state === "passed") {
+                        if (e.deshabilitar === "false") {
                           return (
                             <div key={index} className={styles.containerClases}>
                               <p>{e.name}</p>
