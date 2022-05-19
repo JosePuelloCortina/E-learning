@@ -91,7 +91,7 @@ function CourseCardDetail() {
                 <br />
                 <h3 className={styles.price}> ${detail.price}</h3>
                 <br />
-                {detail && detail.users[0].name === userDetail.name ? <p> Eres el dueño de este curso </p> :
+                {detail.users && detail.users[0].name && detail.users[0].name === userDetail.name ? <p> Eres el dueño de este curso </p> :
                   <button onClick={() => handleMercadoPago()}>
                     Comprar MercadoPago
                   </button>
