@@ -31,7 +31,7 @@ const initializeReviews = require("./src/initializer/Reviews");
 
 // Syncing all the models at once.
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   try {
     await initializeRole();
     await initializeUser();
