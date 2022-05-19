@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  allCourses,
   getCoursesById,
   removeClassDetail,
   removeCourseDetail,
@@ -32,6 +33,10 @@ function AdminPageCourses() {
 
   useEffect(() => {
     dispatch(removeCourseDetail());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(allCourses());
   }, [dispatch]);
 
   return (
