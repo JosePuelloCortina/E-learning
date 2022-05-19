@@ -171,13 +171,14 @@ export default function FormClass() {
             </div>
 
             <div className={style.containerbutton}>
+            <Link to={`/courselessons/${course.id}`}>
+                <button className={style.buttonYellow}>Volver</button>
+              </Link>
               <button className={style.buttonYellow} type="submit">
                 Agregar
               </button>
 
-              <Link to={`/courselessons/${course.id}`}>
-                <button className={style.buttonYellow}>Volver</button>
-              </Link>
+              
             </div>
           </div>
         </form>

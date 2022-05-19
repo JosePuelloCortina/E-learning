@@ -256,15 +256,16 @@ export default function FormularioRegistro() {
                 rows="10"
               ></textarea>
             </div>
-
+           
             <div className={style.containerbutton}>
+            <Link to="/home">
+                <button class={style.buttonYellow}>Volver</button>
+              </Link>
               <button class={style.buttonYellow} type="submit">
                 Crear{" "}
               </button>
 
-              <Link to="/home">
-                <button class={style.buttonYellow}>Volver</button>
-              </Link>
+              
             </div>
           </div>
         </form>
