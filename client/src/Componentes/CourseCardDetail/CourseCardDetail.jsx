@@ -20,7 +20,6 @@ function CourseCardDetail() {
 
   useEffect(() => {
     dispatch(getCoursesById(id));
-    
   }, []);
   const cantidad = 1;
   const detail = useSelector((state) => state.courseDetail);
@@ -91,11 +90,15 @@ function CourseCardDetail() {
                 <br />
                 <h3 className={styles.price}> ${detail.price}</h3>
                 <br />
-                {detail.users && detail.users[0].name && detail.users[0].name === userDetail.name ? <p> Eres el dueño de este curso </p> :
+                {detail.users &&
+                detail.users.length > 0 &&
+                detail.users[0].name === userDetail.name ? (
+                  <p> Eres el dueño de este curso </p>
+                ) : (
                   <button onClick={() => handleMercadoPago()}>
                     Comprar MercadoPago
                   </button>
-                }
+                )}
                 {/* <button onClick={() => handlePurchase()}>Comprar</button> */}
                 <br />
                 <div className={styles.courseInfo}>

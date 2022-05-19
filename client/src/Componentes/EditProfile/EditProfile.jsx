@@ -178,26 +178,28 @@ export default function EditProfile() {
                     <label>{input.cbu}</label>
                   </div>
                 ) : null}
-
-                <div>
-                  <span>Elegir Rol:</span>
-
-                  <p>Alumno</p>
-                  <input
-                    type="radio"
-                    name="rol"
-                    value="alumno"
-                    checked={input.rol === "alumno"}
-                    onChange={(e) => handleInputChange(e)}
-                  />
-                  <p>Instructor</p>
-                  <input
-                    type="radio"
-                    name="rol"
-                    value="instructor"
-                    checked={input.rol === "instructor"}
-                    onChange={(e) => handleInputChange(e)}
-                  />
+                <span className={styles.rolSpan}>Elegir Rol:</span>
+                <div className={styles.containerInput}>
+                  <div className={styles.inputRoles}>
+                    <p>Alumno</p>
+                    <input
+                      type="radio"
+                      name="rol"
+                      value="alumno"
+                      checked={input.rol === "alumno"}
+                      onChange={(e) => handleInputChange(e)}
+                    />
+                  </div>
+                  <div className={styles.inputRoles}>
+                    <p>Instructor</p>
+                    <input
+                      type="radio"
+                      name="rol"
+                      value="instructor"
+                      checked={input.rol === "instructor"}
+                      onChange={(e) => handleInputChange(e)}
+                    />
+                  </div>
                 </div>
               </div>
 

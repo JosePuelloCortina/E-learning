@@ -154,55 +154,8 @@
   margin: 20px;
 }
 
-.containerSelect .tituloseleccionar{
+.containerSelect .tituloseleccionar {
   margin-bottom: 10px;
-}
-
-.containerSelect .titulo{
-    display: flex;
-    flex-direction: row;
-    
-    
-}
-
-.containerSelect .decorando{
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    background-color: white;
-    border: black solid 1.6px;
-    border-radius: 10px;
-    margin-right: 10px;
-    margin-left: 4rem;
-    height: 30px;
-    
-}
-
-.decorando .p {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    background-color:transparent;
-    border: black solid 2px;
-    border-radius: 10px;
-    margin-right: 10px;
-    margin-left: 1rem;
-    height: 30px;
-    font-family:'Montserrat', sans-serif;
-    font-size: 18px;
-    
-    
-}
-
-.botonx{
-    margin-left: auto;
-    border-radius: 5px;
-    border: rgba(77, 25, 77, 1) solid 1.5px;
-}
-
-.botonx:hover{
-    background-color: rgb(120, 3, 138);
-        cursor: pointer;
 }
 
 .containerSelect .titulo {
@@ -210,11 +163,82 @@
   flex-direction: row;
 }
 
-.container .cbu{
+.containerSelect .decorando {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: white;
+  border: black solid 1.6px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 4rem;
+  height: 30px;
+}
+
+.decorando .p {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: black solid 2px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 1rem;
+  height: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.botonx {
+  margin-left: auto;
+  border-radius: 5px;
+  border: rgba(77, 25, 77, 1) solid 1.5px;
+}
+
+.botonx:hover {
+  background-color: rgb(120, 3, 138);
+  cursor: pointer;
+}
+
+.containerSelect .titulo {
+  display: flex;
+  flex-direction: row;
+}
+
+.container .cbu {
   margin-top: 30px;
   /* margin-left:10px;
   border: solid black 0.2px; */
 
   width: 400px;
   border-radius: 5px;
+}
+
+.rolSpan {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.containerInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.containerInput .inputRoles {
+  display: flex;
+  flex-direction: row;
+}
+
+.containerInput .inputRoles input {
+  width: max-content;
+}
+
+.containerInput .inputRoles p {
+  margin: 0px;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
 }
