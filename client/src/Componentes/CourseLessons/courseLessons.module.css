@@ -28,10 +28,10 @@
 .title h1 {
     color: black;
     font-family: 'Montserrat',sans-serif;
-    font-size: 40px;
+    font-size: 30px;
     align-self: center;
-     margin-top: auto;
-    margin-left: 500px; 
+    margin-top: auto;
+    margin-left: 350px; 
 }
 
 .title h1:hover {
