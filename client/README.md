@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# E-learning-AkademIT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Introducción
 
-In the project directory, you can run:
+Proyecto grupal realizado en el marco del Henry Bootcamp en el cual se espera que un grupo de alumnos integren todo lo aprendido en los últimos 4 meses y puedan desarrollar un proyecto innovador y útil para la sociedad. Es por eso que creamos AkademIT, una plataforma que ofrece formación en las últimas tecnologías y asistencia constante a los usuarios ante cualquier inconveniente que pueda surgir.
 
-### `npm start`
+Esta plataforma permite que los alumnos puedan registrarse mediante un formulario controlado, registrarse mediante Google, iniciar sesión, buscar cursos, comprarlos, pagarlos con sus tarjetas de crédito, ver sus cursos comprados, tildar el progreso, dejar reseñas, reportar otras reseñas, eliminar reseñas propias, modificar sus datos del perfil tales como su avatar, contraseña, preferencias, entre otros y también pueden ver las compras realizadas por ellos mismos. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En el caso de los instructores estos pueden: registrarse como cualquier usuario, iniciar sesion, modificar sus datos de perfil, crear un curso, añadirle categorias crear clases, cargar su CBU para cobrar las ganancias, ver sus ventas como instructor, editar curso, editar clase, habilitar o deshabilitar clases. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+En el caso de los Aministradores, ellos pueden : administrar cursos, aprobar o desaprobarlos, administrar clases, aprobar o desaprobarlas, eliminarlas, eliminar cursos, administrar reseñas, eliminar reseñas, ver reseñas reportadas, administrar usuarios: eliminarlos, editarlos, banearlos. Administrar ventas, marcar comisiones como pagas. Administrar categorias: agregar y eliminarlas. puedo ver las estadisticas de la pagina. Además, los administradores pueden ver el home y tambien reportar comentarios
 
-### `npm test`
+Tecnologias utilizadas:
+<br>
+Lenguaje: JavaScript
+<br>
+Base de datos: PostgreSQL
+<br>
+Back-End: NodeJs, ExpressJs, Sequelize
+<br>
+Front-End: React, Redux, CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Librerias:
+Mercado Pago
+React-chartjs-2
+React-Player
+React-chat-bot
+Json Web Token
+Bcrypt
+NodeMailer
+Axios
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Para Probar el proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Online:
+<br>
+https://akademit.vercel.app/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Local:
+Despues de clonar el repositorio.
+- Crear un archivo .env con las variables de entorno necesarias para la conexion a la base de datos en la carpeta api.
+(DB_USER, DB_PASSWORD, DB_HOST, PORT, DB_NAME, ACCESS_TOKEN (indispensable para Mercado Pago), BASE_URL)
+- Crear una base de datos con el nombre de la aplicacion y la contraseña.
+- Volver al proyecto y dividir la terminal en dos
+- En la primer terminal ejecutar el comando: `cd api` y ejecutar el comando: `npm install` para instalar las dependencias y ejecutar el comando: `npm start` para iniciar el servidor.
+- En la segunda terminal ejecutar el comando: `cd client` y ejecutar el comando: `npm install` para instalar las dependencias y ejecutar el comando: `npm start` para iniciar el servidor.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Imagenes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Landing Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![landingPage](/images/Landing-page.jpeg)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+- Home
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![home](/images/Home.jpeg)
+![home](/images/podriagustarte.jpeg)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+- Detalle del curso
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![detalle del curso](/images/curso.jpeg)
 
-### Analyzing the Bundle Size
+-Reseñas 
+![hacer reseñas](/images/hacerreseña.jpeg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Mercado Pago
 
-### Making a Progressive Web App
+![mercado pago](/images/mp.jpeg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Perfil Administrador
 
-### Advanced Configuration
+![perfil administrador](/images/admin.jpeg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Perfil Instructor
 
-### Deployment
+![perfil instructor](/images/instructor.jpeg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
