@@ -1,5 +1,5 @@
-import React, { useMemo, useEffect } from "react";
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Componentes/Home/Home";
 import LandingPage from "./Componentes/LandingPage/LandingPage";
 import UserProfile from "./Componentes/UserProfile/UserProfile";
@@ -20,21 +20,20 @@ import Checkout from "./Componentes/Checkout/Checkout";
 import FormCourses from "./Componentes/FormCourses/FormCourses";
 import AdminPanel from "./Componentes/AdminPanel/AdminPanel";
 
-import AdminPage from "./Componentes/AdminCategories/AdminPage"
-import AdminPageCourses from "./Componentes/AdminCourses/AdminPageCourses"
-
+import AdminPage from "./Componentes/AdminCategories/AdminPage";
+import AdminPageCourses from "./Componentes/AdminCourses/AdminPageCourses";
 
 import AdminUsersPage from "./Componentes/AdminUsers/AdminUsersPage";
 import AdminEarningsPage from "./Componentes/AdminEarnings/AdminEarningsPage";
 import FormClass from "./Componentes/FormClass/FormClass";
-import Contenido from "./Componentes/Chatbot/Chatbot"
+import Contenido from "./Componentes/Chatbot/Chatbot";
 import ChangePassword from "./Componentes/ChangePassword/ChangePassword";
 import Nosotros from "./Componentes/Nosotros/Nosotros";
 import EditCourse from "./Componentes/EditCourse/EditCourse";
 import EditClass from "./Componentes/EditClass/EditClass";
 import AdminReviewsPage from "./Componentes/AdminReviews/AdminReviewsPage";
 import AdminSalesPage from "./Componentes/AdminSales/AdminSalesPage";
-import ChangeCbu from './Componentes/ChangeCbu/ChangeCbu';
+import ChangeCbu from "./Componentes/ChangeCbu/ChangeCbu";
 
 function App() {
   return (
@@ -74,8 +73,7 @@ function App() {
 
           <Route exact path="/AdminCourses" element={<AdminPageCourses />} />
 
-
-          <Route exact path="/adminReviews" element={<AdminReviewsPage/>} />
+          <Route exact path="/adminReviews" element={<AdminReviewsPage />} />
 
           <Route exact path="/AdminUsers" element={<AdminUsersPage />} />
           <Route exact path="/AdminSales" element={<AdminSalesPage />} />
@@ -86,11 +84,7 @@ function App() {
             path="/profile/edit/password/:id"
             element={<ChangePassword />}
           />
-          <Route
-            exact
-            path="/profile/edit/cbu/:id"
-            element={<ChangeCbu />}
-          />
+          <Route exact path="/profile/edit/cbu/:id" element={<ChangeCbu />} />
         </Routes>
       </BrowserRouter>
     </div>

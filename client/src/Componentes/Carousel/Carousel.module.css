@@ -6,16 +6,11 @@
 }
 
 .itemslide img {
-
   min-width: 2000px;
   top: -750px;
   left: 0;
   position: relative;
   object-fit: cover;
-
-
-
-
 }
 
 .contDescription {
@@ -23,14 +18,13 @@
   height: 110px;
   width: 100%;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.822);
   bottom: 0px;
   left: 0px;
   z-index: 1;
-
 }
 
 .name {
@@ -43,22 +37,18 @@
   color: #fff;
 }
 
-
 .puntuacion {
   margin: 5px;
   color: #fff;
-
 }
 
 .containerAll {
-
   position: relative;
   max-width: 2000px;
   width: 100%;
   border-radius: 6px;
   overflow: hidden;
   height: 300px;
-
 }
 
 .slide {
@@ -70,21 +60,15 @@
   animation-direction: forwards;
   animation-iteration-count: infinite;
   height: 100%;
-
-
 }
 
 .itemslide {
-
   position: relative;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   flex-grow: 0;
   max-width: 100%;
-
-
-
 }
 
 .pagination {
@@ -99,7 +83,6 @@
 }
 
 .paginationitem {
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,54 +109,41 @@
   transform: scale(1);
   opacity: 0;
   transition: all 300ms;
-
 }
 
 .paginationitem:hover img {
-
   opacity: 1;
   transform: scale(1);
 }
 
-
-input[id="1"]:checked~.slide {
+input[id="1"]:checked ~ .slide {
   animation: none;
   transform: translate3d(0, 0, 0);
-
 }
 
-input [id="1"]:checked~.pagination .paginationitem[for="1"] {
+input [id="1"]:checked ~ .pagination .paginationitem[for="1"] {
   background: #fff;
-
 }
 
-
-input[id="2"]:checked~.slide {
+input[id="2"]:checked ~ .slide {
   animation: none;
   transform: translate3d(calc (-100% * 1), 0, 0);
-
 }
 
-input[id="2"]:checked~.pagination .paginationitem[for="2"] {
+input[id="2"]:checked ~ .pagination .paginationitem[for="2"] {
   background: #fff;
-
 }
 
-
-input[id="3"]:checked~.slide {
+input[id="3"]:checked ~ .slide {
   animation: none;
   transform: translate3d(calc (-100% * 2), 0, 0);
-
 }
 
-input[id="3"]:checked~.pagination .paginationitem[for="3"] {
+input[id="3"]:checked ~ .pagination .paginationitem[for="3"] {
   background: #fff;
-
 }
-
 
 @keyframes autoplay {
-
   33% {
     transform: translate3d(calc(-100% * 0), 0, 0);
   }
@@ -185,6 +155,4 @@ input[id="3"]:checked~.pagination .paginationitem[for="3"] {
   100% {
     transform: translate3d(calc(-100% * 2), 0, 0);
   }
-
-
 }
