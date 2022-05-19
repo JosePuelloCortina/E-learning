@@ -1,9 +1,5 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  allCourses,
-  editCoursesById,
-  filterCategory,
-  getAllClasses,
   getCoursesById,
   removeClassDetail,
   removeCourseDetail,
@@ -28,21 +24,15 @@ function AdminPageCourses() {
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
   const currentCourses = coursesApro.slice(firstCourseIndex, lastCourseIndex);
 
-  // const [currentUser, setCurrentUser] = useState(0);
-
   const handleCargaCourse = (e) => {
     setcurrentCourse(courses.find((curs) => curs.id === e.target.value));
     dispatch(getCoursesById(e.target.value));
     dispatch(removeClassDetail());
   };
 
-
-
-
   useEffect(() => {
     dispatch(removeCourseDetail());
-  }, []);
-
+  }, [dispatch]);
 
   return (
     <div className={styles.containertotal}>

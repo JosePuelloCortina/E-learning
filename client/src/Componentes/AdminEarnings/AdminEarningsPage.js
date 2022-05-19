@@ -58,10 +58,10 @@ const user = {
 }
 
 const purchase = {
-    labels: ['Total Ventas', 'Admin', 'Instructor'],
+    labels: ['Total Ganancias', 'Admin', 'Instructor'],
     datasets:[
         {
-            label: 'Ventas',
+            label: 'Ganancias $',
             backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,

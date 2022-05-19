@@ -47,7 +47,7 @@ function SearchCourse({ setCurrentPage }) {
       )}
 
       <button type="submit" onClick={handleSubmitCourse}>
-        Search{" "}
+        Buscar{" "}
       </button>
     </div>
   );

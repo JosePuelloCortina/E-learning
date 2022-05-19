@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   createCategory,
   allCategories,
@@ -21,8 +21,6 @@ function AgregarCategorias() {
   const lastCourseIndex = currentPage * coursesPerPage;
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
   const currentCategories = categories.slice(firstCourseIndex, lastCourseIndex);
-
-  const [currentUser, setCurrentUser] = useState(0);
 
   function handleRemove(e) {
     e.preventDefault();

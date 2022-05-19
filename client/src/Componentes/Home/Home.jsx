@@ -10,21 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Carousel from "../Carousel/Carousel";
 import CarouselSuggestions from "../CarouselSuggestions/CarouselSuggestions";
 
-
 export default function Home() {
   const dispatch = useDispatch();
 
-  // async function getCourses() {
-  //   await dispatch(allCourses());
-  // }
-
-  // async function getCategories() {
-  //   await dispatch(allCategories());
-  // }
-
- 
- 
-  
   useEffect(() => {
     dispatch(allCourses());
     dispatch(allCategories());
@@ -33,9 +21,8 @@ export default function Home() {
   const [orderReview, setOrderReview] = useState("");
 
   const courses = useSelector((state) => state.courses);
-  const coursePassed = courses.filter(curs => curs.state == "passed");
+  const coursePassed = courses.filter((curs) => curs.state == "passed");
   const loggedUser = useSelector((state) => state.loggedUsers);
-  console.log(loggedUser, "loggedUser");
   const [currentPage, setCurrentPage] = useState(1);
 
   const [coursesPerPage] = useState(6);
@@ -43,22 +30,17 @@ export default function Home() {
   const firstCourseIndex = lastCourseIndex - coursesPerPage;
   const currentCourses = coursePassed.slice(firstCourseIndex, lastCourseIndex);
 
- 
-
-console.log("Cursos aprobados", coursePassed )
   return (
     <div className={styles.home}>
-      
-      <NavBar/>
+      <NavBar />
       <NavBarCopy
         setOrderReview={setOrderReview}
         setCurrentPage={setCurrentPage}
       />
-      
-      
-      <br/>
-      <Carousel/>
-      
+
+      <br />
+      <Carousel />
+
       <CoursesContainer currentCourses={currentCourses} />
       <Pagination
         currentPage={currentPage}
@@ -67,15 +49,18 @@ console.log("Cursos aprobados", coursePassed )
         allCourses={coursePassed}
         setCurrentPage={setCurrentPage}
       />
-      <br/>
-      <br/>
-      
-       {loggedUser.length > 0 ? <CarouselSuggestions loggedUser={loggedUser} /> : <CarouselSuggestions loggedUser={loggedUser}/>}
-     
+      <br />
+      <br />
+
+      {loggedUser.length > 0 ? (
+        <CarouselSuggestions loggedUser={loggedUser} />
+      ) : (
+        <CarouselSuggestions loggedUser={loggedUser} />
+      )}
+
       <div className={styles.footer}>
         <Footer />
       </div>
-
     </div>
   );
 }

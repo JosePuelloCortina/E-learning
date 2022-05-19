@@ -1,148 +1,133 @@
-
 .carouselSuggestions {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgb(36, 66, 66); */
-    padding: 0;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
 .carouselSlideInfo h4 {
-
-    color: rgb(0, 0, 0);
-    font-weight: 400;
+  color: rgb(0, 0, 0);
+  font-weight: 400;
 }
 
-
 .carouselSlideContentRewiew p {
-
-    margin-left: 25px;
-    font-weight: 600;
+  margin-left: 25px;
+  font-weight: 600;
 }
 
 .carouselSlideContentDescription {
-    margin-left: 25px
+  margin-left: 25px;
 }
 
-
-.carouselTitle{
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 1em;
+.carouselTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1em;
 }
 
-.carouselContainer{
-    height: auto;
-    display: flex;
-    background-color: rgba(213, 213, 213, 0.862);
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px;
-    box-shadow: 0px 0px 5px 1px black;
-    /* border-radius: 20px; */
+.carouselContainer {
+  height: auto;
+  display: flex;
+  background-color: rgba(213, 213, 213, 0.862);
+  align-items: center;
+  justify-content: space-between;
+  width: 98.5%;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 1px black;
 }
 
-.carouselArrows{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
-    width: 50px;
-
-    border-radius: 5px;
-    margin: 20px;
-    padding: 10px;
-
+.carouselArrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 50px;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 10px;
 }
 
 .carouselArrows .button1 {
-
-     background: none;
-     color: rgb(0, 0, 0);
-     border: 2px solid rgb(0, 0, 0);
-     padding: 15px;
-     border-radius: 5px;
-     cursor: pointer;
+  background: none;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .carouselArrows .button1:hover {
-
-     background-color: rgb(140, 0, 140);
-     color: rgb(255, 255, 255);
+  background-color: rgb(140, 0, 140);
+  color: rgb(255, 255, 255);
 }
 
-
-.carouselSlideActive{
-    width: 1250px;
-    padding: 0px;
+.carouselSlideActive {
+  width: 1250px;
+  padding: 0px;
 }
 
-.carouselSlide{
-    display: none;
+.carouselSlide {
+  display: none;
 }
 
-.carouselSlideContent{
-    width: auto;
-    height: 410px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
+.carouselSlideContent {
+  width: auto;
+  height: 410px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
 }
 
-.carouselSlideInfo{
-    color: #000;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-    /* background-color: rgb(89, 145, 145); */
+.carouselSlideInfo {
+  color: #000;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .carouselSlideInfo button {
-    background: rgb(255, 145, 0);
-    color: rgb(0, 0, 0);
-    border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: rgb(255, 255, 255);
-    margin-left: 100px;
-    font-size: 16px;
+  background: rgb(255, 145, 0);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  margin-left: 100px;
+  font-size: 16px;
 }
-
 
 .carouselArrows button:hover {
-
-    background-color: rgb(140, 0, 140);
-    color: rgb(255, 255, 255);
+  background-color: rgb(140, 0, 140);
+  color: rgb(255, 255, 255);
 }
 
-.carouselSlideContentTitle{
-    margin: 25px;
-    margin-bottom: 40px;
-    font-family:'Alumni Sans', sans-serif;
-    font-size: 40px;
-    padding: 0px;
+.carouselSlideContentTitle {
+  margin: 25px;
+  margin-bottom: 40px;
+  font-family: "Alumni Sans", sans-serif;
+  font-size: 40px;
+  padding: 0px;
 }
 
-.carouselSlideContentRewiew{
-    height: 100px;
+.carouselSlideContentRewiew {
+  height: 100px;
 }
 
-.carouselSlideContentPrice{
-    font-size: 45px;
-    width: max-content;
-    margin: 25px;
+.carouselSlideContentPrice {
+  font-size: 45px;
+  width: max-content;
+  margin: 25px;
 }
 
-.carouselSlideContentImage{
-    width: 600px;
-    height: 410px;
-    box-shadow: 0px 0px 10px 1px black;
-    padding: 0px;
+.carouselSlideContentImage {
+  width: 600px;
+  height: 410px;
+  box-shadow: 0px 0px 10px 1px black;
+  padding: 0px;
 }

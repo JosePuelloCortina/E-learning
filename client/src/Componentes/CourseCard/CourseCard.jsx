@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./CourseCard.module.css";
 import { Link } from "react-router-dom";
 
-export default function CourseCard({ name, image, id, review, categories, price }) {
+export default function CourseCard({
+  name,
+  image,
+  id,
+  review,
+  categories,
+  price,
+}) {
   return (
     <Link className={styles.linkDetail} to={`/courses/id/${id}`}>
       <div className={styles.card}>
@@ -15,8 +22,12 @@ export default function CourseCard({ name, image, id, review, categories, price 
               <strong>{name}</strong>
             </p>
             {categories &&
-              categories.map((elem) => {
-                return <p>{elem.name}</p>;
+              categories.map((elem, i) => {
+                return (
+                  <div key={i}>
+                    <p>{elem.name}</p>
+                  </div>
+                );
               })}
           </div>
           <div>
